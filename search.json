@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Kenny Guo",
     "section": "",
-    "text": "Palmer Penguins Visualization Tutorial (Homework 0)\n\n\n\n\n\n\nhomework\n\n\ntest\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome!\n\n\n\n\n\n\ngeneral\n\n\nfun\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny Guo\n\n\n\n\n\n\nNo matching items"
+    "text": "Make a new post test (Homework 0)\n\n\n\n\n\n\nhomework\n\n\ntest\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome!\n\n\n\n\n\n\ngeneral\n\n\nfun\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny Guo\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -21,10 +21,10 @@
     "text": "My name is Kenny and I’m a student at UCLA. I’m studying math and economics."
   },
   {
-    "objectID": "posts/palmerpenguins/index.html",
-    "href": "posts/palmerpenguins/index.html",
-    "title": "Palmer Penguins Visualization Tutorial (Homework 0)",
+    "objectID": "posts/markdown test/index.html",
+    "href": "posts/markdown test/index.html",
+    "title": "Make a new post test (Homework 0)",
     "section": "",
-    "text": "\\[ f(x)\\]\n\\[ \\LaTeX \\]\ndef f(x):\n    \"\"\"\n    A cool function that multiples an input x by 2. \n    \"\"\"\n    return 2*x\n\ny = f(3)\nprint(y)\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+    "text": "\\[ f(x)\\]\n\\[ \\LaTeX \\]\n\ndef f(x):\n    \"\"\"\n    A cool function that multiples an input x by 2. \n    \"\"\"\n    return 2*x\n\ny = f(3)\nprint(y)\n\n6\n\n\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
   }
 ]
