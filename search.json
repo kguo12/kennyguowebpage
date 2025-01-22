@@ -21,8 +21,8 @@
     "text": "My name is Kenny and I’m a student at UCLA. I’m studying math and economics."
   },
   {
-    "objectID": "posts/palmerpenguins/Palmer Penguins.html",
-    "href": "posts/palmerpenguins/Palmer Penguins.html",
+    "objectID": "posts/palmerpenguins/index.html",
+    "href": "posts/palmerpenguins/index.html",
     "title": "Palmer Penguins Visualization Tutorial (Homework 0)",
     "section": "",
     "text": "\\[ f(x)\\]\n\\[ \\LaTeX \\]\ndef f(x):\n    \"\"\"\n    A cool function that multiples an input x by 2. \n    \"\"\"\n    return 2*x\n\ny = f(3)\nprint(y)\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
