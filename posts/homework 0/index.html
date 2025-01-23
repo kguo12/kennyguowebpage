@@ -564,7 +564,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="visualization-with-plotly" class="level2">
 <h2 class="anchored" data-anchor-id="visualization-with-plotly">Visualization with Plotly</h2>
-<p>Excellent! Now to visualize, we’ll use plotly’s <strong>scatter plot</strong>. To do this, we’ll create a <em>figure</em> using <code>px.scatter</code>. It takes in a variety of parameters, including: - Our penguins dataframe - What columns to plot on the x and y axes - <code>color</code>: colors the points based on their species - Width and height of the plot</p>
+<p>Excellent! Now to visualize, we’ll use plotly’s <strong>scatter plot</strong>. To do this, we’ll create a <em>figure</em> using <code>px.scatter</code>. It takes in a variety of parameters, including:</p>
+<ul>
+<li>Our penguins dataframe</li>
+<li>What columns to plot on the x and y axes</li>
+<li><code>color</code>: colors the points based on their species</li>
+<li>Width and height of the plot</li>
+</ul>
 <p>We’ll also create some <em>marginal</em> histograms, which display the distribution of the data for one variable only. On the top we’ll see the distribution of flipper lengths across species, and on the right we’ll see the distribution of culmen lengths across species.</p>
 <p>Finally, we’ll use the <code>fig.update_layout</code> function to adjust some of our plot aesthetics, by adding a title, adjusting the margins, and editing the template style.</p>
 <div id="96910f64-6830-4b87-9863-6a94772e4f28" class="cell" data-tags="[]" data-execution_count="37">
