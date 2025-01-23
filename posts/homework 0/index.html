@@ -460,6 +460,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<section id="data-wrangling" class="level2">
+<h2 class="anchored" data-anchor-id="data-wrangling">Data Wrangling</h2>
 <p>For this simple visualization, our goal will be to somehow distinguish the three species of penguins; Adelie, Gentoo, and Chinstrap. For this, we’ll use a 2D graph, so we’ll only need two features. For this, we’ll only use the <code>'Flipper Length (mm)'</code> and <code>'Culmen Length (mm)'</code> columns.</p>
 <p>Note that some of the entries have <code>NaN</code> or missing values for flipper length and culmen length. We can treat these in a variety of ways, but for this example, we’ll simply remove them. As seen below, there were only <code>2</code> entries with missing values compared to <code>342</code> without, so this step is not too significant.</p>
 <p>Finally, for ease of reading, we’ll drop the “penguin” and the scientific name from the <code>'Species'</code> column.</p>
@@ -559,8 +561,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+</section>
+<section id="visualization-with-plotly" class="level2">
+<h2 class="anchored" data-anchor-id="visualization-with-plotly">Visualization with Plotly</h2>
 <p>Excellent! Now to visualize, we’ll use plotly’s <strong>scatter plot</strong>. To do this, we’ll create a <em>figure</em> using <code>px.scatter</code>. It takes in a variety of parameters, including: - Our penguins dataframe - What columns to plot on the x and y axes - <code>color</code>: colors the points based on their species - Width and height of the plot</p>
 <p>We’ll also create some <em>marginal</em> histograms, which display the distribution of the data for one variable only. On the top we’ll see the distribution of flipper lengths across species, and on the right we’ll see the distribution of culmen lengths across species.</p>
+<p>Finally, we’ll use the <code>fig.update_layout</code> function to adjust some of our plot aesthetics, by adding a title, adjusting the margins, and editing the template style.</p>
 <div id="96910f64-6830-4b87-9863-6a94772e4f28" class="cell" data-tags="[]" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(data_frame <span class="op">=</span> penguins, </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                 x <span class="op">=</span> <span class="st">"Flipper Length (mm)"</span>, </span>
@@ -607,11 +613,15 @@ if (outputEl) {{
                         })                };                });            </script>        </div>
 </div>
 </div>
+</section>
+<section id="discussion" class="level2">
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
 <p>From this plot, we can see some rough distinctions between the three species based on just these two features alone. Because of plotly’s nice interactive features, you can hover over any individual point as see the penguin’s species and it’s individual measurements.</p>
 <p>From the marginal histograms, we can even more clearly see that the flipper lengths allow us to distinguish Gentoo penguins apart fairly well, as they feature significantly higher flipper lengths on average, while the culmen lengths allow us to distinguish the Adelie penguins fairly well, as they feature significantly lower culmen lengths. Hover over any bucket and plotly will display the count of penguins within that range.</p>
 <p>This insight could be useful for potentially training some models to predict the species of a penguin given its phenotype, track the evolution of these species across time, or assess any other general trends in the species’ populations.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -704,7 +714,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/kguo12\.github\.io\/kennyguowebpage\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

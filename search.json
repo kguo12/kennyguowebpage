@@ -7,11 +7,32 @@
     "text": "Hi, my name is Kenny!"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Kenny Guo",
+    "objectID": "posts/homework 0/index.html",
+    "href": "posts/homework 0/index.html",
+    "title": "Palmer Penguins: Plotly Visualization Tutorial",
     "section": "",
-    "text": "Make a new post test (Homework 0)\n\n\n\n\n\n\nhomework\n\n\ntest\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome!\n\n\n\n\n\n\ngeneral\n\n\nfun\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny Guo\n\n\n\n\n\n\nNo matching items"
+    "text": "Who doesn’t love penguins? In this plotly visualization tutorial, we’ll be examining the “palmer_penguins” data set, graciously collected and published by Dr. Kristen Gorman and the Palmer Station, Antarctica LTER (you can read more about the project and dataset here).\nIt contains data on 344 Anvers penguins of three species, Adelie, Chinstrap, and Gentoo, as well as various characteristics, such as their home island, the length and depth of their culmen, their flipper length, body mass, sex, and concentration of nitrogen and carbon in their bloodstream.\nLet’s first import in all our necessary libraries. In this tutorial, we’ll be constructing a simple visualization using plotly express. We’ll also import pandas and numpy to help with our initial data wrangling. Then, we’ll save the dataset into a dataframe called penguins.\nimport pandas as pd\nimport numpy as np\nfrom plotly import express as px\n\nurl = \"https://raw.githubusercontent.com/pic16b-ucla/24W/main/datasets/palmer_penguins.csv\"\npenguins = pd.read_csv(url)\npenguins\n\n\n\n\n\n\n\n\nstudyName\nSample Number\nSpecies\nRegion\nIsland\nStage\nIndividual ID\nClutch Completion\nDate Egg\nCulmen Length (mm)\nCulmen Depth (mm)\nFlipper Length (mm)\nBody Mass (g)\nSex\nDelta 15 N (o/oo)\nDelta 13 C (o/oo)\nComments\n\n\n\n\n0\nPAL0708\n1\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN1A1\nYes\n11/11/07\n39.1\n18.7\n181.0\n3750.0\nMALE\nNaN\nNaN\nNot enough blood for isotopes.\n\n\n1\nPAL0708\n2\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN1A2\nYes\n11/11/07\n39.5\n17.4\n186.0\n3800.0\nFEMALE\n8.94956\n-24.69454\nNaN\n\n\n2\nPAL0708\n3\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN2A1\nYes\n11/16/07\n40.3\n18.0\n195.0\n3250.0\nFEMALE\n8.36821\n-25.33302\nNaN\n\n\n3\nPAL0708\n4\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN2A2\nYes\n11/16/07\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nAdult not sampled.\n\n\n4\nPAL0708\n5\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN3A1\nYes\n11/16/07\n36.7\n19.3\n193.0\n3450.0\nFEMALE\n8.76651\n-25.32426\nNaN\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n339\nPAL0910\n120\nGentoo penguin (Pygoscelis papua)\nAnvers\nBiscoe\nAdult, 1 Egg Stage\nN38A2\nNo\n12/1/09\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n340\nPAL0910\n121\nGentoo penguin (Pygoscelis papua)\nAnvers\nBiscoe\nAdult, 1 Egg Stage\nN39A1\nYes\n11/22/09\n46.8\n14.3\n215.0\n4850.0\nFEMALE\n8.41151\n-26.13832\nNaN\n\n\n341\nPAL0910\n122\nGentoo penguin (Pygoscelis papua)\nAnvers\nBiscoe\nAdult, 1 Egg Stage\nN39A2\nYes\n11/22/09\n50.4\n15.7\n222.0\n5750.0\nMALE\n8.30166\n-26.04117\nNaN\n\n\n342\nPAL0910\n123\nGentoo penguin (Pygoscelis papua)\nAnvers\nBiscoe\nAdult, 1 Egg Stage\nN43A1\nYes\n11/22/09\n45.2\n14.8\n212.0\n5200.0\nFEMALE\n8.24246\n-26.11969\nNaN\n\n\n343\nPAL0910\n124\nGentoo penguin (Pygoscelis papua)\nAnvers\nBiscoe\nAdult, 1 Egg Stage\nN43A2\nYes\n11/22/09\n49.9\n16.1\n213.0\n5400.0\nMALE\n8.36390\n-26.15531\nNaN\n\n\n\n\n344 rows × 17 columns"
+  },
+  {
+    "objectID": "posts/homework 0/index.html#data-wrangling",
+    "href": "posts/homework 0/index.html#data-wrangling",
+    "title": "Palmer Penguins: Plotly Visualization Tutorial",
+    "section": "Data Wrangling",
+    "text": "Data Wrangling\nFor this simple visualization, our goal will be to somehow distinguish the three species of penguins; Adelie, Gentoo, and Chinstrap. For this, we’ll use a 2D graph, so we’ll only need two features. For this, we’ll only use the 'Flipper Length (mm)' and 'Culmen Length (mm)' columns.\nNote that some of the entries have NaN or missing values for flipper length and culmen length. We can treat these in a variety of ways, but for this example, we’ll simply remove them. As seen below, there were only 2 entries with missing values compared to 342 without, so this step is not too significant.\nFinally, for ease of reading, we’ll drop the “penguin” and the scientific name from the 'Species' column.\n\n# getting just these 3 columns\npenguins = penguins[['Species', 'Flipper Length (mm)', 'Culmen Length (mm)']]\n# dropping NaN values\npenguins = penguins.dropna()\n# getting just the species name\npenguins[\"Species\"] = penguins[\"Species\"].str.split().str.get(0)\n\npenguins\n\n\n\n\n\n\n\n\nSpecies\nFlipper Length (mm)\nCulmen Length (mm)\n\n\n\n\n0\nAdelie\n181.0\n39.1\n\n\n1\nAdelie\n186.0\n39.5\n\n\n2\nAdelie\n195.0\n40.3\n\n\n4\nAdelie\n193.0\n36.7\n\n\n5\nAdelie\n190.0\n39.3\n\n\n...\n...\n...\n...\n\n\n338\nGentoo\n214.0\n47.2\n\n\n340\nGentoo\n215.0\n46.8\n\n\n341\nGentoo\n222.0\n50.4\n\n\n342\nGentoo\n212.0\n45.2\n\n\n343\nGentoo\n213.0\n49.9\n\n\n\n\n342 rows × 3 columns"
+  },
+  {
+    "objectID": "posts/homework 0/index.html#visualization-with-plotly",
+    "href": "posts/homework 0/index.html#visualization-with-plotly",
+    "title": "Palmer Penguins: Plotly Visualization Tutorial",
+    "section": "Visualization with Plotly",
+    "text": "Visualization with Plotly\nExcellent! Now to visualize, we’ll use plotly’s scatter plot. To do this, we’ll create a figure using px.scatter. It takes in a variety of parameters, including: - Our penguins dataframe - What columns to plot on the x and y axes - color: colors the points based on their species - Width and height of the plot\nWe’ll also create some marginal histograms, which display the distribution of the data for one variable only. On the top we’ll see the distribution of flipper lengths across species, and on the right we’ll see the distribution of culmen lengths across species.\nFinally, we’ll use the fig.update_layout function to adjust some of our plot aesthetics, by adding a title, adjusting the margins, and editing the template style.\n\nfig = px.scatter(data_frame = penguins, \n                 x = \"Flipper Length (mm)\", \n                 y = \"Culmen Length (mm)\", \n                 color = \"Species\",\n                 width = 800,\n                 height = 500,\n                 marginal_y = \"histogram\",\n                 marginal_x = \"histogram\",\n                  )\n\n# Adjust the margins, add in a title, and set a plot template\nfig.update_layout(margin={\"r\":100,\"t\":40,\"l\":0,\"b\":0}, \n                  title_text=\"Culmen Length vs. Flipper Length of the Three Anvers Penguin Species\",\n                  template=\"ggplot2\")\n\n# Show the plot\nfig.show()"
+  },
+  {
+    "objectID": "posts/homework 0/index.html#discussion",
+    "href": "posts/homework 0/index.html#discussion",
+    "title": "Palmer Penguins: Plotly Visualization Tutorial",
+    "section": "Discussion",
+    "text": "Discussion\nFrom this plot, we can see some rough distinctions between the three species based on just these two features alone. Because of plotly’s nice interactive features, you can hover over any individual point as see the penguin’s species and it’s individual measurements.\nFrom the marginal histograms, we can even more clearly see that the flipper lengths allow us to distinguish Gentoo penguins apart fairly well, as they feature significantly higher flipper lengths on average, while the culmen lengths allow us to distinguish the Adelie penguins fairly well, as they feature significantly lower culmen lengths. Hover over any bucket and plotly will display the count of penguins within that range.\nThis insight could be useful for potentially training some models to predict the species of a penguin given its phenotype, track the evolution of these species across time, or assess any other general trends in the species’ populations."
   },
   {
     "objectID": "about.html",
@@ -19,6 +40,13 @@
     "title": "About",
     "section": "",
     "text": "My name is Kenny and I’m a student at UCLA. I’m studying math and economics."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kenny Guo",
+    "section": "",
+    "text": "Palmer Penguins: Plotly Visualization Tutorial\n\n\nPIC16B: Homework 0\n\n\n\nhomework\n\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nKenny Guo\n\n\n\n\n\n\n\n\n\n\n\n\nMake a new post test (Homework 0)\n\n\n\n\n\n\nhomework\n\n\ntest\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome!\n\n\n\n\n\n\ngeneral\n\n\nfun\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny Guo\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/markdown test/index.html",
