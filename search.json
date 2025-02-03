@@ -7,20 +7,6 @@
     "text": "Hi, my name is Kenny!"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Kenny Guo",
-    "section": "",
-    "text": "Palmer Penguins: Plotly Visualization Tutorial\n\n\nPIC16B: Homework 0\n\n\n\nhomework\n\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nKenny Guo\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome!\n\n\n\n\n\n\ngeneral\n\n\nfun\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny Guo\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "My name is Kenny and I’m a student at UCLA. I’m studying math and economics."
-  },
-  {
     "objectID": "posts/homework 0/index.html",
     "href": "posts/homework 0/index.html",
     "title": "Palmer Penguins: Plotly Visualization Tutorial",
@@ -47,5 +33,47 @@
     "title": "Palmer Penguins: Plotly Visualization Tutorial",
     "section": "Discussion",
     "text": "Discussion\nFrom this plot, we can see some rough distinctions between the three species based on just these two features alone. Because of plotly’s nice interactive features, you can hover over any individual point as see the penguin’s species and it’s individual measurements.\nFrom the marginal histograms, we can even more clearly see that the flipper lengths allow us to distinguish Gentoo penguins apart fairly well, as they feature significantly higher flipper lengths on average, while the culmen lengths allow us to distinguish the Adelie penguins fairly well, as they feature significantly lower culmen lengths. Hover over any bucket and plotly will display the count of penguins within that range.\nThis insight could be useful for potentially training some models to predict the species of a penguin given its phenotype, track the evolution of these species across time, or assess any other general trends in the species’ populations."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "My name is Kenny and I’m a student at UCLA. I’m studying math and economics."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kenny Guo",
+    "section": "",
+    "text": "Data Wrangling and Visualization: NOAA Climate Data\n\n\nPIC16B: Homework 1\n\n\n\nhomework\n\n\n\n\n\n\n\n\n\nFeb 2, 2025\n\n\nKenny Guo\n\n\n\n\n\n\n\n\n\n\n\n\nPalmer Penguins: Plotly Visualization Tutorial\n\n\nPIC16B: Homework 0\n\n\n\nhomework\n\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nKenny Guo\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome!\n\n\n\n\n\n\ngeneral\n\n\nfun\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny Guo\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/homework 1/index.html",
+    "href": "posts/homework 1/index.html",
+    "title": "Data Wrangling and Visualization: NOAA Climate Data",
+    "section": "",
+    "text": "Hello! In this assignment, we’ll be wrangling some climate data gathered by stations in the National Oceanic and Atmospheric Association (NOAA) to produce some scatter plots for each stations average yearly increase in temperature. To do this, first we’ll import the relevant packages. We’ll need: - sqlite3: for database management - pandas: for working with DataFrames - plotly express: for geographic visualizations - scikit-learn: for linear regression\nimport pandas as pd\nimport sqlite3\nfrom plotly import express as px\nfrom sklearn.linear_model import LinearRegression\nimport plotly.io as pio\npio.renderers.default=\"iframe\""
+  },
+  {
+    "objectID": "posts/homework 1/index.html#step-1.-create-a-database",
+    "href": "posts/homework 1/index.html#step-1.-create-a-database",
+    "title": "Data Wrangling and Visualization: NOAA Climate Data",
+    "section": "Step 1. Create a Database",
+    "text": "Step 1. Create a Database\nWe’ll begin by importing all our necessary files and throwing them all into our temps.db database. There is a lot of data, so using SQL will ultimately be more storage-conscious and we’ll be able to query from our tables more easily.\n\nif __name__ == \"__main__\":\n    # Read in CSV files\n    temps = pd.read_csv(\"temps_stacked.csv\")\n    temps.dropna()\n    countries = pd.read_csv(\"countries.csv\")\n    # editing whitespace and - to _\n    countries = countries.rename(columns={'FIPS 10-4': 'FIPS_10_4', 'ISO 3166': 'ISO_3166'})\n    stations = pd.read_csv(\"https://raw.githubusercontent.com/PhilChodrow/PIC16B/master/datasets/noaa-ghcn/station-metadata.csv\")\n    \n    # Open a connection to database\n    conn = sqlite3.connect(\"temps.db\")\n\n    # Adding the csv files\n    temps.to_sql(\"temperatures\", conn, if_exists = \"replace\", index = False)\n    countries.to_sql(\"countries\", conn, if_exists = \"replace\", index = False)\n    stations.to_sql(\"stations\", conn, if_exists = \"replace\", index = False)\n\n    # Closing connection\n    conn.close()"
+  },
+  {
+    "objectID": "posts/homework 1/index.html#step-2.-create-a-query_climate_database-function",
+    "href": "posts/homework 1/index.html#step-2.-create-a-query_climate_database-function",
+    "title": "Data Wrangling and Visualization: NOAA Climate Data",
+    "section": "Step 2. Create a query_climate_database Function",
+    "text": "Step 2. Create a query_climate_database Function\nThis function will allow us to query our database (temps.db) to get information for stations within a certain timeframe for a certain country. In particular, it requests: - the country of interest - the month of interest - the start year and end year (inclusive) - the database to query\nand it returns: - a DataFrame containing the columns station name, station latitude, station longitude, country, year, month, and temperature (over the month).\n\ndef query_climate_database(db_file, country, year_begin, year_end, month):\n    '''\n    A function that queries a climate database, returning station information (name, lat, long)\n    and temperature data for a specific year frame and month, for a certain country. \n    Inputs: db_file (name of database), country (str), year_begin, year_end (int), month (int)\n    Returns: DataFrame\n    Example: query_climate_database(\"temps.db\", 'India', 1980, 2020, 1)\n    '''\n    conn = sqlite3.connect(db_file)\n    \n    # Getting the country code\n    cmd1 = \\\n    f\"\"\"\n    SELECT fips_10_4\n    FROM countries\n    WHERE name = '{country}'\n    \"\"\"\n    cell = pd.read_sql(cmd1, conn)\n    country_code = cell.iat[0,0]\n    \n    # SQL querying for relevant columns, subject to parameters\n    cmd2 = \\\n    f\"\"\"\n    SELECT S.name, S.latitude, S.longitude, '{country}' Country, T.year, T.month, T.temp\n    FROM temperatures T\n    LEFT JOIN stations S ON T.id = S.id\n    WHERE (SUBSTRING(T.id, 1, 2) = '{country_code}')\n    AND (T.year BETWEEN {year_begin} AND {year_end})\n    AND (T.month = {month})\n    \"\"\"\n    df = pd.read_sql(cmd2, conn)\n    \n    # Closing connection and returning dataframe\n    conn.close()\n    return df\n\nWe test our function here with \"India\", over the time period 1980-2020 for the month of January.\n\nquery_climate_database(\"temps.db\", 'India', 1980, 2020, 1)\n\n\n\n\n\n\n\n\nNAME\nLATITUDE\nLONGITUDE\nCountry\nYear\nMonth\nTemp\n\n\n\n\n0\nPBO_ANANTAPUR\n14.583\n77.633\nIndia\n1980\n1\n23.48\n\n\n1\nPBO_ANANTAPUR\n14.583\n77.633\nIndia\n1981\n1\n24.57\n\n\n2\nPBO_ANANTAPUR\n14.583\n77.633\nIndia\n1982\n1\n24.19\n\n\n3\nPBO_ANANTAPUR\n14.583\n77.633\nIndia\n1983\n1\n23.51\n\n\n4\nPBO_ANANTAPUR\n14.583\n77.633\nIndia\n1984\n1\n24.81\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n3147\nDARJEELING\n27.050\n88.270\nIndia\n1983\n1\n5.10\n\n\n3148\nDARJEELING\n27.050\n88.270\nIndia\n1986\n1\n6.90\n\n\n3149\nDARJEELING\n27.050\n88.270\nIndia\n1994\n1\n8.10\n\n\n3150\nDARJEELING\n27.050\n88.270\nIndia\n1995\n1\n5.60\n\n\n3151\nDARJEELING\n27.050\n88.270\nIndia\n1997\n1\n5.70\n\n\n\n\n3152 rows × 7 columns"
+  },
+  {
+    "objectID": "posts/homework 1/index.html#step-3.-geographic-scatter-function-for-yearly-temperature-increases",
+    "href": "posts/homework 1/index.html#step-3.-geographic-scatter-function-for-yearly-temperature-increases",
+    "title": "Data Wrangling and Visualization: NOAA Climate Data",
+    "section": "Step 3. Geographic Scatter Function for Yearly Temperature Increases",
+    "text": "Step 3. Geographic Scatter Function for Yearly Temperature Increases\nIn this section, we seek to answer our overarching question: &gt; How does the average yearly change in temperature vary within a given country?\nTo do this, we define a function called temperature_coefficient_plot(). It takes in the same parameters as query_climate_database, and uses it to collect data for the selected country/timeframe. It then calculates for each station the average yearly change in temperature, by performing a linear regression using scikit-learn with years on the x-axis and temperature on the y-axis. The details of this process are defined in the helper function coef. Finally, it takes its calculated slopes and plots each station (along with its latitude, longitude) onto a plotly interactive map, with the stations colorcoded by average yearly change in temperature. It then returns this figure.\n\ndef coef(data_group):\n    '''\n    Helper function for temperature_coefficient_plot\n    Inputs: DataFrame containing temperatures over a year period\n    Outputs: Average yearly change in temperature (as calculated by a linear regression)\n    '''\n    X = data_group[[\"Year\"]] # Dataframe format\n    y = data_group['Temp'] # Series format\n    LR = LinearRegression()\n    LR.fit(X,y) # Calculates the coefficients\n    slope = LR.coef_[0] # Takes the slope (average yearly change in temp) from the model.\n    slope = round(slope, 4)\n    return slope\n\ndef temperature_coefficient_plot(db_file, country, year_begin, year_end, month, min_obs, **kwargs):\n    '''\n    A function that calculates the average yearly changes in temperature for stations in a certain country\n    over a certain time period over a certain month.\n    Inputs:\n    db_file (climate database), country (str), year_begin, year_end (int), month (int),\n    min_obs (int, the minimum number of years a station tracks data within the timeframe),\n    **kwargs (other keyword arguments for plotly map parameters)\n    Outputs:\n    A plotly figure containing points for stations, their lat/long, and average yearly change in temp.\n    '''\n    # Calling query_climate_database with parameters to get necessary data\n    df = query_climate_database(db_file, country, year_begin, year_end, month)\n    \n    # Filtering out stations with less than min_obs\n    df['observations'] = df.groupby('NAME')['Year'].transform('count')\n    df = df[df['observations'] &gt; (min_obs-1)] \n    \n    # Grouping by station, calculating avg. yearly change in temp\n    coefs = df.groupby(['NAME', 'LATITUDE', 'LONGITUDE']).apply(coef)\n    coefs = coefs.reset_index()\n    coefs['Estimated Yearly Increase (°C)'] = coefs.iloc[:, 3]\n    # coefs is now a DataFrame with columns for the station, lat, long, and avg. change in temp\n    \n    # Plotting stations, coloring by avg. yearly change in temp\n    fig = px.scatter_mapbox(coefs, \n                        lat = \"LATITUDE\",\n                        lon = \"LONGITUDE\", \n                        hover_name = \"NAME\",\n                        color = \"Estimated Yearly Increase (°C)\",\n                        color_continuous_midpoint = 0,\n                        **kwargs) # now changing the style, this one is more low-contrast, keeps the coordinates out\n\n    fig.update_layout(title=f\"Estimates for Average Yearly Increase in Temperature (°C) for stations in {country}, years {year_begin}-{year_end}\",\n                      font=dict(size=10),\n                      margin={\"r\":0,\"t\":20,\"l\":0,\"b\":0})\n    \n    return fig\n    \n\nHere we test our function by plotting the temperature changes in India (1980-2020 in January) and China (1995-2022 in July).\n\ncolor_map = px.colors.diverging.RdGy_r \nfig = temperature_coefficient_plot(\"temps.db\", 'India', 1980, 2020, 1, \n                                    min_obs = 10,\n                                    zoom = 2,\n                                    mapbox_style=\"open-street-map\",\n                                    color_continuous_scale=color_map)\nfig.show()\n\n\n\n\n\nfig = temperature_coefficient_plot(\"temps.db\", 'China', 1995, 2022, 7, \n                                    min_obs = 10,\n                                    zoom = 2,\n                                    mapbox_style=\"open-street-map\",\n                                    color_continuous_scale=color_map)\nfig.show()\n\n\n\n\nIt seems we can draw some conclusions that over the past few decades, controlling for month/season, temperature has been rising at a fairly steady rate over the majority of the country for both India and China, as evidenced by the predominance of red/light red dots."
   }
 ]
