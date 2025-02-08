@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Kenny Guo">
-<meta name="dcterms.date" content="2025-01-22">
+<meta name="dcterms.date" content="2025-02-07">
 
-<title>Palmer Penguins: Plotly Visualization Tutorial – Kenny Guo</title>
+<title>Learning in Multi-agent Information Asymmetric Cascading Bandits – Kenny Guo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,44 +22,10 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,9 +68,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -152,10 +115,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Palmer Penguins: Plotly Visualization Tutorial</h1>
-            <p class="subtitle lead">PIC16B: Homework 0</p>
+      <h1 class="title">Learning in Multi-agent Information Asymmetric Cascading Bandits</h1>
+            <p class="subtitle lead">My first paper!</p>
                                 <div class="quarto-categories">
-                <div class="quarto-category">homework</div>
+                <div class="quarto-category">research</div>
               </div>
                   </div>
   </div>
@@ -173,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 22, 2025</p>
+        <p class="date">February 7, 2025</p>
       </div>
     </div>
     
@@ -192,420 +155,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>Who doesn’t love penguins? In this plotly visualization tutorial, we’ll be examining the “palmer_penguins” data set, graciously collected and published by Dr.&nbsp;Kristen Gorman and the Palmer Station, Antarctica LTER (you can read more about the project and dataset <a href="https://allisonhorst.github.io/palmerpenguins/authors.html#citation">here</a>).</p>
-<p>It contains data on 344 Anvers penguins of three species, Adelie, Chinstrap, and Gentoo, as well as various characteristics, such as their home island, the length and depth of their culmen, their flipper length, body mass, sex, and concentration of nitrogen and carbon in their bloodstream.</p>
-<p>Let’s first import in all our necessary libraries. In this tutorial, we’ll be constructing a simple visualization using <strong>plotly express</strong>. We’ll also import plotly.io and use the renderers framework so our figure can be displayed on this webpage. We’ll also import <strong>pandas</strong> and <strong>numpy</strong> to help with our initial data wrangling. Then, we’ll save the dataset into a dataframe called <code>penguins</code>.</p>
-<div id="11bf247b-9137-4b45-95ec-3a8732791d2d" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotly <span class="im">import</span> express <span class="im">as</span> px</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">"iframe"</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/pic16b-ucla/24W/main/datasets/palmer_penguins.csv"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="10182395-11e6-442a-9931-e4896bf56355" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<div>
+<object data="Multiplayer_Information_Asymmetric_Cascading_Bandits.pdf" type="application/pdf" width="100%" height="100%" style="min-height:100vh;">
+    <p>It appears you don't have a PDF plugin for this browser.
+    No biggie... you can <a href="Multiplayer_Information_Asymmetric_Cascading_Bandits.pdf">click here to
+    download the PDF file.</a></p>
+</object>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">studyName</th>
-<th data-quarto-table-cell-role="th">Sample Number</th>
-<th data-quarto-table-cell-role="th">Species</th>
-<th data-quarto-table-cell-role="th">Region</th>
-<th data-quarto-table-cell-role="th">Island</th>
-<th data-quarto-table-cell-role="th">Stage</th>
-<th data-quarto-table-cell-role="th">Individual ID</th>
-<th data-quarto-table-cell-role="th">Clutch Completion</th>
-<th data-quarto-table-cell-role="th">Date Egg</th>
-<th data-quarto-table-cell-role="th">Culmen Length (mm)</th>
-<th data-quarto-table-cell-role="th">Culmen Depth (mm)</th>
-<th data-quarto-table-cell-role="th">Flipper Length (mm)</th>
-<th data-quarto-table-cell-role="th">Body Mass (g)</th>
-<th data-quarto-table-cell-role="th">Sex</th>
-<th data-quarto-table-cell-role="th">Delta 15 N (o/oo)</th>
-<th data-quarto-table-cell-role="th">Delta 13 C (o/oo)</th>
-<th data-quarto-table-cell-role="th">Comments</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>PAL0708</td>
-<td>1</td>
-<td>Adelie Penguin (Pygoscelis adeliae)</td>
-<td>Anvers</td>
-<td>Torgersen</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N1A1</td>
-<td>Yes</td>
-<td>11/11/07</td>
-<td>39.1</td>
-<td>18.7</td>
-<td>181.0</td>
-<td>3750.0</td>
-<td>MALE</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>Not enough blood for isotopes.</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>PAL0708</td>
-<td>2</td>
-<td>Adelie Penguin (Pygoscelis adeliae)</td>
-<td>Anvers</td>
-<td>Torgersen</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N1A2</td>
-<td>Yes</td>
-<td>11/11/07</td>
-<td>39.5</td>
-<td>17.4</td>
-<td>186.0</td>
-<td>3800.0</td>
-<td>FEMALE</td>
-<td>8.94956</td>
-<td>-24.69454</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>PAL0708</td>
-<td>3</td>
-<td>Adelie Penguin (Pygoscelis adeliae)</td>
-<td>Anvers</td>
-<td>Torgersen</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N2A1</td>
-<td>Yes</td>
-<td>11/16/07</td>
-<td>40.3</td>
-<td>18.0</td>
-<td>195.0</td>
-<td>3250.0</td>
-<td>FEMALE</td>
-<td>8.36821</td>
-<td>-25.33302</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>PAL0708</td>
-<td>4</td>
-<td>Adelie Penguin (Pygoscelis adeliae)</td>
-<td>Anvers</td>
-<td>Torgersen</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N2A2</td>
-<td>Yes</td>
-<td>11/16/07</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>Adult not sampled.</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>PAL0708</td>
-<td>5</td>
-<td>Adelie Penguin (Pygoscelis adeliae)</td>
-<td>Anvers</td>
-<td>Torgersen</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N3A1</td>
-<td>Yes</td>
-<td>11/16/07</td>
-<td>36.7</td>
-<td>19.3</td>
-<td>193.0</td>
-<td>3450.0</td>
-<td>FEMALE</td>
-<td>8.76651</td>
-<td>-25.32426</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">339</td>
-<td>PAL0910</td>
-<td>120</td>
-<td>Gentoo penguin (Pygoscelis papua)</td>
-<td>Anvers</td>
-<td>Biscoe</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N38A2</td>
-<td>No</td>
-<td>12/1/09</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">340</td>
-<td>PAL0910</td>
-<td>121</td>
-<td>Gentoo penguin (Pygoscelis papua)</td>
-<td>Anvers</td>
-<td>Biscoe</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N39A1</td>
-<td>Yes</td>
-<td>11/22/09</td>
-<td>46.8</td>
-<td>14.3</td>
-<td>215.0</td>
-<td>4850.0</td>
-<td>FEMALE</td>
-<td>8.41151</td>
-<td>-26.13832</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">341</td>
-<td>PAL0910</td>
-<td>122</td>
-<td>Gentoo penguin (Pygoscelis papua)</td>
-<td>Anvers</td>
-<td>Biscoe</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N39A2</td>
-<td>Yes</td>
-<td>11/22/09</td>
-<td>50.4</td>
-<td>15.7</td>
-<td>222.0</td>
-<td>5750.0</td>
-<td>MALE</td>
-<td>8.30166</td>
-<td>-26.04117</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">342</td>
-<td>PAL0910</td>
-<td>123</td>
-<td>Gentoo penguin (Pygoscelis papua)</td>
-<td>Anvers</td>
-<td>Biscoe</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N43A1</td>
-<td>Yes</td>
-<td>11/22/09</td>
-<td>45.2</td>
-<td>14.8</td>
-<td>212.0</td>
-<td>5200.0</td>
-<td>FEMALE</td>
-<td>8.24246</td>
-<td>-26.11969</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">343</td>
-<td>PAL0910</td>
-<td>124</td>
-<td>Gentoo penguin (Pygoscelis papua)</td>
-<td>Anvers</td>
-<td>Biscoe</td>
-<td>Adult, 1 Egg Stage</td>
-<td>N43A2</td>
-<td>Yes</td>
-<td>11/22/09</td>
-<td>49.9</td>
-<td>16.1</td>
-<td>213.0</td>
-<td>5400.0</td>
-<td>MALE</td>
-<td>8.36390</td>
-<td>-26.15531</td>
-<td>NaN</td>
-</tr>
-</tbody>
-</table>
-
-<p>344 rows × 17 columns</p>
-</div>
-</div>
-</div>
-<section id="data-wrangling" class="level2">
-<h2 class="anchored" data-anchor-id="data-wrangling">Data Wrangling</h2>
-<p>For this simple visualization, our goal will be to somehow distinguish the three species of penguins; Adelie, Gentoo, and Chinstrap. For this, we’ll use a 2D graph, so we’ll only need two features. For this, we’ll only use the <code>'Flipper Length (mm)'</code> and <code>'Culmen Length (mm)'</code> columns.</p>
-<p>Note that some of the entries have <code>NaN</code> or missing values for flipper length and culmen length. We can treat these in a variety of ways, but for this example, we’ll simply remove them. As seen below, there were only <code>2</code> entries with missing values compared to <code>342</code> without, so this step is not too significant.</p>
-<p>Finally, for ease of reading, we’ll drop the “penguin” and the scientific name from the <code>'Species'</code> column.</p>
-<div id="6f5feb69-58fe-4cb0-a92f-19085e75fca7" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># getting just these 3 columns</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> penguins[[<span class="st">'Species'</span>, <span class="st">'Flipper Length (mm)'</span>, <span class="st">'Culmen Length (mm)'</span>]]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># dropping NaN values</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> penguins.dropna()</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># getting just the species name</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>penguins[<span class="st">"Species"</span>] <span class="op">=</span> penguins[<span class="st">"Species"</span>].<span class="bu">str</span>.split().<span class="bu">str</span>.get(<span class="dv">0</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>penguins</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Species</th>
-<th data-quarto-table-cell-role="th">Flipper Length (mm)</th>
-<th data-quarto-table-cell-role="th">Culmen Length (mm)</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>Adelie</td>
-<td>181.0</td>
-<td>39.1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Adelie</td>
-<td>186.0</td>
-<td>39.5</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>Adelie</td>
-<td>195.0</td>
-<td>40.3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Adelie</td>
-<td>193.0</td>
-<td>36.7</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">5</td>
-<td>Adelie</td>
-<td>190.0</td>
-<td>39.3</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">338</td>
-<td>Gentoo</td>
-<td>214.0</td>
-<td>47.2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">340</td>
-<td>Gentoo</td>
-<td>215.0</td>
-<td>46.8</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">341</td>
-<td>Gentoo</td>
-<td>222.0</td>
-<td>50.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">342</td>
-<td>Gentoo</td>
-<td>212.0</td>
-<td>45.2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">343</td>
-<td>Gentoo</td>
-<td>213.0</td>
-<td>49.9</td>
-</tr>
-</tbody>
-</table>
-
-<p>342 rows × 3 columns</p>
-</div>
-</div>
-</div>
-</section>
-<section id="visualization-with-plotly" class="level2">
-<h2 class="anchored" data-anchor-id="visualization-with-plotly">Visualization with Plotly</h2>
-<p>Excellent! Now to visualize, we’ll use plotly’s <strong>scatter plot</strong>. To do this, we’ll create a <em>figure</em> using <code>px.scatter</code>. It takes in a variety of parameters, including:</p>
-<ul>
-<li>Our penguins dataframe</li>
-<li>What columns to plot on the x and y axes</li>
-<li><code>color</code>: colors the points based on their species</li>
-<li>Width and height of the plot</li>
-</ul>
-<p>We’ll also create some <em>marginal</em> histograms, which display the distribution of the data for one variable only. On the top we’ll see the distribution of flipper lengths across species, and on the right we’ll see the distribution of culmen lengths across species.</p>
-<p>Finally, we’ll use the <code>fig.update_layout</code> function to adjust some of our plot aesthetics, by adding a title, adjusting the margins, and editing the template style.</p>
-<div id="96910f64-6830-4b87-9863-6a94772e4f28" class="cell" data-tags="[]" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(data_frame <span class="op">=</span> penguins, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                 x <span class="op">=</span> <span class="st">"Flipper Length (mm)"</span>, </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                 y <span class="op">=</span> <span class="st">"Culmen Length (mm)"</span>, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                 color <span class="op">=</span> <span class="st">"Species"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                 width <span class="op">=</span> <span class="dv">800</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                 height <span class="op">=</span> <span class="dv">500</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                 marginal_y <span class="op">=</span> <span class="st">"histogram"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                 marginal_x <span class="op">=</span> <span class="st">"histogram"</span>,</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                  )</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust the margins, add in a title, and set a plot template</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>fig.update_layout(margin<span class="op">=</span>{<span class="st">"r"</span>:<span class="dv">0</span>,<span class="st">"t"</span>:<span class="dv">40</span>,<span class="st">"l"</span>:<span class="dv">0</span>,<span class="st">"b"</span>:<span class="dv">0</span>}, </span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                  title_text<span class="op">=</span><span class="st">"Culmen Length vs. Flipper Length of the Three Anvers Penguin Species"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                  template<span class="op">=</span><span class="st">"ggplot2"</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Show the plot</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<iframe scrolling="no" width="820px" height="520" src="iframe_figures/figure_17.html" frameborder="0" allowfullscreen=""></iframe>
-</div>
-</div>
-</section>
-<section id="discussion" class="level2">
-<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
-<p>From this plot, we can see some rough distinctions between the three species based on just these two features alone. Because of plotly’s nice interactive features, you can hover over any individual point as see the penguin’s species and it’s individual measurements.</p>
-<p>From the marginal histograms, we can even more clearly see that the flipper lengths allow us to distinguish Gentoo penguins apart fairly well, as they feature significantly higher flipper lengths on average, while the culmen lengths allow us to distinguish the Adelie penguins fairly well, as they feature significantly lower culmen lengths. Hover over any bucket and plotly will display the count of penguins within that range.</p>
-<p>This insight could be useful for potentially training some models to predict the species of a penguin given its phenotype, track the evolution of these species across time, or assess any other general trends in the species’ populations.</p>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
