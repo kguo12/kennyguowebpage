@@ -35,13 +35,6 @@
     "text": "Discussion\nFrom this plot, we can see some rough distinctions between the three species based on just these two features alone. Because of plotly’s nice interactive features, you can hover over any individual point as see the penguin’s species and it’s individual measurements.\nFrom the marginal histograms, we can even more clearly see that the flipper lengths allow us to distinguish Gentoo penguins apart fairly well, as they feature significantly higher flipper lengths on average, while the culmen lengths allow us to distinguish the Adelie penguins fairly well, as they feature significantly lower culmen lengths. Hover over any bucket and plotly will display the count of penguins within that range.\nThis insight could be useful for potentially training some models to predict the species of a penguin given its phenotype, track the evolution of these species across time, or assess any other general trends in the species’ populations."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Kenny Guo",
-    "section": "",
-    "text": "Hi, welcome to my page! My name is Kenny and I’m a student at UCLA taking PIC16B: Python with Applications II (25W, S. Burnett). On this page, you’ll see some posts about some of my homework assignments and Pythoning expeditions in general. I also have some other projects and information in the tabs above. Thanks for visiting!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLearning in Multi-agent Information Asymmetric Cascading Bandits\n\n\nReinforcement learning\n\n\n\nresearch\n\n\n\n\n\n\n\n\n\nFeb 7, 2025\n\n\nKenny Guo\n\n\n\n\n\n\n\n\n\n\n\n\nData Wrangling and Visualization: NOAA Climate Data\n\n\nPIC16B: Homework 1\n\n\n\nhomework\n\n\n\n\n\n\n\n\n\nFeb 2, 2025\n\n\nKenny Guo\n\n\n\n\n\n\n\n\n\n\n\n\nPalmer Penguins: Plotly Visualization Tutorial\n\n\nPIC16B: Homework 0\n\n\n\nhomework\n\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nKenny Guo\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome!\n\n\n\n\n\n\ngeneral\n\n\nfun\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny Guo\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -49,11 +42,11 @@
     "text": "My name is Kenny and I’m a student at UCLA. I’m studying math and economics."
   },
   {
-    "objectID": "posts/cascading paper/index.html",
-    "href": "posts/cascading paper/index.html",
-    "title": "Learning in Multi-agent Information Asymmetric Cascading Bandits",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Kenny Guo",
     "section": "",
-    "text": "It appears you don’t have a PDF plugin for this browser. No biggie… you can click here to download the PDF file."
+    "text": "Hi, welcome to my page! My name is Kenny and I’m a student at UCLA taking PIC16B: Python with Applications II (25W, S. Burnett). On this page, you’ll see some posts about some of my homework assignments and Pythoning expeditions in general. I also have some other projects and information in the tabs above. Thanks for visiting!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nData Wrangling and Visualization: NOAA Climate Data\n\n\nPIC16B: Homework 1\n\n\n\nhomework\n\n\n\n\n\n\n\n\n\nFeb 2, 2025\n\n\nKenny Guo\n\n\n\n\n\n\n\n\n\n\n\n\nPalmer Penguins: Plotly Visualization Tutorial\n\n\nPIC16B: Homework 0\n\n\n\nhomework\n\n\n\n\n\n\n\n\n\nJan 22, 2025\n\n\nKenny Guo\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome!\n\n\n\n\n\n\ngeneral\n\n\nfun\n\n\n\n\n\n\n\n\n\nJan 21, 2025\n\n\nKenny Guo\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/homework 1/index.html",
