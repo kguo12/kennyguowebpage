@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Kenny Guo, Lily Jiang, Lune Chan, Sophia Yi, William Chang">
+<meta name="dcterms.date" content="2025-02-14">
 
-<title>About – Kenny Guo</title>
+<title>Coordinating for Clicks: Learning in Multi-Agent Information Asymmetric Cascading Bandits – Kenny Guo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,21 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -66,8 +69,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -77,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Kenny Guo</span>
     </a>
   </div>
@@ -88,11 +120,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research.html"> 
+    <a class="nav-link" href="../../research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item compact">
@@ -118,33 +150,58 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="headshot.png" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
-</div>
-<div class="quarto-title-meta">
+<h1 class="title">Coordinating for Clicks: Learning in Multi-Agent Information Asymmetric Cascading Bandits</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">reinforcement learning</div>
   </div>
-</header><main class="content" id="quarto-document-content">
-<p>My name is Kenny and I’m a student at UCLA. I’m studying math and economics.</p>
+  </div>
 
 
-</main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://www.linkedin.com/in/kenny-guo-140966274/" class="about-link" rel="" target="">
-    <i class="bi bi-linkedin"></i>
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/kguo12" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
-</div>
-</div>
- <!-- /main -->
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Kenny Guo, Lily Jiang, Lune Chan, Sophia Yi, William Chang </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 14, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This is my applied math paper No.&nbsp;1 (!), titled “Coordinating for Clicks: Learning in Multi-Agent Information Asymmetric Cascading Bandits”. I collaborated on this project alongside Lily, Lune, and Sophia, and our advisor was William (https://williamc.me/). You can view the manuscript (currently under review at JMLR) below.</p>
+<p><strong>Bandits</strong> are one of the most studied settings in reinforcement learning, with the standard multi-armed bandit featuring a “learning agent” who interacts with a feedback-giving “environment”. In <em>stochastic bandits</em>, the agent interacts over a series of rounds, called a <em>horizon, <span class="math inline">\(T\)</span></em>. For each round, the agent has a variety of “actions” (or often dubbed “arms”) to choose from, each with it’s own reward distribution. Reinforcement learning is essentially learning how to optimally take in and learn from feedback in a new, unexplored environment, so it is the agent’s goal to learn the best/optimal arms to achieve the highest rewards.</p>
+<p>In bandits, learners adopt a “policy”, often encoded in some algorithm. Researchers evaluate a policy based on its <strong>regret (<span class="math inline">\(R_T\)</span>)</strong>, which is the difference between the rewards received if the agent had played the <em>optimal action</em> over the entirety of the horizon and the <em>actual</em> rewards received following the algorithm. Ideally, a “good” algorithm should incur <em>sublinear</em> regret, that is, the regret grows on some order less than <span class="math inline">\(O(T)\)</span>. In the classical stochastic bandit, the <strong>Upper Confidence Bound (UCB) algorithm</strong> achieves the most optimal regret, on the order of <span class="math inline">\(O(\log T)\)</span>. Essentially, the learner creates a confidence interval around the empirical reward estimate for each arm, and as arms are pulled and additional rewards are realized, these upper confidence bounds approach closer to the true mean reward for each arm. The agent then simply picks the action with the highest <em>UCB index</em> for each round, and with high probability, ends up finding the optimal arm. This is just a brief introduction—if you want to learn more, I recommend the book <em>Bandit Algorithms</em>, by Tor Lattimore and Csaba Szepesvari.</p>
+<p>The bandit variant we study in this paper is called a <strong>cascading bandit</strong>. Instead of the learner choosing one action for each round, the agent can choose <span class="math inline">\(K\)</span> different actions arranged in a list. This setting rifles with applications in things like recommendation bars or search engines, and for this reason, arms are sometimes referred to as “items” and the “action” taken for a round is now the full ranking/recommendation of <span class="math inline">\(K\)</span> items.</p>
+<p>The key feature of this environment is that the learner can receive <em>partial feedback</em>, in that even though they may recommend <span class="math inline">\(K\)</span> items, they may receive feedback on less. This is because of the assumption that a “user” examines the items starting from the first item to the last item, and stops examining once they are “attracted” by an item. Thus, the remaining items are unobserved by the user, and the agent receives no feedback (a keen reader would note that in this setting, rewards are <em>Bernoulli</em>, so a “click” on an item results in a reward of <span class="math inline">\(1\)</span>, while an item observed <em>and</em> not clicked results in a reward of <span class="math inline">\(0\)</span>). This is just a brief summary of the environment; if you’re curious, I’ve written more about it in the introduction section of the paper below, and you can look at the seminal paper on cascading bandits, linked here (https://arxiv.org/pdf/1502.02763).</p>
+<p>For our main contribution, we study a <strong>multiplayer</strong> extension of cascading bandits. Instead of one agent interacting with the cascading environment, we consider <span class="math inline">\(M\)</span> different learners, each with their own set of <span class="math inline">\(L\)</span> items. The key distinction is that when each player recommends an item for a position in the ranking, it gives rise to a <em>joint-item</em>, which is a combination of each of the <span class="math inline">\(M\)</span> players’ items. Each joint item has its own independent probability of attracting a user, meaning the agents now have to coordinate effectively to maximize rewards and minimize regret by selecting the <span class="math inline">\(K\)</span> optimal joint-items. In addition to this, we study various forms of information asymmetry between the players, where players might not be able to observe the items played by others, or where they could receive different feedback from each other, or both. For an introduction to multiplayer bandits in the standard multi-armed bandit, I suggest reading this (https://arxiv.org/abs/2109.03818) paper, written by our advisor, William Chang.</p>
+<p>This has been just a brief introduction. If you’re curious about it more, feel free to reach out at kennyguo@ucla.edu.</p>
+<object data="Multiplayer_Information_Asymmetric_Cascading_Bandits (1).pdf" type="application/pdf" width="100%" height="100%" style="min-height:100vh;">
+    <p>It appears you don't have a PDF plugin for this browser.
+    No biggie... you can <a href="Multiplayer_Information_Asymmetric_Cascading_Bandits (1).pdf">click here to
+    download the PDF file.</a></p>
+</object>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -165,6 +222,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
