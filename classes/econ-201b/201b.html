@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>b – Kenny Guo</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-5685cd926c25366c96d9f1407e584118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Kenny Guo</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../personal.html"> 
+<span class="menu-text">Personal</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tutoring.html"> 
+<span class="menu-text">Book a lesson</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/kenny-guo-140966274/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=9a7V4ZwAAAAJ&amp;hl=en"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kenny.guo@yale.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://kguo12.github.io/kennyguowebpage/resources/cv/KennyGuoCV_Aug2026.pdf"> <i class="bi bi-file-earmark-person" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="econ-201b---microeconomic-theory-basic-concepts-and-techniques-of-noncooperative-game-theory-and-information-economics" class="level1">
+<h1>ECON 201B - Microeconomic Theory: Basic Concepts and Techniques of Noncooperative Game Theory and Information Economics</h1>
+<section id="winter-2026-tomasz-sadzik" class="level2">
+<h2 class="anchored" data-anchor-id="winter-2026-tomasz-sadzik">Winter 2026, Tomasz Sadzik</h2>
+<p>This is the second course in the PhD microeconomics sequence at UCLA. The topics covered are static games, Nash equilibrium concepts, dynamic games, and applications (Bertrand, Cournot, Hotelling, auctions, Stackelberg, bargaining, reputation, signaling, cheap talk). We follow loosely Mas-Colell, Whinston, and Green. Please let me know at <a href="mailto:kennyguo@ucla.edu">kennyguo@ucla.edu</a> if you spot any errors. Thanks!</p>
+<section id="problem-set-solutions" class="level4">
+<h4 class="anchored" data-anchor-id="problem-set-solutions">Problem Set Solutions:</h4>
+<ul>
+<li><a href="#hw1">Problem Set 1 (games, strategies, rationalizability)</a></li>
+<li><a href="#hw2">Problem Set 2 (weak dominance, nash equilibria, mixed NE)</a></li>
+<li><a href="#hw3">Problem Set 3 (bayesian games and auctions, global games)</a></li>
+<li><a href="#hw4">Problem Set 4 (dynamic games, SPNE, bargaining)</a></li>
+<li><a href="#hw5">Problem Set 5 (repeated games, PPE/APS method, imperfect monitoring)</a></li>
+</ul>
+</section>
+</section>
+<section id="problem-set-1-games-strategies-and-rationalizability" class="level2">
+<h2 class="anchored" data-anchor-id="problem-set-1-games-strategies-and-rationalizability">Problem Set 1: Games, Strategies, and Rationalizability <a name="hw1"></a></h2>
+<blockquote class="blockquote">
+<ol type="1">
+<li><strong>Ultimatum Game.</strong> Consider the following game. Two players, 1 and 2, bargain to determine the split of <span class="math inline">\(v\)</span>. Bargaining works as follows. Player 1 offers a split, <span class="math inline">\(s\)</span>, which must take one of the following three values: <span class="math inline">\(0\)</span>, <span class="math inline">\(v/2\)</span>, or <span class="math inline">\(v\)</span>. Player 2 observes this offer, and either accepts or rejects it. If 2 accepts the offer, 1 gets a payoff of <span class="math inline">\(s\)</span>, and 2 gets a payoff of <span class="math inline">\(v-s\)</span>. If 2 rejects the offer, both players get <span class="math inline">\(0\)</span>, and the game ends.</li>
+</ol>
+<ol type="a">
+<li>Draw the extensive form of this game.</li>
+<li>Determine the strategy sets for each player in this game.</li>
+<li>Draw the normal form for this game.</li>
+<li>Identify any strictly dominated strategies. What is left after iterative deletion of strictly dominated strategies?</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li><p>Let <span class="math inline">\(A\)</span>, <span class="math inline">\(R\)</span> represent Accept and Reject. The extensive form tree is given below. <img src="images/201b_extensive.png" class="img-fluid"></p></li>
+<li><p>The strategy set for player 1 is <span class="math inline">\(S_1 = \{0, v/2, v\}\)</span>. The strategy set for player 2 is conditional on that of 1: <span class="math inline">\(S_2 = \{(X\mid0, Y\mid\frac{v}{2}, Z\mid v) \, : \, X,Y,Z \in \{A, R\}\}\)</span>. Expanded out fully and omitting conditional notation, we have <span class="math display">\[ S_2 = \{(A,A,A), (A,A,R), (A, R, A), (A, R, R), (R, A, A), (R, A, R), (R, R, A), (R, R, R)\}.\]</span></p></li>
+<li><p>The normal form game matrix is given below. <img src="images/201b_normal.png" class="img-fluid"></p></li>
+<li><p>No strategy of Player 1 is strictly dominated (e.g.&nbsp;fix Player 2’s strategy to <span class="math inline">\((A,R,R)\)</span>. No mixture of the other two strategies has strictly greater payoff than the third for Player 1, as they are all <span class="math inline">\(0\)</span>). Likewise, no strategy of Player 2 is strictly dominated (e.g.&nbsp;fix Player 1’s strategy to <span class="math inline">\(v\)</span>. All strategies give payoff of <span class="math inline">\(0\)</span> for Player 2). Thus, the entire strategy profile of both players is left after IDSDS.</p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li><strong>Cournot Limit.</strong> Recall that we claimed the linear Cournot game with 2 firms is dominance solvable. Given that the <span class="math inline">\(1\)</span>-rationalizable set is <span class="math inline">\([0, \gamma(0)]\)</span>, the <span class="math inline">\(2\)</span>-rationalizable set is <span class="math inline">\([\gamma^2(0), \gamma(0)]\)</span>, the <span class="math inline">\(2\)</span>-rationalizable set is <span class="math inline">\([\gamma^2(0), \gamma^3(0)]\)</span>, etc., prove that this converges to a point. Compute what this limit is.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Recall the linear Cournot game is given by <span class="math display">\[\begin{align*}
+        q &amp;= q_1 + q_2, \\
+        p(q) &amp;= a - bq, \, a, b \geq 0, \\
+        c_i(q_i) &amp;= cq_i, \, i = 1,2, \, c \geq 0,
+    \end{align*}\]</span> utilities are given by profit, and where <span class="math inline">\(q_1, q_2 \geq 0\)</span>, <span class="math inline">\(b \neq 0\)</span>. The best-response function <span class="math inline">\(\gamma\)</span> for both firms is then given by <span class="math display">\[
+    \gamma(q_{-i}) = \max\left\{\frac{a-c}{2b}-\frac{q_{-i}}{2}, 0\right\}
+    \]</span> It can be shown that if <span class="math inline">\(q_{-i} \in [\underline{q}, \overline{q}]\)</span>, then all <span class="math inline">\(q_i &lt; \gamma(\overline{q})\)</span> and all <span class="math inline">\(q_i &gt; \gamma(\underline{q})\)</span> are strictly dominated. With this fact, we see how the strategy sets (which start as <span class="math inline">\([0, \infty)\)</span>) for both players follow the sequence above. Observe that the lower bounds follow the subsequence <span class="math inline">\((\gamma^{(2t)}(0))_{t\geq 0}\)</span> while the upper bounds follow the subsequence <span class="math inline">\((\gamma^{(2t + 1)}(0))_{t\geq 0}\)</span>. Without loss of generality, assume <span class="math inline">\(a-c &gt; 0\)</span> (if not, the strategy sets trivially converge to <span class="math inline">\(\{0\}\)</span>). We then note that <span class="math display">\[
+    \gamma^{(t)}(0) = -\left(\frac{a-c}{b}\right)\sum_{s=1}^t\left(-\frac{1}{2}\right)^s
+    \]</span> which converges as <span class="math inline">\(t \rightarrow \infty\)</span> by the alternating series test. Thus, the limit is unique, meaning <span class="math inline">\(\lim_t \gamma^{(t)}(0) = \lim_t \gamma^{(2t)}(0) = \lim_t \gamma^{(2t + 1)}(0)\)</span>. The strategy sets become singletons after IDSDS, so the game is dominance-solvable. Computing this limit, we find: <span class="math display">\[\begin{align*}
+        \underset{t\rightarrow \infty}{\lim} \gamma^{(t)}(0) &amp;= -\left(\frac{a-c}{b}\right) \sum_{s=1}^\infty \left(-\frac{1}{2}\right)^s \\
+        &amp;= -\left(\frac{a-c}{b}\right)\sum_{u=1}^\infty \left(-\frac{1}{2}\right)^{2u-1}+\left(-\frac{1}{2}\right)^{2u} \\
+        &amp;= -\left(\frac{a-c}{b}\right)\sum_{u=1}^\infty -\frac{2}{2^{2u}} +\frac{1}{2^{2u}} \\
+        &amp;= \left(\frac{a-c}{b}\right)\sum_{u=1}^\infty \frac{1}{4^{u}} = \boxed{\left(\frac{a-c}{3b}\right)}
+    \end{align*}\]</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li><strong>Asset Bubble.</strong> Imagine a game with <span class="math inline">\(I\)</span> investors, each of whom owns one unit of stock. Each of them bought it at time zero, for zero dollars (which is a normalization). The value of the asset keeps rising one dollar per day. The strategy of each investor <span class="math inline">\(i \leq 100\)</span> is to pick a day in the set <span class="math inline">\(\{1, 2, \ldots, 100\}\)</span> when <span class="math inline">\(i\)</span> sells the asset. We will model this as a Normal form game (each investor makes the decision at time zero, leave the instructions to an associate, and leaves for long holidays). The price of the asset works as follows. If <span class="math inline">\(n\)</span> is the first day when anyone sells the asset, the price this day will be <span class="math inline">\(n\)</span> divided by the number of traders that chose to sell that day. Each day afterwards, the asset price is zero. Finally, and investor incurs a cost of holding the asset. The total cost is <span class="math inline">\(\varepsilon &gt; 0\)</span> times the day at which the investor sells the asset. The payoff to investor <span class="math inline">\(i\)</span> is the price at which <span class="math inline">\(i\)</span> sold the asset minus the cost of holding the asset.</li>
+</ol>
+<ol type="a">
+<li>Show which strategies for an investor are dominated.</li>
+<li>Find the set of rationalizable strategies for an investor.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li><p>Suppose investor <span class="math inline">\(i\)</span> sells on day <span class="math inline">\(100\)</span>. If everyone else sells on day <span class="math inline">\(100\)</span>, <span class="math inline">\(i\)</span>’s payoff is <span class="math inline">\(100/I - 100\varepsilon\)</span>. If the others follow any other joint strategy (i.e.&nbsp;there is at least one investor that sells before day <span class="math inline">\(100\)</span>), <span class="math inline">\(i\)</span>’s payoff is <span class="math inline">\(-100\varepsilon\)</span>. Now, consider investor <span class="math inline">\(i\)</span> selling on day <span class="math inline">\(99\)</span>. If everyone sells on day <span class="math inline">\(100\)</span>, <span class="math inline">\(i\)</span>’s payoff is <span class="math inline">\(99 - 99\varepsilon\)</span>, which is strictly greater than before (assuming <span class="math inline">\(I \geq 2\)</span>). With the other investors following any other joint strategy, <span class="math inline">\(i\)</span>’s payoff is <span class="math inline">\(-99\varepsilon\)</span>, which is strictly greater than <span class="math inline">\(-100\varepsilon\)</span>. Thus, selling on day <span class="math inline">\(100\)</span> is dominated by selling on day <span class="math inline">\(99\)</span>. Note that we can only eliminate day <span class="math inline">\(100\)</span> from the <span class="math inline">\(1\)</span>-rationalizable set. For example, if <span class="math inline">\(2 \leq n &lt; 100\)</span>, then a joint opponent strategy which would break the dominance of selling on <span class="math inline">\(n-1\)</span> over selling on <span class="math inline">\(n\)</span> would be all other investors selling on day <span class="math inline">\(100\)</span> (assuming <span class="math inline">\(\varepsilon\)</span> is small).</p></li>
+<li><p>However, continuing the process of IDSDS, we can continue to eliminate the last day of selling from our rationalizable sets. This means this game is dominance-solvable, resulting in the unique singleton rationalizable strategy of all players which is to sell immediately on day <span class="math inline">\(1\)</span>.</p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li><strong>Bertrand with Differentiated Products.</strong> Consider the following Bertrand competition with differentiated products. There are two firms in the industry. Each chooses a positive price for its product, and demand for product <span class="math inline">\(i\)</span> as the function of the two prices is <span class="math inline">\(q_i = A - Bp_i + Cp_j\)</span>, where <span class="math inline">\(A,B \geq 0\)</span> and <span class="math inline">\(C \in \mathbb{R}\)</span> (if <span class="math inline">\(C&gt;0\)</span>, <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are substitutes, and if <span class="math inline">\(C &lt;0\)</span>, they are complements, with the magnitude representing the strength of the relationship). The costs of each firm are normalized to zero, so the payoffs are the revenues. The action set of each firm is a set of prices in <span class="math inline">\([0, M]\)</span>.</li>
+</ol>
+<ol type="a">
+<li>For fixed <span class="math inline">\(A, B\)</span>, describe the set of strategies that are not dominated, as a function of <span class="math inline">\(C\)</span>.</li>
+<li>For fixed <span class="math inline">\(A, B\)</span>, describe the set of strategies that survive the process of IDSDS, as a function of <span class="math inline">\(C\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li><p>The utility of firm <span class="math inline">\(i\)</span> is given by <span class="math inline">\(u_i(p_i, p_j) = Ap_i - Bp_i^2 + Cp_ip_j\)</span>. Fixing a <span class="math inline">\(p_j\)</span>, we use the FOC to find the best-response function <span class="math inline">\(p_i^\star(p_j) = \frac{A}{2B} + \frac{Cp_j}{2B}\)</span>. Since the strategy set of <span class="math inline">\(j\)</span> is <span class="math inline">\([0,M]\)</span>, this means the set of strategies that are not dominated for <span class="math inline">\(i\)</span> is <span class="math inline">\([\frac{A}{2B}, \frac{A}{2B} + \frac{CM}{2B}]\cap[0,M]\)</span> if <span class="math inline">\(C &gt; 0\)</span>, or <span class="math inline">\([\frac{A}{2B} + \frac{CM}{2B}, \frac{A}{2B}]\cap[0,M]\)</span> if <span class="math inline">\(C &lt; 0\)</span>.</p></li>
+<li><p>We consider three cases:</p></li>
+</ol>
+<p>Case 1: <span class="math inline">\(\frac{C}{2B} \geq 1\)</span>. Continuing the IDSDS using the best-response function, we have the upper bound of the rationalizable set is <span class="math inline">\(M\)</span>, while the lower bound follows the diverging sequence <span class="math inline">\(\left(\frac{A}{2B}\sum_{s=0}^t\left(\frac{C}{2B}\right)^s\right)_{t \geq 0}\)</span>. Since the strategy set is bounded by <span class="math inline">\(M\)</span>, the unique rationalizable strategy is <span class="math inline">\(M\)</span> for both firms.</p>
+<p>Case 2: <span class="math inline">\(\frac{C}{2B} \leq -1\)</span>. Using (a) (<span class="math inline">\(C &lt;0\)</span>), it holds that the 1-rationalizable set is <span class="math inline">\([0, \frac{A}{2B}]\)</span>. Iterating again with the best response function yields the same interval, so the set of rationalizable strategies is <span class="math inline">\([0, \frac{A}{2B}]\)</span>.</p>
+<p>Case 3: <span class="math inline">\(1 &gt; \frac{C}{2B} &gt; -1\)</span>. If <span class="math inline">\(I_k = [\underline{i_k}, \overline{i_k}] \cap [0,M]\)</span> is the interval after the <span class="math inline">\(k\)</span>-th deletion, then <span class="math inline">\(I_{k+1} = [\frac{A}{2B} + \frac{C\underline{i_k}}{2B}, \frac{A}{2B} + \frac{C\overline{i_k}}{2B}] \cap [0,M]\)</span>. Computing the length of the untruncated <span class="math inline">\(I_{k+1}\)</span>, we get: <span class="math display">\[
+\left|\frac{A}{2B} + \frac{C\overline{i_k}}{2B} - \frac{A}{2B} - \frac{C\underline{i_k}}{2B}\right| = |\frac{C}{2B}||\overline{i_k} - \underline{i_k}| &lt; |\overline{i_k} - \underline{i_k}|
+\]</span> so the interval strictly decreases in length, and thus converges to a point. This point must be a fixed point of the best response function, i.e. <span class="math display">\[
+p_i = \frac{A}{2B} + \frac{Cp_i}{2B} \,\,\,\,\,\, \text{which gives} \,\,\,\,\,\, p_i = \frac{A}{2B-C}.
+\]</span> Since <span class="math inline">\(C &lt; 2B\)</span>, this point is always positive, but can extend beyond the bound of <span class="math inline">\(M\)</span>. Thus, the unique rationalizable price for both firms is <span class="math display">\[
+\min\left\{\frac{A}{2B-C}, M\right\}.
+\]</span></p>
+</details>
+</section>
+<section id="problem-set-2-weak-dominance-nash-equilibria-mixed-nash-equilibria" class="level2">
+<h2 class="anchored" data-anchor-id="problem-set-2-weak-dominance-nash-equilibria-mixed-nash-equilibria">Problem Set 2: Weak Dominance, Nash Equilibria, Mixed Nash Equilibria <a name="hw2"></a></h2>
+<blockquote class="blockquote">
+<ol type="1">
+<li><strong>A Game.</strong> Consider the following game in normal form, where Player 1 chooses rows and Player 2 chooses columns. In each cell, 1’s payoff is listed first and 2’s payoff second. <span class="math display">\[\begin{array}{c|ccccc} &amp; a &amp; b &amp; c &amp; d &amp; e \\ \hline A &amp; (2,1) &amp; (4,2) &amp; (1,0) &amp; (10,3) &amp; (2,4) \\ B &amp; (6,10) &amp; (2,20) &amp; (0,10) &amp; (7,15) &amp; (0,18) \\ C &amp; (5,0) &amp; (0,0) &amp; (3,3) &amp; (5,0) &amp; (0,1) \\ D &amp; (8,1) &amp; (2,4) &amp; (0,0) &amp; (5,1) &amp; (4,2) \\ E &amp; (1,3) &amp; (2,6) &amp; (0,4) &amp; (8,5) &amp; (1,3) \end{array} \]</span></li>
+</ol>
+<ol type="a">
+<li>Does either player have strictly dominated strategies? If so, what are they? Does either player have weakly dominated strategies? If so, what are they?</li>
+<li>What strategies are eliminated through iterative deletion of strictly dominated strategies? Is the game dominance solvable?</li>
+<li>Completely characterize the set of pure-strategy Nash equilibria for this game.</li>
+<li>Completely characterize the set of rationalizable strategies for this game.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li><p>For player 1: <span class="math inline">\(E\)</span> is strictly dominated by <span class="math inline">\(A\)</span>. For player 2, <span class="math inline">\(a\)</span> is strictly dominated by <span class="math inline">\(0.75(b) + 0.25(c)\)</span>. Besides the strictly dominated strategies, there are no additional weakly dominated strategies for either player.</p></li>
+<li><p>After IDSDS, we have <span class="math inline">\(S_1'=\{A, C, D\}\)</span> and <span class="math inline">\(S_2' = \{b,c,e\}\)</span>. <span class="math inline">\(d\)</span> becomes strictly dominated after we eliminate <span class="math inline">\(E\)</span> from Player 1’s set after the first round (it was originally a best-response to a mixed belief of <span class="math inline">\(A\)</span> and <span class="math inline">\(E\)</span>). <span class="math inline">\(B\)</span> becomes strictly dominated after we eliminate <span class="math inline">\(a\)</span> from Player 2’s set after the first round (it was originally a best-response to a mixed belief of <span class="math inline">\(a\)</span> and <span class="math inline">\(d\)</span>).</p></li>
+<li><p>There exists one unique pure strategy equilibrium: <span class="math inline">\((C, c)\)</span>.</p></li>
+<li><p>We have that a strategy is rationalizable if and only if it surives IDSDS. Thus, the rationalizable strategies are the ones listed in part (b).</p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li><strong>Location Choice.</strong> Consumers are uniformly distributed along a boardwalk of length 1 mile. The price of ice cream is fixed by a regulator, so consumers go to the nearest firm because they dislike walking (assume that at the regulated price all consumers will purchase an ice-cream cone even if they have to walk a full mile). If more than one vendor is at the same location, they evenly split the business.</li>
+</ol>
+<ol type="a">
+<li>Consider a game where two ice-cream vendors pick their locations simultaneously. Show that there exists a unique pure-strategy Nash equilibrium.</li>
+<li>Show that with three vendors, no pure-strategy Nash equilibrium exists.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li>Without loss of generality, let the two vendors be <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, let each of their strategy sets be <span class="math inline">\(a,b \in [0,1]\)</span> (the location they choose), assume price is one, and assume unit density of consumers (i.e.&nbsp;a region of length <span class="math inline">\(x\)</span> amounts to <span class="math inline">\(x\)</span> units of demand). We show that <span class="math inline">\((0.5, 0.5)\)</span> in the unique NE. By symmetry, we only consider the case where <span class="math inline">\(A\)</span> deviates. If <span class="math inline">\(a &lt; 0.5\)</span>, then demand for <span class="math inline">\(A\)</span> falls to <span class="math inline">\(a + (0.5-a)/2 &lt; 0.5\)</span>, the demand at <span class="math inline">\((0.5, 0.5)\)</span>. Similarly, if <span class="math inline">\(a &gt; 0.5\)</span>, then demand for <span class="math inline">\(A\)</span> falls to <span class="math inline">\((1-a) + (a-0.5)/2 &lt; 0.5\)</span>, the demand at <span class="math inline">\((0.5,0.5)\)</span>. Price is fixed, so any deviation yields strictly lower profit, meaning both vendors are best-responding to each other.</li>
+</ol>
+<p>Now suppose there’s another NE. * Case 1: <span class="math inline">\(a \neq b\)</span>. Without loss of generality, assume <span class="math inline">\(a &lt; b\)</span>. Consider vendor <span class="math inline">\(A\)</span> and deviation <span class="math inline">\(a' = (a + b)/2\)</span>. <span class="math inline">\(A\)</span> now captures <span class="math inline">\((a+b)/2 + ((a+b)/2 + b)/2\)</span> demand, which is strictly greater than the <span class="math inline">\((a+b)/2\)</span> demand before. Thus, <span class="math inline">\(a \neq b\)</span> cannot be a NE. * Case 2: <span class="math inline">\(a = b \neq 0.5\)</span>. Consider when <span class="math inline">\(a = b &gt; 0.5\)</span> (the other case is analogous). Both vendors split the market and get <span class="math inline">\(0.5\)</span> demand each. Consider the deviation of <span class="math inline">\(A\)</span> to <span class="math inline">\(a' = (a + 0.5)/2\)</span>. Now, <span class="math inline">\(A\)</span> captures <span class="math inline">\((a+0.5)/2 + ((a+0.5)/2 + b)/2\)</span> demand, which is strictly greater than <span class="math inline">\(0.5\)</span> from before. Thus, Case 2 cannot be a NE.</p>
+<ol start="2" type="a">
+<li>Let the vendors be <span class="math inline">\(A, B\)</span>, and <span class="math inline">\(C\)</span>. Suppose that <span class="math inline">\((a, b, c)\)</span> is a NE. We have the cases:</li>
+</ol>
+<ul>
+<li>Case 1: <span class="math inline">\(a=b=c\)</span>. Thus, demand is split <span class="math inline">\(1/3\)</span> for each firm. If <span class="math inline">\(A\)</span> deviates towards <span class="math inline">\(1/2\)</span> (or if at <span class="math inline">\(1/2\)</span>, away by a small amount <span class="math inline">\(\varepsilon\)</span>), <span class="math inline">\(A\)</span> can capture demand greater than <span class="math inline">\(1/3\)</span>, so not a NE.</li>
+<li>Case 2: <span class="math inline">\(a,b \neq c\)</span>. Without loss of generality on the ordering of the players and the <span class="math inline">\(&gt;\)</span> versus <span class="math inline">\(&lt;\)</span>, assume <span class="math inline">\(a \leq b &lt; c\)</span>. <span class="math inline">\(C\)</span> can thus move to <span class="math inline">\((b+c)/2\)</span> and capture more demand, so not a NE.</li>
+</ul>
+<p>These cases (when generalized) cover all potential pure strategy profiles, so no pure-strategy NE exists.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li><strong>Costly Bids.</strong> Two risk-neutral firms, <span class="math inline">\(i = 1,2\)</span>, produce a homogeneous product at a unit cost <span class="math inline">\(c &gt; 0\)</span>. There is a single consumer who buys either one unit of the good or nothing. The consumer has a reservation value <span class="math inline">\(v &gt; c\)</span>, and resolves indifference in favor of purchasing at price <span class="math inline">\(p = v\)</span>.</li>
+</ol>
+<p>Suppose the firms simultaneously decide whether to announce prices <span class="math inline">\(p_i \geq 0\)</span>. If a firm chooses to quote a price, it incurs a cost <span class="math inline">\(k &gt; 0\)</span> (e.g., to pay a salesperson to visit the buyer), but it has the option not to quote a price (saving the cost <span class="math inline">\(k\)</span>). Suppose <span class="math inline">\(0 &lt; k &lt; v - c\)</span>.</p>
+<p>The consumer buys the good at the lowest available price (provided it does not exceed <span class="math inline">\(v\)</span>), and chooses between the firms with equal probabilities in the event of a tie.</p>
+<ol type="a">
+<li>Does this game have a pure-strategy Nash equilibrium? Justify your answer.</li>
+<li>Characterize the symmetric mixed-strategy Nash equilibrium.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li>It doesn’t. Suppose there exists some pure-strategy NE. We consider the cases:</li>
+</ol>
+<ul>
+<li>Case 1: Both firms quote a price. Both prices should be at least <span class="math inline">\(c + k\)</span> to cover for the cost of production and quoting, if their good is purchased. If one firm is priced differently from the other, the firm who’s pricing lower has incentive to unilaterally raise by <span class="math inline">\(\varepsilon\)</span>, still under the other firm’s price, and claim strictly higher profit. If both firms set prices equal, but both strictly greater than <span class="math inline">\(c+k\)</span>, then one firm has incentive to undercut by a very small <span class="math inline">\(\varepsilon\)</span>, still above <span class="math inline">\(c+k\)</span>, to claim the buyer’s demand entirely, rather than face the coin toss. Finally, note that both firms pricing exactly at <span class="math inline">\(c+k\)</span> is not stable, because the expected profit would be negative (half chance consumer buys from them and they get 0 profit, half chance consumer doesn’t and they pay <span class="math inline">\(k\)</span>, so <span class="math inline">\((0.5)(c+k-c-k)+(0.5)(-k)\)</span>), and neither firm can undercut anymore without suffering negative profit, so a firm would want to unilaterally deviate to not quoting. Both firms would therefore have to set equally their prices at least at <span class="math inline">\(c+2k\)</span> to make the expected profit nonnegative, however, as stated before, one firm can then slightly undercut.</li>
+<li>Case 2: One firm quotes, the other doesn’t. In this case, the quoting firm has a monopoly and can price their good at <span class="math inline">\(v\)</span> (which is strictly above <span class="math inline">\(c+k\)</span> by assumption). However, the non-quoting firm now has an incentive to quote at <span class="math inline">\(v-\varepsilon\)</span>, still above <span class="math inline">\(c+k\)</span>, giving strictly positive profit.</li>
+<li>Case 3: Both firms stay out of the market. Clearly, one firm has an incentive to quote at <span class="math inline">\(v\)</span> which has strictly positive profit.</li>
+</ul>
+<p>Thus, there does not exist a pure strategy NE.</p>
+<ol start="2" type="a">
+<li>First note that a firm not quoting is chosen with positive probability, i.e.&nbsp;it is a best response to some other action. To see this, let <span class="math inline">\(F(p)\)</span> characterize the CDF of a firm over prices, given the firm quotes a price. If <span class="math inline">\(p\)</span> is high enough to where <span class="math inline">\(F(p)\)</span> is very close to <span class="math inline">\(1\)</span>, the expected profit in a symmetric mixed NE, , is <span class="math display">\[\underbrace{(1-F(p))}_{\mathbb{P} \text{ that you win}}\cdot (p-c) - k &lt; 0,\]</span> which is strictly worse than not quoting (gives payoff of <span class="math inline">\(0\)</span>). Thus, let <span class="math inline">\(0 &lt; q &lt; 1\)</span> be the probability a firm quotes a price.</li>
+</ol>
+<p>We also note that the support of this CDF is from <span class="math inline">\([c+k, v]\)</span>. Pricing above <span class="math inline">\(v\)</span> would result in a strictly negative payoff (<span class="math inline">\(-k\)</span>), and pricing below <span class="math inline">\(c+k\)</span> would result in a strictly negative payoff (since it costs <span class="math inline">\(c+k\)</span> to sell), so they are not best-responses to any other action. However, pricing within <span class="math inline">\([c+k, v]\)</span> are best-responses, namely, pricing within <span class="math inline">\((c+k,v]\)</span> is a best-response to the other firm not quoting, and pricing at <span class="math inline">\(c+k\)</span> is a best-response to the other firm pricing at <span class="math inline">\(c+k+\varepsilon\)</span>.</p>
+<p>Thus, we now turn to pinning down <span class="math inline">\(q\)</span> and <span class="math inline">\(F(p)\)</span>. In a symmetric mixed NE, each action should yield the same expected profit (namely, <span class="math inline">\(0\)</span>, since not quoting yields deterministic <span class="math inline">\(0\)</span> profit). Particularly in the event of quoting, any <span class="math inline">\(p\)</span> quoted must satisfy in the symmetric mixed NE <span class="math display">\[
+\begin{align*}
+    0 &amp;= \underbrace{(1-q)\cdot(p-c)}_{\text{Monopoly}} + \underbrace{q\cdot\left( F(p)\cdot 0 + (1-F(p))\cdot (p-c)\right)}_{\text{Both Quote}} - k \\
+    &amp;= (1-q\cdot F(p))(p-c) - k.
+\end{align*}
+\]</span> Rearranging gives <span class="math display">\[
+F(p) = \frac{p-c-k}{q(p-c)}.
+\]</span> By CDF, we know <span class="math inline">\(F(v) = 1\)</span>, so solving for <span class="math inline">\(q\)</span>, we get <span class="math display">\[
+1 = \frac{v-c-k}{q(v-c)} \implies q = \frac{v-c-k}{v-c}.
+\]</span> Thus, the symmetric mixed NE is characterized by <span class="math inline">\(q^\star = \frac{v-c-k}{v-c}\)</span> and <span class="math inline">\(F(p) = \frac{(p-c-k)(v-c)}{(v-c-k)(p-c)}, \, p \in [c+k, v]\)</span>.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li><strong>Clinching Auction.</strong> The following is a generalization of the standard English auction to a setting with multiple identical goods (due to Ausubel, 2004). Imagine that a seller has two copies of a good to sell. There are two potential buyers, <span class="math inline">\(i = 1,2\)</span>, and buyer <span class="math inline">\(i\)</span> has a value <span class="math inline">\(v_i^1\)</span> from owning one unit, and <span class="math inline">\(v_i^1 + v_i^2\)</span> from owning two units. We assume that marginal utilities are decreasing and bounded: <span class="math display">\[
+0 \leq v_i^2 \leq v_i^1 \leq 1000,
+\]</span> and that all values and marginal values are integers.</li>
+</ol>
+<p>The auction is indexed by price <span class="math inline">\(p\)</span>, which starts at 0 and increases by one unit in every round. In each round, each player announces their demand at the given price. A player the first unit at a price at which the other player’s demand drops below 2 (i.e., the number of goods available to a player is <span class="math inline">\(2\)</span> minus the goods demanded by the other player), and pays the corresponding per-unit price.</p>
+<p>The price continues to rise, and at some price the second unit is clinched (either by the player who already bought the first unit or by the other player). At this point the game ends. If both players drop their demands at the same time, ties are broken by a coin toss. If a player is indifferent between buying and not buying at some price, assume they choose to buy.</p>
+<ol type="a">
+<li><p>First, think about the game as a static game. Each bidder <span class="math inline">\(i\)</span> submits a demand function consisting of two numbers (marginal utilities) <span class="math inline">\((b_i^1, b_i^2)\)</span> such that <span class="math display">\[0 \leq b_i^2 \leq b_i^1 \leq 1000.\]</span> Payments are computed by running the auction using these bids. Show that submitting truthful bids, <span class="math display">\[b_i^1 = v_i^1, \quad b_i^2 = v_i^2,\]</span> is weakly dominant.</p></li>
+<li><p>Now consider the dynamic version of the auction. Identify some strategies that are weakly dominated.</p></li>
+<li><p>In the dynamic game, is truthful bidding weakly dominant? Justify your answer.</p></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li>Suppose you submit non-truthful bids. Clearly, bidding higher than your true marginal utilities is weakly dominated, so we consider the cases:</li>
+</ol>
+<ul>
+<li>Case 1: <span class="math inline">\(b_i^1 = v_i^1, \, b_i^2 &lt; v_i^2\)</span>. Then consider if <span class="math inline">\(j\)</span> has <span class="math inline">\(b_i^2 &lt; b_j^2 \leq v_i^2\)</span>, ceteris paribus. <span class="math inline">\(j\)</span> then clinches the first unit, but had you bid truthfully, you would’ve clinched the first unit at a strictly positive (expected) surplus. If <span class="math inline">\(j\)</span> bids at or below your lowered <span class="math inline">\(b_i^2\)</span>, the payoff is better or the same compared to if you had bid truthfully. If <span class="math inline">\(j\)</span> bids above <span class="math inline">\(v_i^2\)</span>, <span class="math inline">\(j\)</span> would clich the first item and you would receive <span class="math inline">\(0\)</span> payoff, whether you bid truthfully or below. Thus, this case is weakly dominated by bidding truthfully.</li>
+<li>Case 2: <span class="math inline">\(b_i^1 &lt; v_i^1, b_i^2 = v_i^2\)</span>. Again, consider if <span class="math inline">\(b_i^1 &lt; b_j^1 \leq v_i^1\)</span>, ceteris paribus. <span class="math inline">\(j\)</span> then clinches the second unit, but had you bid truthfully you would’ve clinched the second unit as a strictly postive (expected) surplus. The reasoning follows as before, and this case is weakly dominated.</li>
+<li>Case 3: <span class="math inline">\(b_i^1 &lt; v_i^1, b_i^2 &lt; v_i^2\)</span>. This is a combination of the two previous cases. For example, <span class="math inline">\(j\)</span> could bid <span class="math inline">\(b_i^1 &lt; b_j^1 \leq v_i^1\)</span> and <span class="math inline">\(b_i^2 &lt; b_j^2 \leq v_i^2\)</span>, to which bidding truthfully would give strictly positive (expected) profit.</li>
+</ul>
+<p>Thus, truthful bidding is weakly dominant.</p>
+<ol start="2" type="a">
+<li><p>Clearly, bidding strictly above your value, say for the second good, is weakly dominated by bidding at your true value for that good. If <span class="math inline">\(j\)</span> decides to bid above you, both cases net you <span class="math inline">\(0\)</span> profit. Yet if <span class="math inline">\(j\)</span> bids below you, you clinch the second item, but at negative utility, rather than a always non-negative utility at truthful bidding. If <span class="math inline">\(j\)</span> bids the same as you (both of you drop out as the same time), if you clinch from the coin toss, your utility is negative, and if you don’t, your utility is <span class="math inline">\(0\)</span>. In any case of what <span class="math inline">\(j\)</span> does, jumping out as soon as the price rises above your true value weakly dominates staying in.</p></li>
+<li><p>No, as it isn’t weakly better than every other bid facing any opponent strategy, namely, the opponent strategies can now be conditional on what happened in previous price hikes. Suppose I have <span class="math inline">\(v_i^1 = v_i^2 = 10\)</span> and the price is still at <span class="math inline">\(p=2\)</span>. However, suppose opponent <span class="math inline">\(j\)</span> takes the strategy of staying in the auction forever if I demand <span class="math inline">\(2\)</span> units at <span class="math inline">\(p=2\)</span>, or dropping out of the auction at <span class="math inline">\(p = 3\)</span> if my demand drops to <span class="math inline">\(1\)</span> at this price, i.e., I set my <span class="math inline">\(b_i^2 = 1\)</span>. Then for me, bidding truthfully would net <span class="math inline">\(0\)</span> utility, but if I bid untruthfully (<span class="math inline">\(b_i^2 = 1\)</span>), <span class="math inline">\(j\)</span> would clinch the first unit, but I would clinch the second unit, netting <span class="math inline">\(10 - 3 = 7\)</span> utils. Thus, truthful bidding is not weakly dominant.</p></li>
+</ol>
+</details>
+</section>
+<section id="problem-set-3-bayesian-games-and-auctions-global-games" class="level2">
+<h2 class="anchored" data-anchor-id="problem-set-3-bayesian-games-and-auctions-global-games">Problem Set 3: Bayesian Games and Auctions, Global Games <a name="hw3"></a></h2>
+<blockquote class="blockquote">
+<p><strong>1. No Trade Theorem.</strong> Consider a game with <span class="math inline">\(N\)</span> players sitting in a circle. At first, nature selects a card for each player with an integer number between <span class="math inline">\(1\)</span> and <span class="math inline">\(M\)</span>. The random process is independent for each player and each card has a positive probability of occurring. Each player observes only his card, after which he decides upon one of two actions: “trade” or “not trade”. All these choices are simultaneous, after which the game ends. Payoffs are as follows. Whenever a player selects “not trade”, he receives the number on his card as a payoff. Whenever a player selects “trade”, he receives the number on the card of the player closest to his right of those who selected “trade” (notice that this player is himself if nobody else selected “trade”.)</p>
+<ol type="a">
+<li><p>What strategies are rationalizable?</p></li>
+<li><p>What is the Bayesian Nash equilibrium?</p></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li><p>Consider player <span class="math inline">\(i \in [N]\)</span>. Let <span class="math inline">\(T_i = [M]\)</span> be their type space, and so their Bayesian strategy set is a set of mappings, i.e.&nbsp;<span class="math inline">\(S_i = \{s_i \, : \, s_i : [M] \rightarrow \{\text{trade}, \text{ not trade}\}\}\)</span>. Consider the belief over other players <span class="math inline">\(-i\)</span> that places all weight on others playing “not trade” for any card realization. Then, for any <span class="math inline">\(s_i \in S_i\)</span>, the expected payoff under this belief is equivalent (<span class="math inline">\(\frac{M+1}{2}\)</span>) whether the assigned action for each card realization is “trade” or “not trade”, since player <span class="math inline">\(i\)</span> simply receives their own card as their payoff. This means any strategy is a best-response on this belief, so no <span class="math inline">\(s_i\)</span> is strictly dominated, they all survive IDSDS, and all strategies are rationalizable.</p></li>
+<li><p>First, note that in no equilibrium does any player place positive probability on “trade” when given a card <span class="math inline">\(m \in \{2,\ldots, M\}\)</span>. We first show this for <span class="math inline">\(m=M\)</span>. Suppose for contradiction that there is a BNE where player <span class="math inline">\(i\)</span> with type <span class="math inline">\(M\)</span> is best-responding by placing positive probability on “trade”. This means that <span class="math display">\[\begin{equation}
+\mathbb{E}[Y|t_i = M, s_{-i}] \geq M. \quad (1)
+\end{equation}\]</span> where <span class="math inline">\(Y\)</span> is the random variable that takes on the card value of the closest trader to the right of player <span class="math inline">\(i\)</span>. Next, suppose for contradiction that there exists some other player <span class="math inline">\(j\)</span> that places positive probability on trading when given type <span class="math inline">\(k &lt; M\)</span>. Then clearly, <span class="math display">\[\begin{equation}
+\mathbb{P}(Y &lt; M | t_i = M, s_{-i}) &gt; 0, \quad (2)
+\end{equation}\]</span> i.e.&nbsp;the probability of getting a payoff worse than <span class="math inline">\(M\)</span> from trading is nonzero. By the tower rule, we decompose the LHS of Equation (1) (omitting other conditionals): <span class="math display">\[\begin{align*}
+\mathbb{E}[Y] &amp;= \mathbb{E}[Y|Y&lt;M]\cdot\mathbb{P}(Y &lt; M) + \mathbb{E}[Y|Y\geq M]\cdot\mathbb{P}(Y \geq M) \\
+&amp;\leq (M-1)\cdot\mathbb{P}(Y &lt; M) + M\cdot\mathbb{P}(Y \geq M)\\
+&amp;&lt; M\cdot\mathbb{P}(Y &lt; M) + M\cdot\mathbb{P}(Y \geq M) \\
+&amp;= M,
+\end{align*}\]</span> where the second line follows from the upper bounds under both events and the third line follows from Equation (2). This contradicts Equation (1), so namely, if player <span class="math inline">\(i\)</span> is best-responding by trading with type <span class="math inline">\(M\)</span>, no other player is placing positive probability on trading with type <span class="math inline">\(k&lt;M\)</span>. However, then note that any other player <span class="math inline">\(j\neq i\)</span> can deviate to trading when given type <span class="math inline">\(1\)</span>, and secure a strictly higher expected payoff with player <span class="math inline">\(i\)</span> trading with <span class="math inline">\(M\)</span>. This contradicts the BNE assumption.</p></li>
+</ol>
+<p>Now, we can iterate this argument for <span class="math inline">\(m=M-1\)</span>, under the knowledge that no player is trading with type <span class="math inline">\(M\)</span> in a BNE, and thus, <span class="math display">\[
+\mathbb{E}[Y|Y\geq m] \leq m.
+\]</span> This allows us to deduce that any BNE must consist of Bayesian strategies of the form: “trade” with probability <span class="math inline">\(p\)</span> if type is <span class="math inline">\(1\)</span>, “not trade” if type is greater than <span class="math inline">\(1\)</span>. We now verify that any profile of this form is a BNE. Let <span class="math inline">\(i\)</span> be a player and <span class="math inline">\(t_i\)</span> be their type.</p>
+<ul>
+<li><p>Case 1: <span class="math inline">\(t_i \geq 2\)</span>. <span class="math inline">\(i\)</span> thus does not trade, while trading would yield a payoff strictly less than <span class="math inline">\(t_i\)</span>, since other players will trade only if they have type <span class="math inline">\(1\)</span>.</p></li>
+<li><p>Case 2: <span class="math inline">\(t_i = 1\)</span>. If player <span class="math inline">\(i\)</span> trades or not, payoff is <span class="math inline">\(1\)</span> in any case. Thus, trading with any probability <span class="math inline">\(p \in [0,1]\)</span> is optimal.</p></li>
+</ul>
+<p>To conclude, the BNE are characterized by for each player <span class="math inline">\(i\)</span>, <span class="math inline">\(s_i(1) =\)</span>“trade” with probability <span class="math inline">\(p \in [0,1]\)</span>, <span class="math inline">\(s_i(t_i) = \text{"not trade"}\)</span> for <span class="math inline">\(t_i \geq 2\)</span>.</p>
+</details>
+<blockquote class="blockquote">
+<p><strong>2. Fighting and Unknown Opponent.</strong> Consider the following strategic situation. Two opposed armies are poised to seize an island. Each army’s general can choose either “attack” or “not attack”. In addition, each army is either “strong” or “weak” with equal probability (the draws for each army are independent), and an army’s type is known only to its general. Payoffs are as follows: The island is worth <span class="math inline">\(M\)</span> if captured. An army can capture the island either by attacking when its opponent does not or by attacking when its rival does if it is strong and its rival is weak. If two armies of equal strength both attack, neither captures the island. An army also has a cost of fighting, which is <span class="math inline">\(s\)</span> if it is strong and <span class="math inline">\(w\)</span> if it is weak, where <span class="math inline">\(s &lt; w\)</span>. There is no cost of attacking if its rival does not. Identify all pure strategy Bayesian Nash equilibria of this game.</p>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<p>Consider one of the armies, call them <span class="math inline">\(i\)</span>, and let the type space be <span class="math inline">\(T_i = {S, W}\)</span> for “strong” and “weak”, respectively. Their Bayesian -strategy set is thus <span class="math inline">\(S_i = \{s_i \, : \, s_i : T_i \rightarrow \{A, N\}\}\)</span>, where <span class="math inline">\(A\)</span> is attack and <span class="math inline">\(N\)</span> is not attack. Note that <span class="math inline">\(|S_i| = 4\)</span>. We can write out the normal-form game where payoffs are expected payoffs given that armies follow respective Bayesian pure strategies and types are uniformly distributed:</p>
+<span class="math display">\[\begin{array}{c|cccc}
+&amp; (A|S, A|W) &amp; (A|S, N|W) &amp; (N|S, A|W) &amp; (N|S, N|W) \\ \hline
+(A|S, A|W) &amp;
+\left(\dfrac{M-2w-2s}{4},\dfrac{M-2w-2s}{4}\right) &amp;
+\left(\dfrac{2M-w-s}{4},\dfrac{M-2s}{4}\right) &amp;
+\left(\dfrac{3M-w-s}{4},\dfrac{-2w}{4}\right) &amp;
+(M,0) \\
+
+(A|S, N|W) &amp;
+\left(\dfrac{M-2s}{4},\dfrac{2M-w-s}{4}\right) &amp;
+\left(\dfrac{M-s}{4},\dfrac{M-s}{4}\right) &amp;
+\left(\dfrac{2M-s}{4},\dfrac{M-w}{4}\right) &amp;
+\left(\dfrac{2M}{4},0\right) \\
+
+(N|S, A|W) &amp;
+\left(\dfrac{-2w}{4},\dfrac{3M-w-s}{4}\right) &amp;
+\left(\dfrac{M-w}{4},\dfrac{2M-s}{4}\right) &amp;
+\left(\dfrac{M-w}{4},\dfrac{M-w}{4}\right) &amp;
+\left(\dfrac{2M}{4},0\right) \\
+
+(N|S, N|W) &amp;
+(0,M) &amp;
+\left(0,\dfrac{2M}{4}\right) &amp;
+\left(0,\dfrac{2M}{4}\right) &amp;
+(0,0)
+\end{array}\]</span>
+<p>Note that pure-strategy NE of this NFG characterize the pure-strategy BNE of the Bayesian game. Considering unilateral deviations and the condition that <span class="math inline">\(s &lt; w\)</span>, we can eliminate the following profiles as being NE:</p>
+<span class="math display">\[\begin{array}{c|cccc}
+&amp; (A|S, A|W) &amp; (A|S, N|W) &amp; (N|S, A|W) &amp; (N|S, N|W) \\ \hline
+(A|S, A|W) &amp;
+\cancel{\left(\dfrac{M-2w-2s}{4},\dfrac{M-2w-2s}{4}\right)} &amp;
+\left(\dfrac{2M-w-s}{4},\dfrac{M-2s}{4}\right) &amp;
+\cancel{\left(\dfrac{3M-w-s}{4},\dfrac{-2w}{4}\right)} &amp;
+(M,0) \\
+
+(A|S, N|W) &amp;
+\left(\dfrac{M-2s}{4},\dfrac{2M-w-s}{4}\right) &amp;
+\left(\dfrac{M-s}{4},\dfrac{M-s}{4}\right) &amp;
+\cancel{\left(\dfrac{2M-s}{4},\dfrac{M-w}{4}\right)} &amp;
+\cancel{\left(\dfrac{2M}{4},0\right)} \\
+
+(N|S, A|W) &amp;
+\cancel{\left(\dfrac{-2w}{4},\dfrac{3M-w-s}{4}\right)} &amp;
+\cancel{\left(\dfrac{M-w}{4},\dfrac{2M-s}{4}\right)} &amp;
+\cancel{\left(\dfrac{M-w}{4},\dfrac{M-w}{4}\right)} &amp;
+\cancel{\left(\dfrac{2M}{4},0\right)} \\
+
+(N|S, N|W) &amp;
+(0,M) &amp;
+\cancel{\left(0,\dfrac{2M}{4}\right)} &amp;
+\cancel{\left(0,\dfrac{2M}{4}\right)} &amp;
+\cancel{(0,0)}
+\end{array}\]</span>
+<p>Evaluating the remaining profiles, we have that</p>
+<ul>
+<li><p><span class="math inline">\(((N|S, N|W), (A|S, A|W))\)</span> and <span class="math inline">\(((A|S, A|W), (N|S, N|W))\)</span> are pure-strategy BNE if <span class="math inline">\(M \leq 2s\)</span>.</p></li>
+<li><p><span class="math inline">\(((A|S, N|W), (A|S, A|W))\)</span> and <span class="math inline">\(((A|S, A|W), (A|S, N|W))\)</span> are pure-strategy BNE if <span class="math inline">\(M \geq 2s\)</span> and <span class="math inline">\(M \geq w\)</span>.</p></li>
+<li><p><span class="math inline">\(((A|S, N|W), (A|S, N|W))\)</span> is a pure-strategy BNE if <span class="math inline">\(s\leq M \leq w\)</span>.</p></li>
+</ul>
+</details>
+<blockquote class="blockquote">
+<p><strong>3. An All-Pay Auction.</strong> Consider the private value auction setting: <span class="math inline">\(I\)</span> bidders compete for a single good; their values are distributed independently on the interval <span class="math inline">\([v_l, v_h]\)</span> according to some CDF <span class="math inline">\(F\)</span> that has density function <span class="math inline">\(f\)</span>, with <span class="math inline">\(v_l \geq 0\)</span>. The auction runs as follows: bidders submit bids simultaneously. The highest bid wins the auction. Each bidder pays their bid, no matter whether they win the object or not. (You may ignore what happens when there is a tie - they will not happen in equilibrium). We are looking for a BNE in symmetric strategies <span class="math inline">\(\sigma\)</span> that are strictly increasing.</p>
+<ol type="a">
+<li><p>Suppose that all the players <span class="math inline">\(i &gt; 1\)</span> use equilibrium strategies. Write down expected payoff <span class="math inline">\(\pi(v, b)\)</span> of bidder <span class="math inline">\(1\)</span> that has value <span class="math inline">\(v\)</span> and submits a bid <span class="math inline">\(b\)</span>.</p></li>
+<li><p>Either ”brute force” using FOC or use Envelope Theorem (as in class) to derive the equilibrium bidding strategy <span class="math inline">\(\sigma\)</span>.</p></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li><p>Bidder <span class="math inline">\(1\)</span> incurs a cost of <span class="math inline">\(b\)</span> no matter what, and secures value <span class="math inline">\(v\)</span> with some probability of winning after submitting <span class="math inline">\(b\)</span>. This is the event that <span class="math inline">\(v_i &lt; \sigma^{-1}(b)\)</span> for all <span class="math inline">\(i \neq 1\)</span> (the inverse is well-defined by monotonicity). By independence across players’ values, we can write the probability that this event occurs as <span class="math inline">\(\left(F(\sigma^{-1}(b))\right)^{I-1}.\)</span> Thus, <span class="math display">\[
+\pi_1(v,b) = \left(F(\sigma^{-1}(b))\right)^{I-1}\cdot v - b.
+\]</span></p></li>
+<li><p>(Envelope) Let <span class="math inline">\(U(v) = \max_b \pi(v,b)\)</span>. We know in equilibrium that the bidding strategy <span class="math inline">\(b = \sigma(v)\)</span> is optimal, namely, <span class="math inline">\(\sigma(v) = \text{argmax}_b \pi(v,b)\)</span>. By the envelope theorem, we can thus write <span class="math display">\[
+\frac{d U(v)}{dv} = \frac{\partial \pi(v,b)}{\partial v} \biggr\rvert_{b = \sigma(v)} + \underbrace{\frac{\partial \pi(v,b)}{\partial b} \biggr\rvert_{b = \sigma(v)} \cdot \sigma'(v)}_{=0 \text{ by FOC maximization}}.
+\]</span> Evaluating, we get that <span class="math display">\[
+\frac{d U(v)}{dv} = \frac{\partial \pi(v,b)}{\partial v} \biggr\rvert_{b = \sigma(v)} = \left(F(v)\right)^{I-1}
+\]</span> Thus, we write <span class="math display">\[
+U(v) = \left(F(v)\right)^{I-1}\cdot v - \sigma(v) = \underbrace{\pi(v_l, \sigma(v_l)) + \int_{v_l}^v (F(x))^{I-1} dx}_{\text{integral of total derivative }U'(v) }
+\]</span> Since <span class="math inline">\(\sigma\)</span> is symmetric across players and monotonic, bidding <span class="math inline">\(\sigma(v_l)\)</span> will never win the auction (ignoring ties), and thus <span class="math inline">\(\pi(v_l, \sigma(v_l)) = -\sigma(v_l)\)</span>. Normalize this value of <span class="math inline">\(\sigma\)</span> to <span class="math inline">\(0\)</span>. Solving for <span class="math inline">\(\sigma(v)\)</span>, we thus get <span class="math display">\[
+\sigma(v) = \left(F(v)\right)^{I-1}\cdot v - \int_{v_l}^v (F(x))^{I-1} dx,
+\]</span> which is indeed increasing in <span class="math inline">\(v\)</span>. Specializing to the case where <span class="math inline">\(F\)</span> is a uniform CDF over <span class="math inline">\([0,1]\)</span>, we get that <span class="math display">\[
+\sigma(v) = v^I \cdot \frac{I-1}{I},
+\]</span> so players under-bid their true value more (since <span class="math inline">\(v\in [0,1]\)</span>) compared to the first-price auction.</p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<p><strong>4. Shaking Up A Game.</strong> Consider the following coordination game. There are two players <span class="math inline">\(i = 1,2\)</span>, who can choose actions <span class="math inline">\(a_i \in \{0,1\}\)</span>. Let <span class="math inline">\(\theta\)</span> be a parameter drawn from a uniform distribution on <span class="math inline">\(\{0,1,2,\ldots,10\}\)</span> before the game is played. Payoffs are given by: <span class="math display">\[
+u_i(a_i,a_j,\theta) =
+\begin{cases}
+a_j + \dfrac{1}{10}\theta - c, &amp; \text{if } a_i = 1, \\[6pt]
+0, &amp; \text{if } a_i = 0,
+\end{cases}
+\]</span> where <span class="math inline">\(c\)</span> is known, with <span class="math inline">\(\dfrac{3}{2} &lt; c &lt; 2\)</span>.</p>
+<ol type="a">
+<li><p>Describe the Nash equilibria of this game given that the realization of <span class="math inline">\(\theta\)</span> is commonly known.</p></li>
+<li><p>Now suppose that instead of observing <span class="math inline">\(\theta\)</span>, players’ information is given by the following partitions: <span class="math display">\[
+\begin{aligned}
+\text{Player 1:}\quad &amp; \bigl\{\{0\}, \{1,2\}, \{3,4\}, \ldots, \{9,10\}\bigr\}, \\
+\text{Player 2:}\quad &amp; \bigl\{\{0,1\}, \{2,3\}, \ldots, \{8,9\}, \{10\}\bigr\}.
+\end{aligned}
+\]</span> That is, if <span class="math inline">\(\theta = 3\)</span>, then player <span class="math inline">\(1\)</span> learns that <span class="math inline">\(\theta \in \{3,4\}\)</span> for sure (and hence assigns equal probability to both of these values under the uniform prior), while player~2 learns that <span class="math inline">\(\theta \in \{2,3\}\)</span> (and similarly assigns equal probability to each of these values). Show that in this game, neither player will ever play <span class="math inline">\(a_i = 1\)</span>.</p></li>
+<li><p>Connect this model to the global game model discussed in class.</p></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li>Suppose both <span class="math inline">\(\theta, c\)</span> are known. We have the normal form game:</li>
+</ol>
+<span class="math display">\[\begin{array}{c|cc}
+&amp; 0 &amp; 1 \\ \hline
+0 &amp;
+(0,0) &amp;
+\left(0, \frac{1}{10}\theta-c\right)\\
+
+1 &amp;
+\left(\frac{1}{10}\theta-c, 0\right) &amp;
+(1+\frac{1}{10}\theta-c,1+\frac{1}{10}\theta-c) \\
+
+\end{array}\]</span>
+<ul>
+<li><p>If <span class="math inline">\(\frac{1}{10}\theta \geq c - 1\)</span>, then <span class="math inline">\((1,1)\)</span> is a pure-strategy NE. Additionally, since <span class="math inline">\(\frac{1}{10}\theta \leq 1\)</span> and <span class="math inline">\(c-1 &gt; 0\)</span>, this implies <span class="math inline">\(\frac{1}{10}\theta \leq c\)</span>, so <span class="math inline">\((0,0)\)</span> is also a pure-strategy NE. Finally, there is a mixed-strategy NE, where the players play <span class="math inline">\(1\)</span> with probability <span class="math inline">\(p\)</span>. Each strategy in this symmetric mixed NE should yield the same expected payoff, namely, <span class="math inline">\(0\)</span>, since not coordinating deterministically yields <span class="math inline">\(0\)</span>. For playing <span class="math inline">\(1\)</span>, we calculate <span class="math display">\[
+  (1-p)(\frac{1}{10}\theta -c) + p(1+\frac{1}{10}\theta -c) = 0
+  \]</span> and solving yields <span class="math inline">\(p = c-\frac{1}{10}\theta\)</span>.</p></li>
+<li><p>If <span class="math inline">\(\frac{1}{10}\theta &lt; c - 1\)</span>, then playing <span class="math inline">\(0\)</span> is strictly dominant for both players, and the only NE is <span class="math inline">\((0,0)\)</span>.</p></li>
+</ul>
+<ol start="2" type="a">
+<li>Let the types of the players be their beliefs on <span class="math inline">\(\theta\)</span>. Player <span class="math inline">\(1\)</span> has first-order beliefs on <span class="math inline">\(\theta \in \{x, x+1\}\)</span>, with <span class="math inline">\(1/2\)</span> probability for each. <span class="math inline">\(1\)</span> also has second-order beliefs on <span class="math inline">\(2\)</span>’s type, with probability <span class="math inline">\(1/2\)</span> that <span class="math inline">\(2\)</span> observes <span class="math inline">\(\theta \in \{x-1, x\}\)</span> (if <span class="math inline">\(\theta = x\)</span>) and probability <span class="math inline">\(1/2\)</span> that <span class="math inline">\(2\)</span> observes <span class="math inline">\(\theta \in \{x+1, x+2\}\)</span> (if <span class="math inline">\(\theta = x+1\)</span>), or simply the singletons if at the boundary. Similar reasoning holds for player <span class="math inline">\(2\)</span>.</li>
+</ol>
+<p>Consider the following. By part (a), if player <span class="math inline">\(1\)</span> observes <span class="math inline">\(\theta \in \{0\}\)</span>, or any of the players observe <span class="math inline">\(\theta \in \{x, x+1\}\)</span> where <span class="math inline">\(x+1 \leq 5\)</span>, then playing <span class="math inline">\(0\)</span> is strictly dominant, since for any realization of <span class="math inline">\(\theta\)</span>, <span class="math inline">\(\frac{1}{10}\theta \leq \frac{1}{2} &lt; c-1\)</span>.</p>
+<p>Now consider when <span class="math inline">\(1\)</span> observes <span class="math inline">\(\theta \in \{5,6\}\)</span>. With probability <span class="math inline">\(1/2\)</span>, <span class="math inline">\(1\)</span> believes <span class="math inline">\(2\)</span> observed <span class="math inline">\(\{4, 5\}\)</span>, and thus plays <span class="math inline">\(0\)</span>. Thus, with probability at most <span class="math inline">\(1/2\)</span> does player <span class="math inline">\(2\)</span> play <span class="math inline">\(1\)</span>. Playing <span class="math inline">\(1\)</span> for player <span class="math inline">\(1\)</span> thus gives a expected payoff of <span class="math display">\[
+\frac{1}{2}\left(\frac{1}{10}5-c\right) + \frac{1}{2}\left(1+\frac{1}{10}6-c\right) = \frac{21}{20} - c &lt; 0,
+\]</span> and thus, it is optimal for player <span class="math inline">\(1\)</span> to play <span class="math inline">\(0\)</span>. We can induct this argument for any player (call them <span class="math inline">\(i\)</span>) observing <span class="math inline">\(\theta \in \{x, x+1\}\)</span>, where <span class="math inline">\(5 \leq x\leq 9\)</span>. By the hypothesis, player <span class="math inline">\(j\)</span> will only play <span class="math inline">\(1\)</span> with probability at most <span class="math inline">\(1/2\)</span>, and performing the same calculation, we get that the max expected utility from playing <span class="math inline">\(1\)</span> for <span class="math inline">\(i\)</span> is: <span class="math display">\[
+\frac{1}{2}\left(\frac{1}{10}x-c\right) + \frac{1}{2}\left(1+\frac{1}{10}(x+1)-c\right) = \frac{2x+11}{20} - c &lt; 0,
+\]</span> when <span class="math inline">\(x \leq 9\)</span>, so playing <span class="math inline">\(0\)</span> is optimal. Finally, we verify the last case when Player <span class="math inline">\(2\)</span> observes <span class="math inline">\(\theta \in \{10\}\)</span>, in which case we know that Player <span class="math inline">\(1\)</span> observes <span class="math inline">\(\theta \in \{9,10\}\)</span> and thus plays <span class="math inline">\(0\)</span>. Player <span class="math inline">\(2\)</span> thus best-responds by playing <span class="math inline">\(0\)</span>. <span class="math inline">\(\square\)</span></p>
+<ol start="3" type="a">
+<li>In the global game discussed in class, players received information via an i.i.d. signal distributed normally with mean of the true <span class="math inline">\(\theta\)</span>. Thus, their second-order beliefs on the other player’s beliefs were that their signal was also normally distributed with mean <span class="math inline">\(\theta\)</span>. This contrasts with the information structure in this game, where players second-order beliefs on the other player’s beliefs on <span class="math inline">\(\theta\)</span> are more restrictive and can lead to situations where player <span class="math inline">\(j\)</span> may believe a certain value of <span class="math inline">\(\theta\)</span> while player <span class="math inline">\(i\)</span> knows this is impossible. This asymmetric information structure leads to a drastically different Bayesian equilibrium outcome, where players use inductive reasoning to conclude that never will anyone play <span class="math inline">\(1\)</span>. Meanwhile, in the symmetric information structure global game discussed in class, players have a reasonable strategy to coordinate when their observed signal is high.</li>
+</ol>
+</details>
+</section>
+<section id="problem-set-4-dynamic-games-subgame-perfection-and-bargaining" class="level2">
+<h2 class="anchored" data-anchor-id="problem-set-4-dynamic-games-subgame-perfection-and-bargaining">Problem Set 4: Dynamic Games, Subgame Perfection, and Bargaining <a name="hw4"></a></h2>
+<blockquote class="blockquote">
+<ol type="1">
+<li><strong>Hotelling Circle.</strong> Imagine that consumers are located uniformly around a circle of unit circumference. There are <span class="math inline">\(J\)</span> firms in the market, each of which sells beanie babies. All firms have the same constant production technology, and produce beanie babies at constant unit cost <span class="math inline">\(c\)</span>. Each consumer wants at most one beanie baby and derives a gross benefit of <span class="math inline">\(v\)</span> from its consumption. The total cost of buying a beanie baby from firm <span class="math inline">\(i\)</span> for a consumer located at distance <span class="math inline">\(d\)</span> from firm <span class="math inline">\(i\)</span> is <span class="math inline">\(p_i + t d^2\)</span>, where <span class="math inline">\(t\)</span> is a transportation cost parameter. You may assume that <span class="math inline">\(v\)</span> is sufficiently large to assure that all customers purchase a beanie baby in equilibrium.</li>
+</ol>
+<p>Consider a sequential game in which, first, firms simultaneously choose a location on the circle and then, second, they simultaneously choose their prices. Try to show the following:</p>
+<ol type="a">
+<li><p>Show that there is an SPNE in which firms spread symmetrically around the circle, at equal intervals from each others.</p></li>
+<li><p>Show that the above must happen in any SPNE.</p></li>
+</ol>
+<p><em>Note that you do not have to construct the whole equilibrium, you just should prove or sketch proofs of the claims.</em></p>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li>If the firms are evenly spaced, the distance between any two firms is <span class="math inline">\(1/J\)</span>. Consider the indifferent consumer between two firms <span class="math inline">\(i, i+1\)</span>, who satisfies: <span class="math display">\[
+p_i + tx^2 = p_{i+1} + t(\frac{1}{J} - x)^2,
+\]</span> where <span class="math inline">\(x\)</span> is the distance to firm <span class="math inline">\(i\)</span>. We look for a SPNE symmetric in strategies across the homogenous firms, so assume <span class="math inline">\(p_i = p\)</span> for all <span class="math inline">\(i\)</span>. Thus, the indifferent consumer lies halfway in between <span class="math inline">\((x = \frac{1}{2J})\)</span>, and the demand per firm is <span class="math inline">\(1/J\)</span>. We use backwards induction and consider each stage:</li>
+</ol>
+<ul>
+<li><p>Price-choosing: Suppose firm <span class="math inline">\(i\)</span> chooses <span class="math inline">\(p_i\)</span> while other firms hold at <span class="math inline">\(p\)</span>. Looking again for the indifferent consumer: <span class="math display">\[
+\begin{align*}
+p_i + tx^2 &amp;= p + t(\frac{1}{J} - x)^2 \\
+p_i &amp;= p + \frac{t}{J^2} - \frac{2t}{J}x \\
+x &amp;= \frac{1}{2J} + \frac{J(p-p_i)}{2t}.
+\end{align*}
+\]</span> Thus, the demand for <span class="math inline">\(i\)</span> becomes <span class="math inline">\(2x = \frac{1}{J} + \frac{J(p-p_i)}{t}\)</span>. If we are looking for symmetric NE in price-stage, we must have that <span class="math display">\[
+p = \text{argmax}_{p_i &gt; 0} \left(\frac{1}{J} + \frac{J(p-p_i)}{t}\right)(p_i-c).
+\]</span> Thus, <span class="math inline">\(p\)</span> solves the FOC, namely: <span class="math display">\[
+\frac{1}{J} + \frac{J(p-p_i)}{t} - \frac{J(p_i-c)}{t} = \frac{1}{J} + \frac{J(c-p)}{t} = 0.
+\]</span> Solving for <span class="math inline">\(p\)</span> yields: <span class="math display">\[
+p = \frac{t}{J^2} + c.
+\]</span> Namely, for any choice of locations by the firms, the corresponding profit maximization problem faced by each firm is concave in <span class="math inline">\(p_i\)</span>, so a NE exists for each subgame.</p></li>
+<li><p>Location-choosing: Let firms <span class="math inline">\(-i\)</span> be separated by <span class="math inline">\(1/J\)</span>, and consider the placement of firm <span class="math inline">\(i\)</span>. Obviously, <span class="math inline">\(i\)</span> would not want to deviate to a location in between two firms spread at length <span class="math inline">\(1/J\)</span>, as this would intensify price competition while lowering demand. Thus, let <span class="math inline">\(i\)</span>’s distance between its two closest neighbors be <span class="math inline">\(d_1 = \frac{1}{J} + \varepsilon\)</span> and <span class="math inline">\(d_2 = \frac{1}{J} - \varepsilon\)</span>. Note that firm <span class="math inline">\(i\)</span>’s price setting in the second stage is quadratically dependent on distance to the closest firm. Thus, while <span class="math inline">\(i\)</span> may capture a larger market share, the price competition incurred from being closer to another firm results in lower profit. Profit is thus maximized by maximizing distance from neighboring firms, i.e.&nbsp;spreading equidistant at <span class="math inline">\(1/J\)</span> distance apart, and one can construct the equilibrium path of the SPNE using the optimal price choosing computed above.</p></li>
+</ul>
+<ol start="2" type="a">
+<li>Consider a SPNE. By definition, the second-stage prices must form a NE for any realized locations, and the first-stage locations must form a NE of the induced game where payoffs are the continuation profit in the price subgame, conditioned on the locations chosen. Consider the arrangement of the firms in this SPNE and some firm <span class="math inline">\(i\)</span>, and let <span class="math inline">\(L\)</span> and <span class="math inline">\(R\)</span> denote the firms on its immediate left and right. Note that <span class="math inline">\(i\)</span> only engages in direct competition with these firms, due to the quadratic transportation costs. In this case, using the same argument as before, <span class="math inline">\(i\)</span> will want to choose the midpoint in between these two firms to maximize the minimum distance from any firm, and thus reduce the competitive price pressure <span class="math inline">\(i\)</span> faces in the price-setting subgame, increasing <span class="math inline">\(i\)</span>’s continuation payoff. If this holds true for all firms, it clearly follows that firms must spread equidistant in any SPNE.</li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li><strong>Strategic Capacity Choice.</strong> There is an incumbent <span class="math inline">\(I\)</span> with essentially unlimited capacity, and a potential entrant <span class="math inline">\(E\)</span> that must build capacity to enter. The firms produce a single homogeneous good with marginal costs of production <span class="math inline">\(c_i\)</span>, <span class="math inline">\(i = I, E\)</span>. The incumbent is more efficient, <span class="math inline">\(c_I &lt; c_E\)</span>. Demand is given by <span class="math display">\[ Q(P) = A - BP, \quad A, B &gt; 0. \]</span> The timing of decisions is as follows:</li>
+</ol>
+<p><strong>Stage 1:</strong> The entrant chooses “in” or “out”; if “in”, it names its capacity, <span class="math inline">\(K_E\)</span>, and a price, <span class="math inline">\(p_E\)</span>. Capacity is costless.</p>
+<p><strong>Stage 2:</strong> The incumbent names a price <span class="math inline">\(p_I\)</span>. In the event of ties, consumers resolve their indifference in favor of the incumbent.</p>
+<ol type="a">
+<li><p>Given <span class="math inline">\(p_E\)</span>, compute highest profits for the incumbent, given the constraint <span class="math inline">\(p_I \leq p_E\)</span>.</p></li>
+<li><p>Given <span class="math inline">\(p_E, K_E\)</span>, compute highest profits for the incumbent, given the constraint <span class="math inline">\(p_I \geq p_E\)</span>.</p></li>
+<li><p>Find the SPNE of the game.</p></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li><p>The incumbent solves <span class="math display">\[
+\pi = \max_{p_I \leq p_E} (A-Bp_I)(p_I - c_I)
+\]</span> and taking the FOC yields <span class="math display">\[
+p_I^\star = \begin{cases}
+\frac{A + Bc_I}{2B} &amp;: \quad p_E \geq \frac{A + Bc_I}{2B} \\
+p_E &amp;: \quad p_E &lt; \frac{A + Bc_I}{2B},
+\end{cases}
+\]</span> and max profits <span class="math display">\[
+\pi = \begin{cases}
+\frac{(A - Bc_I)^2}{4B} &amp;: \quad p_E \geq \frac{A + Bc_I}{2B} \\
+(A-Bp_E)(p_E-c_I) &amp;: \quad p_E &lt; \frac{A + Bc_I}{2B}.
+\end{cases}
+\]</span></p></li>
+<li><p>Assume first that <span class="math inline">\(p_E &lt; p_I\)</span> and that the entrant sells all their capacity, <span class="math inline">\(K_E\)</span>. If the entrant sells less than <span class="math inline">\(K_E\)</span> at fixed <span class="math inline">\(p_E\)</span>, and <span class="math inline">\(p_I\)</span> is constrained to be greater than <span class="math inline">\(p_E\)</span>, this case is degenerate for the incumbent, as they will reach no market. Then the incumbent solves: <span class="math display">\[
+\pi = \max_{p_I &gt; p_E} (A-Bp_I - K_E)(p_I - c_I).
+\]</span> Taking the FOC yields: <span class="math display">\[
+p_I^\star = \begin{cases}
+\frac{A + Bc_I-K_E}{2B} &amp;: \quad p_E &lt; \frac{A + Bc_I-K_E}{2B} \\
+p_E + \varepsilon &amp;: \quad p_E \geq \frac{A + Bc_I-K_E}{2B},
+\end{cases}
+\]</span> and profits <span class="math display">\[
+\pi = \begin{cases}
+\frac{(A - Bc_I-K_E)^2}{4B} &amp;: \quad p_E &lt; \frac{A + Bc_I-K_E}{2B} \\
+(A-Bp_E-K_E)(p_E-c_I) &amp;: \quad p_E \geq \frac{A + Bc_I-K_E}{2B}.
+\end{cases}
+\]</span> Considering the case where the incumbent is allowed to set <span class="math inline">\(p_I = p_E\)</span> at the corner solution, since consumers settle indifference in favor of the incumbent, profits would be <span class="math inline">\((A-Bp_E)(p_E-c_I)\)</span>.</p></li>
+<li><p>We assume that the entrant sets <span class="math inline">\(p_E\)</span> and <span class="math inline">\(K_E\)</span> such that in the event they reach the market, they sell all of their capacity. The entrant clearly will set <span class="math inline">\(p_E \geq c_E\)</span>. Also note that the entrant will not set <span class="math inline">\(p_E\)</span> greater than or equal to the monopoly price of the incumbent, <span class="math inline">\(\frac{A+Bc_I}{2B}\)</span>, since the incumbent can claim the market by consumer preference and the entrant gets <span class="math inline">\(0\)</span> profit. Thus, the incumbent, if choosing <span class="math inline">\(p_I \leq p_E\)</span>, will choose equality and secure <span class="math inline">\((A-Bp_E)(p_E - c_I)\)</span> profit.</p></li>
+</ol>
+<p>If the entrant will ever secure nonzero profit, they will have to serve the market, meaning the incumbent must prefer to serve the remainder of demand over setting <span class="math inline">\(p_I\)</span> at <span class="math inline">\(p_E\)</span>, or at indifference, <span class="math inline">\(\frac{(A - Bc_I-K_E)^2}{4B} = (A-Bp_E)(p_E - c_I)\)</span>. The entrant thus solves: <span class="math display">\[
+\max_{p_E, K_E} K_E(p_E - c_E) \text{ subject to }
+\]</span> <span class="math display">\[
+K \geq 0, K \leq A-Bp_E, p_E \geq c_E, p_E \leq \frac{A+Bc_I}{2B}, \frac{(A - Bc_I-K_E)^2}{4B} = (A-Bp_E)(p_E - c_I).
+\]</span> For the equality constraint, note that <span class="math display">\[\begin{align*}
+    \frac{(A - Bc_I-K_E)^2}{4B} &amp;= (A-Bp_E)(p_E - c_I) \\
+    A-K_E-Bc_I &amp;= \pm 2\sqrt{B(p_E-c_I)(A-Bp_E)} \\
+    K_E &amp;= A-Bc_I \mp 2\sqrt{B(p_E-c_I)(A-Bp_E)}.
+\end{align*}\]</span> Since <span class="math inline">\(K_E \leq A-Bp_E\)</span> and <span class="math inline">\(p_E \geq c_E &gt; c_I\)</span>, we have that <span class="math display">\[
+K_E = A-Bc_I - 2\sqrt{B(p_E-c_I)(A-Bp_E)}.
+\]</span> Substituting this into our objective function, we optimize over <span class="math inline">\(p_E\)</span>: <span class="math display">\[
+\max_{p_E} (A-Bc_I - 2\sqrt{B(p_E-c_I)(A-Bp_E)})(p_E - c_E).
+\]</span> Using the FOC, we write: <span class="math display">\[
+(A-Bc_I - 2\sqrt{B(p_E-c_I)(A-Bp_E)}) + (p_E - c_E)\left(\frac{2B^2p_E - AB - B^2c_I}{\sqrt{B(p_E - c_I)(A-Bp_E)}}\right) = 0.
+\]</span> This does not readily give a closed form solution for <span class="math inline">\(p_E\)</span>, but we can say the optimal <span class="math inline">\(p_E^\star\)</span> is one that solves this system and is within <span class="math inline">\(\left(c_E, \frac{A+Bc_I}{2B}\right)\)</span>, with optimal capacity <span class="math inline">\(K_E^\star = A-Bc_I - 2\sqrt{B(p_E^\star - c_I)(A-Bp_E)}\)</span>. Combining this with the strategy profile of the incumbent solved for in (a) and (b) yields the SPNE.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li><strong>Durable Good Monopolist.</strong> Consider the Durable Good Monopolist model with 2 periods from the class.</li>
+</ol>
+<ol type="a">
+<li><p>Find the SPNE of the version of the game that has 3 rounds. (Note: computing the optimal <span class="math inline">\(p_1\)</span> in the last step might get tricky – do not spend too much time on it.)</p></li>
+<li><p>Consider the <span class="math inline">\(N\)</span> period version of the game. Write down the relationship that the prices in the consecutive period must satisfy, in any SPNE. Now consider the same model but with an arbitrary continuous demand function: how does this relationship between the prices depend on the demand function?</p></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li>We use backwards induction.</li>
+</ol>
+<ul>
+<li><p>Round 3: Initially guess that buyers with values <span class="math inline">\([v_2, 1]\)</span> have bought after the first two rounds and buyers <span class="math inline">\([v_1, 1]\)</span> bought after the first round (<span class="math inline">\(v_2 \leq v_1\)</span>), i.e.&nbsp;<span class="math inline">\(q_1 = 1-v_1\)</span> and <span class="math inline">\(q_2 = v_1-v_2\)</span>. The round 3 demand function is <span class="math inline">\(q_3(p_3) = 1-q_1 -q_2 -p_3 = v_2 - p_3\)</span>. Solving this monopoly problem in round 3 thus yields: <span class="math display">\[
+  p_3^\star = \frac{1-q_1-q_2}{2} =\frac{v_2}{2}, \quad \pi_3 = \left(\frac{1-q_1-q_2}{2}\right)^2 = \left(\frac{v_2}{2}\right)^2.
+  \]</span></p></li>
+<li><p>Round 2: If you want to sell <span class="math inline">\(q_2 = v_1-v_2\)</span>, the buyer type <span class="math inline">\(v_2\)</span> must be indifferent between buying today and waiting until the next period, i.e.:</p>
+<p><span class="math display">\[\begin{align*}
+  v_2 - p_2 &amp;= \delta(v_2 - p_3^\star) = \delta\left(\frac{v_2}{2}\right) ,\\
+  p_2 &amp;= \left(1-\frac{\delta}{2}\right)v_2.
+  \end{align*}\]</span> The total continuation profit across rounds 2 and 3 is thus <span class="math display">\[
+  \pi_2 = \left(1-\frac{\delta}{2}\right)v_2(v_1-v_2) + \delta\left(\frac{v_2}{2}\right)^2.
+  \]</span> Maximizing this profit with respect to <span class="math inline">\(v_2\)</span>, <span class="math display">\[v_2^\star = \frac{(1-\delta)v_1}{2-\frac{3}{2}\delta}, \quad  p_2^\star = \left(1-\frac{\delta}{2}\right)\frac{(1-\delta)v_1}{2-\frac{3}{2}\delta}.\]</span> For ease of notation in round 1, let <span class="math inline">\(\alpha = \frac{(1-\delta)}{2-\frac{3}{2}\delta}\)</span>, so <span class="math inline">\(p_2^\star = \left(1-\frac{\delta}{2}\right)\alpha v_1\)</span>.</p></li>
+<li><p>Round 1: If you want to sell <span class="math inline">\(q_1 = 1-v_1\)</span>, the buyer type <span class="math inline">\(v_1\)</span> must be indifferent between buying today and waiting until the next period, i.e.: <span class="math display">\[\begin{align*}
+      v_1 - p_1 &amp;= \delta\left(v_1 - p_2^\star\right) \\
+      v_1 - p_1 &amp;= \delta\left(v_1 - \left(1-\frac{\delta}{2}\right)\alpha v_1\right) \\
+      p_1 &amp;= v_1\underbrace{\left(1-\delta +\delta\alpha(1-\delta/2)\right)}_{\beta}.
+  \end{align*}\]</span> Now, we maximize continuation profits across the 3 rounds, given by: <span class="math display">\[\begin{align*}
+      \pi_1 &amp;= \beta v_1(1-v_1) + \delta\pi_2 \\
+      &amp;= \beta v_1(1-v_1) + \delta\left[\left(1-\frac{\delta}{2}\right)v_2(v_1-v_2) + \delta\left(\frac{v_2}{2}\right)^2\right].
+  \end{align*}\]</span> Since <span class="math inline">\(v_2 = \alpha v_1\)</span>, the bracketed term is proportional to <span class="math inline">\(v_1^2\)</span>. Thus, let us write for some <span class="math inline">\(\gamma(\delta)\)</span>: <span class="math display">\[
+  \pi_1 = \beta v_1(1-v_1) + \delta\gamma v_1^2.
+  \]</span> Using the FOC, we find the optimal: <span class="math display">\[
+  v_1^\star = \frac{\beta}{2\left(\beta-\gamma\delta\right)}, \quad p_1^\star = \frac{\beta^2}{2\left(\beta-\gamma\delta\right)}.
+  \]</span> Thus, the SPNE is characterized by <span class="math inline">\(p_1^\star, p_2^\star, p_3^\star\)</span>. The verification of what buyers purchase at each price is given in the notes.</p>
+<ol start="2" type="a">
+<li>By the skimming property, for every round, there will exist some indifferent cutoff type <span class="math inline">\(v_t\)</span> such that they are indifferent between buying in the current round at <span class="math inline">\(p_t\)</span> and waiting until the next round, i.e.: <span class="math display">\[
+  v_t - p_t = \delta(v_t - p_{t-1}) \implies p_{t} = (1-\delta)v_t + \delta p_{t+1}.
+  \]</span> Since <span class="math inline">\(v_t \geq p_{t-1}\)</span> along the SPNE path, this implies that the prices weakly decrease as the periods continue in any SPNE.</li>
+</ol>
+<p>For an arbitrary demand function, we still have the indifference condition: <span class="math display">\[
+  p_{t} = (1-\delta)v_t + \delta p_{t+1}.
+  \]</span> However, <span class="math inline">\(v\)</span> is now drawn from an arbitrary demand curve, call it <span class="math inline">\(P(Q)\)</span> (inverse demand). Let <span class="math inline">\(Q_{t-1}\)</span> be the quantity sold at the start of round <span class="math inline">\(t\)</span>. Thus, if the seller sells <span class="math inline">\(q_t\)</span> in period <span class="math inline">\(t\)</span>, then the cutoff buyer type in period <span class="math inline">\(t\)</span> is <span class="math inline">\(v_t = P(Q_{t-1} + q_t)\)</span>. Thus, the price condition becomes: <span class="math display">\[
+  p_{t} = (1-\delta)(P(Q_{t-1} + q_t)) + \delta p_{t+1}.
+  \]</span></p></li>
+</ul>
+</details></section>
+<section id="problem-set-5-repeated-games-perfect-public-equilibria-and-abreu-pearce-stachetti-method-imperfect-monitoring" class="level2">
+<h2 class="anchored" data-anchor-id="problem-set-5-repeated-games-perfect-public-equilibria-and-abreu-pearce-stachetti-method-imperfect-monitoring">Problem Set 5: Repeated Games, Perfect Public Equilibria and Abreu-Pearce-Stachetti Method, Imperfect Monitoring <a name="hw5"></a></h2>
+<blockquote class="blockquote">
+<ol type="1">
+<li><strong>Repeated Cournot.</strong> Consider the linear Cournot oligopoly model where price is given as a linear function of total output <span class="math display">\[p = a - bQ,\]</span> and where output is produced by each firm <span class="math inline">\(i\)</span> at constant marginal cost <span class="math inline">\(c\)</span> (same for all firms). Suppose there are <span class="math inline">\(N\)</span> firms. Suppose also that the stage game will be repeated infinitely, and that firms discount future payoffs at rate <span class="math inline">\(\delta\)</span>.</li>
+</ol>
+<p>Let <span class="math inline">\(\delta_N\)</span> be the minimum discount factor for which it is possible to sustain complete collusion in subgame perfect Nash equilibrium, using Nash reversion. Solve for <span class="math inline">\(\delta_N\)</span> as a function of <span class="math inline">\(N\)</span>. How does it vary with <span class="math inline">\(N\)</span>? Is this what you would expect? Why, or why not?</p>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<p>In collusion, each firm receives a split share of the monopoly profit, i.e.&nbsp;the total output produced solves <span class="math display">\[
+\max_Q \, (a-bQ-c)\cdot Q
+\]</span> so <span class="math inline">\(Q_m = \frac{a-c}{2b}\)</span>, <span class="math inline">\(p_m = \frac{a+c}{2}\)</span>, <span class="math inline">\(q_m^i = \frac{a-c}{2bN}\)</span>, and profits for each firm are thus <span class="math inline">\(\pi_m^i = \left(p_m -c\right)q^i_m= \frac{(a-c)^2}{4bN}\)</span>. With the players using grim-trigger strategies (Nash reversion), if one player deviates, the players revert back to the Nash/Cournot outcome with <span class="math inline">\(N\)</span> players, which solves: <span class="math display">\[
+\max_{q_i} (a-b(q_i + q_{-i})-c)q_i.
+\]</span> The FOC yields <span class="math display">\[
+a-2bq_i-bq_{-i}-c = 0 \implies q_i = \frac{a-c-bq_{-i}}{2b}
+\]</span> and by symmetry across firms in the Cournot equilibrium, we can solve <span class="math display">\[
+q = \frac{a-c-b(N-1)q}{2b} \implies q^i_c = \frac{a-c}{b(N+1)},
+\]</span> and so <span class="math inline">\(p_c = a - b\left(\frac{N(a-c)}{b(N+1)}\right) = \frac{a+Nc}{N+1}\)</span>, <span class="math inline">\(\pi^i_c = (p_c - c)q^i_c = \frac{(a-c)^2}{b(N+1)^2}\)</span>. We now solve for <span class="math inline">\(\delta_N\)</span> such that the grim-trigger strategies constitute a SPNE, using the one-shot deviation principle. The subgames in which a player has already deviated is obvious, due to the Cournot outcome being a NE of the stage-game. Thus, consider the subgames in which no player has deviated. Conditional on firms <span class="math inline">\(-i\)</span> playing <span class="math inline">\(q^i_m\)</span>, firm <span class="math inline">\(i\)</span> finds their best one-shot deviation by solving: <span class="math display">\[
+\max_{q_i} \left(a-b\left(q_i + \frac{(a-c)(N-1)}{2bN}\right)-c\right)q_i,
+\]</span> giving FOC <span class="math display">\[
+a-2bq_i - \frac{(a-c)(N-1)}{2N} - c = 0 \implies q_i^\star = \frac{(a-c)(N+1)}{4bN}
+\]</span> and one-shot profit <span class="math inline">\(\pi_i = \left(a-b\left(q_i^\star + (N-1)q^i_m\right)-c\right)q_i^\star = \frac{(a-c)^2}{16b}\left(\frac{N}{N+1}\right)^2\)</span>. In order for <span class="math inline">\(i\)</span> to not deviate, they must be sufficiently patient, i.e., <span class="math inline">\(\delta_N\)</span> satisfies (in equality): <span class="math display">\[\begin{align*}
+    \sum_{t=0}^\infty \delta_N^t \pi^i_m &amp;= \pi_i + \sum_{t=1}^\infty \delta_N^t \pi^i_c \\
+    \frac{(a-c)^2}{4bN(1-\delta_N)} &amp;= \frac{(a-c)^2}{16b}\left(\frac{N}{N+1}\right)^2 + \frac{\delta_N(a-c)^2}{(1-\delta_N)b(N+1)^2} \\
+    \frac{1}{4N(1-\delta_N)} &amp;= \frac{1}{16}\left(\frac{N}{N+1}\right)^2 + \frac{\delta_N}{(1-\delta_N)(N+1)^2}\\
+    \delta_N &amp;= \frac{(N+1)^2}{N^2 + 6N + 1}.
+\end{align*}\]</span> We see in the limit as <span class="math inline">\(N \rightarrow \infty\)</span>, <span class="math inline">\(\delta_N \rightarrow 1\)</span>, so more firms means firms must be more patient to keep colluding. This is not necessarily because more firms makes it harder to collude or detect defections, but because as the number of firms increases, the split monopoly (<span class="math inline">\(\pi^i_m\)</span>) and Cournot profits (<span class="math inline">\(\pi^i_c\)</span>) go to zero, but the one-shot deviation profit (<span class="math inline">\(\pi_i\)</span>) stays bounded away from 0 (<span class="math inline">\(\lim_N \frac{(a-c)^2}{16b}\left(\frac{N}{N+1}\right)^2 = \frac{(a-c)^2}{16b}\)</span>). Having <span class="math inline">\(\delta_N\)</span> high enough ensures firms won’t deviate in this case.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li><strong>Self Generation.</strong> Consider an infinitely repeated version of the following game, assuming perfect monitoring:</li>
+</ol>
+<span class="math display">\[\begin{array}{c|ccc}
+&amp; L &amp; M &amp; R \\
+\hline
+U &amp; (1,1) &amp; (3,0) &amp; (-2,0) \\
+M &amp; (0,3) &amp; (2,2) &amp; (-2,0) \\
+D &amp; (0,-2) &amp; (0,-2) &amp; (-4,-4)
+\end{array}\]</span>
+<ol type="a">
+<li><p>Suppose <span class="math inline">\(\delta \geq 1/2\)</span>. Show that the set <span class="math inline">\(\{(1,1), (2,2)\}\)</span> is self-generating.</p></li>
+<li><p>Suppose <span class="math inline">\(\delta = 1/3\)</span>. Find a self-generating set that contains the point <span class="math inline">\((2,2)\)</span>.</p></li>
+<li><p>Show that there is no self-generating set containing the point <span class="math inline">\((-3,-3)\)</span>.</p></li>
+<li><p>What is the lowest value of <span class="math inline">\(\delta\)</span> for which a player can achieve payoff <span class="math inline">\(3\)</span> in SPE?</p></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>We show both payoffs are enforceable. For <span class="math inline">\((1,1)\)</span>, choose action profile <span class="math inline">\((U,L)\)</span> and let the continuation <span class="math inline">\(w(y) = 1\)</span> for any public signal <span class="math inline">\(y\)</span>. Since <span class="math inline">\((U,L)\)</span> is a NE of the stage-game, we get promise-keeping and incentive-compatibility, so <span class="math inline">\((1,1)\)</span> is enforceable. For <span class="math inline">\((2,2)\)</span>, choose action profile <span class="math inline">\((M,M)\)</span> and let continuation <span class="math inline">\(w(M,M) = 2\)</span> and <span class="math inline">\(w(y) = 1\)</span> for all other public signals <span class="math inline">\(y\)</span>. Promise-keeping is satisfied by noting <span class="math display">\[
+2 = (1-\delta)\cdot2 + \delta\cdot w(M,M)
+\]</span> and incentive compatibility uses a deviation to <span class="math inline">\(M\)</span>, giving one-shot payoff of <span class="math inline">\(3\)</span>, so <span class="math display">\[
+2 \geq (1-\delta)\cdot 3 + \delta \cdot 1
+\]</span> which is satisfied as <span class="math inline">\(\delta \geq 1/2\)</span>. Thus, <span class="math inline">\((2,2)\)</span> is also enforceable. <span class="math inline">\(\square\)</span></p></li>
+<li><p>Let’s construct a self-generating payoff set <span class="math inline">\(W\)</span>. Input <span class="math inline">\((2,2)\)</span> into <span class="math inline">\(W\)</span>. We can enforce <span class="math inline">\((2,2)\)</span> with action profile <span class="math inline">\((M,M)\)</span> by giving continuation <span class="math inline">\((2,2)\)</span> if players play <span class="math inline">\((M,M)\)</span> (satisfying promise-keeping) and continuation <span class="math inline">\((-a, b)\)</span> if Player <span class="math inline">\(1\)</span> deviates to <span class="math inline">\(U\)</span> and continuation <span class="math inline">\((b, -a)\)</span> if Player <span class="math inline">\(2\)</span> deviates to <span class="math inline">\(L\)</span>, where <span class="math inline">\(a,b\geq0\)</span> (we solve for later). This satisfies incentive compatibility with <span class="math inline">\(\delta = 1/3\)</span>, as <span class="math display">\[
+2 \geq (1-1/3)(3) + (1/3)(-a).
+\]</span> We now must input <span class="math inline">\((-a,b)\)</span> and <span class="math inline">\((b,-a)\)</span> into <span class="math inline">\(W\)</span> as well. We can enforce <span class="math inline">\((-a,b)\)</span> with action profile <span class="math inline">\((U,R)\)</span>, and aiming to not introduce any more continuation payoffs, we can promise continuation <span class="math inline">\((2,2)\)</span> if <span class="math inline">\((U,R)\)</span> is played, <span class="math inline">\((-a,b)\)</span> if Player <span class="math inline">\(1\)</span> deviates, and <span class="math inline">\((b, -a)\)</span> if Player <span class="math inline">\(2\)</span> deviates. Promise keeping gives: <span class="math display">\[\begin{align*}
+-a  = (1-1/3)(-2) + (1/3)(2) &amp;\implies a = 2/3, \\
+b = (1-1/3)(0) + (1/3)(2) &amp;\implies b = 2/3.
+\end{align*}\]</span> These also satisfy incentive compatibility, by noting: <span class="math display">\[\begin{align*}
+\text{(P1): }&amp; -2/3 \geq (1-1/3)(-2) + (1/3)(-2/3), \\
+\text{(P2): }&amp;  2/3 \geq (1-1/3)(1) + (1/3)(-2/3).
+\end{align*}\]</span> We can also enforce <span class="math inline">\((2/3, -2/3)\)</span> with action profile <span class="math inline">\((D, L)\)</span> by promising <span class="math inline">\((2,2)\)</span> if <span class="math inline">\((D,L)\)</span> is played, <span class="math inline">\((-2/3, 2/3)\)</span> if P1 deviates, and <span class="math inline">\((2/3, -2/3)\)</span> if P2 deviates. The proof is symmetric. Thus, <span class="math inline">\(W = \{(2,2), (2/3, -2/3), (-2/3, 2/3)\}\)</span> is self-generating.</p></li>
+<li><p>Note that both players’ min-max (worst-case) payoff is <span class="math inline">\(-2\)</span> (e.g.&nbsp;P1 plays <span class="math inline">\(U\)</span> and P2 plays <span class="math inline">\(L\)</span>), and by individual rationality proposition, in any NE of a repeated game, the players receive at least <span class="math inline">\(-2\)</span>. Thus, <span class="math inline">\((-3,-3)\)</span> cannot be a NE payoff, let alone a SPNE payoff. With perfect monitoring, SPNE are PPE, so <span class="math inline">\((-3,-3)\)</span> is not a PPE payoff, and so by theorem, it cannot be a part of any self-generating set. <span class="math inline">\(\square\)</span>.</p></li>
+<li><p>The only action profiles that give a player payoff of <span class="math inline">\(3\)</span> are <span class="math inline">\((M,L)\)</span> and <span class="math inline">\((U,M)\)</span>. Let’s choose P1, so we want to enforce <span class="math inline">\((3,0)\)</span> with action profile <span class="math inline">\((U,M)\)</span>. Promise continuation <span class="math inline">\(w(U,M) = (3,0)\)</span>, and <span class="math inline">\(w(y) = (a,-b)\)</span>, <span class="math inline">\(b\geq 0\)</span> (to be chosen later) for any other deviation. Promise keeping is clearly satisifed, and incentive compatibility is satisfied by seeing for P2’s deviation to <span class="math inline">\(L\)</span>: <span class="math display">\[\begin{align*}
+0 \geq (1-\delta)(1) + \delta(-b).
+\end{align*}\]</span> which means we have the lower bound of <span class="math inline">\(\delta \geq \frac{1}{1+b}\)</span>. If <span class="math inline">\((a,-b)\)</span> is to be within our self-generating set, and thus, a PPE payoff, we know that <span class="math inline">\(-b\)</span> must be lower bounded by the min-max payoff <span class="math inline">\(-2\)</span>, i.e.&nbsp;<span class="math inline">\(b \leq 2\)</span>. To make the <span class="math inline">\(\delta\)</span> lower bound as low as possible, let <span class="math inline">\(b=2\)</span> and thus <span class="math inline">\(\delta \geq 1/3\)</span>. Let us set the minimum <span class="math inline">\(\delta = 1/3\)</span> and try to choose <span class="math inline">\(a\)</span> to construct a self-generating set.</p></li>
+</ol>
+<p>Now, we must enforce <span class="math inline">\((a,-2)\)</span>, so choose action profile <span class="math inline">\((D,L)\)</span>. We promise continuation <span class="math inline">\(w(D,L) = (a,-2)\)</span>, choose continuation <span class="math inline">\((-2, a)\)</span> if P1 deviates, and <span class="math inline">\((a,-2)\)</span> for any other public signal. Promise-keeping is obvious. For incentive compatibility, note: <span class="math display">\[\begin{align*}
+    \text{P1 (to $U$): }&amp; a \geq (1-1/3)(1) + (1/3)(-2) \implies a \geq 0,\\
+    \text{P2 (to $M$): }&amp; -2 \geq (1-1/3)(-2) + (1/3)(-2).
+\end{align*}\]</span> For simplicity, choose <span class="math inline">\(a = 0\)</span>. Finally, we must enforce <span class="math inline">\((-2, 0)\)</span>, and do so with action profile <span class="math inline">\((U, R)\)</span>. Promise continuation <span class="math inline">\(w(U,R) = (-2,0)\)</span>, choose continuation <span class="math inline">\((0,-2)\)</span> if P2 deviates, and <span class="math inline">\((-2,0)\)</span> for any other signal. Promise-keeping is obvious, and incentive-compatibility is argued symmetrically as before. Therefore, <span class="math inline">\(W = \{(3,0), (-2, 0), (0,-2)\}\)</span> is self-generating, meaning <span class="math inline">\((3,0)\)</span> is a PPE (SPNE) payoff with <span class="math inline">\(\delta =1/3\)</span>. Since, we cannot construct punishments more than <span class="math inline">\(-2\)</span>, <span class="math inline">\(\delta = 1/3\)</span> is the lowest value of <span class="math inline">\(\delta\)</span> where a player can achieve average payoff of <span class="math inline">\(3\)</span>. Essentially, we’ve constructed a credible “punishment” or “mutual destruction” trap that the players fall into if P2 decides to deviate from <span class="math inline">\((U,M)\)</span> to <span class="math inline">\((U,L)\)</span> that would give negative average payoffs for P2 than just accepting <span class="math inline">\(0\)</span>.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li><strong>Asymmetric PD.</strong> Consider the PD game such that the public signals are <span class="math display">\[Y = \{(c,c),(c,d),(d,c),(d,d)\}\]</span> and for each player the signal is ``wrong’’ with probability <span class="math inline">\(\varepsilon\)</span>. And so: <span class="math display">\[P((c,c)\mid (C,C)) = (1-\varepsilon)^2,\]</span> <span class="math display">\[P((c,d)\mid (C,C)) = \varepsilon(1-\varepsilon),\]</span> <span class="math display">\[P((d,c)\mid (C,C)) = \varepsilon(1-\varepsilon),\]</span> <span class="math display">\[P((d,d)\mid (C,C)) = \varepsilon^2,\]</span> and so on for the other action profiles. Let the payoffs (for simplicity) depend only on the public signal, in such a way that you get the ex ante payoffs as in PD:
+<span class="math display">\[\begin{array}{c|cc}
+&amp; C &amp; D \\
+\hline
+C &amp; (2,2) &amp; (-3,5) \\
+D &amp; (5,-3) &amp; (0,0)
+\end{array}\]</span></li>
+</ol>
+<ol type="a">
+<li>Assume that the players have access to a public randomization device <span class="math display">\[\phi \sim U[0,1].\]</span> Find the highest payoff from strongly symmetric PPE. (Hint: you will have different thresholds of <span class="math inline">\(\phi\)</span> for triggering punishments after signals <span class="math inline">\((c,d)\)</span>, <span class="math inline">\((d,c)\)</span> or <span class="math inline">\((d,d)\)</span>.)</li>
+</ol>
+<p>Consider now an asymmetric play of the following sort. After a signal <span class="math inline">\((c,d)\)</span> is observed, player 1 will play <span class="math inline">\(D\)</span> and player 2 will play <span class="math inline">\(C\)</span>. If the signal is <span class="math inline">\((d,c)\)</span> you return to the play of <span class="math inline">\((C,C)\)</span>, and otherwise you punish the guy who did not do the right thing. Throughout, if you get the signal that suggested that both players deviated (say signal <span class="math inline">\((d,d)\)</span> when players are supposed to play <span class="math inline">\((C,C)\)</span>) just treat it as a good signal.</p>
+<ol start="2" type="a">
+<li><p>Find some parameters <span class="math inline">\((\varepsilon,\delta)\)</span> such that this strategy is a PPE.</p></li>
+<li><p>Find some parameters <span class="math inline">\((\varepsilon,\delta)\)</span> such that the strategy as in (b) is strictly better than the best strongly symmetric PPE in (a).</p></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li>We consider “extremal” PPE, since the public randomization device gives the distribution over public signals a density. Let the extremal payoffs in PD be <span class="math inline">\((0,0)\)</span> (the “grim” outcome) and <span class="math inline">\((\bar{v}, \bar{v})\)</span> (the largest possible continuation values). Consider the symmetric strategies given by</li>
+</ol>
+<ul>
+<li>If at <span class="math inline">\(0\)</span>, play <span class="math inline">\(D\)</span> and have continuation <span class="math inline">\(0\)</span>.</li>
+<li>If at <span class="math inline">\(\bar{v}\)</span>, play <span class="math inline">\(C\)</span>.
+<ul>
+<li>If [signal is <span class="math inline">\((c,c)\)</span>] or [signal is <span class="math inline">\((c,d)\)</span> or <span class="math inline">\((d,c)\)</span> and <span class="math inline">\(\phi \leq \phi_1\)</span>] or [signal is <span class="math inline">\((d,d)\)</span> and <span class="math inline">\(\phi \leq \phi_2\)</span>], have continuation <span class="math inline">\(\bar{v}\)</span>.</li>
+<li>Else, have continuation <span class="math inline">\(0\)</span>.</li>
+</ul></li>
+</ul>
+<p>Enforceability for <span class="math inline">\((0,0)\)</span> is obvious, since it is a NE of the stage-game. Enforcing <span class="math inline">\((\bar{v}, \bar{v})\)</span> gives promise-keeping and incentive compatibility conditions: <span class="math display">\[\begin{align*}
+    \text{(PK) } \bar{v} &amp;= (1-\delta)(2) + \delta([(1-\varepsilon)^2 + 2\varepsilon(1-\varepsilon)\phi_1 + \varepsilon^2\phi_2]\bar{v}), \\
+    \text{(IC) } \bar{v} &amp;\geq (1-\delta)(5) + \delta([(1-\varepsilon)^2\phi_1 + \varepsilon(1-\varepsilon)\phi_2 + \varepsilon(1-\varepsilon)+ \varepsilon^2\phi_1]\bar{v}).
+\end{align*}\]</span> Note that we can rearrange the PK condition to get: <span class="math display">\[
+\bar{v} = \frac{(1-\delta)2}{1-\delta[(1-\varepsilon)^2 + 2\varepsilon(1-\varepsilon)\phi_1 + \varepsilon^2\phi_2]}
+\]</span> so the larger both <span class="math inline">\(\phi_1, \phi_2\)</span> are, the larger <span class="math inline">\(\bar{v}\)</span> can get. However, <span class="math inline">\(\phi_1, \phi_2\)</span> are restricted by the IC “budget”. Defining <span class="math inline">\(A(\phi_1,\phi_2) = 2\varepsilon(1-\varepsilon)\phi_1 + \varepsilon^2\phi_2\)</span> and <span class="math inline">\(B(\phi_1,\phi_2) = (1-\varepsilon)^2\phi_1 + \varepsilon(1-\varepsilon)\phi_2 + \varepsilon^2\phi_1\)</span>, we can compute the “marginal increases per IC budget”: <span class="math display">\[\begin{align*}
+    \frac{\partial A/\partial \phi_1}{\partial B/\partial \phi_1} &amp;= \frac{2\varepsilon(1-\varepsilon)}{(1-\varepsilon)^2 + \varepsilon^2},\\
+    \frac{\partial A/\partial \phi_2}{\partial B/\partial \phi_2} &amp;= \frac{\varepsilon^2}{\varepsilon(1-\varepsilon)}.
+\end{align*}\]</span> and <span class="math inline">\(\frac{\partial A/\partial \phi_1}{\partial B/\partial \phi_1} \geq \frac{\partial A/\partial \phi_2}{\partial B/\partial \phi_2}\)</span> whenever <span class="math inline">\(\varepsilon \leq 1/2\)</span> (the relevant case). This means we can put most “mass” on <span class="math inline">\(\phi_1\)</span> to make <span class="math inline">\(\bar{v}\)</span> as large as possible, setting <span class="math inline">\(\phi_2 = 0\)</span>. Our system of equations thus becomes: <span class="math display">\[\begin{align*}
+    \text{(PK) } \bar{v} &amp;= (1-\delta)(2) + \delta([(1-\varepsilon)^2 + 2\varepsilon(1-\varepsilon)\phi_1]\bar{v}), \\
+    \text{(IC) } \bar{v} &amp;= (1-\delta)(5) + \delta([((1-\varepsilon)^2+\varepsilon^2)\phi_1 + \varepsilon(1-\varepsilon)]\bar{v}).
+\end{align*}\]</span> Solving this system of equations yields: <span class="math display">\[
+\phi_1 = \frac{2\delta(1-\varepsilon)(1-7\varepsilon+4\varepsilon^2) - 3[1-2\varepsilon - \delta(1-\varepsilon)^2]}{2\delta(1-2\varepsilon)(1-7\varepsilon+4\varepsilon^2)}, \bar v =
+\frac{(1-\delta)\left(2(1-2\varepsilon)^2-6\varepsilon\right)}
+{(1 - 2\varepsilon)\left(1-2\varepsilon-\delta(1-\varepsilon)^2\right)}.
+\]</span> Checking at the limit as <span class="math inline">\(\varepsilon \rightarrow 0\)</span>, we can see <span class="math inline">\(\bar{v} = 2\)</span>, the average payoff in the perfect monitoring setting PPE path.</p>
+<ol start="2" type="a">
+<li>Consider the values <span class="math inline">\(v\)</span>, <span class="math inline">\(\bar{v}\)</span>, and <span class="math inline">\(\underline{v}\)</span>, denoting the continuation values for players on cooperation path, a player “punishing”, and a player being “punished”, respectively. Assume also that if <span class="math inline">\((c,c)\)</span> is observed during a punishment stage, the punisher is not “doing wrong” and players go back to cooperation path. We want these strategies to constitute a PPE, so they must constitute a NE at any stage of the game:</li>
+</ol>
+<ul>
+<li>The players are on the cooperation path. Thus, the continuation values must satisfy the following relations (labels are if P1 deviates): <span class="math display">\[\begin{align*}
+  v &amp;= \underbrace{(1-\delta)2}_{(C,C)} + \delta\left(\underbrace{(1-\varepsilon)^2v}_{(c,c)} + \underbrace{\varepsilon(1-\varepsilon)\bar{v}}_{(c,d)} + \underbrace{\varepsilon(1-\varepsilon)\underline{v}}_{(d,c)} + \underbrace{\varepsilon^2v}_{(good)}\right), \\
+  v &amp;\geq \underbrace{(1-\delta)5}_{(D,C)} + \delta\left(\underbrace{(1-\varepsilon)^2\underline{v}}_{(d,c)} + \underbrace{\varepsilon(1-\varepsilon)v}_{(c,c)} + \underbrace{\varepsilon(1-\varepsilon)v}_{(good)} + \underbrace{\varepsilon^2\bar{v}}_{(c,d)} \right).
+\end{align*}\]</span></li>
+<li>One player punishing, one player being punished. The continuation value for the punisher must satisfy (labels are if P1 is punishing) <span class="math display">\[\begin{align*}
+  \bar{v} &amp;= \underbrace{(1-\delta)5}_{(D,C)} + \delta\left(\underbrace{(1-\varepsilon)^2v}_{(d,c)} + \underbrace{\varepsilon(1-\varepsilon)\bar{v}}_{(d,d)} + \underbrace{\varepsilon(1-\varepsilon)v}_{(c,c)} + \underbrace{\varepsilon^2v}_{(good)}\right),
+\end{align*}\]</span> and the continuation value for the punished must satisfy (labels are if P2 is punished): <span class="math display">\[\begin{align*}
+  \underline{v} &amp;= \underbrace{(1-\delta)(-3)}_{(D,C)} + \delta\left(\underbrace{(1-\varepsilon)^2v}_{(d,c)} + \underbrace{\varepsilon(1-\varepsilon)v}_{(c,c)} + \underbrace{\varepsilon(1-\varepsilon)\underline{v}}_{(d,d)} + \underbrace{\varepsilon^2v}_{(good)}\right), \\
+  \underline{v} &amp;\geq \underbrace{(1-\delta)(0)}_{(D,D)} + \delta\left(\underbrace{(1-\varepsilon)^2\underline{v}}_{(d,d)} + \underbrace{\varepsilon(1-\varepsilon)v}_{(good)} + \underbrace{\varepsilon(1-\varepsilon)v}_{(d,c)} + \underbrace{\varepsilon^2v}_{(c,c)}\right).
+\end{align*}\]</span> Thus, if these can be satisfied for <span class="math inline">\(\varepsilon, \delta\)</span>, the strategies constitute a PPE. Intuitively, if one chooses <span class="math inline">\(\varepsilon\)</span> really small (closer to perfect monitoring) and <span class="math inline">\(\delta\)</span> very large (players will cooperate more), this will constitute a PPE. One such example is <span class="math inline">\(\varepsilon = 0.1\)</span> and <span class="math inline">\(\delta = 0.9\)</span>. Using the equality constraints, we find that <span class="math inline">\(v \simeq 1.8485, \bar{v} \simeq 2.1914, \underline{v} \simeq 1.3209\)</span>. Plugging these into the inequality constraints shows that incentive compatibility is satisfied, making it a PPE.</li>
+</ul>
+<ol start="3" type="a">
+<li>(Note that the PPE path payoff in part (a) was given by <span class="math inline">\(\bar{v}\)</span>, and in part (b) was given by <span class="math inline">\(v\)</span>). One of the key differences between the PPE in (a) and the PPE in (b) is that if a bad signal is observed and the players don’t forgive each other, the game in (a) will go to the “grim” <span class="math inline">\((0,0)\)</span> outcome, while the game in (b) will result in mutual punishment (which still gives positive payoffs to players), but never reach the grim outcome. Consequently, if we pick <span class="math inline">\(\varepsilon\)</span> small to increase the likelihood of players in (a) to not forgive each other (i.e.&nbsp;<span class="math inline">\(\phi_1 &lt; 1\)</span>), for example <span class="math inline">\(\varepsilon = 0.1, \delta = 0.9\)</span> as before, solving for <span class="math inline">\(\phi_1, \bar{v}\)</span> in (a) yields <span class="math inline">\(\phi_1 = 0.690, \bar{v} = 1.197,\)</span> while solving for v in (b) was <span class="math inline">\(1.8485\)</span>, which is a strictly higher PPE payoff.</li>
+</ol>
+</details>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/kguo12\.github\.io\/kennyguowebpage\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

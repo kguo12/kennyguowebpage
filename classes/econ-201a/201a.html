@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>a – Kenny Guo</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-5685cd926c25366c96d9f1407e584118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Kenny Guo</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../personal.html"> 
+<span class="menu-text">Personal</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tutoring.html"> 
+<span class="menu-text">Book a lesson</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/kenny-guo-140966274/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=9a7V4ZwAAAAJ&amp;hl=en"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kenny.guo@yale.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://kguo12.github.io/kennyguowebpage/resources/cv/KennyGuoCV_Aug2026.pdf"> <i class="bi bi-file-earmark-person" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="econ-201a---microeconomic-theory-theory-of-firm-and-consumer" class="level1">
+<h1>ECON 201A - Microeconomic Theory: Theory of Firm and Consumer</h1>
+<section id="fall-2025-jay-lu" class="level2">
+<h2 class="anchored" data-anchor-id="fall-2025-jay-lu">Fall 2025, Jay Lu</h2>
+<p>This is the first course in the PhD microeconomics sequence at UCLA. The topics covered are choice theory, consumer theory, producer theory, equilibrium, risk, and time. We follow loosely Mas-Colell, Whinston, and Green. Please let me know at <a href="mailto:kennyguo@ucla.edu">kennyguo@ucla.edu</a> if you spot any errors. Thanks!</p>
+<section id="problem-set-solutions" class="level4">
+<h4 class="anchored" data-anchor-id="problem-set-solutions">Problem Set Solutions:</h4>
+</section>
+</section>
+<section id="problem-set-1-choice-and-consumer-theory" class="level2">
+<h2 class="anchored" data-anchor-id="problem-set-1-choice-and-consumer-theory">Problem Set 1: Choice and Consumer Theory</h2>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Prove the other direction of Theorem 1 (Lecture 1) (<em>utility is identifiable up to a monotone transformation</em>) by the following steps (recall <span class="math inline">\(X\)</span> is finite).</li>
+</ol>
+<ol type="a">
+<li>Show that if <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> both represent <span class="math inline">\(c\)</span>, then <span class="math inline">\(v = f \circ u\)</span> for some strictly increasing function <span class="math inline">\(f : U \to \mathbb{R}\)</span>, where <span class="math inline">\(U\)</span> is the range of <span class="math inline">\(u(\cdot)\)</span>, i.e.&nbsp;<span class="math display">\[U := \{ a \in \mathbb{R} : a = u(x) \text{ for some } x \in X \}.\]</span></li>
+<li>Show that you can extend the domain of <span class="math inline">\(f\)</span> from <span class="math inline">\(U\)</span> to <span class="math inline">\(\mathbb{R}\)</span> while keeping <span class="math inline">\(f\)</span> strictly increasing.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>Assume <span class="math inline">\(v,u\)</span> represent <span class="math inline">\(c\)</span>. By definition, for all <span class="math inline">\(A \in \mathcal{A}\)</span>, <span class="math display">\[\begin{align*}
+c(A) &amp;= \{x\in A : u(x) \geq u(y) \quad\forall  y \in A\} \\
+&amp;= \{x\in A : v(x) \geq v(y) \quad \forall y \in A\}.
+\end{align*}\]</span> So, <span class="math inline">\(u(x) = u(x') \iff v(x) = v(x')\)</span>. Thus, the following definition for <span class="math inline">\(f\)</span> is well-defined; define <span class="math inline">\(f: U\rightarrow \mathbb{R}\)</span> such that for all <span class="math inline">\(a\in U\)</span>, <span class="math inline">\(f(a) = v(x)\)</span> where <span class="math inline">\(x \in X\)</span> such that <span class="math inline">\(u(x) = a\)</span>. Clearly, <span class="math inline">\(f \circ u = v\)</span> on <span class="math inline">\(U\)</span>. For monotonicity, let <span class="math inline">\(a_1 = u(x_1) &lt; u(x_2) = a_2\)</span>. Then since <span class="math inline">\(v\)</span> also represents <span class="math inline">\(c\)</span>, we have that <span class="math inline">\(f(a_1) = v(x_1) &lt; v(x_2) = f(a_2)\)</span>, so <span class="math inline">\(f\)</span> is strictly monotone increasing.</p></li>
+<li><p>This is a monotone extension theorem. Namely, since <span class="math inline">\(X\)</span> is finite, <span class="math inline">\(U\)</span> is also finite, so enumerate the elements of <span class="math inline">\(U\)</span> and let <span class="math inline">\(U = \{a_1 &lt; a_2&lt; \ldots&lt; a_n\}\)</span> and thus <span class="math inline">\(f(U) = \{f(a_1)&lt; f(a_2)&lt; \ldots&lt; f(a_n)\}\)</span>. Extend <span class="math inline">\(f\)</span> to <span class="math inline">\(\mathbb{R}\)</span> by defining for <span class="math inline">\(a \in \mathbb{R}\)</span>: <span class="math display">\[\begin{equation}
+f(a) := \begin{cases}
+     f(a) &amp;: a\in U \\
+     f(a_i) + \frac{a-a_i}{a_{i+1}-a_i}\left(f(a_{i+1})-f(a_i)\right) &amp;: a \in (a_i, a_{i+1}), i = 1, 2, \ldots, n-1 \\
+     f(a_n) + (a-a_n) &amp;: a&gt; a_n \\
+     f(a_1) + (a-a_1) &amp;: a&lt; a_1
+\end{cases}.
+\end{equation}\]</span> <span class="math inline">\(f\)</span> is continuous by definition (using the linear interpolations between the points <span class="math inline">\((a_i, f(a_i))\)</span>), clearly strictly monotone increasing on <span class="math inline">\((-\infty, a_1) \cup (a_n, \infty)\)</span>, and monotone increasing between the points <span class="math inline">\((a_i, f(a_i))\)</span> because <span class="math inline">\(f(a_{i+1}) &gt; f(a_i)\)</span>. Thus, <span class="math inline">\(f: \mathbb{R} \rightarrow \mathbb{R}\)</span> is strictly monotone, and maintains its values on <span class="math inline">\(U\)</span> as before.</p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Consider Proposition 1 (Lecture 2). You may use any result from Lecture 1.</li>
+</ol>
+<ol type="a">
+<li>Prove <span class="math inline">\(2 \Rightarrow 1\)</span>, i.e., if <span class="math inline">\(\succeq\)</span> is induced by a choice function <span class="math inline">\(c\)</span> that satisfies WARP, then <span class="math inline">\(\succeq\)</span> is a preference relation.</li>
+<li>Prove <span class="math inline">\(1 \Rightarrow 2\)</span>, i.e., if <span class="math inline">\(\succeq\)</span> is a preference relation, then there exists a choice function <span class="math inline">\(c\)</span> that induces <span class="math inline">\(\succeq\)</span> and satisfies WARP. You may refer to the standard results on WARP and rationalizability.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>Assume <span class="math inline">\(\succeq\)</span> is induced by <span class="math inline">\(c\)</span> satisfying WARP. By definition of a choice function <span class="math inline">\(c\)</span>, we have completeness, since <span class="math inline">\(\forall x, y\)</span>, <span class="math inline">\(c(\{x, y\})\)</span> is nonempty, so <span class="math inline">\(x \succeq y\)</span> or <span class="math inline">\(y \succeq x\)</span>. Now assume <span class="math inline">\(x \preceq y\)</span> and <span class="math inline">\(y \preceq z\)</span>. By definition, <span class="math inline">\(y \in c(\{x, y\})\)</span> and <span class="math inline">\(z \in c(\{y, z\})\)</span>. Consider <span class="math inline">\(A = \{x, y, z\}\)</span>.</p>
+<p>Thus, since <span class="math inline">\(c(A)\)</span> must be nonempty, <span class="math inline">\(z \in c(A)\)</span>. By WARP, <span class="math inline">\(z \in c(\{x, z\})\)</span> (which is also nonempty, so either <span class="math inline">\(x\)</span> or <span class="math inline">\(z\)</span> is chosen), so then <span class="math inline">\(x \preceq z\)</span> and <span class="math inline">\(\succeq\)</span> is transitive and thus a preference relation.</p></li>
+<li><p>Assume <span class="math inline">\(\succeq\)</span> is complete and transitive. For <span class="math inline">\(A \in \mathcal{A}\)</span>, define <span class="math inline">\(c_{\succeq}: \mathcal{A} \to \mathcal{A} \cup \{\emptyset\}\)</span>, [ c_{}(A) = {x A x y &nbsp;y A}. ] Let <span class="math inline">\(A \in \mathcal{A}\)</span>. Suppose for contradiction <span class="math inline">\(c_{\succeq}(A) = \emptyset\)</span>. Let <span class="math inline">\(x \in A\)</span>. Since <span class="math inline">\(x \notin c_\succeq(A)\)</span>, there exists a $ y A$ such that <span class="math inline">\(y \succ x\)</span>. Since <span class="math inline">\(y \notin c_{\succeq}(A)\)</span>, <span class="math inline">\(\exists z \in A\)</span> such that <span class="math inline">\(z \succ y\)</span>. Note <span class="math inline">\(z \neq x\)</span> by transitivity. Iterating, we get that <span class="math inline">\(A\)</span> must be infinite, a contradiction. Thus, <span class="math inline">\(c_{\succeq}(A) \neq \emptyset\)</span>, and <span class="math inline">\(c_{\succeq}(A)\)</span> is a valid choice function.</p></li>
+</ol>
+<p>Clearly, <span class="math inline">\(c_{\succeq}\)</span> induces <span class="math inline">\(\succeq\)</span> since by definition [ x c_{}({x,y}) x y x,y X. ] For WARP, let <span class="math inline">\(A,B \in \mathcal{A}\)</span>, <span class="math inline">\(x,y \in A \cap B\)</span>, <span class="math inline">\(x \in c_{\succeq}(A)\)</span>, <span class="math inline">\(y \in c_{\succeq}(B)\)</span>. Since <span class="math inline">\(x \in c_{\succeq}(A)\)</span>, <span class="math inline">\(y \in A\)</span>, we have <span class="math inline">\(x \succeq y\)</span>. Since <span class="math inline">\(y \in c_{\succeq}(B)\)</span>, we have <span class="math inline">\(y \succeq z\)</span> for all <span class="math inline">\(z \in B\)</span>. By transitivity, <span class="math inline">\(x \succeq z\)</span> for all <span class="math inline">\(z \in B\)</span>, so <span class="math inline">\(x \in c_{\succeq}(B)\)</span>.</p>
+<p>Thus, <span class="math inline">\(c_{\succeq}\)</span> satisfies WARP.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>There are two goods, i.e.&nbsp;<span class="math inline">\(X = \mathbb{R}^2_{+}\)</span>. Sam chooses <span class="math inline">\(x = (1,5)\)</span> when <span class="math inline">\(p = (5,2)\)</span>, <span class="math inline">\(x = (4,2)\)</span> when <span class="math inline">\(p = (3,3)\)</span>, and <span class="math inline">\(x = (2,3)\)</span> when <span class="math inline">\(p = (2,4)\)</span>. Does Sam satisfy WARP?</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<p>No.&nbsp;</p>
+<p>Note first that when <span class="math inline">\(p=(3,3)\)</span>, the basket <span class="math inline">\((4,2)\)</span> costs <span class="math inline">\(18\)</span> and the basket <span class="math inline">\((2,3)\)</span> costs <span class="math inline">\(15\)</span>, so both options are within the same budget set/menu, and Sam chooses <span class="math inline">\((4,2)\)</span>.</p>
+<p>Then note that when <span class="math inline">\(p=(2,4)\)</span>, the basket <span class="math inline">\((2,3)\)</span> costs <span class="math inline">\(16\)</span> and the basket <span class="math inline">\((4,2)\)</span> costs <span class="math inline">\(16\)</span>, so these two are within the same budget set/menu as well. Yet here, Sam chooses <span class="math inline">\((2,3)\)</span>.</p>
+<p>If WARP holds, <span class="math inline">\((2,3)\)</span> should also be chosen when <span class="math inline">\(p=(3,3)\)</span> (the first menu) and <span class="math inline">\((4,2)\)</span> should also be chosen when <span class="math inline">\(p=(2,4)\)</span> (the second menu), but Sam doesn’t make these choices, so WARP does not hold.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>Consider consumption bundles <span class="math inline">\(X = \mathbb{R}^n_+\)</span> and recall <span class="math inline">\(\mathcal{A}\)</span> is the set of all menus in <span class="math inline">\(X\)</span>. We will consider two special classes of menus:</li>
+</ol>
+<ul>
+<li><span class="math inline">\(\mathcal{P} \subset \mathcal{A}\)</span> is the set of all consumption pairs (binary menus), i.e.&nbsp;<span class="math inline">\(\{x,y\} \in \mathcal{A}\)</span>.</li>
+<li><span class="math inline">\(\mathcal{B} \subset\mathcal{A}\)</span> is the set of all budget sets, i.e.&nbsp;<span class="math inline">\(B(p,m) \in \mathcal{A}\)</span>. Consider a choice function over pairs and budget sets, i.e.&nbsp;<span class="math inline">\(c:\mathcal{P} \cup \mathcal{B} \rightarrow \mathcal{A}\)</span> such that <span class="math inline">\(c(A) \subseteq A\)</span> for all <span class="math inline">\(A \in \mathcal{P} \cup \mathcal{B}\)</span>. Show the following two statements are equivalent:</li>
+</ul>
+<ol type="a">
+<li><span class="math inline">\(c\)</span> satisfies WARP (on <span class="math inline">\(\mathcal{P} \cup \mathcal{B}\)</span>) and <span class="math inline">\(c\)</span> on <span class="math inline">\(\mathcal{P}\)</span> induces a continuous preference relation.</li>
+<li><span class="math inline">\(c\)</span> is represented by a continuous utility. </li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p><span class="math inline">\((a \implies b)\)</span> Assume <span class="math inline">\(c\)</span> satisfies WARP and <span class="math inline">\(c\)</span> on <span class="math inline">\(\mathcal{P}\)</span> induces a continuous preference relation, call it <span class="math inline">\(\succeq\)</span>. By Debreu, we have that <span class="math inline">\(\succeq\)</span> is represented by a continuous utility function, call it <span class="math inline">\(u\)</span>, such that <span class="math inline">\(x \succeq y \iff u(x) \geq u(y)\)</span>. We show <span class="math inline">\(u\)</span> represents <span class="math inline">\(c\)</span> as well. Let <span class="math inline">\(A \in \mathcal{P} \cup \mathcal{B}\)</span>. We have two cases:</p>
+<ol type="1">
+<li><p><span class="math inline">\(A \in \mathcal{P}\)</span>. Note that the set <span class="math display">\[
+\underbrace{\{x \in A : u(x) \geq u(y) \quad \forall y \in A\}}_{(\star)} = \{x \in A : x \succeq y \quad \forall y \in A\}
+\]</span> by <span class="math inline">\(u\)</span> representing <span class="math inline">\(\succeq\)</span>. By definition of <span class="math inline">\(c\)</span> inducing <span class="math inline">\(\succeq\)</span>, we have the RHS equal to <span class="math inline">\(c(A)\)</span>. Thus, <span class="math inline">\(u\)</span> represents <span class="math inline">\(c\)</span> (on <span class="math inline">\(\mathcal{P}\)</span>).</p></li>
+<li><p><span class="math inline">\(A \in \mathcal{B}\)</span>. Let <span class="math inline">\(x \in c(A)\)</span>. Note that <span class="math inline">\((\star)\)</span> is nonempty (since a continuous function on a compact budget set achieves a maximum), so let <span class="math inline">\(y \in (\star)\)</span>. We thus have that <span class="math inline">\(u(y) \geq u(x)\)</span>. Consider the binary menu <span class="math inline">\(\{x,y\}\)</span>. Since <span class="math inline">\(y \in A, x \in c(A)\)</span>, we must have by WARP that <span class="math inline">\(x \in c(\{x,y\}) \implies x \succeq y \implies u(x) \geq u(y)\)</span>. Thus <span class="math inline">\(u(x) = u(y)\)</span>, and so <span class="math inline">\(x \in (\star)\)</span> as well. Now, let <span class="math inline">\(x \in (\star)\)</span>. Similarly, we know <span class="math inline">\(c(A)\)</span> must be nonempty, so pick some <span class="math inline">\(y \in c(A)\)</span>. We know <span class="math inline">\(u(x) \geq u(y) \implies x \succeq y \implies x \in c(\{x,y\})\)</span>. Thus, since <span class="math inline">\(y \in c(A), x \in A\)</span>, we must have by WARP that <span class="math inline">\(x \in c(A)\)</span>. Thus <span class="math inline">\(c(A) = (\star)\)</span>, showing that <span class="math inline">\(u\)</span> represents <span class="math inline">\(c\)</span> on <span class="math inline">\(\mathcal{B}\)</span> as well.</p></li>
+</ol>
+<p><span class="math inline">\((a \impliedby b)\)</span> Assume <span class="math inline">\(c\)</span> is represented by a continuous utility, call it <span class="math inline">\(u\)</span>, so that for all <span class="math inline">\(A \in \mathcal{P} \cup \mathcal{B}\)</span>, <span class="math display">\[
+c(A) = \{x \in A : u(x) \geq u(y) \quad \forall y \in A\}.
+\]</span> Since <span class="math inline">\(c\)</span> is represented by a utility, by characterization theorem, <span class="math inline">\(c\)</span> satisfies WARP (on the whole menu space). Now let <span class="math inline">\(\succeq\)</span> be the relation induced by <span class="math inline">\(c\)</span>. <span class="math inline">\(\succeq\)</span> is complete by the definition of a choice function. For transitivity, note that <span class="math inline">\(x \succeq y\)</span> and <span class="math inline">\(y \succeq z\)</span> imply that <span class="math inline">\(x \in c(\{x,y\})\)</span> and <span class="math inline">\(y \in c(\{y, z\})\)</span>. By utility representation, we have that <span class="math inline">\(u(x) \geq u(y) \geq u(z)\)</span>, and tracing back, we thus have <span class="math inline">\(x \in c(\{x,z\}) \implies x \succeq z\)</span>.</p>
+<p>Finally, for continuity, let <span class="math inline">\(x, (y_k), y \in X\)</span>, and assume that <span class="math inline">\(y_k \rightarrow y\)</span> and <span class="math inline">\(y_k \succeq x\)</span> for all <span class="math inline">\(k\)</span> (similar reasoning for when <span class="math inline">\(y_k \preceq x\)</span>). By before, we thus have that <span class="math inline">\(u(y_k) \geq u(x)\)</span> for all <span class="math inline">\(y\)</span>. By continuity of <span class="math inline">\(u\)</span>, we also have that <span class="math inline">\(u(y_k) \rightarrow u(y)\)</span>. Thus, sending <span class="math inline">\(k\)</span> to infinity, we have <span class="math inline">\(u(y) \geq u(x)\)</span> as well, which implies that <span class="math inline">\(y \succeq x\)</span>, and <span class="math inline">\(\succeq\)</span> is a continuous preference relation.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>Recall <span class="math inline">\(u\)</span> is CES if for <span class="math inline">\(\rho &lt; 1, \alpha_i &gt; 0, \sum_i \alpha_i = 1\)</span>, <span class="math display">\[u(x) = \left(\sum_i \alpha_i x_i^\rho \right)^{1/p}.\]</span></li>
+</ol>
+<ol type="a">
+<li>Show that preferences are strictly convex and satisfy local non-satiation. Is CES utility strictly concave?</li>
+<li>Solve for its Hicksian demand directly.</li>
+<li>Use its Marshallian demand from lecture to show that Slutsky’s equation holds.</li>
+<li>Provide conditions on <span class="math inline">\(\rho\)</span> such that two goods <span class="math inline">\(i,j\)</span> are net substitutes but not gross substitutes (i.e.&nbsp;<span class="math inline">\(\frac{\partial h_i}{\partial p_j} \geq 0\)</span> but <span class="math inline">\(\frac{\partial x_i}{\partial p_j} \leq 0)\)</span>.</li>
+<li>Derive the functional form of <span class="math inline">\(u\)</span> when <span class="math inline">\(\rho \rightarrow -\infty\)</span>.</li>
+<li>Consider an economy with <span class="math inline">\(n\)</span> consumers. Suppose that you (a market designer) have $<span class="math inline">\(m\)</span> in total, which can be distributed to the consumers, and the consumers have no other income. If you care only about the aggregate demand of the economy, how should you distribute $<span class="math inline">\(m\)</span>?</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li>It suffices to show that <span class="math inline">\(u\)</span> is strictly quasiconcave and admits no local optima within <span class="math inline">\(\mathbb{R}^n_+\)</span>.</li>
+</ol>
+<p>(Strict Quasiconcavity) Note that a monotone transformation of a strictly quasiconcave function is still strictly quasiconcave.</p>
+<p>First, assume <span class="math inline">\(\rho \in (0,1)\)</span>. Using the monotone transformation <span class="math inline">\(f(x) = x^{1/p}\)</span>, it suffices to show <span class="math inline">\(\sum_i \alpha_i x_i^\rho\)</span> is strictly quasiconcave, which is true since <span class="math inline">\(\alpha_i x_i^\rho\)</span> is strictly concave and thus the sum is too. Strictly concave functions are strictly quasiconcave.</p>
+<p>Now assume <span class="math inline">\(\rho \in (-\infty, 0)\)</span>. Using the monotone transformation <span class="math inline">\(f(x) = x^{-1/p}\)</span>, it suffices to show that <span class="math inline">\(\left(\sum_i \alpha_i x_i^\rho\right)^{-1}\)</span> is strictly quasiconcave. Take <span class="math inline">\(\vec{x}\neq\vec{y}\)</span> and assume <span class="math inline">\(\left(\sum_i \alpha_i x_i^\rho\right)^{-1} \geq \left(\sum_i \alpha_i y_i^\rho\right)^{-1}\)</span>. This implies <span class="math inline">\(\sum_i \alpha_i x_i^\rho \leq \sum_i \alpha_i y_i^\rho\)</span>. Since <span class="math inline">\(f(x) = x^\rho\)</span> is strictly convex when <span class="math inline">\(\rho &lt; 0\)</span>, the sum <span class="math inline">\(\sum_i \alpha_i x_i^\rho\)</span> is also strictly convex. In particular, we have for the convex combination (for some <span class="math inline">\(\lambda \in (0,1)\)</span>): <span class="math display">\[\sum_i \alpha_i (\lambda x_i + (1-\lambda) y_i)^\rho &lt; \lambda \sum_i \alpha_i x_i^\rho + (1-\lambda) \sum_i \alpha_i y_i^\rho \leq \sum_i \alpha_i y_i^\rho.\]</span> Taking the inverse yields: <span class="math display">\[
+\left(\sum_i \alpha_i (\lambda x_i + (1-\lambda) y_i)^\rho\right)^{-1} &gt; \left(\sum_i \alpha_i y_i^\rho\right)^{-1} = \min\left\{\left(\sum_i \alpha_i x_i^\rho\right)^{-1}, \left(\sum_i \alpha_i y_i^\rho\right)^{-1}\right\}
+\]</span> showing that <span class="math inline">\(\left(\sum_i \alpha_i x_i^\rho\right)^{-1}\)</span> is strictly quasiconcave, as desired.</p>
+<p>Finally, note that in the limit as <span class="math inline">\(\rho \rightarrow 0\)</span>, CES converges to Cobb-Douglas utility <span class="math inline">\(u(x) = \Pi_i x_i^{\alpha_i}\)</span>. Using the monotone transformation <span class="math inline">\(\log(x)\)</span>, it suffices to show <span class="math inline">\(\sum_i \alpha_i \log(x_i)\)</span> is strictly quasiconcave, which it is as <span class="math inline">\(\log(x)\)</span> is a strictly concave function.</p>
+<p>Therefore, CES preferences are strictly convex.</p>
+<p>(No local optima) Let <span class="math inline">\(\vec{x} \in \mathbb{R}^n_+, \varepsilon &gt;0\)</span>. Note that taking the partial derivative with respect to any component of <span class="math inline">\(\vec{x}\)</span>, we get: <span class="math display">\[
+\frac{\partial u}{\partial x_i} = \alpha_i x_i^{\rho-1} \left(\sum_j \alpha_j x_j^\rho \right)^{1/p-1} &gt; 0.
+\]</span> Thus, there exists some <span class="math inline">\(\vec{y} \in N_\varepsilon(\vec{x}) \backslash \{\vec{x}\}\)</span> (by moving a little bit, less than <span class="math inline">\(\varepsilon\)</span>, in the <span class="math inline">\(x_i\)</span> direction) such that <span class="math inline">\(u(y) &gt; u(x)\)</span>. Thus, CES preferences are locally non-satiated.</p>
+<p>Finally, CES preferences are not strictly concave. Indeed, consider <span class="math inline">\(\vec{x} = (1,1, \ldots, 1), \vec{y} = (0,0,\ldots, 0)\)</span>. Then for any <span class="math inline">\(\lambda \in (0,1)\)</span>, note that: <span class="math display">\[
+u(\lambda \vec{x} + (1-\lambda) \vec{y}) = u((\lambda, \lambda, \ldots, \lambda)) = \lambda = \lambda u(\vec{x}) + (1-\lambda) u(\vec{y}).
+\]</span> So CES utility is not strictly concave.</p>
+<ol start="2" type="a">
+<li>We have that preferences are strictly convex and continuous, so they are neoclassical and Hicksian demand is a continuous function. Thus, we solve (for some <span class="math inline">\(z \in \mathbb{R}^n_+\)</span>) <span class="math inline">\(\underset{x \in G(\succeq, z)}{\text{argmin }} p\cdot x\)</span>.</li>
+</ol>
+<p>This is equivalent to maxxing <span class="math inline">\(-p\cdot x\)</span> with the constraint <span class="math inline">\(u(x) - u(z) \geq 0\)</span> and the non-negativity constraints <span class="math inline">\(x_i \geq 0\)</span>. Since <span class="math inline">\(u\)</span> is locally non-satiated, we get Walras’s law, so <span class="math inline">\(u(x) - u(z) = 0\)</span>. We write the Lagrangian: <span class="math display">\[
+\mathcal{L} = -p \cdot x + \lambda\left(\left(\sum_i \alpha_i x_i^\rho \right)^{1/p} - u(z)\right) + \sum_i \mu_i x_i
+\]</span> and so the FOC are: <span class="math display">\[
+-p_i + \lambda \alpha_i x_i^{\rho-1} \left(\sum_j \alpha_j x_j^\rho \right)^{1/p-1} + \mu_i = 0 \quad \forall i
+\]</span> with complementary slackness conditions <span class="math display">\[
+\mu_i x_i = 0 \quad \forall i.
+\]</span> For now, suppose <span class="math inline">\(x_i &gt; 0\)</span> for all <span class="math inline">\(i\)</span>, so we can ignore the <span class="math inline">\(\mu_i = 0\)</span> terms. We will eventually show the FOC solution will satisfy these constraints, and since Hicksian demand is unique by neoclassical preferences, we will know it is the final solution. So: <span class="math display">\[
+\lambda \alpha_i x_i^{\rho-1} \left(\sum_j \alpha_j x_j^\rho \right)^{1/p-1} = p_i \quad \forall i
+\]</span> and pivoting around <span class="math inline">\(\lambda  \left(\sum_j \alpha_j x_j^\rho \right)^{1/p-1}\)</span>, we see that for some two goods <span class="math inline">\(i, j\)</span>, <span class="math display">\[
+\frac{p_i}{p_j} = \frac{\alpha_i x_i^{\rho-1}}{\alpha_j x_j^{\rho-1}} \implies x_j = \left(\frac{\alpha_j p_i}{\alpha_i p_j}\right)^{\frac{1}{1-\rho}}x_i.
+\]</span> We substitute the <span class="math inline">\(x_j\)</span>, <span class="math inline">\(j\neq i\)</span> terms into our utility constraint <span class="math inline">\(u(z) = u(x) = \left(\sum_i \alpha_i x_i^\rho \right)^{1/p}\)</span> to get for good <span class="math inline">\(i\)</span>, <span class="math display">\[\begin{align*}
+    u(z) &amp;= \left(\sum_j \alpha_j x_j^\rho \right)^{1/p} \\
+    u(z)^\rho &amp;= \sum_j \alpha_j x_j^\rho \\
+    &amp;= \left(\sum_j \alpha_j \left(\frac{\alpha_j p_i}{\alpha_i p_j}\right)^{\frac{\rho}{1-\rho}}\right)x_i^\rho \\
+    &amp;= \left(p_i^{\frac{\rho}{1-\rho}} \alpha_i^{-\frac{\rho}{1-\rho}}\sum_j \alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{\rho}{1-\rho}}\right) x_i^\rho \\
+\end{align*}\]</span> which gives the final Hicksian demand <span class="math display">\[
+h_i(p, z) = \left(p_i^{-\frac{1}{1-\rho}} \alpha_i^{\frac{1}{1-\rho}} \left(\sum_j \alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{\rho}{1-\rho}}\right)^{-\frac{1}{\rho}}\right)u(z)
+\]</span> which note satisfies the non-negativity constraints (<span class="math inline">\(u(z) \geq 0\)</span>).</p>
+<ol start="3" type="a">
+<li>We have the Marshallian demand for good <span class="math inline">\(i\)</span> is given by: <span class="math display">\[
+x_i(p, m) = \frac{m\left(\frac{\alpha_i}{p_i}\right)^{\frac{1}{1-\rho}}}{\sum_j p_j \left(\frac{\alpha_j}{p_j}\right)^{\frac{1}{1-\rho}}}.
+\]</span> We need to show for some <span class="math inline">\(p_j\)</span> that Slutsky’s holds, i.e: <span class="math display">\[
+\frac{\partial x_i(p,m)}{\partial p_j} = \frac{\partial h_i(p, x_i(p,m))}{\partial p_j} - \frac{\partial x_i(p,m)}{\partial m}x_j.
+\]</span></li>
+</ol>
+<p>First consider <span class="math inline">\(j \neq i\)</span>. Differentiating marshallian demand, we get: <span class="math display">\[
+\frac{\partial x_i(p,m)}{\partial p_j} = \frac{\left(\frac{\rho}{1-\rho}\right)m\left(\frac{\alpha_i}{p_i}\right)^{\frac{1}{1-\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}}{\left(\sum_j \alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{\rho}{1-\rho}}\right)^2}.
+\]</span></p>
+<p>Then note for the Hicksian demand, we calculate the utility <span class="math inline">\(u(x(p,m)) = v(p,m)\)</span> as: <span class="math display">\[
+v(p,m) = \left(\sum_i \alpha_i \left(\frac{m\left(\frac{\alpha_i}{p_i}\right)^{\frac{1}{1-\rho}}}{\sum_j p_j \left(\frac{\alpha_j}{p_j}\right)^{\frac{1}{1-\rho}}}\right)^\rho \right)^{\frac{1}{\rho}} = m\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^{\frac{1-\rho}{\rho}}.
+\]</span></p>
+<p>Thus, the substitution effect is calculated as such: <span class="math display">\[\begin{align*}
+    \frac{\partial h_i(p, x_i(p,m))}{\partial p_j} &amp;= \left(\frac{1}{1-\rho}\right)\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^{\frac{-1-\rho}{\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}v(p,m) \\
+    &amp;= \frac{m\left(\frac{1}{1-\rho}\right)\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}}{\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^2},
+\end{align*}\]</span> and the income effect is calculated as such: <span class="math display">\[
+- \frac{\partial x_i(p,m)}{\partial m}x_j = -\frac{m\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}}{\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^2},
+\]</span> and so we get the Marshallian demand when adding the two effects together, showing Slutsky’s. Now consider when <span class="math inline">\(i=j\)</span>. Similarly, the total effect is calculated as: <span class="math display">\[\begin{align*}
+\frac{\partial x_i(p,m)}{\partial p_i}
+&amp;= \frac{
+m \left(-\frac{1}{1-\rho} \right)
+\alpha_i^{\frac{1}{1-\rho}} p_i^{\frac{\rho-2}{1-\rho}}\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)- m\left( \frac{-\rho}{1-\rho} \right) \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}} }{\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)^2} \\
+&amp;=\frac{m \left(\frac{1}{1-\rho} \right)
+\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{2}{1-\rho}}}{\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)^2}\left(\rho \alpha_i^{\frac{1}{1-\rho}} - p_i^{\frac{\rho}{1-\rho}}\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)\right).
+\end{align*}\]</span></p>
+<p>The substitution effect is calculated as: <span class="math display">\[\begin{align*}
+\frac{\partial h_i(p,x_i(p,m))}{\partial p_i}
+&amp;=
+\alpha_i^{\frac{1}{1-\rho}}
+\Biggr(
+\left( -\frac{1}{1-\rho} \right)
+p_i^{\frac{\rho-2}{1-\rho}}
+\left(
+\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}
+\right)^{-\frac{1}{\rho}} \\
+&amp;+
+p_i^{-\frac{1}{1-\rho}}
+\left( -\frac{1}{\rho} \right)
+\left(
+\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}
+\right)^{\frac{-1-\rho}{\rho}}
+\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}
+\left( -\frac{\rho}{1-\rho} \right)
+\Biggr) v(p,m) \\
+&amp;=
+\frac{
+m \left(\frac{1}{1-\rho} \right)
+\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{2}{1-\rho}}
+}{
+\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)^2
+}
+\left(
+\alpha_i^{\frac{1}{1-\rho}}
+- p_i^{\frac{\rho}{1-\rho}}
+\left(
+\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}
+\right)
+\right).
+\end{align*}\]</span></p>
+<p>Finally, the income effect is calculated as: <span class="math display">\[\begin{align*}
+    -\frac{\partial x_i(p,m)}{\partial m}x_i = -\frac{m \left(\frac{1}{1-\rho} \right)
+\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{2}{1-\rho}}}{\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)^2}\left(\alpha_i^{\frac{1}{1-\rho}} -\rho \alpha_i^{\frac{1}{1-\rho}}  \right).
+\end{align*}\]</span> Thus, adding the income and substitution effects yields the total effect, and Slutsky’s equation holds.</p>
+<ol start="4" type="a">
+<li>Goods <span class="math inline">\(i,j\)</span> being net substitutes implies: <span class="math display">\[
+\frac{\partial h_i(p, z)}{\partial p_j} = \left(\frac{1}{1-\rho}\right)\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^{\frac{-1-\rho}{\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}u(z) \geq 0.
+\]</span> Since <span class="math inline">\(\alpha_i, p_i \geq 0\)</span> and <span class="math inline">\(\rho &lt; 1\)</span> (so <span class="math inline">\(\frac{1}{1-\rho} \geq 0\)</span>), we have that this condition is met already by CES, so any two goods <span class="math inline">\(i \neq j\)</span> are net substitutes.</li>
+</ol>
+<p>Goods <span class="math inline">\(i \neq j\)</span> being gross substitutes implies: <span class="math display">\[
+\frac{\partial x_i(p,m)}{\partial p_j} = \frac{\left(\frac{\rho}{1-\rho}\right)m\left(\frac{\alpha_i}{p_i}\right)^{\frac{1}{1-\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}}{\left(\sum_j \alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{\rho}{1-\rho}}\right)^2} \leq 0.
+\]</span> Since <span class="math inline">\(\alpha_i, p_i, m \geq 0\)</span>, the total effect is nonpositive iff <span class="math inline">\(\frac{\rho}{1-\rho} \leq 0\)</span>, or equivalently, <span class="math inline">\(\rho \leq 0\)</span>. Thus, two goods <span class="math inline">\(i \neq j\)</span> are always net substitutes under CES, but not gross substitutes if and only if <span class="math inline">\(\rho \leq 0\)</span>.</p>
+<ol start="5" type="a">
+<li><p>We claim that <span class="math inline">\(u_{-\infty}(x) = \min_i x_i.\)</span> We let <span class="math inline">\(m = \min_i x_i\)</span> and define for all <span class="math inline">\(i\)</span>, <span class="math inline">\(r_i = x_i/m\)</span>. Thus we rewrite: <span class="math display">\[
+u(x) =m\left(\sum_i \alpha_i r_i^\rho\right)^{1/\rho}.
+\]</span> Suppose <span class="math inline">\(\mathcal{I} = \{i, \ldots\}\)</span> are those indices that achieve the minimum and <span class="math inline">\(\mathcal{I}' = \{i', \ldots\}\)</span> are those indices that are such that <span class="math inline">\(x_{i'} &gt; m\)</span>. Thus, <span class="math inline">\(r_i = 1, r_{i'} &gt; 1\)</span>, and as <span class="math inline">\(\rho \rightarrow --\infty\)</span>, <span class="math inline">\(r_i^\rho = 1, r_{i'}^\rho = 0\)</span>. We thus have: <span class="math display">\[
+\lim_{\rho \rightarrow -\infty}u(x) = m \left(\sum_{i\in \mathcal{I}} \alpha_i\right)^0 = m = \min_i \{x_i\}.
+\]</span></p></li>
+<li><p>From part 1, we have that preferences are neoclassical. Also note that <span class="math display">\[
+u(\lambda x) = \left(\sum_i \alpha_i (\lambda x_i)^\rho \right)^{1/\rho} = \lambda\left(\sum_i \alpha_i x_i^\rho \right)^{1/\rho} = \lambda u(x)
+\]</span> so utility is homogeneous of degree 1. This means that preferences (assuming they are identical across consumers) are also homothetic. By Antonelli, any distribution of the endowments among consumers will result in the same aggregate demand, as the aggregate demand will equal the sum of all their individual demands (i.e.&nbsp;as if we had one consumer with income $<span class="math inline">\(m\)</span>).</p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>Bob only enjoys donuts and coffee if they are in a 2 to 1 ratio, i.e.&nbsp;2 donuts for every 1 cup of coffee. He does not care for any leftover coffee or donuts that are not of the right mix. Assume quantities of both goods are continuous.</li>
+</ol>
+<ol type="a">
+<li>Write down a utility function that represents Bob’s preferences.</li>
+<li>Show that Bob’s preferences are monotone, but not strictly monotone.</li>
+<li>Show that Bob’s preferences are convex but not strictly convex.</li>
+<li>Show that Bob’s preferences however are almost strictly convex: if <span class="math inline">\(x \succeq y\)</span> where <span class="math inline">\(x \cancel{\geq} y\)</span> and <span class="math inline">\(y \cancel{\geq} x\)</span>, then <span class="math inline">\(ax + (1-a)y \succ y\)</span> for all <span class="math inline">\(a \in (0,1)\)</span>.</li>
+<li>Solve for Bob’s Marshallian demand and show that it is still a singleton/a function (recall prices are strictly positive).</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Let donuts be <span class="math inline">\(d\)</span> and coffee be <span class="math inline">\(c\)</span>.</p>
+<ol type="a">
+<li><p>We can write <span class="math display">\[
+u(d,c) = \min\{d, 2c\}.
+\]</span></p></li>
+<li><p>Let <span class="math inline">\((d_1, c_1) &lt; (d_2, c_2)\)</span> and so <span class="math display">\[
+u(d_1, c_1) = \min\{d_1, 2c_1\} \leq \min\{d_2, 2c_2\} = u(d_2, c_2),
+\]</span> and <span class="math inline">\(u\)</span> is increasing, so <span class="math inline">\(\succeq\)</span> is monotone. However, consider <span class="math inline">\((2,1) &lt; (2,2)\)</span>, but <span class="math inline">\(u(2,1) = u(2,2) = 2\)</span>, so <span class="math inline">\(u\)</span> is not strictly increasing, and thus <span class="math inline">\(\succeq\)</span> is not strictly monotone.</p></li>
+<li><p>Let <span class="math inline">\((d_1, c_1) \preceq (d_2, c_2)\)</span>, where <span class="math inline">\((d_1, c_1) \neq (d_2, c_2)\)</span>. This also means that <span class="math inline">\(u(d_1, c_1) \leq u(d_2, c_2)\)</span>. Let <span class="math inline">\(a \in (0,1)\)</span>. Note that: <span class="math display">\[\begin{align*}
+u(ad_1 + (1-a)d_2, ac_1 + (1-a)c_2) &amp;= \min\{ad_1 + (1-a)d_2, 2ac_1 + 2(1-a)c_2\} \\
+&amp;\geq a \min\{d_1, 2c_1\} + (1-a)\min\{d_2, 2c_2\}\\
+&amp;\geq \min\{d_1, 2ac_1\} \\
+&amp;= u(d_1, c_1)
+\end{align*}\]</span> and so <span class="math inline">\(a(d_1, c_1) + (1-a)(d_2, c_2) \succeq (d_1, c_1)\)</span>, and preferences are convex. However, consider the bundles <span class="math inline">\((2,1), (2,3)\)</span> which both give utility <span class="math inline">\(2\)</span>, but so does any convex combination of them. Thus, the convex combination is not strictly preferred, so preferences are not strictly convex.</p></li>
+<li><p>Let <span class="math inline">\(a \in (0,1)\)</span>, <span class="math inline">\((d_1, c_1) \succeq (d_2, c_2)\)</span>, where <span class="math inline">\((d_1, c_1) \cancel{\geq} (d_2, c_2)\)</span> and <span class="math inline">\((d_2, c_2) \cancel{\geq} (d_1, c_1)\)</span>. Thus, either:</p></li>
+</ol>
+<p>Case 1: <span class="math inline">\(c_2 &gt; c_1\)</span> and <span class="math inline">\(d_1 &gt; d_2\)</span>. We see that: <span class="math display">\[\begin{align*}
+    u(ad_1 + (1-a)d_2, ac_1 + (1-a)c_2) &amp;= \min\{ad_1 + (1-a)d_2, 2ac_1 + 2(1-a)c_2\} \\
+    &amp;&gt; \min\{d_2, 2c_1\} \\
+    &amp;\geq \min\{d_2, 2c_2\} \quad \text{(by $(d_1, c_1) \succeq (d_2, c_2)$)} \\
+    &amp;= u(d_2, c_2),
+\end{align*}\]</span> and so the convex combination is strictly preferred to <span class="math inline">\((d_2, c_2)\)</span>.</p>
+<p>Case 2: <span class="math inline">\(c_1 &gt; c_2\)</span> and <span class="math inline">\(d_2 &gt; d_1\)</span>. We see that: <span class="math display">\[\begin{align*}
+    u(ad_1 + (1-a)d_2, ac_1 + (1-a)c_2) &amp;= \min\{ad_1 + (1-a)d_2, 2ac_1 + 2(1-a)c_2\} \\
+    &amp;&gt; \min\{d_1, 2c_2\} \\
+    &amp;\geq \min\{d_2, 2c_2\} \quad \text{(by $(d_1, c_1) \succeq (d_2, c_2)$)} \\
+    &amp;= u(d_2, c_2),
+\end{align*}\]</span> and so the convex combination is again strictly preferred to <span class="math inline">\((d_2, c_2)\)</span>. Thus, <span class="math inline">\(\succeq\)</span> is almost strictly convex.</p>
+<ol start="5" type="a">
+<li>Intuitively, since prices are strictly positive, we will not have our budget set border “horizontal” or “vertical” lining up with the indifference curves (they will always meet at a kink point). To see this, let <span class="math inline">\(p_d\)</span>, <span class="math inline">\(p_c\)</span> be the prices of donuts and coffee respectively. The consumer solves: <span class="math display">\[
+\text{maximize } \min\{d, 2c\} \text{  subject to } p_d\cdot d + p_c \cdot c \leq m.
+\]</span> We note that the optimal utility maximizing bundle will always have the ratio <span class="math inline">\(d^\star=2c^\star\)</span>, and so we can rewrite the problem as: <span class="math display">\[
+\text{maximize } d \text{  subject to } p_d\cdot d + p_c \cdot d/2 \leq m.
+\]</span> Both <span class="math inline">\(d\)</span> and <span class="math inline">\(p_d\cdot d + p_c \cdot d/2\)</span> are increasing in <span class="math inline">\(d\)</span>, so we know the budget constraint will bind, and solving for <span class="math inline">\(d^\star\)</span> yields the Marshallian demands <span class="math display">\[
+d^\star = \frac{m}{p_d+p_c/2},\quad  c^\star = \frac{m/2}{p_d+p_c/2},
+\]</span> which are clearly functions of <span class="math inline">\(p_d, p_c&gt;0, m\geq 0\)</span>, so they are singletons.</li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>Let <span class="math inline">\(X = \mathbb{R}^2_+\)</span>. Find a neoclassical preference relation <span class="math inline">\(\succeq\)</span> under which Walras’s law does not hold and prove it is so.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Consider the utility function on X: <span class="math display">\[
+u(x, y) = -(x-2)^2 - (y-2)^2
+\]</span> which is a negative paraboloid. Clearly <span class="math inline">\(u\)</span> is continuous, so by Debreu, the preference relation <span class="math inline">\(\succeq\)</span> given by <span class="math inline">\(x \succeq y \iff u(x) \geq u(y)\)</span> is continuous. Also note that <span class="math inline">\(D^2u(x,y)\)</span> is symmetric negative definite, implying that <span class="math inline">\(u\)</span> is strictly concave, and thus, the <span class="math inline">\(\succeq\)</span> is strictly convex and a neoclassical preference relation.</p>
+<p>But note that <span class="math inline">\(u\)</span> admits a local (and global) optimum at <span class="math inline">\((2,2)\)</span>, where it takes on the value of <span class="math inline">\(0\)</span>. Thus, <span class="math inline">\(\succeq\)</span> is not locally non-satiated, and Walras’s law is not guaranteed. Indeed, consider <span class="math inline">\(p=(1, 1), m = 5\)</span>. The marshallian demand is thus given by <span class="math inline">\(x(p,m) = (2,2)\)</span>, but <span class="math inline">\(x(p,m) \cdot p = 4 &lt; m\)</span>, so the budget constraint is not binding.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="8" type="1">
+<li>Suppose Hicksian demand <span class="math inline">\(h(p,z)\)</span> is differentiable with respect to prices.</li>
+</ol>
+<ol type="a">
+<li>Show that <span class="math inline">\(h(\cdot, z)\)</span> is homogeneous of degree zero, i.e.&nbsp;<span class="math inline">\(h(\lambda p, z) = h(p,z)\)</span> for <span class="math inline">\(\lambda &gt;0\)</span>. ) b) Use the above to show that the Slutsky matrix satisfies <span class="math inline">\(S(p,m) \cdot p = \vec{0}\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>Let <span class="math inline">\(\lambda &gt;0\)</span>. We then see by linearity: <span class="math display">\[
+h(\lambda p, z) = \underset{x\in G(\succeq, z)}{\text{argmin } \lambda p \cdot x} = \underset{x\in G(\succeq, z)}{\text{argmin } \lambda (p \cdot x)} = \underset{x\in G(\succeq, z)}{\text{argmin } p \cdot x} = h(p,z).
+\]</span></p></li>
+<li><p>We have for any <span class="math inline">\(\lambda &gt;0\)</span> that <span class="math inline">\(h_i(p,z) = h_i(p,z)\)</span>. Differentiating w.r.t. <span class="math inline">\(\lambda\)</span> and then setting <span class="math inline">\(\lambda = 1\)</span>, we get: <span class="math display">\[
+\sum_j \frac{\partial h_i(p, z)}{\partial p_j}p_j = 0 \quad \forall i \in [n].
+\]</span> In particular, this means <span class="math inline">\(S(p,m)^T \cdot p = \vec{0}\)</span>. Since Hicksian demand is differentiable w.r.t. to price, the Slutsky matrix is symmetric (by Shephard’s lemma and Clairaut’s Theorem), and so in fact <span class="math inline">\(S(p,m) \cdot p = 0\)</span>.</p></li>
+</ol>
+</details>
+<section id="problem-set-2-producer-theory-equilibrium-welfare-risk-and-time" class="level4">
+<h4 class="anchored" data-anchor-id="problem-set-2-producer-theory-equilibrium-welfare-risk-and-time">Problem Set 2: Producer Theory, Equilibrium, Welfare, Risk, and Time</h4>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Consider the production function where <span class="math inline">\(\alpha &gt; 0\)</span> and <span class="math display">\[ f(x_1, x_2) = (\min\{x_1, x_2\})^{\alpha}. \]</span></li>
+</ol>
+<ol type="a">
+<li>Solve for the factor demand and cost function. When is the latter convex (in <span class="math inline">\(q\)</span>)?</li>
+<li>Suppose <span class="math inline">\(x_2 = c\)</span> is fixed in the short run. Solve for the factor demand and cost function (for attainable <span class="math inline">\(q\)</span>).</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Answer.</em>
+</summary>
+<ol type="a">
+<li>First, note that all <span class="math inline">\(q \geq 0\)</span> are attainable. We write: <span class="math display">\[
+x(f,q) = \underset{x \in M(f, q)}{\text{argmin }} p_1 x_1 + p_2 x_2,
+\]</span> where <span class="math inline">\(M(f,q) = \{\vec{x} | (\min\{x_1, x_2\})^\alpha \geq q\}\)</span>.</li>
+</ol>
+<p>Suppose <span class="math inline">\((\min\{x_1, x_2\})^\alpha &gt; q\)</span>. Since <span class="math inline">\((\min\{x_1, x_2\})^\alpha\)</span> is continuous and increasing, we can reduce the quantity of <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> by a nonzero to still produce an amount greater than or equal to <span class="math inline">\(q\)</span>, and since prices are strictly positive, we have strictly decreased cost. Thus, the constraint must be binding, i.e., <span class="math inline">\(f(x) = q\)</span>.</p>
+<p>Next, suppose <span class="math inline">\(x_1 \neq x_2\)</span>, so without loss of generality, assume <span class="math inline">\(x_1 &gt; x_2\)</span>, or <span class="math inline">\(x_1 = x_2 + \varepsilon\)</span>, where <span class="math inline">\(\varepsilon &gt; 0\)</span>. Thus, <span class="math inline">\((\min\{x_1, x_2\})^\alpha = (\min\{x_2, x_2\})^\alpha\)</span>, but the first one incurs an additional $p_1&gt; 0 $ cost, so it cannot be the minimum. Thus, <span class="math inline">\(x_1 = x_2\)</span>.</p>
+<p>We rewrite our optimization problem as: <span class="math display">\[x(f,q) = \underset{x_1^\alpha = q}{\text{argmin }} (p_1 + p_2) x_1.
+\]</span> which has the factor demand solution <span class="math inline">\(x_1 = x_2 = q^{1/\alpha}\)</span>. The cost function is thus <span class="math inline">\(c(q) = (p_1 + p_2)q^{1/\alpha}\)</span>. This is convex in <span class="math inline">\(q\)</span> when <span class="math inline">\(1/\alpha \geq 1\)</span>, or when <span class="math inline">\(\alpha \leq 1\)</span>.</p>
+<ol start="2" type="a">
+<li>Now, only <span class="math inline">\(q \in [0, c^\alpha]\)</span> are attainable. The firm would also not want to demand more than <span class="math inline">\(c\)</span> units of <span class="math inline">\(x_1\)</span>, as additional <span class="math inline">\(x_1\)</span> would not lead to any more production. Thus, <span class="math inline">\(f(x) = x_1^\alpha\)</span>. We have the problem: <span class="math display">\[
+x(f, q) = \underset{x_1^\alpha \geq q}{\text{argmin }} p_1 x_1 + p_2 c = \underset{x_1^\alpha \geq q}{\text{argmin }} p_1 x_1.
+\]</span> The constraint is binding for the same reason as before, so <span class="math inline">\(x_1^\alpha = q\)</span>, and we get the factor demand <span class="math inline">\(x_1 = q^{1/\alpha}, x_2 = c\)</span> with cost function <span class="math inline">\(c(q) = p_1q^{1/\alpha} + p_2c\)</span>.</li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Consider an economy with 2 goods where total endowment is <span class="math inline">\((2,1)\)</span>. Consumers all have the same endowment. Each consumer <span class="math inline">\(i \in I = \{1, \ldots, |I|\}\)</span> has Cobb–Douglas utility <span class="math display">\[ u_i(x_1, x_2) = x_1^{\alpha_i} x_2^{1-\alpha_i} \]</span> where <span class="math inline">\(\alpha_i \in (0,1)\)</span>. All consumers own equal shares of a single firm with production function <span class="math display">\[ f(x_1) = \sqrt{x_1}. \]</span></li>
+</ol>
+<ol type="a">
+<li>Show that when all consumers have the same endowment, aggregate demand in this case can be written as the demand of a representative consumer with Cobb–Douglas utility. What is the representative consumer’s utility?</li>
+<li>Solve for an equilibrium.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>Each consumer demands according to the problem <span class="math display">\[
+x^i(p, m^i) = \text{argmax } x_1^{\alpha_i}x_2^{1-\alpha_i} \text{ subject to } \vec{x} \geq 0, \vec{p} \cdot \vec{x} \leq m^i.
+\]</span> Since Cobb-Douglas preferences are neoclassical and locally nonsatiated, we have Walras’s law, and also note the demand for a positive income will always be positive, since a zero amount in any good will result in the minimum utility of zero. Thus, the nonnegativity constraints can be ignored. Solving the Langrangian yields the demands for consumer <span class="math inline">\(i\)</span>: <span class="math display">\[
+x_1^i(p, m^i) = \frac{\alpha^im^i}{p_1}, \quad x_2^i(p, m^i) = \frac{(1-\alpha^i)m^i}{p_2}.
+\]</span> Since each consumer gets equal endowments and equal share in the profits of the firm, <span class="math inline">\(m^i\)</span> is equal for all <span class="math inline">\(i\)</span>. In particular, we can write <span class="math inline">\(m/|I| = m^i\)</span>, where <span class="math inline">\(m = \sum_i m^i\)</span>. Now, summing demands across all <span class="math inline">\(i\)</span>, we get aggregate demand: <span class="math display">\[
+x_1(p, (m^i)_i) = \sum_i x_1^i(p, m^i) = \left(\frac{1}{|I|}\sum_i \alpha^i\right) \frac{m}{p_1},
+\]</span> <span class="math display">\[
+x_2(p, (m^i)_i) = \sum_i x_2^i(p, m^i) = \left(1- \frac{1}{|I|}\sum_i \alpha^i\right) \frac{m}{p_2}.
+\]</span> Denote <span class="math inline">\(\alpha = \left(\frac{1}{|I|}\sum_i \alpha^i\right)\)</span>. From the Cobb-Douglas demand solution, we can see the aggregate demands can instead be written as the demand of a representative consumer with income <span class="math inline">\(m\)</span> (all endowment and full equity in the firm) and utility <span class="math inline">\(x_1^\alpha x_2^{1-\alpha}\)</span>.</p></li>
+<li><p>From the production side, we solve for the supply. The factor demand is <span class="math inline">\(x_1(x_2) = x_2^2\)</span>, and so the cost function is <span class="math inline">\(c(x_2) = p_1x_2^2\)</span>. The firm’s profit maximization problem thus becomes: <span class="math display">\[
+\max_{x_2 \geq 0} p_2 x_2 - p_1 x_2^2.
+\]</span> Solving the FOC, <span class="math inline">\(q = x_2 = p_2/(2p_1)\)</span>, so <span class="math inline">\(x_1 = p_2^2/(4p_1^2)\)</span>. The supply is thus given by <span class="math inline">\(s_1(p) = -p_2^2/(4p_1^2), s_2(p) = p_2/(2p_1)\)</span>.</p></li>
+</ol>
+<p>Now, using the representative consumer, we solve for their income, given by: <span class="math display">\[
+m = p \cdot e + p \cdot s(p) = 2p_1 + p_2 + p_2^2/4p_1.
+\]</span></p>
+<p>We plug into the market clearing condition: <span class="math display">\[\begin{align}
+    \frac{\alpha (2p_1 + p_2 + p_2^2/4p_1)}{p_1} = 2 - p_2^2/(4p_1^2), \\
+    \frac{(1-\alpha)(2p_1 + p_2 + p_2^2/4p_1)}{p_2} = 1 + p_2/(2p_1).
+\end{align}\]</span> Let <span class="math inline">\(r = p_2/p_1\)</span>, and we rewrite the first equation as: <span class="math display">\[
+\alpha(2 + r + r^2/4) = 2 - r^2/4.
+\]</span> Solving for <span class="math inline">\(r &gt; 0\)</span> yields the equilibrium price ratio <span class="math display">\[r= p_2/p_1 = \frac{2(-\alpha + \sqrt{2-\alpha^2})}{1+\alpha}.\]</span> Finally, plugging this into our supply yields equilibrium supplies: <span class="math display">\[s_1 = \frac{-(-\alpha + \sqrt{2-\alpha^2})^2}{(1+\alpha)^2}, \quad s_2 = \frac{(-\alpha + \sqrt{2-\alpha^2})}{1+\alpha}
+\]</span> and into our individual consumers’ demands yields equilibrium demand for consumer <span class="math inline">\(i\)</span> (recall: <span class="math inline">\(m^i = (2p_1 + p_2 + p_2^2/4p_1)/|I|\)</span>):</p>
+<p><span class="math display">\[\begin{align}
+    x_1^i = \frac{\alpha^im^i}{p_1} = \frac{\alpha_i}{|I|}(2 + r + r^2/4) = \frac{2\alpha_i(2+\alpha+\sqrt{2-\alpha^2})}{|I|(1+\alpha)^2}, \\
+    x_2^i = \frac{(1-\alpha^i)m^i}{p_2} = \frac{(1-\alpha_i)}{|I|}(2/r + 1 + r/4) = \frac{(1-\alpha_i)(1+\sqrt{2-\alpha^2})}{|I|(1-\alpha)(1+\alpha)}.
+\end{align}\]</span> <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Consider a pure-exchange economy (i.e.&nbsp;no firms) with 2 goods where total endowment is <span class="math inline">\((1,1)\)</span>. There are two consumers: consumer 1 has utility <span class="math display">\[ u_1(x_1, x_2) = x_1^2 + x_2^2 \]</span> while consumer 2 has utility <span class="math display">\[ u_2(x_1, x_2) = \min\{x_1, x_2\}. \]</span></li>
+</ol>
+<ol type="a">
+<li>Show that an allocation <span class="math inline">\((x^1, x^2) = \left( \left(\tfrac{1}{2}, \tfrac{1}{2}\right), \left(\tfrac{1}{2}, \tfrac{1}{2}\right) \right)\)</span> is efficient.</li>
+<li>Using (1), show that the Second Welfare Theorem fails.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>First note <span class="math inline">\((x^1, x^2)\)</span> is feasible since <span class="math inline">\(x^1 + x^2 \leq \bar{e}\)</span>. Now, suppose <span class="math inline">\((y^1, y^2)\)</span> Pareto dominates <span class="math inline">\((x^1, x^2)\)</span>. Thus, either 1) <span class="math inline">\(u_1(y^1) &gt; u_1(x^1)\)</span> or 2) <span class="math inline">\(u_2(y^2) &gt; u_2(x^2)\)</span>. For 1), this means either <span class="math inline">\(y^1_1 &gt; x^1_1\)</span> or <span class="math inline">\(y^1_2 &gt; x^1_2\)</span>, which also means in this pure-exchange economy that either <span class="math inline">\(y^2_1 &lt; x^2_1\)</span> or <span class="math inline">\(y^2_2 &lt; x^2_2\)</span>. Either case, <span class="math inline">\(u_2(y^2) &lt; u_2(x^2)\)</span>, contradicting Pareto domination. For 2), this means both <span class="math inline">\(y^2_1 &gt; x^2_1\)</span> and <span class="math inline">\(y^2_2 &gt; x^2_2\)</span>, which, in this pure-exchange economy, means <span class="math inline">\(y^1_1 &lt; x^1_1\)</span> and <span class="math inline">\(y^1_2 &lt; x^1_2\)</span>. Thus, <span class="math inline">\(u_1(y^1) &lt; u_1(x^1)\)</span>, contradicting Pareto domination. Thus, <span class="math inline">\((x^1, x^2)\)</span> is efficient.</p></li>
+<li><p>Note that the Second Welfare Theorem fails since <span class="math inline">\(\succeq_2\)</span> is not strictly convex, and thus, not neoclassical. Suppose for contradiction there exists some prices <span class="math inline">\(p_1, p_2\)</span> and endowment redistribution <span class="math inline">\((c^1, c^2)\)</span> such that <span class="math inline">\((x^1, x^2)\)</span> is a Walrasian equilibrium. Each consumer is then maximizing their utility at prices <span class="math inline">\(p\)</span> subject to their budget constraint / initial endowment <span class="math inline">\(p \cdot c^i\)</span> under the allocation <span class="math inline">\((x^1, x^2)\)</span>. Since preferences are locally non-satiated, this budget constraint is also binding, implying that <span class="math display">\[\begin{align}
+p_1\cdot 1/2 + p_2 \cdot 1/2 = p_1 c^1_1 + p_2 c^1_2, \\
+p_1\cdot 1/2 + p_2 \cdot 1/2 = p_1 c^2_1 + p_2 c^2_2.
+\end{align}\]</span> Consider consumer 2. Subject to their budget constraint and given their perfect complement utility, they will demand <span class="math inline">\((1/2, 1/2)\)</span>. For markets to clear, this must mean consumer 1 also demands <span class="math inline">\((1/2, 1/2)\)</span>. However, solving the utility maximization problem for consumer 1: <span class="math display">\[
+\max x_1^2 + x_2^2 \text{ subject to } p_1 x_1 + p_2 x_2 = p_1c_1^1 + p_2c_2^1 = 1/2(p_1 + p_2), x_1 \geq 0, x_2 \geq 0
+\]</span> yields corner solutions (since <span class="math inline">\(u_1\)</span> is strictly convex) <span class="math inline">\(x^1\)</span> equal to <span class="math inline">\(((p_1 + p_2)/(2p_1), 0)\)</span> or <span class="math inline">\((0, (p_1 + p_2)/(2p_2))\)</span>, none of which can equal <span class="math inline">\((1/2, 1/2)\)</span> for any prices <span class="math inline">\(p\)</span>. Thus, Second Welfare Theorem fails. <span class="math inline">\(\square\)</span></p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>Show that if <span class="math inline">\(\succeq\)</span> is a preference relation that satisfies independence and Archimedean continuity, then it also satisfies independence<span class="math inline">\(^*\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Let <span class="math inline">\(p, q, r \in \Delta X\)</span> and <span class="math inline">\(a \in (0,1)\)</span>, and assume <span class="math inline">\(par \succ qar\)</span>. Suppose for contradiction that <span class="math inline">\(p \preceq q\)</span>. If <span class="math inline">\(p \prec q\)</span>, then by independence, <span class="math inline">\(par \prec qar\)</span>, which is contradictory. Thus, <span class="math inline">\(p \sim q\)</span>. We have three cases.</p>
+<ol type="1">
+<li><p><span class="math inline">\(p \sim q \sim r\)</span>. Then, since <span class="math inline">\(\succeq\)</span> satisfies betweenness, we have that <span class="math display">\[
+p \sim par \sim r \sim r(1-a)q \sim q
+\]</span> which implies that <span class="math inline">\(par \sim qar\)</span>, a contradiction.</p></li>
+<li><p><span class="math inline">\(p \sim q \prec r\)</span>. By betweenness, we have that <span class="math inline">\(q \prec rbq\)</span> for all <span class="math inline">\(b \in (0,1)\)</span>. By transitivity, we also have that <span class="math inline">\(p \prec rbq\)</span>. By independence, we have that <span class="math display">\[
+par \prec (rbq)ar
+\]</span> and by transitivity with our assumption, we have that: <span class="math display">\[\begin{equation}\label{q4.1}
+qar \prec par \prec (rbq)ar \quad ($\star$)
+\end{equation}\]</span> for all <span class="math inline">\(b \in (0,1)\)</span>. Fix a <span class="math inline">\(b\)</span> and apply Archimedean continuity to find <span class="math inline">\(c_b \in (0,1)\)</span> such that <span class="math display">\[
+((rbq)ar)c_b(qar) \prec par
+\]</span> which simplifying the RHS yields <span class="math display">\[\begin{align*}
+((rbq)ar)c_b(qar) &amp;= c_b(a(br+(1-b)q)+(1-a)r)+(1-c_b)(aq+(1-a)r) \\
+&amp;= a(1-bc_b)q +(abc+1-a)r \\
+&amp;= a((bc_b)r+(1-bc_b)q)+(1-a)r \\
+&amp;= (r(bc_b)q)ar \prec par.
+\end{align*}\]</span> But since <span class="math inline">\(bc_b \in (0,1)\)</span>, this contradicts (<span class="math inline">\(\star\)</span>).</p></li>
+<li><p><span class="math inline">\(r \prec p \sim q\)</span>. By betweenness, we have that <span class="math inline">\(rbp \prec p\)</span> for all <span class="math inline">\(b \in (0,1)\)</span>. By transitivity, we also have that <span class="math inline">\(rbp \prec q\)</span>. By independence, we have that <span class="math display">\[
+(rbp)ar \prec qar
+\]</span> and by transitivity with our assumption, we have that: <span class="math display">\[\begin{equation}\label{q4.2}
+(rbp)ar \prec qar \prec par \quad ($\star$)
+\end{equation}\]</span> for all <span class="math inline">\(b \in (0,1)\)</span>. Fix a <span class="math inline">\(b\)</span> and apply Archimedean continuity to find <span class="math inline">\(c_b \in (0,1)\)</span> such that <span class="math display">\[
+((rbp)ar)c_b(par) \prec qar
+\]</span> which simplifying the RHS yields <span class="math display">\[\begin{align*}
+((rbp)ar)c_b(par) &amp;= (r(bc_b)p)ar \prec qar.
+\end{align*}\]</span> But since <span class="math inline">\(bc_b \in (0,1)\)</span>, this contradicts (<span class="math inline">\(\star\)</span>).</p></li>
+</ol>
+<p>Thus, <span class="math inline">\(p \succ q\)</span>, showing independence*. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>Suppose <span class="math inline">\(\succeq_1\)</span> and <span class="math inline">\(\succeq_2\)</span> are monotonic and have well-defined Arrow–Pratt coefficients <span class="math inline">\(A^{u_1}\)</span> and <span class="math inline">\(A^{u_2}\)</span>, where <span class="math inline">\(u_i\)</span> is the vNM utility representing <span class="math inline">\(\succeq_i\)</span> for <span class="math inline">\(i \in \{1,2\}\)</span>. Show that if <span class="math inline">\(\succeq_1\)</span> is more risk-averse than <span class="math inline">\(\succeq_2\)</span>, then <span class="math inline">\(A^{u_1}(x) \ge A^{u_2}(x)\)</span> for all <span class="math inline">\(x\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>We have that <span class="math inline">\(x \succeq_2 p \implies x \succeq_1 p\)</span>. By theorem, we have that <span class="math inline">\(u_1 = \phi \circ u_2\)</span> for an increasing, concave <span class="math inline">\(\phi : \mathbb{R} \rightarrow \mathbb{R}\)</span>. By chain and product rule, we see that <span class="math display">\[\begin{align*}
+u_1'(x) &amp;= \phi ' (u_2(x)) \cdot u_2'(x) \\
+u_1''(x) &amp;= \phi '' (u_2(x))\cdot (u_2'(x))^2 + \phi ' (u_2(x))\cdot u_2''(x).
+\end{align*}\]</span> Thus, <span class="math display">\[\begin{align*}
+A^{u_1}(x) = - \frac{u_1''(x)}{u_1'(x)} &amp;= - \frac{\phi '' (u_2(x))\cdot (u_2'(x))^2 + \phi ' (u_2(x))\cdot u_2''(x)}{\phi ' (u_2(x)) \cdot u_2'(x)} \\
+&amp;= - \frac{\phi '' (u_2(x))\cdot (u_2'(x))^2}{\phi ' (u_2(x)) \cdot u_2'(x)} - \frac{u_2''(x)}{u_2'(x)} \\
+&amp;= \underbrace{- \frac{\phi '' (u_2(x))\cdot (u_2'(x))^2}{\phi ' (u_2(x)) \cdot u_2'(x)}}_{(\star)} + A^{u_2}(x).
+\end{align*}\]</span> We know that <span class="math inline">\(\phi\)</span> is concave, so <span class="math inline">\(\phi'' \leq 0\)</span>, <span class="math inline">\(\phi\)</span> is increasing, so <span class="math inline">\(\phi' \geq 0\)</span>, and <span class="math inline">\(\succeq_2\)</span> is monotone, so <span class="math inline">\(u_2\)</span> is increasing and <span class="math inline">\(u_2' \geq 0\)</span>. By the well-definedness of the Arrow-Pratt coefficients, we can assume the denominators are always non-zero. Thus, <span class="math inline">\((\star) \geq 0\)</span>, meaning <span class="math inline">\(A^{u_1}(x) \geq A^{u_2}(x)\)</span> (for all <span class="math inline">\(x\)</span>). <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>Consider two distributions <span class="math inline">\(p, q \in \Delta([w,b])\)</span>. Let <span class="math inline">\(F_p\)</span> and <span class="math inline">\(F_q\)</span> denote the cumulative distribution functions of <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span>, respectively. Show that <span class="math inline">\(p\)</span> first-order stochastically dominates <span class="math inline">\(q\)</span> if and only if <span class="math inline">\(F_p(x) \le F_q(x)\)</span> for all <span class="math inline">\(x \in [w,b]\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p><span class="math inline">\((\implies)\)</span> Assume <span class="math inline">\(p \geq_{FOSD} q\)</span>. Suppose for contradiction there exists some <span class="math inline">\(x' \in [w,b]\)</span> such that <span class="math inline">\(F_p(x') &gt; F_q(x')\)</span>, or <span class="math inline">\(F_q(x') - F_p(x') &lt; 0\)</span>. Consider the increasing function <span class="math display">\[
+u(x) = \begin{cases}
+    0 &amp;: \quad x \leq x' \\
+    1 &amp;: \quad x &gt; x'
+\end{cases}.
+\]</span> Since <span class="math inline">\(u\)</span> is integrable with respect to <span class="math inline">\(F_q\)</span> on <span class="math inline">\([w,b]\)</span> by FOSD well-definedness, we can write by integral properties: <span class="math display">\[
+\int_w^b u \, dF_q = \underbrace{\int_w^{x'} u \, dF_q}_{=0} + \int_{x'}^b u \, dF_q = F_q(b) - F_q(x')
+\]</span> (where the last equality follows from a telescoping sum argument on the Darboux sums). Similarly, <span class="math display">\[
+\int_w^b u \, F_p = F_p(b) - F_p(x').
+\]</span> Subtracting the two, we see: <span class="math display">\[
+\int_w^b u \, dF_p - \int_w^b u \, dF_q = F_q(x') - F_p(x') &lt; 0
+\]</span> but this contradicts the fact that this difference must be <span class="math inline">\(\geq 0\)</span> by first-order stochastic domination and <span class="math inline">\(u\)</span> is increasing.</p>
+<p><span class="math inline">\((\impliedby)\)</span> Assume <span class="math inline">\(F_p \leq F_q\)</span>.</p>
+<p>For this proof, we use the following lemma from analysis (“integration by parts”). <strong>Lemma 1:</strong> Let <span class="math inline">\(u, F : [w,b] \rightarrow \mathbb{R}\)</span> be monotone increasing functions, <span class="math inline">\(u \in \mathcal{R}(F)\)</span> on <span class="math inline">\([w,b]\)</span> (integrable with respect to <span class="math inline">\(F\)</span>). Then, <span class="math inline">\(F \in \mathcal{R}(u)\)</span> on <span class="math inline">\([w,b]\)</span> and <span class="math display">\[ \int_w^b u \, dF + \int_w^b F \, du = u(b)F(b) - u(w)F(w). \]</span></p>
+<p><em>Proof of Lemma.</em> Assume <span class="math inline">\(u \in \mathcal{R}(F)\)</span>. Let <span class="math inline">\(\varepsilon &gt;0\)</span>. Thus, there is a partition <span class="math inline">\(P = \{a=x_0, \ldots, x_n =b\}\)</span> such that: <span class="math display">\[ \sum_{i=1}^n [\sup_i u(x) - \inf_i u(x)][F(x_i)-F(x_{i-1})] &lt; \varepsilon \]</span> and by monotonicity of <span class="math inline">\(u, F\)</span>, we also get: <span class="math display">\[ \sum_{i=1}^n [u(x_i) - u(x_{i-1})][\sup_i F(x)- \inf_i F(x)] &lt; \varepsilon \]</span> and so the difference between the Darboux sums <span class="math inline">\(U(F, P, u)-L(F, P, u) &lt; \varepsilon\)</span> and <span class="math inline">\(F \in \mathcal{R}(u)\)</span>.</p>
+<p>To show the formula, pick your favorite partition <span class="math inline">\(P_0 = \{a=x_0, \ldots, x_n =b\}\)</span>. It follows by monotonicity and telescoping sums that, <span class="math display">\[\begin{align}
+    U(u, P_0, F) + L(F, P_0, u) &amp;= \sum_i [u(x_i) \Delta F_i + F(x_{i-1}) \Delta u_i] \\
+    &amp;= \sum_i [u(x_i) F(x_i) - u(x_{i-1})F(x_{i-1})] \\
+    &amp;= u(b)F(b) - u(w)F(w)
+    \end{align}\]</span> and so namely, this holds for any partition of <span class="math inline">\([a,b]\)</span>. Thus we see, <span class="math display">\[\begin{align*}
+    \inf_P U(u, P, F) + L(F, P_0, u) &amp;\leq u(b)F(b) - u(w)F(w) \quad \text{(lower bound)}\\
+    L(F, P_0, u) &amp;\leq u(b)F(b) - u(w)F(w) - \int_w^b u dF \quad \text{(integrable)}\\
+      \sup_P L(F, P, u) &amp;\leq u(b)F(b) - u(w)F(w) - \int_w^b u dF \quad \text{(upper bound for any $P_0$)}\\
+     \int_w^b u dF + \int_w^b F du &amp;\leq u(b)F(b) - u(w)F(w)\quad \text{(integrable)}
+    \end{align*}\]</span> and similarly, <span class="math display">\[\begin{align*}
+    U(u, P_0, F) + \sup_P L(F, P, u) &amp;\geq u(b)F(b) - u(w)F(w) \\
+    \inf_P U(u, P, F) &amp;\geq u(b)F(b) - u(w)F(w) - \int_w^b F du \\
+    \int_w^b u dF + \int_w^b F du &amp;\geq u(b)F(b) - u(w)F(w) \\
+    \end{align*}\]</span> and so we get equality. Using Lemma 1, let <span class="math inline">\(u\)</span> be monotone increasing, and we see: <span class="math display">\[\begin{align*}
+    \int_w^b u \, dF_q = u(b)F_q(b) - u(w)F_q(w) - \int_w^b F_q \, du = 1- \int_w^b F_q \, du, \\
+    \int_w^b u \, dF_p = u(b)F_p(b) - u(w)F_p(w) - \int_w^b F_p \, du = 1- \int_w^b F_p \, du.
+\end{align*}\]</span> Subtracting the two and then using linearity of the Stieltges integral gives: <span class="math display">\[
+\int_w^b u \, dF_p - \int_w^b u \, dF_q = \int_w^b F_q \, du - \int_w^b F_p \, du = \int_w^b \left(F_q - F_p\right) \, du
+\]</span> and since <span class="math inline">\(F_p \leq F_q\)</span>, we have that <span class="math display">\[
+\int_w^b u \, dF_p - \int_w^b u \, dF_q \geq 0,
+\]</span> so <span class="math inline">\(p \geq_{FOSD} q\)</span>. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>Consider two random variables <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> where <span class="math display">\[ Y = X + \varepsilon \]</span> and <span class="math inline">\(\varepsilon\)</span> is an independent error distribution with mean zero (i.e.&nbsp;<span class="math inline">\(\mathbb{E}[\varepsilon] = 0\)</span>). Note that <span class="math inline">\(Y\)</span> is a mean-preserving spread of <span class="math inline">\(X\)</span>. We can associate <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> with their distributions on <span class="math inline">\(\mathbb{R}\)</span>, which we denote by <span class="math inline">\(p\)</span> and <span class="math inline">\(q\)</span> respectively. Suppose <span class="math inline">\(\succeq\)</span> has an expected utility representation and is risk averse and monotonic. Show that <span class="math inline">\(p \succeq q\)</span>. (Hint: use Jensen’s inequality.)</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Let <span class="math inline">\(u\)</span> be the vNM utility, and since preferences are monotonic and risk-averse, we know <span class="math inline">\(u\)</span> is concave. By the definition of <span class="math inline">\(X, Y\)</span> and the fact that <span class="math inline">\(\mathbb{E}[\varepsilon | X = x] = 0\)</span>, we see <span class="math display">\[
+\mathbb{E}[u(X)] = \int_\mathbb{R} u(x) dp = \int_\mathbb{R} u(\underbrace{\mathbb{E}[ X + \varepsilon | X = x]}_{=x}) dp = \int_\mathbb{R} u(\mathbb{E}[ Y | X = x]) dp ,
+\]</span> and by Jensen’s inequality, since <span class="math inline">\(u\)</span> is concave, we see: <span class="math display">\[
+\int_\mathbb{R} u(\mathbb{E}[ Y | X = x]) dp \geq \int_\mathbb{R} \mathbb{E}[u(Y) | X = x] dp.
+\]</span> By the law of total expectation, the RHS is equal to <span class="math inline">\(\mathbb{E}[u(Y)]\)</span>, showing that the expected utility of <span class="math inline">\(p\)</span> is greater than that of <span class="math inline">\(q\)</span>, i.e.&nbsp;<span class="math inline">\(p \succeq q\)</span>. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="8" type="1">
+<li>Show that an agent with standard preferences (i.e.&nbsp;uses expected utility, exponential discounting, and likes money) prefers a lottery that gives $10 either now or in 2 weeks (each with 50% probability) to getting $10 in one week for sure. (Hint: Jensen’s inequality again.)</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Let <span class="math inline">\(u\)</span> be the vNM utility, which we know is monotonic and linear, and let <span class="math inline">\(\delta\)</span> be the discount factor. The discounted expected utility of the first lottery is <span class="math display">\[\begin{align*}
+\sum_{t=0}^\infty  \delta^t u(c_t) &amp;= \delta^0 u(\frac{1}{2}0 + \frac{1}{2}10) + \delta^2u(\frac{1}{2}0 + \frac{1}{2}10) + \frac{u(0)}{1-\delta} - (1+\delta^2)u(0) \\
+&amp;= \frac{1}{2}u(0)  + \frac{1}{2}u(10) + \delta^2(\frac{1}{2}u(0)  + \frac{1}{2}u(10)) + \frac{u(0)}{1-\delta} - (1+\delta^2)u(0)
+\end{align*}\]</span> The discounted expected utility of the second lottery is <span class="math display">\[\begin{align*}
+\sum_{t=0}^\infty  \delta^t u(c_t) &amp;= \delta u(10)  + \frac{u(0)}{1-\delta} - \delta u(0)
+\end{align*}\]</span> Subtracting the second from the first yields: <span class="math display">\[
+-\frac{1}{2}u(0)+\frac{1}{2}u(10) - \frac{1}{2}\delta^2 u(0) + \frac{1}{2}\delta^2 u(10) - \delta u(10) + \delta u(0) = (u(10)-u(0))(\frac{1}{2}\delta^2+\frac{1}{2}- \delta).
+\]</span></p>
+<p>By Jensen’s inequality (since <span class="math inline">\(\delta^t\)</span> is strictly convex in <span class="math inline">\(t\)</span>), we have that <span class="math inline">\(\frac{1}{2}\delta^2+ \frac{1}{2}\delta^0  &gt; \delta\)</span>. Also, since <span class="math inline">\(u\)</span> is increasing, <span class="math inline">\(u(10) \geq u(0)\)</span>. Thus, the difference is greater than <span class="math inline">\(0\)</span> and the discounted expected utility of the first lottery is greater than that of the second, meaning the individual prefers the first. <span class="math inline">\(\square\)</span></p>
+</details>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/kguo12\.github\.io\/kennyguowebpage\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>bh – Kenny Guo</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-5685cd926c25366c96d9f1407e584118.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-6033a600180109c3731f6a886c29932c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Kenny Guo</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../personal.html"> 
+<span class="menu-text">Personal</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../tutoring.html"> 
+<span class="menu-text">Book a lesson</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/kenny-guo-140966274/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://scholar.google.com/citations?user=9a7V4ZwAAAAJ&amp;hl=en"> <i class="bi bi-book" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="mailto:kenny.guo@yale.edu"> <i class="bi bi-envelope" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://kguo12.github.io/kennyguowebpage/resources/cv/KennyGuoCV_Aug2026.pdf"> <i class="bi bi-file-earmark-person" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+
+<section id="math-131bh-analysis-honors" class="level1">
+<h1>MATH 131BH: Analysis (Honors)</h1>
+<section id="spring-2025-i.-kim" class="level2">
+<h2 class="anchored" data-anchor-id="spring-2025-i.-kim">Spring 2025, I. Kim</h2>
+<p>We follow UCLA’s 131BH curriculum; the syllabus is linked <a href="https://www.math.ucla.edu/~ikim/131bh.html" target="_blank">here</a>. We follow Rudin’s <em>Principles of Mathematical Analysis (3e)</em>. Please let me know at <a href="mailto:kennyguo@ucla.edu">kennyguo@ucla.edu</a> if you spot any errors. Thanks!</p>
+<section id="homework-solutions-in-progress" class="level4">
+<h4 class="anchored" data-anchor-id="homework-solutions-in-progress">Homework Solutions: (in progress)</h4>
+<ul>
+<li><a href="#hw1">Homework 1 (compactness)</a></li>
+<li><a href="#hw2">Homework 2 (continuity, connectedness)</a></li>
+<li><a href="#hw3">Homework 3 (differentiability)</a></li>
+<li><a href="#hw4">Homework 4 (integrability)</a></li>
+<li><a href="#hw5">Homework 5 (integrability)</a></li>
+<li><a href="#midterm">Midterm :)</a></li>
+<li><a href="#hw6">Homework 6 (sequences of functions, uniform convergence)</a></li>
+<li><a href="#hw7">Homework 7 (Arzela-Ascoli, Stone-Weierstrass)</a></li>
+<li><a href="#hw8">Homework 8 (multivariable differentiability)</a></li>
+<li><a href="#hw9">Homework 9 (inverse, implicit function theorem)</a></li>
+</ul>
+<p><strong>Homework 1</strong><a name="hw1"></a></p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Show that in the metric space <span class="math inline">\((l^2, d_2)\)</span>, the set <span class="math inline">\(E:=\{x=(x(n))_{n \geq 1} : \sum_{n\geq1} n |x(n)|^2 \leq 1\}\)</span> is compact.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Let <span class="math inline">\((x_k)_{k \geq 1} \subseteq E\)</span>. We have for all <span class="math inline">\(k \geq 1\)</span>, <span class="math inline">\(\sum_{n\geq 1} n|x_k(n)|^2 \leq 1\)</span>, so namely for all <span class="math inline">\(n \geq 1\)</span>, we have <span class="math inline">\(|x_k(n)| \leq 1/\sqrt{n}\)</span>.</p>
+<p>In particular, for a fixed <span class="math inline">\(n \geq 1\)</span>, we have that <span class="math inline">\((x_k(n))_{k \geq 1}\)</span> is bounded, and by Bolzano-Weierstrass, there exists a convergent subsequence. Continuing along for all <span class="math inline">\(n\)</span>, by the diagonal argument, we construct a subsequence, call it <span class="math inline">\((x_{k_j}(n))_{j \geq 1}\)</span>, such that for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(\lim_{j \rightarrow \infty} x_{k_j}(n)\)</span> exists, call it <span class="math inline">\(x_\infty(n)\)</span>, and let <span class="math inline">\(x_\infty = (x_\infty(n))_{n\geq 1}\)</span>. Thus, we show a) <span class="math inline">\(x_\infty \in E\)</span> and b) <span class="math inline">\(x_{k_j} \rightarrow_{j \rightarrow \infty} x_\infty\)</span>.</p>
+<ol type="a">
+<li><p>Note that: <span class="math display">\[
+\sum_{n\geq 1} n |x_\infty(n)|^2 = \sum_{n\geq 1} n \lim_{j\rightarrow \infty} |x_{k_j}(n)|^2
+= \lim_{N\rightarrow \infty} \sum_{n=1}^N n \lim_{j\rightarrow \infty} |x_{k_j}(n)|^2
+= \lim_{N\rightarrow \infty} \lim_{j\rightarrow \infty} \underbrace{\sum_{n=1}^N n |x_{k_j}(n)|^2}_{\leq 1 \text{ since } x_{k_j} \in E \text{ for all } j}
+\leq 1
+\]</span> and thus, <span class="math inline">\(x_\infty \in E\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(\varepsilon &gt; 0\)</span>. For any <span class="math inline">\(N \geq 1\)</span>, note we have the inequality: <span class="math display">\[
+\sum_{n=N}^\infty |x_{k_j}(n) - x_\infty(n)|^2 \leq 2 \sum_{n=N}^\infty |x_{k_j}(n)|^2 + 2 \sum_{n=N}^\infty |x_{\infty}(n)|^2
+\]</span> Furthermore, for all <span class="math inline">\(x \in E\)</span>, we have: <span class="math display">\[
+N \sum_{n=N}^\infty |x(n)|^2 \leq \sum_{n=N}^\infty n|x(n)|^2 \leq 1
+\implies \sum_{n=N}^\infty |x(n)|^2 \leq 1/N
+\]</span> and so for all <span class="math inline">\(N\geq 1\)</span>, <span class="math inline">\(\sum_{n=N}^\infty |x_{k_j}(n) - x_\infty(n)|^2 \leq 2(2/N) = 4/N\)</span>.</p></li>
+</ol>
+<p>With this, fix an <span class="math inline">\(N_\varepsilon\)</span> s.t. <span class="math inline">\(4/N_\varepsilon &lt; \varepsilon^2/2\)</span>, so that <span class="math inline">\(\sum_{n=N_\varepsilon}^\infty |x_{k_j}(n) - x_\infty(n)|^2 \leq \varepsilon^2/2\)</span>.</p>
+<p>Now, since for <span class="math inline">\(n = 1, \ldots, N_\varepsilon - 1\)</span>, we have that <span class="math inline">\(x_{k_j}(n) \rightarrow_{j\rightarrow \infty} x_\infty(n)\)</span>, we can choose a <span class="math inline">\(j_\varepsilon\)</span> such that <span class="math inline">\(\sum_{n=1}^{N_\varepsilon - 1} |x_{k_j}(n) - x_\infty(n)|^2 \leq \varepsilon^2/2\)</span>. Thus, let <span class="math inline">\(j \geq j_\varepsilon\)</span>, and we see <span class="math display">\[
+    \sum_{n=1}^\infty |x_{k_j}(n) - x_\infty(n)|^2  = \sum_{n=1}^{N_\varepsilon -1} |x_{k_j}(n) - x_\infty(n)|^2 + \sum_{n=N_\varepsilon}^\infty |x_{k_j}(n) - x_\infty(n)|^2
+    &lt; \varepsilon^2/2 + \varepsilon^2/2 = \varepsilon^2
+\]</span> and so <span class="math inline">\(d_2(x_{k_j}, x_\infty) &lt; \varepsilon\)</span>. Thus, <span class="math inline">\(x_{k_j} \rightarrow_{j \rightarrow \infty} x_\infty\)</span>, and so <span class="math inline">\(E\)</span> is sequentially compact, and thus, compact. <span class="math inline">\(\square\)</span></p>
+<p><em>Remark. This is a proof that doesn’t rely explicitly on Heine-Borel, as we didn’t have this theorem at our disposal.</em></p>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li></li>
+</ol>
+<ol type="a">
+<li>Show that if <span class="math inline">\((K, d)\)</span> is sequentially compact, then <span class="math inline">\((K,d)\)</span> has a countable base.</li>
+<li>Using (a), show that every open cover of <span class="math inline">\(K\)</span> has a countable subcover.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li>One can show <span class="math inline">\(K\)</span> is <em>totally-bounded</em>, that is for all <span class="math inline">\(r&gt;0\)</span>, there exists a finite number of balls such that they form a cover of <span class="math inline">\(K\)</span>, i.e., there exists <span class="math inline">\(n \in \mathbb{N}\)</span>, <span class="math inline">\(x_1, \ldots, x_n \in K\)</span> such that <span class="math inline">\(K \subseteq \bigcup_{i=1}^n B_r(x_i)\)</span>. To construct our countable base, for all <span class="math inline">\(k \in \mathbb{N}\)</span>, consider the finite cover of <span class="math inline">\(K\)</span>, <span class="math inline">\(\{B_{1/k}(x_i)\}_{i=1}^{n_k}\)</span>, and we claim then <span class="math inline">\(\bigcup_{k=1}^\infty \{B_{1/k}(x_i)\}_{i=1}^{n_k}\)</span> is a countable (as countable union is countable) base for <span class="math inline">\(K\)</span>.</li>
+</ol>
+<p>Let <span class="math inline">\(x_0 \in K\)</span> and <span class="math inline">\(x_0 \in G\)</span> open. Thus, there exists some <span class="math inline">\(N \in \mathbb{N}\)</span> such that <span class="math inline">\(B_{1/N}(x_0) \subseteq G\)</span>. But by total boundedness, we also know we chose <span class="math inline">\(x_1, \ldots, x_{n_{2N}}\)</span> such that <span class="math inline">\(x_0 \in \bigcup_{i=1}^{n_{2N}} B_{1/(2N)}(x_i)\)</span>. If <span class="math inline">\(x_0 \in \{x_1, \ldots, x_{n_{2N}}\}\)</span>, we are done, since <span class="math inline">\(B_{1/(2N)}(x_0)\)</span> is a set in our base. If else, then there is a <span class="math inline">\(x_i\)</span> such that <span class="math inline">\(x_0 \in B_{1/(2N)}(x_i)\)</span>. Let <span class="math inline">\(y \in B_{1/(2N)}(x_i)\)</span>. By triangle inequality, we have: <span class="math display">\[
+d(y, x_0) \leq d(y, x_i) + d(x_i, x_0) &lt; 1/(2N) + 1/(2N) = 1/N
+\]</span> and so <span class="math inline">\(y \in B_{1/(N)}(x_0)\)</span>, and we have that <span class="math inline">\(x_0 \in B_{1/(2N)}(x_i) \subseteq B_{1/(N)}(x_0) \subseteq G\)</span>, so our set <span class="math inline">\(\bigcup_{k=1}^\infty \{B_{1/k}(x_i)\}_{i=1}^{n_k}\)</span> is in fact a (countable) base.</p>
+<ol start="2" type="a">
+<li>Let <span class="math inline">\(\{G_\alpha\}\)</span> be an open cover for <span class="math inline">\(K\)</span>. Let <span class="math inline">\(x \in K\)</span>, so <span class="math inline">\(x \in G_\alpha\)</span> open for some <span class="math inline">\(\alpha\)</span>. Using the countable base of balls in part (a), we have that there exists some <span class="math inline">\(n_x \in \mathbb{N}, x_i\)</span> such that <span class="math inline">\(x \in B_{1/n_x}(x_i) \subseteq G_\alpha\)</span>. Since there are only countably many balls in this base, we can select at most countably many <span class="math inline">\(G_\alpha\)</span> from <span class="math inline">\(\{G_\alpha\}\)</span>, so that for all <span class="math inline">\(x \in K\)</span>, <span class="math inline">\(x\)</span> is still contained in one of them, and so we extract our desired countable subcover. <span class="math inline">\(\square\)</span></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Show that <span class="math inline">\(K\)</span> is sequentially compact if and only if every infinite subset of <span class="math inline">\(K\)</span> has a limit/accumulation point in <span class="math inline">\(K\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p><span class="math inline">\((\implies)\)</span> Assume <span class="math inline">\(K\)</span> is sequentially compact, and let <span class="math inline">\(A \subseteq K\)</span> be infinite (if can’t find, vacuously true). Thus, we can extract a sequence <span class="math inline">\(\{a_n\}_{n\geq 1} \subseteq A\)</span> of non-repeating terms. By sequential compactness, there exists a convergent subsequence, call it <span class="math inline">\(\{a_{k_n}\}_{n\geq 1} \rightarrow_{n\rightarrow \infty} a \in K\)</span>. Finally, note that <span class="math inline">\(a \in A'\)</span>. Indeed, let <span class="math inline">\(r &gt; 0\)</span>, and by limit definition, there is an <span class="math inline">\(n_r \in \mathbb{N}\)</span> such that for all <span class="math inline">\(n \geq n_r\)</span>, <span class="math inline">\(d(a_n, a) &lt; r\)</span>, and so <span class="math inline">\(a_n \in B_r(a) \cap A \backslash \{a\}\)</span> (since the <span class="math inline">\(a_n\)</span> are distinct), and so namely it is nonempty, and <span class="math inline">\(a\)</span> is an accumulation point of <span class="math inline">\(A\)</span> in <span class="math inline">\(K\)</span>.</p>
+<p><span class="math inline">\((\impliedby)\)</span> Assume for all infinite <span class="math inline">\(A \subseteq K\)</span>, <span class="math inline">\(A' \cap K \neq \emptyset\)</span>. Let <span class="math inline">\(\{a_n\}_{n\geq 1} \subseteq K\)</span>. If <span class="math inline">\(\{a_n\}_{n\geq 1}\)</span> infinitely repeats a term, then this will be a (constant) convergent subsequence. Thus, assume doesn’t infinitely repeat terms, and so the set <span class="math inline">\(\{a_n : n \geq 1\}\)</span> is infinite. By assumption, there exists an <span class="math inline">\(a \in A' \cap K\)</span>.</p>
+<p>From this, we construct our convergent subsequence. We have <span class="math inline">\(B_1(a) \cap A \backslash \{a\} \neq \emptyset\)</span>, so extract <span class="math inline">\(a_{k_1}\)</span>. Then for <span class="math inline">\(n \geq 2\)</span>, extract <span class="math inline">\(a_{k_n}\)</span> from <span class="math inline">\(B_r(a) \cap A \backslash \{a\} \neq \emptyset\)</span>, where <span class="math inline">\(r = \min\{1/n, d(a, a_{k_{n-1}})\}\)</span>. It follows that <span class="math inline">\(\{a_{k_n}\}_{n\geq 1}\)</span> is a convergent subsequence, and thus, <span class="math inline">\(K\)</span> is sequentially compact. <span class="math inline">\(\square\)</span>.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>Let <span class="math inline">\(K, E \subseteq X\)</span>, where <span class="math inline">\(K\)</span> is compact and <span class="math inline">\(E\)</span> is closed in <span class="math inline">\((X,d)\)</span>.</li>
+</ol>
+<ol type="a">
+<li>If <span class="math inline">\(K \cap E = \emptyset\)</span>, then show that there is a constant <span class="math inline">\(c &gt; 0\)</span> such that <span class="math display">\[ d(x, E) := \inf\{d(x,y) : y \in E\} \geq c \text{ for all } x \in K.\]</span></li>
+<li>Is (a) true if <span class="math inline">\(K\)</span> is only closed? Give a counterexample.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li>Suppose for contradiction that for all <span class="math inline">\(c &gt; 0\)</span>, there exists <span class="math inline">\(x \in K\)</span> such that <span class="math inline">\(\inf\{d(x,y) : y \in E\} &lt; c\)</span>. For all <span class="math inline">\(n \geq 1\)</span>, let <span class="math inline">\(c = 1/n\)</span>. Thus, there is a <span class="math inline">\(x_n \in K\)</span> such that <span class="math inline">\(d(x_n, E) &lt; 1/n\)</span>. In particular, <span class="math inline">\(1/n\)</span> is not a lower bound, so there exists a <span class="math inline">\(y_n \in E\)</span> such that <span class="math inline">\(d(x_n, y_n) &lt; 1/n\)</span>. With this, we construct arbitrarily close <span class="math inline">\(\{x_n\}_{n\geq 1} \subseteq K, \{y_n\}_{n\geq 1} \subseteq E\)</span>.</li>
+</ol>
+<p>Since <span class="math inline">\(K\)</span> is sequentially compact, there exists a convergent subsequence <span class="math inline">\(\{x_{k_n}\}_{n\geq 1} \rightarrow x_0 \in K\)</span>. Since <span class="math inline">\(\{y_n\}_{n\geq 1}\)</span> is arbitrarily close, we have that <span class="math inline">\(\{y_{k_n}\}_{n\geq 1} \rightarrow x_0 \in \bar{E}\)</span> as well. Since <span class="math inline">\(E\)</span> is closed, <span class="math inline">\(x_0 \in E\)</span>. This contradicts <span class="math inline">\(K \cap E\)</span> being empty. <span class="math inline">\(\square\)</span></p>
+<ol start="2" type="a">
+<li>No.&nbsp;Compactness is necessary, and our counterexample relies on finding arbitrarily close sequences in <span class="math inline">\(K\)</span> and <span class="math inline">\(E\)</span>, but a convergent subsequence is not necessarily guaranteed (say, approaches infinity) by compactness.</li>
+</ol>
+<p>Take <span class="math inline">\((X,d) = (\mathbb{R}, |\cdot|)\)</span> and consider <span class="math inline">\(K = \{n+1/n : n\geq 2\}\)</span> and <span class="math inline">\(E = \{n : n \geq 2\}\)</span>. These sets are indeed closed, but neither is compact (consider the open cover of <span class="math inline">\(\varepsilon = 1/2\)</span> balls around each point, which cannot be reduced to a finite subcover). Finally, note <span class="math inline">\(K \cap E = \emptyset\)</span>.</p>
+<p>Considering <span class="math inline">\(\{x_n\}_{n \geq 2} \subseteq K, x_n = n + 1/n\)</span> and <span class="math inline">\(\{y_n\}_{n \geq 2} \subseteq E, x_n = n\)</span> (note these are arbitrarily close with no convergent subsequence). Thus, we see for all <span class="math inline">\(c &gt; 0\)</span>, there exists an <span class="math inline">\(n\)</span> such that <span class="math inline">\(|x_n - y_n| &lt; c\)</span>, which gives the desired negation.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>Let <span class="math inline">\(A\)</span> be a subset of a complete metric space. Assume that for all <span class="math inline">\(\varepsilon &gt; 0\)</span>, there exists a compact subset <span class="math inline">\(A_\varepsilon\)</span> so that for any <span class="math inline">\(x \in A, d(x, A_\varepsilon) &lt; \varepsilon)\)</span>. Show that <span class="math inline">\(\bar{A}\)</span> is compact.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>We show sequential compactness. Let <span class="math inline">\((x_n) \subseteq \bar{A}\)</span>.</p>
+<p>We first extract a sequence from <span class="math inline">\(A\)</span> that is arbitrary close to <span class="math inline">\((x_n)\)</span>, so any subsequence will converge to the same limit. Note that for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(x_n \in \bar{A}\)</span>, which means there exists <span class="math inline">\((a_{k_n}) \subseteq A\)</span> such that <span class="math inline">\(a_{k_n} \rightarrow x_n\)</span>. In particular, there is an <span class="math inline">\(a_n \in A\)</span> such that <span class="math inline">\(d(x_n, a_n) &lt; 1/n\)</span>, and so we get <span class="math inline">\((a_n) \subseteq A\)</span>, and it suffices to find a convergent subsequence of this.</p>
+<p>Consider <span class="math inline">\(A_1\)</span>, so for all <span class="math inline">\(a \in A\)</span>, <span class="math inline">\(d(a, A_1) &lt; 1\)</span>. Thus, for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(\inf\{d(a_n, y) : y \in A_1\} &lt; 1\)</span>, so <span class="math inline">\(1\)</span> is not a lower bound, so there exists <span class="math inline">\(y \in A_1\)</span> such that <span class="math inline">\(d(a_n, y) &lt; 1\)</span>. Consider the open cover of <span class="math inline">\(A_1\)</span> given by <span class="math inline">\(\{B_1(y)\}_{y \in A_1}\)</span>, which admits a finite subcover, say <span class="math inline">\(\{B_1(y_i)\}_{i=1}^n\)</span>. Increase the radius and now consider <span class="math inline">\(\{B_{2}(y_i)\}_{i=1}^n\)</span>. We can now see for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(a_n \in \bigcap_{i=1}^n B_{2}(y_i)\)</span>. This follows from triangle inequality, as there is a <span class="math inline">\(y \in A_1\)</span> such that <span class="math inline">\(d(a_n, y) &lt; 1\)</span>, and this <span class="math inline">\(y\)</span> is within some <span class="math inline">\(B_1(y_i)\)</span> for some <span class="math inline">\(i\)</span>, so <span class="math inline">\(a_n \in B_2(y_i)\)</span>.</p>
+<p>In particular, since there are finitely many <span class="math inline">\(2\)</span>-radius balls, by the pigeonhole principle, there exists a subsequence <span class="math inline">\((a_{k_n})\)</span> such that <span class="math inline">\((a_{k_n}) \subseteq B_2(y_i)\)</span> for some <span class="math inline">\(i\)</span>. By triangle inequality, we have for all <span class="math inline">\(m, n \geq 1\)</span>, <span class="math inline">\(d(a_m, a_n) &lt; 4\)</span>.</p>
+<p>We continue this process iteratively for all <span class="math inline">\(N \geq 1\)</span>, considering <span class="math inline">\(A_{1/N}\)</span>, extracting a subsequence from the previous subsequence, and by the diagonal argument, we find a subsequence, rename it <span class="math inline">\((a_{k_n})\)</span>, such that for all <span class="math inline">\(m, n \geq N\)</span>, <span class="math inline">\(d(a_{k_m}, a_{k_n}) &lt; 4/N\)</span>. In particular, this sequence is Cauchy, so by completeness, it converges. Since the sequence is also in <span class="math inline">\(A\)</span>, we get its limit is in <span class="math inline">\(\bar{A}\)</span>. Coming back to our original sequence, we can take <span class="math inline">\((x_{k_n})\)</span>, which must converge to the same limit, and thus, we get that <span class="math inline">\(\bar{A}\)</span> is (sequentially) compact. <span class="math inline">\(\square\)</span></p>
+<p><em>Remark. One can again use Heine-Borel. Here is an alternative proof:</em></p>
+<p>Since <span class="math inline">\(\bar{A}\)</span> is closed and a subset of a complete metric space, we have that <span class="math inline">\(\bar{A}\)</span> is itself complete. To show total-boundedness, let <span class="math inline">\(\varepsilon &gt;0\)</span>. By assumption, there exists <span class="math inline">\(A_{\varepsilon/3} \subset A\)</span> such that for all <span class="math inline">\(x \in A\)</span>, <span class="math inline">\(d(x, A_{\varepsilon/3}) &lt; \varepsilon/3\)</span>. Consider the open cover of <span class="math inline">\(A_{\varepsilon/3}\)</span>, <span class="math inline">\(\{B_{\varepsilon/3}(a)\}_{a \in A_{\varepsilon/3}}\)</span>. By compactness, we reduce to finite subcover <span class="math inline">\(\{B_{\varepsilon/3}(a_i)\}_i^n\)</span>.</p>
+<p>Now we claim <span class="math inline">\(\{B_{\varepsilon}(a_i)\}_i^n\)</span> is a finite cover of <span class="math inline">\(\varepsilon\)</span>-balls for <span class="math inline">\(\bar{A}\)</span>. Let <span class="math inline">\(x \in \bar{A}\)</span>, so there exists <span class="math inline">\((a_n)_{n \geq 1} \subseteq A\)</span> such that <span class="math inline">\(a_n \rightarrow x\)</span>. In particular, there is some <span class="math inline">\(a' \in A\)</span> such that <span class="math inline">\(d(a', x) &lt; \varepsilon/3\)</span>. We also have that <span class="math inline">\(\inf \{d(a', a) : a \in A_{\varepsilon/3}\} &lt; \varepsilon/3\)</span>, so there is some <span class="math inline">\(a \in A_{\varepsilon/3}\)</span> such that <span class="math inline">\(d(a, a') &lt; \varepsilon/3\)</span>. Finally, <span class="math inline">\(a \in \bigcup_{i=1}^n B_{\varepsilon/3}(a_i)\)</span>, so there is some <span class="math inline">\(i\)</span> such that <span class="math inline">\(d(a, a_i) &lt; \varepsilon/3\)</span>. By triangle inequality, we see: <span class="math display">\[ d(x, a_i) \leq d(x, a') + d(a', a) + d(a, a_i) &lt; \varepsilon \]</span> and so <span class="math inline">\(x \in B_{\varepsilon}(a_i)\)</span> and <span class="math inline">\(\bar{A} \subseteq \bigcup_{i=1}^n B_{\varepsilon}(a_i)\)</span>. Since <span class="math inline">\(\varepsilon\)</span> was arbitrary, <span class="math inline">\(\bar{A}\)</span> is thus totally bounded, and we conclude using Heine-Borel. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>(Walter Rudin, pg. 44, #13) Construct a compact set <span class="math inline">\(A\)</span> of <span class="math inline">\(\mathbb{R}\)</span> such that <span class="math inline">\(A'\)</span> is countable.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>One such set is <span class="math inline">\(A = \{0\} \cup \{1/n + 1/k : n\geq 1, k \geq n\}\)</span>. One can find the confirmation of this construction <a href="https://minds.wisconsin.edu/bitstream/handle/1793/67009/rudin%20ch%202.pdf?sequence=10&amp;isAllowed=y" target="_blank">here</a>.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>(Walter Rudin, pg. 44, #16) Consider the metric space <span class="math inline">\((\mathbb{Q}, |\cdot|)\)</span>. Let <span class="math inline">\(E = \{x \in \mathbb{Q} : 2 &lt; x^2 &lt; 3 \}\)</span>. Show <span class="math inline">\(E\)</span> is closed and bounded, but not compact. Determine if <span class="math inline">\(E\)</span> is open in <span class="math inline">\(\mathbb{Q}\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>(Bounded) Yes. Take <span class="math inline">\(M=3\)</span>.</p>
+<p>(Closed) Yes. Let <span class="math inline">\(x \in \bar{E}\)</span>, so for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(B^{\mathbb{Q}}_{1/n}(x) \cap E \neq \emptyset\)</span>. Thus, there is a <span class="math inline">\(y \in B^{\mathbb{Q}}_{1/n}(x) \cap E\)</span>. If <span class="math inline">\(y=x\)</span>, then <span class="math inline">\(x \in E\)</span>. Assume <span class="math inline">\(x&gt;y\)</span> (a similar argument applies for <span class="math inline">\(&lt;\)</span>). Then we have <span class="math inline">\(x^2 &gt; y^2 &gt; 2\)</span> and <span class="math inline">\(x-1/n &lt; y \implies (x-1/n)^2 &lt; y^2 &lt; 3 \rightarrow_{n \rightarrow \infty} x^2 \leq 3\)</span>. But since <span class="math inline">\(x \in \mathbb{Q}\)</span>, we must have <span class="math inline">\(x^2 &lt; 3\)</span>, and so <span class="math inline">\(x \in E\)</span>. We see <span class="math inline">\(\overline{E} = E\)</span>, and <span class="math inline">\(E\)</span> is closed.</p>
+<p>(Compact) No.&nbsp;<span class="math inline">\(E\)</span> is not sequentially compact as one can take a sequence of rationals in <span class="math inline">\(E\)</span> that converges (in the reals) to <span class="math inline">\(\sqrt{2} \notin E\)</span>. Thus, any subsequence cannot converge within <span class="math inline">\(E\)</span>.</p>
+<p>(Open) Yes. This follows by density of the rationals in the reals.</p>
+</details>
+<p><strong>Homework 2</strong><a name="hw2"></a></p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>(Walter Rudin, pg. 100, #18) Every rational <span class="math inline">\(x\)</span> can be written in the form of <span class="math inline">\(x = m/n\)</span> where <span class="math inline">\(n&gt;0\)</span>, and <span class="math inline">\(m,n\)</span> are relatively prime. When <span class="math inline">\(x=0\)</span>, we let <span class="math inline">\(n=1\)</span>. Consider the function <span class="math inline">\(f\)</span> defined on <span class="math inline">\(\mathbb{R}\)</span> by: <span class="math display">\[ f(x) = \begin{cases} 0 &amp; \text{if } x \text{ irrational} \\ 1/n &amp; \text{if } x = m/n \end{cases} \]</span> Prove that <span class="math inline">\(f\)</span> is continuous at every irrational point, and that <span class="math inline">\(f\)</span> has a simple discontinuity at every rational point.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Let <span class="math inline">\(x \in \mathbb{R} \backslash \mathbb{Q}\)</span> so <span class="math inline">\(f(x) = 0\)</span>. Let <span class="math inline">\(\varepsilon &gt; 0\)</span>. By Archimedean, there is some natural <span class="math inline">\(N\)</span> such that <span class="math inline">\(1/(N+1) &lt; \varepsilon &lt; 1/N\)</span>. If we choose <span class="math inline">\(\delta\)</span> so that for all <span class="math inline">\(t \in (x-\delta, x+\delta)\)</span>, <span class="math inline">\(t = m/n\)</span> reduced-rational where <span class="math inline">\(n \geq N+1\)</span>, we will have <span class="math inline">\(f(t) \leq 1/(N+1)\)</span> &lt; $, showing continuity.</p>
+<p>For <span class="math inline">\(n = 1, \ldots, N\)</span>, consider <span class="math inline">\(nx\)</span>, and by Archimedean, there exists some <span class="math inline">\(m_n \in \mathbb{Z}\)</span> such that <span class="math inline">\(m_n/n \leq x &lt; (m_n + 1)/n\)</span>. We set <span class="math display">\[ \delta_n = \begin{cases}
+        \min \{|m_n/n-x|, |(m_n+1)/n-x|\} &amp;: x&gt;m_n/n \\
+        1/n &amp;: x = m_n/n
+        \end{cases}
+    \]</span> and choose <span class="math inline">\(\delta = \min\{\delta_i\}_{i=1, \ldots, N}\)</span>. Now, let <span class="math inline">\(t\)</span> be such that <span class="math inline">\(0&lt;|t-x|&lt;\delta\)</span>. If <span class="math inline">\(t\)</span> irrational, <span class="math inline">\(f(t) = 0 &lt; \varepsilon\)</span>. If <span class="math inline">\(t\)</span> rational, then by construction, its reduced fraction form must have a denominator greater than or equal to <span class="math inline">\(N+1\)</span>, as desired, so <span class="math inline">\(f(t) &lt; \varepsilon\)</span>. Thus, <span class="math inline">\(f\)</span> is continuous at all irrational <span class="math inline">\(x\)</span>.</p>
+<p>For rational <span class="math inline">\(x\)</span>, we write as reduced form <span class="math inline">\(m/n\)</span>, and so <span class="math inline">\(f(x) = 1/n\)</span>. Note in the last part, we showed for any <span class="math inline">\(x \in \mathbb{R}\)</span>, <span class="math inline">\(f(t) \rightarrow_{t \rightarrow x} 0 \neq 1/n\)</span>, so namely <span class="math inline">\(f\)</span> is not continuous for <span class="math inline">\(x\)</span> rational. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>(Walter Rudin, pg. 100, #23) Recall that <span class="math inline">\(f:(a,b)\rightarrow \mathbb{R}\)</span> is said to be <em>convex</em> if <span class="math display">\[ f(\lambda x + (1-\lambda) y) \leq \lambda f(x) + (1-\lambda)f(y)\]</span> for <span class="math inline">\(x, y \in (a,b), \lambda \in (0,1)\)</span>. Prove:</li>
+</ol>
+<ol type="a">
+<li>Every convex function <span class="math inline">\(f\)</span> is continuous.</li>
+<li>Every increasing convex function of a convex function <span class="math inline">\(f\)</span> is also convex.</li>
+<li>If <span class="math inline">\(f\)</span> is convex in <span class="math inline">\((a,b)\)</span> and <span class="math inline">\(a&lt;s&lt;t&lt;u&lt;b\)</span>, then <span class="math display">\[ \frac{f(t)-f(s)}{t-s} \leq \frac{f(u)-f(s)}{u-s} \leq \frac{f(u)-f(t)}{u-t}. \]</span></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>Let <span class="math inline">\(x \in (a,b)\)</span>. Since <span class="math inline">\((a,b)\)</span> open, we find <span class="math inline">\(s, u\)</span> such that <span class="math inline">\(a&lt;s&lt;x&lt;u&lt;b\)</span>. For continuity, we will take the one-sided limits to <span class="math inline">\(x\)</span> (from <span class="math inline">\(s\)</span> and <span class="math inline">\(u\)</span>) and show they must converge to <span class="math inline">\(f(x)\)</span>.</p>
+<p>Let <span class="math inline">\((t_n) \subset (x,u)\)</span> such that <span class="math inline">\(t_n \rightarrow x\)</span>. Note that for all <span class="math inline">\(t_n\)</span>, we can thus write them as <span class="math inline">\(t_n = \lambda_n x+ (1-\lambda_n)u\)</span>, which gives <span class="math inline">\(\lambda_n = \frac{t_n - u}{x-u}\)</span>. By convexity, we have <span class="math inline">\(f(t_n) \leq \lambda_n f(x)+ (1-\lambda_n)f(u)\)</span>, and so taking limsup (as <span class="math inline">\(\lambda_n \rightarrow 1\)</span>), we get that <span class="math inline">\(\text{limsup}_{n \rightarrow \infty} f(t_n)= f(x)\)</span>. Futhermore, we can also write <span class="math inline">\(x\)</span> as an interpolation between <span class="math inline">\(t_n\)</span> and <span class="math inline">\(s\)</span>, i.e.&nbsp;<span class="math inline">\(x = \lambda_n s + (1-\lambda_n)t_n\)</span>, and thus by convexity, <span class="math inline">\(f(x) \leq \lambda_n f(s) + (1-\lambda_n)f(t_n)\)</span>. Again, taking <span class="math inline">\(n\rightarrow \infty\)</span>, we have <span class="math inline">\(\lambda_n \rightarrow 0\)</span>, and not assuming <span class="math inline">\(f(t_n)\)</span> converges yet, taking the liminf, we see: <span class="math inline">\(f(x) \leq \text{liminf}_{n \rightarrow \infty} f(t_n)\)</span>. Together, the (right-sided) limit must exist and equals <span class="math inline">\(f(x)\)</span>. A similar argument for the left-sided limit can be applied for taking any sequence from <span class="math inline">\((s, x)\)</span> that converges to <span class="math inline">\(x\)</span>. Thus, <span class="math inline">\(f(t) \rightarrow f(x)\)</span>, showing continuity. <span class="math inline">\(\square\)</span></p>
+<ol start="2" type="a">
+<li><p>Let <span class="math inline">\(g: f((a,b)) \rightarrow \mathbb{R}\)</span> be increasing and convex. Let <span class="math inline">\(x,y \in (a,b), \lambda \in (0,1)\)</span>. Then: <span class="math display">\[
+f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y)
+\]</span> and by monotonicity and convexity of <span class="math inline">\(g\)</span>, <span class="math display">\[
+g(f(\lambda x + (1-\lambda)y)) \leq g(\lambda f(x) + (1-\lambda)f(y)) \leq \lambda g(f(x)) + (1-\lambda)g(f(y))
+\]</span> and so <span class="math inline">\(g\circ f\)</span> is convex. <span class="math inline">\(\square\)</span></p></li>
+<li><p>Set <span class="math inline">\(\lambda \in (0,1)\)</span> such that <span class="math inline">\(t = \lambda s + (1-\lambda) u\)</span>. We see <span class="math inline">\(\lambda = \frac{t-u}{s-u} = \frac{u-t}{u-s}\)</span>. By convexity, we have: <span class="math display">\[
+f(t) \leq \frac{u-t}{u-s} f(s) + (1-\frac{u-t}{u-s}) f(u) \quad (\star)
+\]</span> For the first inequality, we get from <span class="math inline">\(\star\)</span>: <span class="math display">\[ f(t) \leq \frac{u-t}{u-s} f(s) + \frac{t-s}{u-s} f(u) \]</span> <span class="math display">\[ \implies f(t) - f(s) \leq \frac{-(t-s)}{u-s} f(s) + \frac{t-s}{u-s} f(u) \]</span> <span class="math display">\[ \implies \frac{f(t)-f(s)}{t-s} \leq \frac{f(u) - f(s)}{u-s}. \]</span></p></li>
+</ol>
+<p>For the second inequality, we get from <span class="math inline">\(\star\)</span>: <span class="math display">\[-f(t) \geq \frac{t-u}{u-s} f(s) + (\frac{u-t}{u-s}-1) f(u) \]</span> <span class="math display">\[ \implies f(u) -f(t) \geq \frac{t-u}{u-s} f(s) + \frac{u-t}{u-s} f(u) \]</span> <span class="math display">\[ \implies \frac{f(u)-f(s)}{u-s} \leq \frac{f(u)-f(t)}{u-t}.\]</span> <span class="math inline">\(\square\)</span></p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>(Walter Rudin, pg. 100, #24) Assume <span class="math inline">\(f\)</span> is a continuous real-valued function defined in <span class="math inline">\((a,b)\)</span> such that <span class="math display">\[ f\left(\frac{x+y}{2}\right) \leq \frac{f(x) + f(y)}{2} \]</span> for all <span class="math inline">\(x, y \in (a,b)\)</span>. Prove that <span class="math inline">\(f\)</span> is convex.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Let <span class="math inline">\(x&lt;y \in (a,b), \lambda \in (0,1)\)</span>. Consider <span class="math inline">\(k_1 = \frac{x+y}{2}\)</span>. Call <span class="math inline">\(z=\lambda x+ (1-\lambda)y\)</span>. We have two cases: 1) <span class="math inline">\(\lambda = 1/2\)</span>, i.e.&nbsp;<span class="math inline">\(k_1 = z\)</span>, and the convexity holds by assumption. 2) WLOG assume <span class="math inline">\(k_1 &lt; z\)</span>. Then iterate with <span class="math inline">\(k_2 = \frac{k_1 + y}{2}\)</span>. Again, we have 2 cases: 1) <span class="math inline">\(\lambda = 1/4\)</span>, i.e.&nbsp;<span class="math inline">\(k_2 = z\)</span>. Then <span class="math display">\[ f(z) \leq \frac{f(k_1)+f(y)}{2} \leq \frac{\frac{f(x)+f(y)}{2}+f(y)}{2} \leq \frac{1}{4}f(x) + \frac{3}{4}f(y)\]</span> and so convexity holds. 2) <span class="math inline">\(k_2 \neq z\)</span>, and we iterate again.</p>
+<p>From here, we can show via induction that if <span class="math inline">\(\lambda = m/2^n\)</span> for any <span class="math inline">\(n,m \in \mathbb{N}, \lambda \in (0,1)\)</span>, this process will terminate and convexity will hold. We just showed the base cases, so assume for all <span class="math inline">\(m \in \mathbb{N}\)</span>, for some <span class="math inline">\(n \in \mathbb{N}\)</span>, <span class="math inline">\(\lambda = m/2^n\)</span> satisfies convexity. Consider <span class="math inline">\(n+1\)</span>, and let <span class="math inline">\(m \in \mathbb{N}\)</span>. If <span class="math inline">\(m\)</span> is even, then <span class="math inline">\(\lambda = \frac{m/2}{2^n}\)</span> which is satisfied by the inductive hypothesis. If <span class="math inline">\(m\)</span> is odd, consider <span class="math inline">\(\lambda_1 = \frac{(m-1)/2}{2^n}, \lambda_2 = \frac{(m+1)/2}{2^n}\)</span>, which are satisfied by the inductive hypothesis. Also note <span class="math inline">\(\lambda = \lambda_1/2 + \lambda_2/2\)</span>, so we can decompose <span class="math display">\[ z= \lambda x+ (1-\lambda)y = \underbrace{(\lambda_1 x + (1-\lambda_1)y)}_{h(\lambda_1)} + \underbrace{(\lambda_2 x + (1-\lambda_2)y)}_{h(\lambda_2)} \]</span> and by assumption, we have: <span class="math display">\[ f(z) \leq \frac{f(h(\lambda_1)) + f(h(\lambda_2))}{2} \]</span> and by the inductive hypothesis, we have: <span class="math display">\[ \leq \frac{\lambda_1 f(x) + (1-\lambda_1)f(y) + \lambda_2 f(x) + (1-\lambda_2)f(y)}{2} \]</span> <span class="math display">\[ \leq \frac{\lambda_1 + \lambda_2}{2} f(x) + \left(1-\frac{\lambda_1 + \lambda_2}{2}\right)f(y) \]</span> <span class="math display">\[ \leq \lambda f(x) + (1-\lambda) f(y) \]</span> which thus closes the induction.</p>
+<p>Finally, we consider the case where the iteration infinitely repeats, or <span class="math inline">\(\lambda\)</span> is not of the form <span class="math inline">\(m/2^n\)</span>. We define <span class="math inline">\(E:= \{\lambda ' \in (0,1) : \lambda' \text{ satisfies convexity with } x,y\}\)</span>. Using the <span class="math inline">\(k_n\)</span>’s from before, we get a sequence that approaches <span class="math inline">\(\lambda x + (1-\lambda)y\)</span> as <span class="math inline">\(n \rightarrow \infty\)</span>, and since all of these <span class="math inline">\(k_n\)</span> were constructed using lambdas in <span class="math inline">\(E\)</span>, we also get a sequence <span class="math inline">\((\lambda '_n) \subseteq E\)</span> such that <span class="math inline">\(\lambda '_n \rightarrow \lambda\)</span>, so <span class="math inline">\(\lambda \in \overline{E}\)</span>. It suffices to show <span class="math inline">\(E\)</span> is closed. Note the function <span class="math inline">\(g(\lambda) = \lambda f(x) + (1-\lambda)f(y) - f(\lambda x + (1-\lambda)y)\)</span> is continuous, and <span class="math inline">\(E = g^{-1}([0, \infty))\)</span>, i.e.&nbsp;the preimage of a closed set under continuous <span class="math inline">\(g\)</span>. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>(Walter Rudin, pg. 100, #26) Suppose <span class="math inline">\(X, Y, Z\)</span> are metric spaces, and <span class="math inline">\(Y\)</span> is compact. Let <span class="math inline">\(f\)</span> map <span class="math inline">\(X\)</span> into <span class="math inline">\(Y\)</span>, let <span class="math inline">\(g\)</span> is a continuous, one-to-one mapping of <span class="math inline">\(Y\)</span> into <span class="math inline">\(Z\)</span>, and put <span class="math inline">\(h(x)=g(f(x))\)</span> for <span class="math inline">\(x \in X.\)</span></li>
+</ol>
+<ol type="a">
+<li>Prove that <span class="math inline">\(f\)</span> is uniformly continuous if <span class="math inline">\(h\)</span> is uniformly continuous.</li>
+<li>Prove also that <span class="math inline">\(f\)</span> is continuous if <span class="math inline">\(h\)</span> is continuous.</li>
+<li>Show (by example) that the compactness of <span class="math inline">\(Y\)</span> cannot be omitted from the hypotheses, even when <span class="math inline">\(X\)</span> and <span class="math inline">\(Z\)</span> are compact.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li>Since <span class="math inline">\(g\)</span> is continuous and <span class="math inline">\(Y\)</span> is compact, <span class="math inline">\(g(Y)\)</span> is compact, and since <span class="math inline">\(g\)</span> is injective, <span class="math inline">\(g^{-1}:g(Y) \rightarrow Y\)</span> is well-defined, and furthermore, continuous on a compact domain, so it is uniformly continuous. Taking the composition of uniformly continuous functions <span class="math inline">\(h, g^{-1}\)</span> gives a uniformly continuous function. <span class="math inline">\(\square\)</span>
+<ol start="2" type="a">
+<li>By part (a), we still have <span class="math inline">\(g^{-1}\)</span> is continuous. Composing continuous functions is continuous. <span class="math inline">\(\square\)</span></li>
+<li>Consider <span class="math inline">\(X = [-1, 1]\)</span> (compact), <span class="math display">\[f(x) = \begin{cases} 1/x^2 &amp;: x \neq 0 \\ 0 &amp;: x=0 \end{cases}\]</span>, <span class="math inline">\(Y = \{0\} \cup [1, \infty)\)</span> (not compact), <span class="math display">\[g = \begin{cases} 1/\sqrt{y} &amp;: y \in [1, \infty) \\ 0 &amp;: y=0 \end{cases}\]</span> (injective and continuous), and <span class="math inline">\(Z=[0,1]\)</span> (compact). Indeed, <span class="math inline">\(h = g\circ f\)</span> is uniformly continuous as <span class="math inline">\(h(x) = x\)</span>, but clearly <span class="math inline">\(f\)</span> is not continuous, let alone uniformly. <span class="math inline">\(\square\)</span></li>
+</ol></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>Suppose <span class="math inline">\(f: E \rightarrow Y\)</span> is uniformly continuous, where <span class="math inline">\(E \subseteq \mathbb{R}^k\)</span> and <span class="math inline">\(Y\)</span> is a metric space.</li>
+</ol>
+<ol type="a">
+<li>If <span class="math inline">\(E\)</span> is bounded in <span class="math inline">\(\mathbb{R}^k\)</span>, prove that <span class="math inline">\(f(E)\)</span> is bounded in <span class="math inline">\(Y\)</span>.</li>
+<li>Is the statement true if <span class="math inline">\(\mathbb{R}^k\)</span> is replaced by an arbitrary metric space <span class="math inline">\((X,d)\)</span>?</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>First observe that <span class="math inline">\(E\)</span> bounded <span class="math inline">\(\implies\)</span> <span class="math inline">\(\bar{E}\)</span> closed and bounded in <span class="math inline">\(\mathbb{R}^k\)</span>, so <span class="math inline">\(\bar{E}\)</span> is compact. Thus, it is totally bounded, and it holds that <span class="math inline">\(E\)</span> itself is totally bounded (in <span class="math inline">\(\mathbb{R}^k\)</span>) as well. Now we fix <span class="math inline">\(\varepsilon = 1\)</span>. By uniform continuity of <span class="math inline">\(f\)</span>, we get a <span class="math inline">\(\delta &gt; 0\)</span> such that for all <span class="math inline">\(p,q \in E\)</span>, if <span class="math inline">\(d_E(p,q) &lt; \delta\)</span>, then <span class="math inline">\(d_Y(f(p), f(q)) &lt; 1\)</span> (1). By total boundedness, we can cover <span class="math inline">\(E\)</span> with <span class="math inline">\(\{B_\delta(x_i)\}_{i=1}^n\)</span>, where <span class="math inline">\(n \in \mathbb{N}, x_i \in E\)</span>. We claim <span class="math inline">\(\{B_1(f(x_i)\}_{i=1}^n\)</span> is a finite cover for <span class="math inline">\(f(E)\)</span>, thus showing it is bounded. Indeed, let <span class="math inline">\(y \in f(E)\)</span>, so <span class="math inline">\(f^{-1}(y) \subseteq E\)</span>. Thus, for all <span class="math inline">\(x \in f^{-1}(y), x \in B_\delta(x_i)\)</span> for some <span class="math inline">\(i\)</span>, so <span class="math inline">\(d_E(x, x_i) &lt; \delta\)</span>. By (1), we get <span class="math inline">\(d_Y(f(x), f(x_i)) &lt; 1\)</span>, and since <span class="math inline">\(f(x) = y\)</span>, we have <span class="math inline">\(y \in B_1(x_i) \subseteq \{B_1(f(x_i)\}_{i=1}^n\)</span>. <span class="math inline">\(\square\)</span></p>
+<ol start="2" type="a">
+<li><strong>No</strong>, and we exploit that fact that boundedness may not imply total-boundedness in metric spaces other than <span class="math inline">\(\mathbb{R}^k\)</span>. Consider <span class="math inline">\(f:(\mathbb{R}, d_0) \rightarrow (\mathbb{R}, |\cdot|)\)</span>, where <span class="math inline">\(d_0\)</span> is the discrete metric, and <span class="math inline">\(f(x) = x\)</span>. Set <span class="math inline">\(E = \mathbb{R}\)</span>. We have that <span class="math inline">\(E\)</span> is bounded in <span class="math inline">\((\mathbb{R}, d_0)\)</span> (take <span class="math inline">\(M = 1\)</span>) and <span class="math inline">\(f\)</span> is uniformly continuous (indeed, for any <span class="math inline">\(\varepsilon\)</span>, one can simply choose <span class="math inline">\(\delta = 1/2\)</span>). But clearly, <span class="math inline">\(f(E) = \mathbb{R}\)</span> is not bounded in <span class="math inline">\((\mathbb{R}, |\cdot|)\)</span>.</li>
+</ol></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>Show that if <span class="math inline">\(E\)</span> is open and connected in <span class="math inline">\(\mathbb{R}^k\)</span>, then <span class="math inline">\(E\)</span> is pathwise connected in <span class="math inline">\(\mathbb{R}^k\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Let <span class="math inline">\(x \in E\)</span>. Define <span class="math inline">\(A = \{a \in E : \text{there exists a path from $x$ to $a$}\}\)</span>. We show <span class="math inline">\(A\)</span> is “clopen” (closed and open) and nonempty, and by connectedness, <span class="math inline">\(A = E\)</span>, showing path connectedness.</p>
+<p>(Nonempty) <span class="math inline">\(A\)</span> is nonempty as <span class="math inline">\(x \in A\)</span>.</p>
+<p>(Open) Let <span class="math inline">\(a \in A\)</span>, so there is a path from <span class="math inline">\(x\)</span> to <span class="math inline">\(a\)</span>. Since <span class="math inline">\(E\)</span> open, there is also an <span class="math inline">\(r &gt; 0\)</span> such that <span class="math inline">\(B_r(a) \subseteq E\)</span> (we show it also <span class="math inline">\(\subseteq A\)</span>). Let <span class="math inline">\(z \in B_r(a)\)</span>. We can define a path from <span class="math inline">\(a\)</span> to <span class="math inline">\(z\)</span> by considering <span class="math inline">\(g:[0,1] \rightarrow E\)</span> given by <span class="math inline">\(g(t) = \vec{a} + t(\vec{z} - \vec{a})\)</span> (i.e.&nbsp;the linear interpolation, which is continuous). Then, stitching this together with our path from <span class="math inline">\(x\)</span> to <span class="math inline">\(a\)</span> gives us a path from <span class="math inline">\(x\)</span> to <span class="math inline">\(z\)</span>, and thus, <span class="math inline">\(z \in A\)</span>. So <span class="math inline">\(B_r(a) \subseteq A\)</span>, and <span class="math inline">\(A\)</span> is open.</p>
+<p>(Closed) Consider the complement <span class="math inline">\(A^C = B = \{b \in E : \text{there does not exist a path from $x$ to $b$}\}\)</span>. Let <span class="math inline">\(b \in B \subseteq E\)</span> open, so there is an <span class="math inline">\(r &gt; 0\)</span> such that <span class="math inline">\(B_r(b) \subseteq E\)</span>. Let <span class="math inline">\(z \in B_r(b)\)</span>. Then by before, we know there is a path from <span class="math inline">\(b\)</span> to <span class="math inline">\(z\)</span>, but if there were to exist a path from <span class="math inline">\(x\)</span> to <span class="math inline">\(z\)</span>, then we would also have a path from <span class="math inline">\(x\)</span> to <span class="math inline">\(b\)</span>, contradicting <span class="math inline">\(b \in B\)</span>. Thus, <span class="math inline">\(z\)</span> is also in <span class="math inline">\(B\)</span>, and so <span class="math inline">\(B = A^C\)</span> is open, so <span class="math inline">\(A\)</span> is also closed.</p>
+<p>We conclude <span class="math inline">\(A = E\)</span>, and <span class="math inline">\(E\)</span> is path-connected. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>Let <span class="math inline">\(f: [a,b] \rightarrow \mathbb{R}\)</span> be continuous. Suppose that <span class="math inline">\(f\)</span> has a local maximum at <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, with <span class="math inline">\(x_1 &lt; x_2\)</span>. Show that there must be a third point between <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> where <span class="math inline">\(f\)</span> has a local minimum.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>First restrict <span class="math inline">\(f\)</span> to the compact interval <span class="math inline">\([x_1, x_2]\)</span>. Thus, <span class="math inline">\(f\)</span> attains a minimum <span class="math inline">\(x_3 \in [x_1, x_2]\)</span> such that <span class="math inline">\(f(x_3) = \min\{ f(x) : x \in [x_1, x_2]\}\)</span>. Now, we just remove the endpoints. Since <span class="math inline">\(x_1\)</span> is a local max, we have that there exists an <span class="math inline">\(\varepsilon &gt;0\)</span> such that if <span class="math inline">\(| y - x_1| &lt; \varepsilon\)</span>, then <span class="math inline">\(f(y) \leq f(x_1)\)</span>. Furthermore, restrict this <span class="math inline">\(\varepsilon\)</span> so that <span class="math inline">\(x_1+\varepsilon &lt; x_2\)</span>. We have two cases:</p>
+<p>Case 1: for all such <span class="math inline">\(y &gt; x_1\)</span>, <span class="math inline">\(f(y) = f(x_1)\)</span> (i.e.&nbsp;<span class="math inline">\(f\)</span> is constant on this small interval). Then <span class="math inline">\(f\)</span> is constant on <span class="math inline">\([x_1, x_1 + \varepsilon)\)</span>, and namely, take <span class="math inline">\(x^\star = x_1 + \varepsilon/2 (&lt; x_2)\)</span>, and thus, for all <span class="math inline">\(y\)</span> such that <span class="math inline">\(|y - x^\star| &lt; \varepsilon/2\)</span>, <span class="math inline">\(f(y) \geq f(x^\star)\)</span>, and thus, it is a local min in <span class="math inline">\((x_1, x_2)\)</span>.</p>
+<p>Case 2: there exists <span class="math inline">\(y &gt; x_1\)</span> such that <span class="math inline">\(f(y) &lt; f(x_1)\)</span>. Namely, <span class="math inline">\(x_1\)</span> cannot be a min on <span class="math inline">\([x_1, x_3]\)</span>, so <span class="math inline">\(x_1 \neq x_3\)</span>.</p>
+By a symmetric argument, assuming case 2 for both <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, we get that <span class="math inline">\(x_3\)</span> cannot equal <span class="math inline">\(x_1, x_2\)</span>, and <span class="math inline">\(x_3 \in (x_1, x_2)\)</span>. Then taking <span class="math inline">\(\varepsilon = \min\{|x_1 - x_3|, |x_2 - x_3|\}\)</span> confirms <span class="math inline">\(x_3\)</span> is a local min. <span class="math inline">\(\square\)</span>.
+</details>
+<p><strong>Homework 3</strong><a name="hw3"></a></p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Let <span class="math inline">\(f : (0,1) \rightarrow \mathbb{R}\)</span> be differentiable and let <span class="math inline">\(c \in (0,1)\)</span>. Suppose that <span class="math inline">\(\lim_{x \rightarrow c} f'(x)\)</span> exists and is finite. Show that this limit must be equal to <span class="math inline">\(f'(c)\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+Suppose for contradiction that <span class="math inline">\(\lim_{x \rightarrow c} f'(x) = L \neq f'(c)\)</span>. Assume first that <span class="math inline">\(L &lt; f'(c)\)</span> (a similar argument can be done for <span class="math inline">\(&gt;\)</span>). Select <span class="math inline">\(\varepsilon = \frac{f'(c) - L}{2} &gt; 0\)</span>. By limit definition, there exists a <span class="math inline">\(\delta &gt;0\)</span> such that for all <span class="math inline">\(x \in (0,1)\)</span>, if <span class="math inline">\(|x-c| &lt; \delta\)</span>, then <span class="math inline">\(|f'(x) - L| &lt; \frac{f'(c) - L}{2} \implies f'(x) &lt; \frac{f'(c) + L}{2}\)</span>. Let <span class="math inline">\(x_0 &lt; c\)</span> such that <span class="math inline">\(|x_0 - c| &lt; \delta\)</span>. Thus, we have for all <span class="math inline">\(x \in [x_0, c)\)</span>, <span class="math inline">\(f'(x) &lt; \frac{f'(c) + L}{2} &lt; f'(c)\)</span> (1). Then consider the open interval <span class="math inline">\((f'(x_0), f'(c))\)</span> which <span class="math inline">\(\frac{f'(c) + L}{2}\)</span> is in. Let <span class="math inline">\(y (\frac{f'(c) + L}{2}, f'(c))\)</span>. By Intermediate Value Theorem, there exists an <span class="math inline">\(x \in (x_0, c)\)</span> such that <span class="math inline">\(f'(x) = y\)</span>, but this contradicts (1). <span class="math inline">\(\square\)</span>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Show that the function <span class="math display">\[ f(x) = \sum_{n=0}^\infty \frac{1}{2^n} \sin (3^nx)\]</span> is a) continuous in <span class="math inline">\(\mathbb{R}\)</span>, and b) not differentiable anywhere in <span class="math inline">\(\mathbb{R}\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>Let <span class="math inline">\(c \in \mathbb{R}\)</span>. Let <span class="math inline">\((x_k) \subseteq \mathbb{R}\)</span> such that <span class="math inline">\(x_k \rightarrow c\)</span>. Define the partial sums <span class="math inline">\(f_N(x) = \sum_{n=0}^N \frac{1}{2^n} \sin (3^nx)\)</span>. Since <span class="math inline">\(\sin\)</span> is continuous, and linear combinations of continuous functions are continuous, we have <span class="math inline">\(f_N\)</span> continuous for all <span class="math inline">\(N\)</span>. <em>(Remark: If one has the tools of functional analysis, one can prove <span class="math inline">\(f_N\)</span> is Cauchy in <span class="math inline">\((C(\mathbb{R}), d_\infty)\)</span>, and thus uniformly converges to <span class="math inline">\(f\)</span>, so <span class="math inline">\(f\)</span> is continuous.)</em></p>
+<p>For now, let <span class="math inline">\(\varepsilon &gt; 0\)</span>. First note: <span class="math display">\[ |f(x) - f_N(x)| = |\sum_{n=N+1}^\infty \frac{1}{2^n} \underbrace{\sin (3^nx)}_{\leq 1}| \leq \sum_{n=N+1}^\infty \frac{1}{2^n} &lt; \infty \]</span> and by Cauchy, there exists an <span class="math inline">\(N \geq 1\)</span> such that <span class="math inline">\(\sum_{n=N+1}^\infty \frac{1}{2^n} &lt; \varepsilon/3\)</span>. Also, since <span class="math inline">\(f_N\)</span> is continuous, we have that <span class="math inline">\(f_N(x_k) \rightarrow_{k \rightarrow \infty} f_N(c)\)</span>, and so there exists some <span class="math inline">\(k_\varepsilon \in \mathbb{N}\)</span> such that for all <span class="math inline">\(k \geq k_\varepsilon\)</span>, <span class="math inline">\(|f_N(x_k) - f_N(c)| &lt; \varepsilon/3\)</span>. By triangle inequality, we see for all <span class="math inline">\(k \geq k_\varepsilon\)</span>, <span class="math display">\[
+|f(x_k) - f(c)| \leq \underbrace{|f(x_k) - f_N(x_k)|}_{\text{Cauchy convergence}} + \underbrace{|f_N(x_k) - f_N(c)|}_{\text{continuity}} + \underbrace{|f_N(c) - f_(c)|}_{\text{Cauchy convergence}} &lt; \varepsilon
+\]</span> and so <span class="math inline">\(f(x_k) \rightarrow_{k \rightarrow \infty} f(c)\)</span>, showing continuity of <span class="math inline">\(f\)</span> at any <span class="math inline">\(c \in \mathbb{R}\)</span>. <span class="math inline">\(\square\)</span></p>
+<ol start="2" type="a">
+<li><em>This one makes me sad. I’ll see if I have the motivation to write up a proper solution to this one sometime.</em> <span class="math inline">\(\square\)</span></li>
+</ol></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>Suppose <span class="math inline">\(f: [0,1] \rightarrow \mathbb{R}\)</span> is continuous with <span class="math inline">\(f(0) = f(1) = 0\)</span>, and <span class="math inline">\(f\)</span> is differentiable on <span class="math inline">\((0,1)\)</span>. Show that for any <span class="math inline">\(\lambda &gt; 0\)</span>, there is an <span class="math inline">\(x \in (0,1)\)</span> such that <span class="math inline">\(f'(x) = \lambda f(x)\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+Let <span class="math inline">\(\lambda &gt; 0\)</span>. We define <span class="math inline">\(g(t) = e^{-\lambda t}f(t)\)</span>, and so we also have <span class="math inline">\(g(0) = g(1) = 0\)</span>. By Mean Value Theorem, there is an <span class="math inline">\(x \in (0,1)\)</span> such that <span class="math inline">\(g'(x)\cdot (1-0) = g(1) - g(0)\)</span>, and so <span class="math inline">\(g'(x) = 0\)</span>. By product rule, we thus have: <span class="math display">\[g'(x) = e^{-\lambda t}f'(x) - \lambda e^{-\lambda t}f(x) =  \underbrace{e^{-\lambda x}}_{&gt;0}(f'(x) - \lambda f(x)) = 0\]</span> <span class="math display">\[ \implies f'(x) - \lambda f(x) = 0\]</span> and so <span class="math inline">\(f'(x) = \lambda f(x)\)</span>. <span class="math inline">\(\square\)</span>
+</details>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>(“Reverse MVT”) Suppose <span class="math inline">\(f: [0,1] \rightarrow \mathbb{R}\)</span> is continuous, and <span class="math inline">\(f\)</span> is differentiable on <span class="math inline">\((0,1)\)</span>.</li>
+</ol>
+<ol type="a">
+<li>Show that for any <span class="math inline">\(0 &lt; c &lt; 1\)</span> such that <span class="math inline">\(f'(c)\)</span> is not a max or min of <span class="math inline">\(f'\)</span> in <span class="math inline">\((0,1)\)</span>, there are <span class="math inline">\(x_1, x_2 \in (0,1)\)</span> such that <span class="math display">\[ f'(c) = \frac{f(x_2) - f(x_1)}{x_2 - x_1}.\]</span></li>
+<li>Is (a) false if <span class="math inline">\(f'(c)\)</span> is the maximum of <span class="math inline">\(f'\)</span> in <span class="math inline">\((0,1)\)</span>? Give an example.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>Let <span class="math inline">\(c \in (0,1)\)</span> such that <span class="math inline">\(f'(c)\)</span> is not a max or min of <span class="math inline">\(f'\)</span> in <span class="math inline">\((0,1)\)</span>. We define <span class="math inline">\(g(x) := f(x) - f'(c)\cdot x\)</span>, and thus, it suffices to find <span class="math inline">\(x_1 \neq x_2 \in (0,1)\)</span> such that <span class="math inline">\(g(x_1) = g(x_2)\)</span>. Suppose for contradiction that for all <span class="math inline">\(x_1 \neq x_2\)</span>, we have <span class="math inline">\(g(x_1) \neq g(x_2)\)</span>, so namely, <span class="math inline">\(g\)</span> is injective. Note also that <span class="math inline">\(g\)</span> is continuous, as <span class="math inline">\(f\)</span> is continuous. Thus, we have that <span class="math inline">\(g\)</span> is monotone, and so we only have one of the following hold for all <span class="math inline">\(x \in (0,1)\)</span>: <span class="math inline">\(g'(x) \geq 0\)</span> xor <span class="math inline">\(g'(x) \leq 0\)</span>. Furthermore, because <span class="math inline">\(c\)</span> was chosen so that is was not an extremum of <span class="math inline">\(f'\)</span>, we have the there exist <span class="math inline">\(a,b \in (0,1)\)</span> such that <span class="math inline">\(f'(a) &lt; f'(c) &lt; f'(b)\)</span>. But then note: <span class="math display">\[ g'(a) = f'(a) - f'(c) &lt; 0 \text{ and } g'(b) = f'(b) - f'(a) &gt; 0 \]</span> which contradicts monotonicty. <span class="math inline">\(\square\)</span></p>
+<ol start="2" type="a">
+<li><strong>Yes</strong>, and the proof in (a) breaks down when we try to find <span class="math inline">\(a,b\)</span> as before. For an example, consider <span class="math inline">\(f(x) = -(x-0.5)^3\)</span>, <span class="math inline">\(f:[0,1] \rightarrow \mathbb{R}\)</span>. We have <span class="math inline">\(f\)</span> continuous and differentiable (<span class="math inline">\(f' = -3(x-0.5)^2\)</span>). But then consider <span class="math inline">\(x = 0.5\)</span>, which indeed, maximizes <span class="math inline">\(f'\)</span> on <span class="math inline">\((0,1)\)</span>. However, we are unable to find <span class="math inline">\(x_1 \neq x_2\)</span> such that <span class="math inline">\(f'(0.5) = 0 = \frac{f(x_2) - f(x_1)}{x_2 - x_1}\)</span>, or equivalently, <span class="math inline">\(f(x_1) = f(x_2)\)</span>, due to the fact that <span class="math inline">\(f\)</span> is injective.</li>
+</ol></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>Let <span class="math inline">\(F: \mathbb{R} \rightarrow \mathbb{R}\)</span> be Lipschitz with constant <span class="math inline">\(L &gt; 0\)</span>. Let <span class="math inline">\(f, g : [0, \infty) \rightarrow \mathbb{R}\)</span> be continuous on <span class="math inline">\([0, \infty)\)</span> and differentiable in <span class="math inline">\((0, \infty)\)</span>, and satisfy: <span class="math display">\[f'(t) = F(f(t)), \quad g'(t) \leq F(g(t)) \quad \text{ for } t \in (0, \infty).\]</span> Show that if <span class="math inline">\(g(0) \leq f(0)\)</span>, then <span class="math inline">\(g(t) \leq f(t)\)</span> for all <span class="math inline">\(t &gt;0\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<p>Define <span class="math inline">\(h(t) := g(t) - f(t)\)</span>. Suppose for contradiction there is a <span class="math inline">\(t_1 \in (0, \infty)\)</span> such that <span class="math inline">\(g(t_1) &gt; f(t_1)\)</span>, so <span class="math inline">\(h(t_1)&gt; 0\)</span>. If <span class="math inline">\(f(0) = g(0)\)</span>, we have <span class="math inline">\(h(0) = 0\)</span>, and if we have <span class="math inline">\(f(0) &gt; g(0)\)</span>, we have <span class="math inline">\(h(0) &gt; 0\)</span>. Note also that <span class="math inline">\(h\)</span> continuous, so by IVT, there is a <span class="math inline">\(t \in (0, t_1)\)</span> such that <span class="math inline">\(h(t) = 0\)</span>. Since there exists some <span class="math inline">\(t &lt; t_1\)</span> such that <span class="math inline">\(h(t) = 0\)</span>, choose <span class="math inline">\(t_0\)</span> to be the largest of these values. In particular, we have for all <span class="math inline">\(t in (t_0, t_1)\)</span>, <span class="math inline">\(h(t) &gt; 0\)</span> (1). By Lipschitz, we have for all <span class="math inline">\(t \in [t_0, t_1)\)</span>, <span class="math display">\[ |h'(t)| = |g'(t) - f'(t)| \leq |F(g(t)) - F(f(t))| \leq L(\underbrace{g(t) - f(t)}_{h(t)\geq 0}) = L\cdot h(t)\]</span> so in particular, we have <span class="math inline">\(h'(t) \leq L\cdot h(t)\)</span>. Thus we “solve” the differential inequality: <span class="math display">\[ h'(t) - L\cdot h(t) \leq 0\]</span> <span class="math display">\[\implies e^{-Lt}h'(t) - Le^{-Lt}h(t) \leq 0\]</span> <span class="math display">\[\implies (e^{-Lt}h(t))' \leq 0 \quad \forall t \in [t_0, t_1).\]</span> Let <span class="math inline">\(H(t) = e^{-Lt}h(t)\)</span>, so namely, <span class="math inline">\(H(t)\)</span> is decreasing on this interval, so we must have <span class="math inline">\(H(t_0) \geq H(t)\)</span>, and so <span class="math inline">\(h(t_0) \geq h(t)\)</span> and thus, <span class="math inline">\(f(t) \geq g(t)\)</span> for all <span class="math inline">\(t \in [t_0, t_1)\)</span>, which contradicts (1). <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>Let <span class="math inline">\(f, g\)</span> with <span class="math inline">\(n\)</span>-th differentiable in <span class="math inline">\((0,1)\)</span>, and suppose that for some <span class="math inline">\(c \in (0,1)\)</span>, we have <span class="math inline">\(f(c) = f'(c) = \ldots = f^{(n-1)}(c) = 0\)</span> and <span class="math inline">\(g(c) = g'(c) = \ldots = g^{(n-1)}(c) = 0\)</span>, but that <span class="math inline">\(g^{(n)}(x)\)</span> is never <span class="math inline">\(0\)</span> in <span class="math inline">\((0,1)\)</span>.</li>
+</ol>
+<ol type="a">
+<li>Show that <span class="math inline">\(g^{(k)}(x)\)</span> is not zero for <span class="math inline">\(x\)</span> sufficiently close to <span class="math inline">\(c\)</span> for <span class="math inline">\(0 \leq k \leq n-1\)</span>.</li>
+<li>Show that <span class="math display">\[ \lim_{x\rightarrow c} \frac{f(x)}{g(x)} = \frac{f^{(n)}(c)}{g^{(n)}(c)},\]</span> if <span class="math inline">\(g(x) \neq 0\)</span> for <span class="math inline">\(x \neq c\)</span>. Indicate where (a) is used.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+<em>Proof.</em>
+</summary>
+<ol type="a">
+<li><p>By Taylor, we have for all <span class="math inline">\(x \in (0,1)\backslash\{c\}\)</span>, there exists <span class="math inline">\(x_1 \in (x, c)\)</span> such that <span class="math display">\[
+g^{(k)}(x) = \underbrace{\sum_{m=k}^{n-1} \frac{g^{(m)}(c)}{m!}(x-c)^m}_{=0} + \underbrace{\frac{g^{(n)}(x_1)}{n!}(x-c)^n}_{\neq 0}
+\]</span> <span class="math display">\[
+\implies g^{(k)}(x) \neq 0
+\]</span> for all <span class="math inline">\(0 \leq k \leq n-1\)</span>.</p>
+<ol start="2" type="a">
+<li>We can spam L’hopital’s Rule. We first check the assumptions. For all <span class="math inline">\(0 \leq k \leq n-1\)</span>,</li>
+</ol>
+<ul>
+<li>(by part a) <span class="math inline">\(g^{(k)}(x) \neq 0\)</span></li>
+<li><span class="math inline">\(\lim_{x \rightarrow c} f^{(k)}(x) = f^{(k)}(c) = 0\)</span></li>
+<li><span class="math inline">\(\lim_{x \rightarrow c} g^{(k)}(x) = g^{(k)}(c) = 0\)</span> (continuity of differentiable functions)</li>
+</ul>
+<p>and so (most of) the assumptions for L’hopital are satisfied, and we can conclude:</p>
+<p><span class="math display">\[
+\lim_{x\rightarrow c} \frac{f(x)}{g(x)} = \ldots = \lim_{x\rightarrow c} \frac{f^{(k)}(x)}{g^{(k)}(x)} = \ldots = \lim_{x\rightarrow c} \frac{f^{(n-1)}(x)}{g^{(n-1)}(x)}
+\]</span></p>
+<p>if the last limit exists. We claim it does, and we see:</p>
+<p><span class="math display">\[
+\lim_{x\rightarrow c} \frac{f^{(n-1)}(x)}{g^{(n-1)}(x)} = \lim_{x\rightarrow c} \frac{\frac{f^{(n-1)}(x)-f^{(n-1)}(c)}{x-c}}{\frac{g^{(n-1)}(x)-g^{(n-1)}(c)}{x-c}}
+\]</span></p>
+<p>as <span class="math inline">\(g^{(n-1)}(x) \neq 0\)</span> (by part a) and <span class="math inline">\(f^{(n-1)}(c), g^{(n-1)}(c) = 0\)</span>. Since <span class="math inline">\(f,g\)</span> are <span class="math inline">\(n\)</span>-th differentiable, this evaluates to <span class="math inline">\(f^{(n)}(c)/g^{(n)}(c)\)</span>, and thus, so does <span class="math inline">\(\lim_{x\rightarrow c} \frac{f(x)}{g(x)}\)</span>. <span class="math inline">\(\square\)</span></p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>(Walter Rudin, pg. 114, #6) Suppose <span class="math inline">\(f\)</span> is continuous for <span class="math inline">\(x \geq 0\)</span>, <span class="math inline">\(f'(x)\)</span> exists for <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(f(0) = 0\)</span>, and <span class="math inline">\(f'\)</span> is monotonically increasing. Put <span class="math display">\[ g(x) = f(x)/x \quad (x&gt;0)\]</span> and prove that <span class="math inline">\(g\)</span> is monotonically increasing.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>It suffices to show <span class="math display">\[ g'(x) = \frac{x f'(x) - f(x)}{x^2} \geq 0 \quad \forall x &gt;0\]</span> or equivalently, <span class="math display">\[ x f'(x) - f(x) \geq 0 \quad \forall x &gt;0. \]</span> By MVT, there is a <span class="math inline">\(c \in (0,x)\)</span> such that <span class="math display">\[ f(x) - \cancel{f(0)} = f'(c) (x - 0)\]</span> <span class="math display">\[\implies f'(c) = f(x)/x\]</span> <span class="math display">\[\implies f'(x) \geq f(x)/x \quad \text{(by monotonicity)} \]</span> which gives the desired result. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="8" type="1">
+<li>(Walter Rudin, pg. 114, #15) Suppose <span class="math inline">\(a \in \mathbb{R}\)</span>, <span class="math inline">\(f\)</span> is twice-differentiable on <span class="math inline">\((a, \infty)\)</span>, and <span class="math inline">\(M_0, M_1, M_2\)</span> are the least upper bounds on <span class="math inline">\(|f(x)|, |f'(x)|, |f"(x)|\)</span> respectively on <span class="math inline">\((a, \infty)\)</span>. Prove that <span class="math display">\[ M_1^2 \leq 4M_0M_2. \]</span></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>Assume WLOG <span class="math inline">\(M_0, M_2\)</span> are finite. By Taylor, we have for all <span class="math inline">\(x \in (a, \infty)\)</span>, if <span class="math inline">\(h&gt;0\)</span>, there is some <span class="math inline">\(x_1 \in (x, x+2h)\)</span> such that <span class="math display">\[ f'(x) = \frac{1}{2h}(f(x+2h)-f(x)) - hf"(x_1) \]</span> which means <span class="math display">\[ |f'(x)| \leq |\frac{1}{2h}(f(x+2h)-f(x))| - |hf"(x_1)| \leq M_0/h + hM_2 \]</span> and by sup definition, <span class="math display">\[ M_1 \leq M_0/h + hM_2 \quad \forall h&gt;0.\]</span> Then, choosing <span class="math inline">\(h = \sqrt{M_0M_2} &gt; 0\)</span>, we see: <span class="math display">\[ h = \frac{2\sqrt{M_0M_2} \pm \sqrt{4M_0M_2 - 4M_0M_2}}{2M_2} \]</span> <span class="math display">\[ \implies M_0 + M_2h^2 - 2\sqrt{M_0M_2}h = 0 \]</span> <span class="math display">\[ \implies M_0/h + hM_2 = 2\sqrt{M_0M_2} \]</span> and so we get <span class="math inline">\(M_1 \leq 2\sqrt{M_0M_2}\)</span>. Squaring gives the result. <span class="math inline">\(\square\)</span></p>
+</details>
+<p><strong>Homework 4</strong><a name="hw4"></a></p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Let <span class="math inline">\(f: [a,b] \rightarrow \mathbb{R}\)</span> be a function such that <span class="math inline">\(L(x) := \lim_{y\rightarrow x} f(y)\)</span> is well defined and finite for each <span class="math inline">\(x \in [a,b]\)</span>.</li>
+</ol>
+<ol type="a">
+<li>Show that <span class="math inline">\(L\)</span> is continuous on <span class="math inline">\([a,b]\)</span>.</li>
+<li>Show that the set <span class="math inline">\(\{x \in [a,b] : f(x) \neq L(x)\}\)</span> is at most countable.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<ol type="a">
+<li><p>Let <span class="math inline">\(x \in [a,b], \varepsilon &gt; 0\)</span>. Because <span class="math inline">\(L(x) = \lim_{y \rightarrow x} f(y)\)</span> exists, we can say there exists <span class="math inline">\(\delta &gt; 0\)</span> such that if <span class="math inline">\(0 &lt; |x-y| &lt; \delta\)</span>, then <span class="math inline">\(|f(y) - L(x)| &lt; \varepsilon/2\)</span>. Choose this <span class="math inline">\(\delta\)</span>. Note for all <span class="math inline">\(x_1 \in B_\delta(x)\)</span>, <span class="math inline">\(L(x_1)\)</span> exists as well, and so there exists <span class="math inline">\(\delta_2(x_1) &gt; 0\)</span> such that <span class="math inline">\(0 &lt; |x_1 - y| &lt; \delta_2(x_1)\)</span> implies <span class="math inline">\(|f(y) - L(x_1)| &lt; \varepsilon/2\)</span>.</p>
+<p>Let <span class="math inline">\(x_1 \in B_\delta(x)\)</span>. Note that <span class="math inline">\((B_\delta(x) \cap B_{\delta_2(x_1)}(x_1))\backslash \{x,x_1\} \neq \emptyset\)</span>. <em>If <span class="math inline">\(x_1 = x\)</span>, the claim follows. If <span class="math inline">\(x_1 \neq x\)</span>, because <span class="math inline">\(B_\delta(x)\)</span> is open, there is an <span class="math inline">\(r&gt;0\)</span> such that <span class="math inline">\(B_r(x_1) \subseteq B_\delta(x)\)</span>, and thus, there exists a <span class="math inline">\(y \neq x, x_1\)</span> in <span class="math inline">\(B_\delta(x) \cap B_{\delta_2}(x_1)\)</span>.</em> Thus, we can pull a <span class="math inline">\(y\)</span> such that <span class="math inline">\(0 &lt; |x-y| &lt; \delta\)</span> and <span class="math inline">\(0&lt; |x_1 - y| &lt; \delta_2(x_1)\)</span>. Thus, we see: <span class="math display">\[
+|L(x) - L(x_1)| \leq |L(x) - f(y)| + |f(y) - L(x_1)| &lt; \varepsilon/2 + \varepsilon/2 = \varepsilon
+\]</span> and so <span class="math inline">\(L\)</span> is continuous.</p>
+<ol start="2" type="a">
+<li>Call <span class="math inline">\(E = \{x \in [a,b] : f(x) \neq L(x)\}\)</span>. For all <span class="math inline">\(x \in E\)</span>, define the “gap” <span class="math inline">\(G(x) = |f(x) - L(x)| &gt; 0\)</span>. Let <span class="math inline">\(\varepsilon &gt; 0\)</span> and let <span class="math inline">\(D_\varepsilon = \{x \in E : G(x) &gt; \varepsilon\}\)</span> be the set of all discontinuities with a gap greater than <span class="math inline">\(\varepsilon\)</span>. Thus, if we consider the countable union <span class="math inline">\(\bigcup_{n\geq1} D_{1/n}\)</span>, there will exist some <span class="math inline">\(n\)</span> such that <span class="math inline">\(G(x) &gt; 1/n\)</span> for all <span class="math inline">\(x \in E\)</span>, and so <span class="math inline">\(\bigcup_{n\geq1} D_{1/n} = E\)</span>. It suffices to show <span class="math inline">\(D_\varepsilon\)</span> is countable.</li>
+</ol>
+<p>Let <span class="math inline">\(x \in D_\varepsilon \subseteq E\)</span>, so <span class="math inline">\(L(x)\)</span> exists. Thus, there is a <span class="math inline">\(\delta_x &gt; 0\)</span> such that for all <span class="math inline">\(t \in P_\delta(x) = (x-\delta_x, x) \cup (x, x+\delta_x)\)</span>, <span class="math inline">\(|f(t)-L(x)| &lt; \varepsilon/2\)</span>. By triangle inequality, we have for all <span class="math inline">\(t_1, t_2 \in P_\delta(x)\)</span>, <span class="math inline">\(|f(t_1) - f(t_2)| &lt; \varepsilon\)</span>. Consider <span class="math inline">\(t \in P_\delta(x)\)</span>. We claim <span class="math inline">\(G(t) \leq \varepsilon\)</span>, so <span class="math inline">\(t \notin D_\varepsilon\)</span>. Indeed, since <span class="math inline">\(P_\delta(x)\)</span> is open, consider <span class="math inline">\(B_r(t) \subseteq P_\delta(x)\)</span> for some <span class="math inline">\(r&gt;0\)</span>, and we have for all <span class="math inline">\(t' \in B_r(t), |f(t')-f(t)|&lt;\varepsilon\)</span>, and sending <span class="math inline">\(t' \rightarrow t\)</span>, we have that <span class="math inline">\(|L(t)-f(t)| = G(t) \leq \varepsilon\)</span> and so <span class="math inline">\(t \neq D_\varepsilon\)</span>.</p>
+<p>Thus, each <span class="math inline">\(x \in D_\varepsilon\)</span> has some <span class="math inline">\(P_{\delta_x}(x)\)</span> such that no points in it are also in <span class="math inline">\(D_\varepsilon\)</span>. In particular, by density of <span class="math inline">\(\mathbb{Q}\)</span>, we can pick <span class="math inline">\(q_x \in (x-\delta_x, x) \cap \mathbb{Q}\)</span>, and it holds that for <span class="math inline">\(x \neq y \in D_\varepsilon\)</span>, <span class="math inline">\(q_x \neq q_y\)</span>, and thus we have an injective map from <span class="math inline">\(D_\varepsilon \rightarrow \mathbb{Q}\)</span>, so <span class="math inline">\(D_\varepsilon\)</span> is at most countable, and we achieve our desired conclusion. <span class="math inline">\(\square\)</span></p></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>(Walter Rudin, pg. 138, #2) Suppose <span class="math inline">\(f \geq 0\)</span>, <span class="math inline">\(f\)</span> continuous on <span class="math inline">\([a,b]\)</span>, and <span class="math inline">\(\int_a^b f(x) dx = 0\)</span>. Prove that <span class="math inline">\(f(x) = 0\)</span> for all <span class="math inline">\(x \in [a,b]\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>Suppose for contradiction there exists some <span class="math inline">\(x_0 \in [a,b]\)</span> such that <span class="math inline">\(f(x_0) &gt; 0\)</span>. By continuity of <span class="math inline">\(f\)</span>, there exists some <span class="math inline">\(\delta &gt; 0\)</span> such that for all <span class="math inline">\(x \in B_\delta(x_0)\)</span>, <span class="math inline">\(f(x) &gt; 0\)</span> as well. In particular, consider the interval <span class="math inline">\([\underbrace{x_0 - \delta/2}_{c}, \underbrace{x_0 + \delta/2}_{d}]\)</span>. This interval is compact and thus achieves its minimum on continuous <span class="math inline">\(f\)</span>, say at <span class="math inline">\(x^*\)</span>, with <span class="math inline">\(f(x^*)&gt; 0\)</span>. Note that <span class="math inline">\(f\)</span> is also integrable on the restriction <span class="math inline">\([c,d]\)</span>.</p>
+<p>Thus, for any partition <span class="math inline">\(P = \{c=x_0, \ldots, x_n = d\}\)</span>, we have: <span class="math display">\[
+    L(f,P) = \sum_{i=1}^n \inf_{[x_{i-1}, x_i]} f(x) \cdot \Delta x_i \geq \sum_{i=1}^n f(x^*) \cdot \Delta x_i = f(x^*)(d-c) &gt; 0
+    \]</span> and so <span class="math inline">\(\int_c^d f(x) dx = \sup_P L(f,P) &gt; 0\)</span>. Finally note <span class="math inline">\(\int_a^c f(x) dx, \int_d^b f(x) dx \geq 0\)</span>, and so we have that <span class="math inline">\(\int_a^b f(x) dx &gt; 0\)</span>, contradicting <span class="math inline">\(=0\)</span>. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>(Walter Rudin, pg. 138, #5) Suppose <span class="math inline">\(f\)</span> is a bounded real function on <span class="math inline">\([a,b]\)</span>, and <span class="math inline">\(f^2 \in \mathcal{R}\)</span> on <span class="math inline">\([a,b]\)</span>. Does it follow that <span class="math inline">\(f \in \mathcal{R}\)</span>? Does the answer change if we assume <span class="math inline">\(f^3 \in \mathcal{R}\)</span>?</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+No, consider <span class="math inline">\(f:[a,b]\rightarrow \mathbb{R}\)</span> defined by <span class="math display">\[ f(x) = \begin{cases} 1 &amp;: x \in \mathbb{Q} \\ -1 &amp;: x \in \mathbb{R} \backslash \mathbb{Q} \end{cases} \]</span> which is not integrable, but <span class="math inline">\(f^2 \equiv 1\)</span> is integrable. But if <span class="math inline">\(f^3 \in \mathcal{R}\)</span>, we have that <span class="math inline">\(f\)</span> is integrable, which follows from Theorem 6.11 of Rudin, using the uniformly continuous function <span class="math inline">\(\phi(y) = y^{1/3}\)</span>. <span class="math inline">\(\square\)</span>
+</details>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>(Walter Rudin, pg. 138, #8) Suppose <span class="math inline">\(f \in \mathcal{R}\)</span> on <span class="math inline">\([a,b]\)</span> for every <span class="math inline">\(b &gt; a\)</span> where <span class="math inline">\(a\)</span> is fixed. Define <span class="math display">\[ \int_a^\infty f(x) dx = \lim_{b \rightarrow \infty} \int_a^b f(x) dx \]</span> if this limit exists (and is finite). We say the integral converges, and if replaced by <span class="math inline">\(|f|\)</span>, we say the integral converges absolutely. Assume that <span class="math inline">\(f(x) \geq 0\)</span> and <span class="math inline">\(f\)</span> decreases monotonically on <span class="math inline">\([1, \infty)\)</span>. Prove that <span class="math inline">\(\int_1^\infty f(x) dx\)</span> converges if and only if <span class="math inline">\(\sum_a^\infty f(n)\)</span> converges (i.e.&nbsp;the integral test).</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>(<span class="math inline">\(\impliedby\)</span>) Assume <span class="math inline">\(\sum_a^\infty f(n)\)</span> converges. Fix some <span class="math inline">\(N \in \mathbb{N}\)</span> and consider <span class="math inline">\(\int_1^{N+1} f(x) dx\)</span>. Consider the partition <span class="math inline">\(P_0 = \{1, 2, \ldots, N+1\}\)</span>. Because <span class="math inline">\(f\)</span> is monotone-decreasing, we get that <span class="math inline">\(U(f, P_0) = \sum_{n=1}^N f(n)\)</span>, which means <span class="math display">\[ \int_1^{N+1} f(x) dx = \inf_P U(f, P) \leq \sum_{n=1}^N f(n).\]</span> Sending <span class="math inline">\(N \rightarrow \infty\)</span>, we get that <span class="math display">\[ \int_1^\infty f(x) dx \leq \sum_{n=1}^\infty f(n) &lt; \infty.\]</span></p>
+<p>(<span class="math inline">\(\implies\)</span>) Assume <span class="math inline">\(\int_1^\infty f(x) dx &lt; \infty\)</span>. Fix some <span class="math inline">\(N \in \mathbb{N}\)</span> and consider <span class="math inline">\(\int_1^N f(x) dx\)</span>. Consider the partition <span class="math inline">\(P = \{1, 2, \ldots, N\}\)</span> and thus <span class="math inline">\(L(f,P) = \sum_{n=1}^{N-1} f(n+1) = \sum_{n=2}^{N} f(n)\)</span>, and so <span class="math display">\[ \sum_{n=2}^{N} f(n) = L(f, P) \leq \int_1^N f(x) dx. \]</span> Sending <span class="math inline">\(N \rightarrow \infty\)</span>, we get that <span class="math display">\[ \sum_{n=1}^\infty f(n) \leq \int_1^\infty f(x) dx  &lt; \infty\]</span> and since <span class="math inline">\(f(1)\)</span> is finite, we get that the series converges. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li>Let <span class="math inline">\(f,g : [a,b] \rightarrow \mathbb{R}, f,g \in \mathcal{R}\)</span>. Show that if the set $A := {x : f(x) = g(x)} is dense in <span class="math inline">\([a,b]\)</span> (i.e.&nbsp;<span class="math inline">\(\bar{A} = [a,b]\)</span>), then <span class="math display">\[ I_1 = \int_a^b f(x) dx = \int_a^b g(x) dx = I_2.\]</span></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>It suffices to show that for all <span class="math inline">\(\varepsilon &gt; 0\)</span>, we have <span class="math display">\[
+    | I_1 - I_2 | &lt; \varepsilon.
+    \]</span> Let <span class="math inline">\(\varepsilon &gt; 0\)</span>. Since <span class="math inline">\(f,g\)</span> Riemann integrable, there exists <span class="math inline">\(\delta &gt; 0\)</span> such that for all partitions <span class="math inline">\(P = \{a=x_0, \ldots, x_n = b\}\)</span> with mesh<span class="math inline">\((P) &lt; \delta\)</span>, and for all <span class="math inline">\(t_i \in [x_{i-1}, x_i]\)</span>, <span class="math display">\[
+    | I_1 - \sum_{i=1}^n f(t_i) \Delta x_i | &lt; \varepsilon/2
+    | \sum_{i=1}^n g(t_i) \Delta x_i - I_2| &lt; \varepsilon/2.
+    \]</span> Fix some partition <span class="math inline">\(P = \{a=x_0, \ldots, x_n = b\}\)</span> with mesh<span class="math inline">\((P) &lt; \delta\)</span>. By density of <span class="math inline">\(A in [a,b]\)</span>, we can pick <span class="math inline">\(t'_i \in [x_{i-1}, x_i] \cap A \neq \emptyset\)</span> such that <span class="math inline">\(f(t'_i) = g(t_i)\)</span> for all <span class="math inline">\(i = 1, \ldots, n\)</span>. Then by triangle, we see: <span class="math display">\[
+    | I_1 - I_2 | \leq | I_1 - \sum_{i=1}^n f(t'_i) \Delta x_i | + \underbrace{|\sum_{i=1}^n f(t'_i) \Delta x_i - \sum_{i=1}^n g(t_i) \Delta x_i|}_{=0} + | \sum_{i=1}^n g(t_i) \Delta x_i - I_2| &lt; \varepsilon
+    \]</span> and since <span class="math inline">\(\varepsilon &gt;0\)</span> arbitrary, we conclude. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>Let <span class="math inline">\(f: \mathbb{R} \rightarrow \mathbb{R}\)</span> be strictly monotone increasing, continuous, with <span class="math inline">\(f(0) = 0\)</span> and <span class="math inline">\(f(\mathbb{R}) = \mathbb{R}\)</span>. Show that</li>
+</ol>
+<ol type="a">
+<li><span class="math inline">\(f^{-1}\)</span> is continuous</li>
+<li><span class="math display">\[ \int_0^a f(x) dx + \int_0^b f^{-1}(x) dx \geq ab \quad \text{for any $a,b \geq 0$} \]</span></li>
+<li>Using <span class="math inline">\(b\)</span>, let <span class="math inline">\(p,q &gt; 0\)</span> such that <span class="math inline">\(1/p + 1/q = 1\)</span>. Show if <span class="math inline">\(u, v \geq 0\)</span>, then: <span class="math display">\[ uv \leq u^p/p + v^q/q\]</span> with equality if and only if <span class="math inline">\(u^p = v^q\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<ol type="a">
+<li><p>Suppose for contradiction there is a <span class="math inline">\(y_0 \in \mathbb{R}\)</span> such that <span class="math inline">\(f^{-1}\)</span> is discontinuous at <span class="math inline">\(y_0\)</span>, i.e.&nbsp;there is a <span class="math inline">\((y_n)\)</span> such that <span class="math inline">\(y_n \rightarrow y_0\)</span>, but <span class="math inline">\(f^{-1}(y_n) \cancel{\rightarrow} f^{-1}(y_0)\)</span>. Call <span class="math inline">\(x_n = f^{-1}(y_n), x_0 = f^{-1}(y_0)\)</span>. Because <span class="math inline">\(f\)</span> is strictly monotone increasing, we have that <span class="math inline">\(f^{-1}\)</span> is as well (Assume <span class="math inline">\(y_1 &lt; y_2\)</span>, suppose <span class="math inline">\(f^{-1}(y_1) \geq f^{-1}(y_2)\)</span>, which means <span class="math inline">\(f(f^{-1}(y_1)) = y_1 \geq f(f^{-1}(y_2)) = y_2)\)</span>. Reduce <span class="math inline">\((y_n)\)</span> to an increasing subsequence that still converges to <span class="math inline">\(y_0\)</span>, and thus <span class="math inline">\((x_n)\)</span> is also increasing. Since <span class="math inline">\(y_n \leq y_0\)</span> for all <span class="math inline">\(n\)</span>, <span class="math inline">\(x_n \leq x_0\)</span> for all <span class="math inline">\(n\)</span>, and thus by monotone convergence, <span class="math inline">\(x_n \rightarrow x \leq x_0\)</span>. Finally, since <span class="math inline">\(y_n = f(x_n) \leq f(x)\)</span>, sending <span class="math inline">\(n \rightarrow \infty\)</span> gives <span class="math inline">\(y_0 \leq f(x) \leq f(x_0)\)</span> which means <span class="math inline">\(x_n \rightarrow x_0\)</span>, a contradiction, so <span class="math inline">\(f^{-1}\)</span> is continuous. <span class="math inline">\(\square\)</span></p>
+<ol start="2" type="a">
+<li>Let <span class="math inline">\(a,b \geq 0\)</span>.</li>
+</ol>
+<p>(Case 1: <span class="math inline">\(f(a) = b\)</span>) We show we get equality in this case. Let <span class="math inline">\(P_1 = \{0=x_0, \ldots, x_n = a\}\)</span> be a partition of <span class="math inline">\([0,a]\)</span>, and by monotonicity, <span class="math inline">\(P_2 = \{0=y_0 = f(x_0), \ldots, y_n = f(a) = b\}\)</span> is a partition of <span class="math inline">\([0,b]\)</span>. Thus, by monotonicity, we see: <span class="math display">\[
+\begin{align}
+U(P_1,f) + L(P_2,f^{-1}) &amp;= \sum_{i=1}^n \sup_{i} f(x) \Delta x_i + \inf_i f^{-1}(y) \Delta y_i \\
+&amp;= \sum_{i=1}^n f(x_i) (x_i - x_{i-1}) + x_{i-1} \Delta f(x_i) \\
+&amp;= \sum_{i=1}^n f(x_i) x_i - f(x_{i-1}) x_{i-1} \\
+&amp;= f(a)\cdot a - f(0) \cdot 0 \quad \text{(telescopic sum)} \\
+&amp;= ab.
+\end{align}
+\]</span> By sup, we have <span class="math inline">\(U(P_1,f) + \sup_P L(P,f^{-1}) \geq ab\)</span>, and since <span class="math inline">\(P_1\)</span> was picked arbitrarily, we also have <span class="math inline">\(\inf_P U(P,f) + \sup_P L(P,f^{-1}) \geq ab\)</span>. Note that we also could’ve started with an arbitrary partition of <span class="math inline">\([0,b]\)</span> and gotten the same result, so it also follows that <span class="math inline">\(\inf_P U(P,f) + \sup_P L(P,f^{-1}) \leq ab\)</span>. Since <span class="math inline">\(f, f^{-1}\)</span> are both integrable, we thus get that <span class="math inline">\(\int_0^a f dx + \int_0^b f^{-1} dx = ab\)</span>.</p>
+<p>(Case 2: <span class="math inline">\(f(a) &lt; b\)</span>. Similar arguments can show <span class="math inline">\(&gt;\)</span>, by switching around <span class="math inline">\(a,b\)</span> and <span class="math inline">\(f, f^{-1}\)</span>.) We consider the partition of <span class="math inline">\([0,a]\)</span>, <span class="math inline">\(P_1 = \{x_0 = 0, \ldots, x_n = a\}\)</span>, and the partition of <span class="math inline">\([0,b]\)</span>, <span class="math inline">\(P_2 = \{0=y_0=f(x_0), \ldots, y_n=f(x_n)=f(a), y_{n+1}, \ldots, y_m = b\}\)</span>. We evaluate: <span class="math display">\[
+\begin{align}
+U(f, P_1) + L(f^{-1}, P_2) &amp;= \sum_{i=1}^n \sup_{i} f(x) \Delta x_i + \inf_i f^{-1}(y) \Delta y_i + \sum_{i=n+1}^m \inf_i f^{-1}(y) \Delta y_i \\
+&amp;= \sum_{i=1}^n f(x_i) (x_i - x_{i-1}) + x_{i-1} \Delta f(x_i) + \sum_{i=n+1}^m \inf_i f^{-1}(y) \Delta y_i \\
+&amp;= f(a)\cdot a + \sum_{i=n+1}^m \underbrace{\inf_i f^{-1}(y)}_{\geq f^{-1}(y_n) = a \text{ by monotonicity}} \Delta y_i \quad \text{(telescopic sum as in case 1)} \\
+&amp;\geq f(a)\cdot a + a \sum_{i=n+1}^m \Delta y_i \\
+&amp;\geq f(a)\cdot a + a(b-f(a)) = ab.
+\end{align}
+\]</span> By sup/inf manipulation again, we see: <span class="math display">\[ U(P_1, f) + \sup_P L(P, f^{-1}) \geq ab \]</span> and since <span class="math inline">\(P_1\)</span> was arbitrarily picked, we also have: <span class="math display">\[ \inf_P U(P, f) + \sup_P L(P, f^{-1}) \geq ab \]</span> and so <span class="math inline">\(\int_0^a f + \int_0^b f^{-1} \geq ab\)</span>. <span class="math inline">\(\square\)</span></p>
+<ol start="3" type="a">
+<li>From previous parts, we can choose the function <span class="math inline">\(f(x) = x^{p-1}\)</span>, which is strictly increasing, continuous, and <span class="math inline">\(f(0) = 0\)</span>. Also note that <span class="math inline">\(f^{-1}(x) = x^{q-1}\)</span>, as <span class="math inline">\(f(f^{-1}(x)) = x^{pq-p-q+1} = x\)</span> by the definition of dual. Applying part b with <span class="math inline">\(u,v \geq 0\)</span>, we have: <span class="math display">\[ \int_0^u x^{p-1} dx + \int_0^v x^{q-1} dx \geq uv \]</span> and by power rule/FTC, <span class="math display">\[ \frac{u^p}{p} + \frac{v^q}{q} \geq uv. \]</span> For the equality, note that: <span class="math display">\[
+\begin{align}
+q + p = pq &amp;\implies q+p = pq\underbrace{\frac{u^{\frac{p+q}{q}}}{u^p}}_{=1} \\
+&amp;\implies qu^p + pu^p = pqu^{\frac{p+q}{q}} \\
+&amp;\implies u^p/p + u^p/q = u^{\frac{p+q}{q}}.
+\end{align}
+\]</span> Thus, <span class="math inline">\(u^p = v^q \iff v = u^{p/q} \iff u^p/p +v^q/q = uv.\)</span> <span class="math inline">\(\square\)</span></li>
+</ol></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="7" type="1">
+<li>Let <span class="math inline">\(f, \alpha : [a,b] \rightarrow \mathbb{R}\)</span> be monotone increasing functions, <span class="math inline">\(f \in \mathcal{R}(\alpha)\)</span> on <span class="math inline">\([a,b]\)</span>. Show that <span class="math inline">\(\alpha \in \mathcal{R}(f)\)</span> on <span class="math inline">\([a,b]\)</span> and <span class="math display">\[ \int_a^b f d\alpha + \int_a^b \alpha df = f(b)\alpha(b) - f(a)\alpha(a). \]</span></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>Assume <span class="math inline">\(f \in \mathcal{R}(\alpha)\)</span>. Let <span class="math inline">\(\varepsilon &gt;0\)</span>. Thus, there is a partition <span class="math inline">\(P = \{a=x_0, \ldots, x_n =b\}\)</span> such that: <span class="math display">\[ \sum_{i=1}^n [\sup_i f(x) - \inf_i f(x)][\alpha(x_i)-\alpha(x_{i-1})] &lt; \varepsilon \]</span> and by monotonicity of <span class="math inline">\(f, \alpha\)</span>, we also get: <span class="math display">\[ \sum_{i=1}^n [f(x_i) - f(x_{i-1})][\sup_i \alpha(x)- \inf_i \alpha(x)] &lt; \varepsilon \]</span> and so <span class="math inline">\(U(\alpha, P, f)-L(\alpha, P, f) &lt; \varepsilon\)</span> and <span class="math inline">\(\alpha \in \mathcal{R}(f)\)</span>.</p>
+To show the “integration-by-parts” formula, pick your favorite partition <span class="math inline">\(P_0 = \{a=x_0, \ldots, x_n =b\}\)</span>, and it follows by monotonicity and telescoping sums, <span class="math display">\[
+    \begin{align}
+    U(f, P_0, \alpha) + L(\alpha, P_0, f) &amp;= \sum_i [f(x_i) \Delta \alpha_i + \alpha(x_{i-1}) \Delta f_i] \\
+    &amp;= \sum_i [f(x_i) \alpha(x_i) - f(x_{i-1})\alpha(x_{i-1})] \\
+    &amp;= f(b)\alpha(b) = f(a)\alpha(a)
+    \end{align}
+    \]</span> and so namely, this holds for any partition of <span class="math inline">\([a,b]\)</span>. Thus we see, <span class="math display">\[
+    \begin{align}
+    &amp;\inf_P U(f, P, \alpha) + L(\alpha, P_0, f) \leq f(b)\alpha(b) - f(a)\alpha(a) \\
+    &amp;\implies L(\alpha, P_0, f) \leq f(b)\alpha(b) - f(a)\alpha(a) - \int_a^b f d\alpha \\
+    &amp;\implies \sup_P L(\alpha, P, f) \leq f(b)\alpha(b) - f(a)\alpha(a) - \int_a^b f d\alpha \\
+    &amp;\implies \int_a^b f d\alpha + \int_a^b \alpha df \leq f(b)\alpha(b) - f(a)\alpha(a) \\
+    &amp; U(f, P_0, \alpha) + \sup_P L(\alpha, P, f) \geq f(b)\alpha(b) - f(a)\alpha(a) \\
+    &amp;\implies \inf_P U(f, P, \alpha) \geq f(b)\alpha(b) - f(a)\alpha(a) - \int_a^b \alpha df \\
+    &amp;\implies \int_a^b f d\alpha + \int_a^b \alpha df \geq f(b)\alpha(b) - f(a)\alpha(a) \\
+    \end{align}
+    \]</span> and so we get equality. <span class="math inline">\(\square\)</span>
+</details>
+<p><strong>Homework 5</strong><a name="hw5"></a></p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Let <span class="math inline">\(\alpha(x) = 0\)</span> if <span class="math inline">\(x &lt; 0\)</span> and <span class="math inline">\(= 1\)</span> if <span class="math inline">\(x \geq 0\)</span>. Suppose <span class="math inline">\(f : [-1, 1] \rightarrow \mathbb{R}\)</span> is bounded and <span class="math inline">\(f \in \mathcal{R}(\alpha)\)</span> on <span class="math inline">\([-1,1]\)</span>. Show that <span class="math inline">\(f\)</span> is left continuous at <span class="math inline">\(x = 0\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>Suppose for contradiction <span class="math inline">\(f\)</span> is not left continuous at <span class="math inline">\(x=0\)</span>, i.e.&nbsp;there exists some <span class="math inline">\(\varepsilon &gt;0\)</span> such that for all <span class="math inline">\(\delta &gt;0\)</span>, there exists <span class="math inline">\(x \in (-\delta, 0)\)</span> such that <span class="math inline">\(|f(x) - f(0)| \geq \varepsilon\)</span>. Let <span class="math inline">\(P = \{-1=x_0,\ldots,x_n=1\}\)</span> be a partition of <span class="math inline">\([-1,1]\)</span>. Thus, we have for some <span class="math inline">\(i = 1, \ldots, n\)</span> that <span class="math inline">\(0 \in (x_{i-1}, x_i]\)</span>, and so take <span class="math inline">\(\delta = -x_{i-1}\)</span> and by the supposition, we have some <span class="math inline">\(x' \in (x_{i-1}, 0)\)</span> such that <span class="math inline">\(|f(x')-f(0)| \geq \varepsilon\)</span>. Finally, note that only <span class="math inline">\(\Delta \alpha_i = 1\)</span> is nonzero. Thus, <span class="math display">\[ U(f, P, \alpha) - L(f, P, \alpha) = \sup_i f(x) - \inf_i f(x) \geq \varepsilon \]</span> and since our partition choice was arbitrary, we have that <span class="math inline">\(f \notin \mathcal{R}(\alpha)\)</span>, a contradiction. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>Let <span class="math inline">\(\mathcal{C}\)</span> be the Cantor set. Define <span class="math inline">\(f:[0,1]\rightarrow \mathbb{R}\)</span> by <span class="math inline">\(f(x) = 1\)</span> on <span class="math inline">\(\mathcal{C}\)</span> and <span class="math inline">\(f(x) = 0\)</span> if <span class="math inline">\(x \notin \mathcal{C}\)</span>. Show that <span class="math inline">\(f \in \mathcal{R}\)</span> on <span class="math inline">\([0,1]\)</span> (this is an example of a function with uncountable discontinuities, yet is still integrable).</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>(This one probably makes more sense if you draw a picture of the layers :) ) Let <span class="math inline">\(\varepsilon &gt;0\)</span>. Define <span class="math inline">\(\mathcal{C}_k\)</span> to be the <span class="math inline">\(k\)</span>-th “Cantor layer”, with initial <span class="math inline">\(\mathcal{C}_0 = [0,1]\)</span> and for all <span class="math inline">\(k \geq 1\)</span>, <span class="math inline">\(\mathcal{C}_k = \{x/3 : x \in C_{k-1}\} \cup \{(2+x)/3 : x \in C_{k-1}\}\)</span>, and so <span class="math inline">\(\mathcal{C} = \bigcap_k \mathcal{C}_k\)</span>.</p>
+<p>Consider the sequence <span class="math inline">\(a_k = \frac{2^k(5)-2}{3^{k+1}}\)</span> which goes to <span class="math inline">\(0\)</span> as <span class="math inline">\(k \rightarrow \infty\)</span>. Choose <span class="math inline">\(k\)</span> such that <span class="math inline">\(a_k &lt; \varepsilon\)</span>, and consider <span class="math inline">\(\mathcal{C}_k\)</span>. Consider the partition of <span class="math inline">\([0,1]\)</span>, <span class="math inline">\(P = \{x_i = i/3^{k+1}: i = 0, 1, \ldots, 3^{k+1}\}\)</span>, and so we compute: <span class="math display">\[ U(f, P) - L(f, P) = \sum_i [\sup_i f(x) - \inf_i f(x)]/3^{k+1} \quad (1)\]</span> We split the indices <span class="math inline">\(i\)</span> as such: if <span class="math inline">\([x_{i-1}, x_i] \cap \mathcal{C}_k \neq \emptyset\)</span>, then <span class="math inline">\(i \in A\)</span>, and if <span class="math inline">\(= \emptyset\)</span>, then <span class="math inline">\(i \in B\)</span>. For <span class="math inline">\(i \in B\)</span>, we have that all <span class="math inline">\(x \in [x_{i-1}, x_i]\)</span> are not in <span class="math inline">\(\mathcal{C}_k\)</span>, and so are not in <span class="math inline">\(\mathcal{C}\)</span>, so <span class="math inline">\(f(x) = 0\)</span> and <span class="math inline">\(\sup_i - \inf_i = 0\)</span> for all <span class="math inline">\(i \in B\)</span>. For <span class="math inline">\(i \in A\)</span>, we have that for <span class="math inline">\(x \in [x_{i-1}, x_i]\)</span>, <span class="math inline">\(f(x)\)</span> could be <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span>, so we bound <span class="math inline">\(\sup_i f - \inf_i f \leq 1\)</span>. Thus, <span class="math inline">\((1)\)</span> becomes <span class="math inline">\(\leq \sum_{i\in A} 1/3^{k+1} = |A|/3^{k+1}\)</span>. Finally, note that <span class="math inline">\(|A| = 2^k(5)-2\)</span> (as in <span class="math inline">\(\mathcal{C}_k\)</span>, there are <span class="math inline">\(2^k\)</span> intervals, and each one overlaps with five partition segments with endpoints, minus the two intervals on the end of <span class="math inline">\([0,1]\)</span>. I recommend drawing a picture to see this, and one can prove this rigorously, but tediously, with induction.) Thus, <span class="math inline">\((1) \leq \frac{2^k(5)-2}{3^{k+1}} &lt; \varepsilon\)</span>, and so <span class="math inline">\(f \in \mathcal{R}\)</span>. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>(Walter Rudin, #10) Let <span class="math inline">\(p,q &gt; 0\)</span> be duals. Prove the following statements.</li>
+</ol>
+<ol start="2" type="a">
+<li>If <span class="math inline">\(f,g \in \mathcal{R}(\alpha)\)</span>, <span class="math inline">\(f, g \geq 0\)</span>, and <span class="math inline">\(\int_a^b f^p d\alpha = \int_a^b g^q d\alpha = 1\)</span>, then <span class="math inline">\(\int_a^b fg d\alpha \leq 1\)</span>.</li>
+<li>(H"older’s Inequality) If <span class="math inline">\(f,g\)</span> are real in <span class="math inline">\(\mathcal{R}(\alpha)\)</span>, then <span class="math display">\[ \left| \int_a^b fg d\alpha \right| \leq \left(\int_a^b |f|^p \right)^{1/p}\left(\int_a^b |g|^q \right)^{1/q}. \]</span></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<ol start="2" type="a">
+<li><p>By (6c) from HW 4, we write: <span class="math display">\[
+\begin{align}
+\int_a^b fg d\alpha &amp;\leq \int_a^b \left(\frac{f^p}{p} + \frac{g^q}{q} \right) d\alpha \\
+&amp;= 1/p + 1/q = 1.
+\end{align}
+\]</span></p>
+<ol start="3" type="a">
+<li>First, assume <span class="math inline">\(\int |f|^p d\alpha = 0\)</span>, so the RHS is <span class="math inline">\(0\)</span>. Then we also have for all <span class="math inline">\(M&gt;0\)</span>, <span class="math inline">\(\int M|f|^p d\alpha = 0\)</span>, and since <span class="math inline">\(g\)</span> is bounded, we have <span class="math display">\[ \int |g||f|d\alpha = 0 \implies |\int_a^b fg d\alpha| = 0. \]</span> The same argument holds when <span class="math inline">\(\int |g|^q d\alpha = 0\)</span>, so now assume <span class="math inline">\(\int |f|^p d\alpha = r_f, \int |g|^q d\alpha = r_g &gt;0\)</span>. Note that we have <span class="math display">\[ \int \left( \frac{|f|}{\left(\int |f|^p d\alpha\right)^{1/p}}\right)^p d\alpha, \int \left( \frac{|g|}{\left(\int |g|^p d\alpha\right)^{1/q}}\right)^q d\alpha = 1. \]</span> Thus, by part b, we have <span class="math display">\[ \int \frac{|f||g|}{r_f^{1/p}r_g^{1/q}} d\alpha \leq 1 \implies \int |fg| d\alpha \leq r_f^{1/p}r_g^{1/q}. \]</span> Noting that <span class="math inline">\(|\int fg d\alpha| \leq \int |fg| d\alpha\)</span> finishes the proof. <span class="math inline">\(\square\)</span></li>
+</ol></li>
+</ol>
+</details>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>(Walter Rudin, #15) Suppose <span class="math inline">\(f\)</span> is real, continuously differentiable, defined on <span class="math inline">\([a,b]\)</span>, with <span class="math inline">\(f(a) = f(b) = 0\)</span>, and <span class="math display">\[ \int_a^b (f(x))^2 dx = 1.\]</span> Prove that <span class="math display">\[ \int_a^b xf(x)f'(x) dx = -1/2\]</span> and that <span class="math display">\[ \int_a^b (f'(x))^2 dx \cdot \int_a^b x^2 (f(x))^2 dx \geq 1/4.\]</span></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>By integration by parts, we see <span class="math display">\[ \int_a^b x f(x)f'(x) dx = \underbrace{b\cdot \frac{1}{2}(f(b))^2 - a\cdot \frac{1}{2}(f(a))^2}_{=0} - \int_a^b 1/2 (f(x))^2 dx \]</span> which equals <span class="math inline">\(-1/2\)</span> by assumption. Then applying H"older’s inequality (see previous question) to <span class="math inline">\(xf(x)\)</span> and <span class="math inline">\(f'(x)\)</span>, we get: <span class="math display">\[ \left| \int_a^b xf(x)f'(x) d\alpha \right| \leq \left(\int_a^b |xf(x)|^2 \right)^{1/2}\left(\int_a^b |f'(x)|^2 \right)^{1/2} \]</span> and so squaring and subbing in the first equality into the LHS, we get our result.</p>
+</details>
+<p><strong>Midterm</strong><a name="midterm"></a></p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>(5pt) Let <span class="math inline">\((X,d)\)</span> be a complete metric space. Suppose that <span class="math inline">\(A_n\)</span> is a sequence of compact subsets in <span class="math inline">\(X\)</span> such that <span class="math inline">\(d(x,A_n) \leq 1/n\)</span> for any <span class="math inline">\(x \in X\)</span>. Show that <span class="math inline">\(X\)</span> is compact.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p><em>Remark: This is similar to Homework 1, Q5.</em> We show sequential compactness, so let <span class="math inline">\((x_n) \subseteq X\)</span>. Since we have a sequence of compact <span class="math inline">\(A_n\)</span>, for each <span class="math inline">\(n \in \mathbb{N}\)</span>, the open cover <span class="math inline">\(\{B_{1/n}(a)\}_{a \in A_n}\)</span> has a finite subcover, <span class="math inline">\(\{B_{1/n}(a_i)\}_{i \in [m(n)]}\)</span>. Also, since <span class="math inline">\(d(x, A_n) \leq 1/n\)</span> for any <span class="math inline">\(x \in X\)</span>, we can double the radius so that <span class="math inline">\(\{B_{2/n}(a_i)\}_{i \in [m(n)]}\)</span> is an open cover for <span class="math inline">\(X\)</span> for each <span class="math inline">\(n\)</span>.</p>
+<p>Then we construct the convergent subsequence as follows: for <span class="math inline">\(n=1\)</span>, choose the ball <span class="math inline">\(i'\)</span> in <span class="math inline">\(\{B_{1}(a_i)\}_{i \in [m(1)]}\)</span> such that <span class="math inline">\(B_{2}(a_{i'})\}\)</span> contains a subsequence of <span class="math inline">\((x_n)\)</span>, which exists by the pigeonhole principle (it is a finite set). Then, we look at the next finite open cover for <span class="math inline">\(n=2\)</span>, extract another subsequence, and so on. This final subsequence, call it <span class="math inline">\((x_{k_n})\)</span>, must be Cauchy, because for <span class="math inline">\(n, m \geq N\)</span> for some <span class="math inline">\(N \in \mathbb{N}\)</span>, both <span class="math inline">\(x_{k_n}\)</span> and <span class="math inline">\(x_{k_m}\)</span> would be in <span class="math inline">\(B_{2/N}(a_{i'})\)</span>. Since the metric space is complete, this subsequence converges in <span class="math inline">\(X\)</span> and we conclude. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li>(5pt) Let <span class="math inline">\((X,d)\)</span> be a metric space, and consider <span class="math inline">\(f: X \rightarrow Y\)</span>. Show that <span class="math inline">\(f\)</span> is continuous in <span class="math inline">\(X\)</span> if and only if for any open subset <span class="math inline">\(O \subseteq Y\)</span>, the set <span class="math inline">\(f^{-1}(O)\)</span> is open.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>(<span class="math inline">\(\implies\)</span>) Assume <span class="math inline">\(f\)</span> is continuous, and let <span class="math inline">\(O \subseteq Y\)</span> be open. Let <span class="math inline">\(x_0 \in f^{-1}(O)\)</span>, so <span class="math inline">\(y_0 = f(x_0) \in O\)</span>. Since <span class="math inline">\(O\)</span> is open, there is some <span class="math inline">\(\varepsilon &gt;0\)</span> such that <span class="math inline">\(B_\varepsilon(y_0) \subseteq O\)</span>. By continuous <span class="math inline">\(f\)</span>, there is also some <span class="math inline">\(\delta &gt;0\)</span> such that for any <span class="math inline">\(x \in B_\delta(x_0)\)</span>, <span class="math inline">\(f(x) \in B_\varepsilon(y_0)\)</span>. In particular, this means that <span class="math inline">\(B_\delta(x_0) \in f^{-1}(O)\)</span>, and thus, <span class="math inline">\(f^{-1}(O)\)</span> is open.</p>
+<p>(<span class="math inline">\(\impliedby\)</span>) Assume that for any open subset <span class="math inline">\(O \subseteq Y\)</span>, the set <span class="math inline">\(f^{-1}(O)\)</span> is open. Let <span class="math inline">\(\varepsilon &gt; 0, x_0 \in X\)</span>. Consider the open subset <span class="math inline">\(B_\varepsilon(f(x_0))\)</span>. The preimage of this set, which contains <span class="math inline">\(x_0\)</span>, must also be open then. In particular, there is some <span class="math inline">\(\delta &gt;0\)</span> such that <span class="math inline">\(B_\delta(x_0) \subseteq f^{-1}(B_\varepsilon(f(x_0)))\)</span>, which also means that <span class="math inline">\(f(B_\delta(x_0)) \subseteq B_\varepsilon(f(x_0))\)</span>, showing continuity at <span class="math inline">\(x_0\)</span>. <span class="math inline">\(\square\)</span>.</p>
+</details>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li>(10pt) (True or False) If false, provide a counterexample. <span class="math inline">\(X\)</span> denotes a metric space <span class="math inline">\((X,d)\)</span>.</li>
+</ol>
+<ol type="a">
+<li>If <span class="math inline">\(A\)</span> is bounded in <span class="math inline">\(X\)</span>, then <span class="math inline">\(\bar{A}\)</span> is compact in <span class="math inline">\(X\)</span>. <em>False, consider the (open or closed) unit ball in <span class="math inline">\((\ell^2, d_2)\)</span></em>.</li>
+<li>If <span class="math inline">\(f: X\rightarrow Y\)</span> is continuous, then <span class="math inline">\(f(X)\)</span> is closed in <span class="math inline">\(Y\)</span>. <em>False, consider f(x) = arctan(x).</em></li>
+<li>If <span class="math inline">\(A \subseteq B \subseteq X\)</span> and if <span class="math inline">\(A\)</span> is compact in <span class="math inline">\(B\)</span>, then <span class="math inline">\(A\)</span> is compact in <span class="math inline">\(X\)</span>. <em>True.</em></li>
+<li>If <span class="math inline">\(f: \mathbb{R} \rightarrow \mathbb{R}\)</span> is a monotone increasing function, then <span class="math inline">\(f\)</span> has at most countable discontinuities. <em>True.</em></li>
+<li>If <span class="math inline">\(f:[0,1] \rightarrow \mathbb{R}\)</span> is differentiable in <span class="math inline">\((0,1)\)</span> and Lipschitz continuous in <span class="math inline">\([0,1]\)</span>, then <span class="math inline">\(\lim_{x \rightarrow 0^+} f'(x)\)</span> exists. <em>False, consider f(x) = x^2 sin(1/x), with f(0) = 0.</em></li>
+<li>If <span class="math inline">\(f:[0,1] \rightarrow \mathbb{R}\)</span> is nonnegative and satisfies <span class="math inline">\(f^2 \in \mathcal{R}(x)\)</span> on <span class="math inline">\([0,1]\)</span>, then <span class="math inline">\(f \in \mathcal{R}(x)\)</span> on <span class="math inline">\([0,1]\)</span> as well. <em>True.</em></li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>(10pt) Let <span class="math inline">\(\alpha : [0,1] \rightarrow \mathbb{R}\)</span> be monotone increasing and let <span class="math inline">\(f : [0,1] \rightarrow \mathbb{R}\)</span> be bounded.</li>
+</ol>
+<ol type="a">
+<li>(5pt) Show that, if <span class="math inline">\(f \in \mathcal{R}(\alpha)\)</span>, then <span class="math inline">\(|f| \in \mathcal{R}(\alpha)\)</span> and <span class="math display">\[ | \int_0^1 f d\alpha | \leq \int_0^1 |f| d\alpha.\]</span></li>
+<li>(5pt) Suppose also <span class="math inline">\(\alpha\)</span> is differentiable at <span class="math inline">\(x_0 \in (0,1)\)</span>. Show that if <span class="math inline">\(f \in \mathcal{R}(\alpha)\)</span> and if we let <span class="math inline">\(F(x) := \int_0^x f(x) d\alpha\)</span> and if <span class="math inline">\(f\)</span> is continuous at <span class="math inline">\(x_0\)</span>, then <span class="math inline">\(F\)</span> is differentiable at <span class="math inline">\(x_0\)</span> and <span class="math display">\[ F'(x_0) = f(x_0)\alpha'(x_0). \]</span></li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<ol type="a">
+<li><p>First note that <span class="math inline">\(U(P, |f|, \alpha) - L(P, |f|, \alpha) \leq U(P, f, \alpha) - L(P, f, \alpha)\)</span>, since on each interval in the partition <span class="math inline">\(I_i = [x_{i-1}, x_i]\)</span>, we have that <span class="math inline">\(\sup_i |f| - \inf_i |f| \leq \sup_i f - \inf_i f\)</span>, and thus this difference also goes to 0 as the partitions get finer. Then, observe that <span class="math inline">\(-f, f \leq |f|\)</span>, and so <span class="math display">\[ U(P, -f, \alpha), U(P, f, \alpha) \leq U(P, |f|, \alpha),\]</span> and when taking the infimum over the partitions and using linearity of integral, we get that <span class="math inline">\(| \int_0^1 f d\alpha | \leq \int_0^1 |f| d\alpha.\)</span></p>
+<ol start="2" type="a">
+<li>By FTC, for any <span class="math inline">\(a&lt;b\)</span>, we have <span class="math inline">\(F(b) - F(a) = \int_a^b f(x) d\alpha\)</span>, which we can write as: <span class="math display">\[ F(b) - F(a) = \int_a^b (f(x) - f(x_0)) d\alpha + \int_a^b f(x_0) d\alpha = \int_a^b (f(x) - f(x_0)) d\alpha + f(x_0)(alpha(b)-\alpha(a)).\]</span> By continuity, for any <span class="math inline">\(\varepsilon &gt;0\)</span>, choose <span class="math inline">\(\delta &gt;0\)</span> such that <span class="math inline">\(f(B_\delta(x_0)) \subseteq B_\varepsilon(f(x_0))\)</span>. Then, we see: <span class="math display">\[ |F(b) - F(a) - f(x_0)(alpha(b)-\alpha(a))| \leq |\int_a^b (f(x) - f(x_0)) d\alpha| \leq \varepsilon(alpha(b)-\alpha(a)).\]</span> Finally, divide both sides by <span class="math inline">\(b-a\)</span>. Set <span class="math inline">\(a = x_0\)</span> and <span class="math inline">\(b= x_0 + h\)</span>. Sending <span class="math inline">\(h \rightarrow 0\)</span> to get <span class="math inline">\(\alpha', F'\)</span> and then sending <span class="math inline">\(\varepsilon \rightarrow 0\)</span> yields the equality. <span class="math inline">\(\square\)</span></li>
+</ol></li>
+</ol>
+</details>
+<p><strong>Homework 6</strong><a name="hw6"></a></p>
+<blockquote class="blockquote">
+<ol type="1">
+<li>Construct <span class="math inline">\((f_n), (g_n)\)</span> which converge uniformly on some set <span class="math inline">\(E\)</span>, but <span class="math inline">\((f_n \cdot g_n)\)</span> does not converge uniformly on <span class="math inline">\(E\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+Let <span class="math inline">\(E = \mathbb{R}\)</span> and we define for all <span class="math inline">\(n \geq 1\)</span>, <span class="math inline">\(f_n(x) = x, g_n(x) = 1/n\)</span>. We have that <span class="math inline">\(f_n \rightarrow f\)</span> uniformly, where <span class="math inline">\(f(x) = x\)</span> and <span class="math inline">\(g_n \rightarrow 0\)</span> uniformly. Note that <span class="math inline">\(f_n g_n = x/n \rightarrow 0\)</span> pointwise on <span class="math inline">\(\mathbb{R}\)</span> (fix some <span class="math inline">\(x\)</span> and send <span class="math inline">\(n \rightarrow \infty\)</span>), but not uniformly. Indeed, set <span class="math inline">\(\varepsilon = 1\)</span> and let <span class="math inline">\(N \geq 1\)</span>. By taking <span class="math inline">\(x_0 = N\)</span> means <span class="math inline">\(|f_n(x_0)g_n(x_0) - 0| = 1 \cancel{&lt;} 1\)</span>, which negates uniform convergence. <span class="math inline">\(\square\)</span>
+</details>
+<blockquote class="blockquote">
+<ol start="2" type="1">
+<li></li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="3" type="1">
+<li></li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="4" type="1">
+<li>Let <span class="math inline">\(f: [0,1] \rightarrow [0,1]\)</span> be continuous with <span class="math inline">\(f(0) = 0\)</span> and <span class="math inline">\(f(1) = 1\)</span>. Consider the sequence of functions <span class="math inline">\(f_n :[0,1] \rightarrow [0,1]\)</span> defined by: <span class="math display">\[ f_1 = f \text { and } f_{n+1} = f \circ f_n. \]</span> Prove that if <span class="math inline">\((f_n)\)</span> converges uniformly, then <span class="math inline">\(f(x) = x\)</span> for all <span class="math inline">\(x \in [0,1]\)</span>.</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>Assume that <span class="math inline">\(f_n \rightarrow g: [0,1] \rightarrow [0,1]\)</span> uniformly. We claim first that <span class="math inline">\(f_{n+1} = f \circ f_n \rightarrow f \circ g\)</span> uniformly. Indeed, let <span class="math inline">\(\varepsilon &gt; 0\)</span>. First, we have <span class="math inline">\(f\)</span> continuous on compact, so uniformly continuous, and there is a <span class="math inline">\(\delta &gt; 0\)</span> such that for all <span class="math inline">\(t_1, t_2\)</span> such that <span class="math inline">\(|t_1 - t_2| &lt; \delta, |f(t_1) - f(t_2)| &lt; \varepsilon\)</span>. Second, by uniform convergence, we have there is an <span class="math inline">\(N_\delta \in \mathbb{N}\)</span> such that for all <span class="math inline">\(n \geq N_\delta\)</span>, for all <span class="math inline">\(x \in [0,1]\)</span>, we have <span class="math inline">\(|f_n(x) - g(x)| &lt; \delta\)</span>. Thus, <span class="math inline">\(|f(f_n(x)) - f(g(x))| &lt; \varepsilon\)</span>, and so <span class="math inline">\(f_{n+1} \rightarrow f \circ g\)</span> uniformly.</p>
+<p>Now since we have both <span class="math inline">\(f_{n+1} \rightarrow g\)</span> and <span class="math inline">\(\rightarrow f \circ g\)</span> with respect to <span class="math inline">\(d_\infty\)</span>, by uniqueness of limit, we have <span class="math inline">\(f \circ g = g\)</span>. Finally, note that <span class="math inline">\(g\)</span> is surjective. This is because <span class="math inline">\((f_n) \subseteq C([0,1])\)</span> as compositions of continuous functions are continuous, and since <span class="math inline">\(f_n \rightarrow g\)</span> uniformly, <span class="math inline">\(g\)</span> is continuous as well. Since for all <span class="math inline">\(n\)</span>, <span class="math inline">\(f_n(0) = 0, f_n(1) = 1\)</span>, we have <span class="math inline">\(g(0) = 0, g(1) = 1\)</span>, and thus surjectivity is given by IVT.</p>
+<p>With this, let <span class="math inline">\(y \in [0,1]\)</span>, so there is an <span class="math inline">\(x \in [0,1]\)</span> such that <span class="math inline">\(g(x) = y\)</span>, which also equals <span class="math inline">\(f(g(x)) = f(y)\)</span>. <span class="math inline">\(\square\)</span></p>
+</details>
+<blockquote class="blockquote">
+<ol start="5" type="1">
+<li></li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<ol start="6" type="1">
+<li>(Convolution Approximation) For each <span class="math inline">\(n \geq 1\)</span>, let <span class="math inline">\(f_n : [-1,1] \rightarrow \mathbb{R}\)</span> be continuous, nonnegative, and assume that</li>
+</ol>
+<ol type="a">
+<li>_-1^1 f_n(y) dy = 1</li>
+<li>For each <span class="math inline">\(c&gt;0\)</span>, <span class="math inline">\((f_n)\)</span> converges uniformly to <span class="math inline">\(0\)</span> on <span class="math inline">\([-1, -c] \cup [c, 1]\)</span>. Show that for every <span class="math inline">\(g \in C([-1, 1])\)</span>, we have: <span class="math display">\[ \lim_{n \rightarrow \infty} \int_-1^1 f_n(y)g(y) dy = g(0). \]</span> (or <span class="math inline">\((f_n \star g)(0) \rightarrow g(0)\)</span>)</li>
+</ol>
+</blockquote>
+<details>
+<summary>
+Proof.
+</summary>
+<p>Let <span class="math inline">\(g \in C([-1, 1])\)</span>. Let <span class="math inline">\(\varepsilon &gt; 0\)</span>. Note: 1) Since <span class="math inline">\(g\)</span> is continuous on compact domain, it is uniformly continuous and bounded (let <span class="math inline">\(|g| \leq M\)</span>). In particular, we also have a <span class="math inline">\(\delta &gt; 0\)</span> such that for all <span class="math inline">\(t \in B_\delta(0)\)</span>, <span class="math inline">\(g(t) \in B_{\varepsilon/6}(g(0))\)</span>. 2) Thus, we also have <span class="math inline">\(f_n \rightarrow 0\)</span> uniformly on <span class="math inline">\([-1, -\delta] \cup [\delta, 1]\)</span>, we have there is an <span class="math inline">\(n_\varepsilon \in \mathbb{N}\)</span> such that for all <span class="math inline">\(n \geq n_\varepsilon\)</span>, for all <span class="math inline">\(x \in [-1, -\delta] \cup [\delta, 1]\)</span>, <span class="math inline">\(|f_n(x)| &lt; \varepsilon/(6M)\)</span>. Thus, let <span class="math inline">\(n \geq n_\varepsilon\)</span>. We compare: <span class="math display">\[
+    | \int_-1^1 f_n(y)g(y) dy - g(0) | \geq \\
+    \underbrace{| \int_-1^-\delta f_n(y)g(y) dy|}_{A} + \underbrace{| \int_-\delta^\delta f_n(y)g(y) dy - g(0) |}_{B} + \underbrace{| \int_\delta^1 f_n(y)g(y) dy |}_{C} \\
+    \]</span></p>
+<p>For (A), we have: $$</p>
+<p>$$</p>
+</details>
+<p><strong>Homework 7</strong><a name="hw7"></a></p>
+<p><strong>Homework 8</strong><a name="hw8"></a></p>
+<p><strong>Homework 9</strong><a name="hw9"></a></p>
+<p><em>Last Updated: 6/27/2025, more updates coming (maybe) :)</em></p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/kguo12\.github\.io\/kennyguowebpage\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
