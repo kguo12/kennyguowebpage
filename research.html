@@ -356,6 +356,7 @@ window.Quarto = {
 .paper-title a {
   color: #527fa8;
   text-decoration: none;
+  font-weight: 600;
 }
 .paper-title a:hover {
   text-decoration: underline;
@@ -507,6 +508,25 @@ section > .paper-entry:last-of-type {
   font-size: 0.86rem;
   font-weight: 600;
 }
+.footnote-ref sup {
+  font-size: 0;
+}
+.footnote-ref sup::after {
+  content: " ⓘ";
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #009b77;
+  vertical-align: super;
+}
+section.footnotes {
+  display: none;
+}
+.tippy-content {
+  font-weight: 400;
+}
+.tippy-content strong {
+  font-weight: 700;
+}
 @media (max-width: 600px) {
   .paper-heading {
     grid-template-columns: 1.75rem minmax(0, 1fr);
@@ -558,14 +578,14 @@ with Aarush Kulkarni, Muyi Lin, William Chang, Yan Dai, and Youhyun Lee
 </div>
 <hr>
 </section>
-<section id="working-papers" class="level2">
-<h2 data-anchor-id="working-papers">Working Papers</h2>
+<section id="working-papersworking-paper-rights" class="level2">
+<h2 data-anchor-id="working-papersworking-paper-rights">Working Papers<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
 <div class="paper-entry">
 <div class="paper-heading">
 <span class="paper-number">[6]</span><span>SPADE: Stochastic Payoff-Based Algorithm for Decentralized Equilibria in Games with Decision-Dependent Distributions and Coupled Constraints</span>
 </div>
 <div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
+<span class="paper-year">2026</span><span class="paper-year"><a href="papers/performative games/spade_Sep2026.pdf" target="_blank">Sep 2026 Version</a></span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
 </div>
 <div class="paper-authors">
 <strong>Kenny Guo</strong>, William Chang, Xuanyu Cao
@@ -574,7 +594,7 @@ with Aarush Kulkarni, Muyi Lin, William Chang, Yan Dai, and Youhyun Lee
 <summary>
 <span class="paper-abstract-label">Abstract</span>
 </summary>
-<p>In learning problems within politics, finance, or operations, agents’ decisions and predictions can influence the underlying data-generating process—a phenomenon known as the <em>performative effect</em>. We study this effect in decentralized noncooperative games with coupled constraints, where data distributions depend endogenously on players’ actions. In many practical settings, agents may not know the functional form of their objectives and can only observe realized payoffs from played actions. Our main contribution is SPADE (<strong>S</strong>tochastic <strong>P</strong>ayoff-based <strong>A</strong>lgorithm for <strong>D</strong>ecentralized <strong>E</strong>quilibria), a low-communication cost distributed algorithm in which each player perturbs its action with Gaussian noise and updates using payoff observations alone. We show that when data are sampled from players’ unperturbed actions, SPADE converges to the performatively-stable equilibrium (PSE). We also present SPADE-NE, in which both data and payoffs are induced by the deployed actions, and prove convergence to the harder Nash equilibrium (NE) under an additional smoothness assumption. Finally, we propose SPADE-MP, a multipoint-feedback adaptation that reduces estimator variance and improves empirical convergence to NE. We validate our approach through various numerical experiments. To our knowledge, this is the first work to provide payoff-based algorithms with convergence guarantees for both PSE and NE in decentralized games with coupled constraints.</p>
+<p>In learning problems within politics, finance, or operations, agents’ decisions and predictions can influence the underlying data-generating process—a phenomenon known as the <em>performative effect</em>. We study this effect in decentralized noncooperative games with coupled constraints, where data distributions depend endogenously on players’ actions. In many practical settings, agents may not know the functional form of their objectives and can only observe realized payoffs from played actions. Our main contribution is SPADE (<strong>S</strong>tochastic <strong>P</strong>ayoff-based <strong>A</strong>lgorithm for <strong>D</strong>ecentralized <strong>E</strong>quilibria), a low-communication cost distributed algorithm in which each player perturbs its action with Gaussian noise and updates using payoff observations alone. We show that when data are sampled from players’ unperturbed actions, SPADE converges to the performatively-stable equilibrium (PSE). We also present SPADE-NE, in which both data and payoffs are induced by the deployed actions, and prove convergence to the harder Nash equilibrium (NE) under an additional smoothness assumption. Finally, we propose SPADE-MP, a multipoint-feedback approach that retains near full-information guarantees and improves empirical convergence to NE. We support our results through numerical experiments on networked Cournot competition and show significant improvements in reducing communication overhead.</p>
 </details>
 </div>
 <div class="paper-entry">
@@ -599,7 +619,7 @@ Marissa Zhao Li, Stephanie Gao, <strong>Kenny Guo</strong>, Xingjian Li, William
 <span class="paper-number">[4]</span><span>Learning Adversarial Continuous MDPs with Bandit Feedback and Unknown Transitions</span>
 </div>
 <div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-area">learning theory</span>
+<span class="paper-year">2026</span><span class="paper-year"><a href="papers/continuous mdp/contadvmdp_Sep2026.pdf" target="_blank">Sep 2026 Version</a></span><span class="paper-area">learning theory</span>
 </div>
 <div class="paper-authors">
 Aarush Kulkarni, Khang Nguyen, Ricardo Parada, <strong>Kenny Guo</strong>, William Chang, Yan Dai
@@ -616,7 +636,7 @@ Aarush Kulkarni, Khang Nguyen, Ricardo Parada, <strong>Kenny Guo</strong>, Willi
 <span class="paper-number">[3]</span><span>Decentralized Online Learning of Stackelberg Equilibrium in General-Sum Leader-Controller Markov Games</span>
 </div>
 <div class="paper-meta">
-<span class="paper-year">2025</span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
+<span class="paper-year">2025</span><span class="paper-year"><a href="papers/stackelberg mdp/stackelberg_Aug2026.pdf" target="_blank">Aug 2026 Version</a></span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
 </div>
 <div class="paper-authors">
 <strong>Kenny Guo</strong>, Ricardo Parada, Helen Yuan, Larissa Xu, William Chang
@@ -633,7 +653,7 @@ Aarush Kulkarni, Khang Nguyen, Ricardo Parada, <strong>Kenny Guo</strong>, Willi
 <span class="paper-number">[2]</span><span>Policy Optimization for Corrupted Markov Decision Processes</span>
 </div>
 <div class="paper-meta">
-<span class="paper-year">2025</span><span class="paper-area">learning theory</span>
+<span class="paper-year">2025</span><span class="paper-year"><a href="papers/policy optimization corrupted mdp/pocorrupted_Jul2026.pdf" target="_blank">July 2026 Version</a></span><span class="paper-area">learning theory</span>
 </div>
 <div class="paper-authors">
 Khang Nguyen, <strong>Kenny Guo</strong>, William Chang
@@ -650,7 +670,7 @@ Khang Nguyen, <strong>Kenny Guo</strong>, William Chang
 <span class="paper-number">[1]</span><span>Coordinating for Clicks: Learning in Multi-Agent Information Asymmetric Cascading Bandits</span>
 </div>
 <div class="paper-meta">
-<span class="paper-year"><a href="https://kguo12.github.io/kennyguowebpage/papers/multiagent%20cascading/Multiplayer_Information_Asymmetric_Cascading_Bandits%20(1).pdf" target="_blank">Feb 2025 Version</a></span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
+<span class="paper-year">2025</span><span class="paper-year"><a href="https://kguo12.github.io/kennyguowebpage/papers/multiagent%20cascading/Multiplayer_Information_Asymmetric_Cascading_Bandits%20(1).pdf" target="_blank">Feb 2025 Version</a></span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
 </div>
 <div class="paper-authors">
 <strong>Kenny Guo</strong>, Lily Jiang, Lune Chan, Sophia Yi, William Chang
@@ -782,7 +802,13 @@ Best Overall Contribution — 2025 Research Competition
 </section>
 </section>
 </section>
-</main></div>
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><strong>Working-paper rights.</strong> <br> Unless a manuscript states otherwise, working papers and works in progress are copyright their named authors and other applicable rights holders, with all rights reserved. <br> You may download and print one copy for personal scholarly use. Redistribution, modification, or commercial use requires prior written permission from all applicable rights holders. Citation, quotation, and other uses permitted by law remain unaffected. <br> Published versions are governed by their publisher or venue terms. <br> <a href="LICENSE" target="_blank">Full notice</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main></div>
     </div>
   </div>
 </div>
@@ -1194,6 +1220,19 @@ Best Overall Contribution — 2025 Research Competition
   });
   </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Kenny Guo</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

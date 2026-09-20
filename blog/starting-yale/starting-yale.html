@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PIC 16B – Kenny Guo</title>
+<title>starting-yale – Kenny Guo</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-listing/list.min.js"></script>
-<script src="../../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -76,70 +74,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-fixed fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -304,7 +244,7 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -363,248 +303,44 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">PIC 16B</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="ZmluYWwlMjBwcm9qZWN0">final project <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aG9tZXdvcms=">homework <span class="quarto-category-count">(5)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
 
-
-<section id="ucla-pic16b-python-with-applications-ii-25w-s.-burnett" class="level4">
-<h4 class="anchored" data-anchor-id="ucla-pic16b-python-with-applications-ii-25w-s.-burnett">UCLA PIC16B: Python with Applications II <em>(25W, <a href="https://www.math.ucla.edu/~burnett/" target="_blank">S. Burnett</a>)</em></h4>
-<p>Here you’ll see posts of my Pythoning journey. Some topics covered include: SQL, Jax, Flask, Jinja, Scrapy, Beautiful Soup, Regex, ML with Keras, NLP, and more!</p>
-
+<section id="starting-yale" class="level1">
+<h1>Starting Yale</h1>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">9/17/2026</h2>
+<section id="contents" class="level4">
+<h4 class="anchored" data-anchor-id="contents">Contents</h4>
+<p>This is an update long overdue, but I recently started my PhD studies at Yale.</p>
+<ul>
+<li>Classes</li>
+<li>Culture and people there</li>
+<li>First year cohort, other students</li>
+<li>General life at yale/new haven, living by myself, hobbies</li>
+<li>keeping up with friends</li>
+<li>Berkeley College Orchestra</li>
+<li>Research
+<ul>
+<li>economeetrics emphasis, microeocnometrics and causal inference, shifting initial impressions on empirical labor research</li>
+</ul></li>
+<li>Goals for the PhD</li>
+</ul>
 
 
 </section>
+</section>
+</section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="ZmluYWwlMjBwcm9qZWN0" data-listing-date-sort="1741924800000" data-listing-file-modified-sort="1789148280845" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="16" data-listing-word-count-sort="3143">
-<div class="thumbnail"><a href="../../classes/pic-16b/posts/traffix-project/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts/traffix-project/flowchart.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../classes/pic-16b/posts/traffix-project/index.html" class="no-external">TraffiX (1.0)</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../classes/pic-16b/posts/traffix-project/index.html" class="no-external">PIC16B: Final Project</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZmluYWwlMjBwcm9qZWN0'); return false;">final project</div>
-
-</div>
-<div class="delink listing-description"><a href="../../classes/pic-16b/posts/traffix-project/index.html" class="no-external">
-Welcome to this introduction on <strong>TraffiX (version 1.0)</strong>, a Python package for building and simulating artificial or IRL traffic networks utilizing NetworkX and OSMNX…<em></em>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../../classes/pic-16b/posts/traffix-project/index.html" class="no-external">
-<div class="listing-date">
-Mar 14, 2025
-</div>
-<div class="listing-author">
-Kenny Guo, Mario Truong, Henry Tang
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="aG9tZXdvcms=" data-listing-date-sort="1739768400000" data-listing-file-modified-sort="1784256350244" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="841">
-<div class="thumbnail"><a href="../../classes/pic-16b/posts/homework-4/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts/homework-4/index_files/figure-html/cell-3-output-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../classes/pic-16b/posts/homework-4/index.html" class="no-external">2D Heat Diffusion Discrete Time Simulation with Jax and Matrices</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../classes/pic-16b/posts/homework-4/index.html" class="no-external">PIC16B: Homework 4</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('aG9tZXdvcms='); return false;">homework</div>
-
-</div>
-<div class="delink listing-description"><a href="../../classes/pic-16b/posts/homework-4/index.html" class="no-external">
-<strong>Salve, carissimum lector!</strong> In this PIC 16B assignment, we’ll be modeling heat diffusion in two dimensions. The famous heat equation in two dimensions has the form: <span class="math display">\[
-\frac{\p…</span>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../../classes/pic-16b/posts/homework-4/index.html" class="no-external">
-<div class="listing-date">
-Feb 17, 2025
-</div>
-<div class="listing-author">
-Kenny Guo
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="aG9tZXdvcms=" data-listing-date-sort="1739682000000" data-listing-file-modified-sort="1784256350175" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="928">
-<div class="thumbnail"><a href="../../classes/pic-16b/posts/homework-3/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../classes/pic-16b/posts/homework-3/index.html" class="no-external">Python App Shop with Flask Web Development and Jinja</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../classes/pic-16b/posts/homework-3/index.html" class="no-external">PIC16B: Homework 3</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('aG9tZXdvcms='); return false;">homework</div>
-
-</div>
-<div class="delink listing-description"><a href="../../classes/pic-16b/posts/homework-3/index.html" class="no-external">
-<strong>你好朋友!</strong> In this assignment, our goal was to program a Python Flask app to host a dyanmic webpage for a small shop. We would be pulling from a <code>products.db</code> filled with a bunch…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../../classes/pic-16b/posts/homework-3/index.html" class="no-external">
-<div class="listing-date">
-Feb 16, 2025
-</div>
-<div class="listing-author">
-Kenny Guo
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="aG9tZXdvcms=" data-listing-date-sort="1738990800000" data-listing-file-modified-sort="1784256345706" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2352">
-<div class="thumbnail"><a href="../../classes/pic-16b/posts/homework-2/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts/homework-2/index_files/figure-html/cell-4-output-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../classes/pic-16b/posts/homework-2/index.html" class="no-external">Webscraping with Scrapy: Movie Recommendations Based on Featured Actors</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../classes/pic-16b/posts/homework-2/index.html" class="no-external">PIC16B: Homework 2</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('aG9tZXdvcms='); return false;">homework</div>
-
-</div>
-<div class="delink listing-description"><a href="../../classes/pic-16b/posts/homework-2/index.html" class="no-external">
-<strong>Hello lovely reader!</strong> In this tutorial/assignment, we’ll be using the <em>Scrapy</em> Python library to webscrape The Movie Database in an attempt to get some show/movie…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../../classes/pic-16b/posts/homework-2/index.html" class="no-external">
-<div class="listing-date">
-Feb 8, 2025
-</div>
-<div class="listing-author">
-Kenny Guo
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="aG9tZXdvcms=" data-listing-date-sort="1738472400000" data-listing-file-modified-sort="1784256344943" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="389">
-<div class="thumbnail"><a href="../../classes/pic-16b/posts/homework-1/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../classes/pic-16b/posts/homework-1/index.html" class="no-external">Data Wrangling and Visualization: NOAA Climate Data</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../classes/pic-16b/posts/homework-1/index.html" class="no-external">PIC16B: Homework 1</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('aG9tZXdvcms='); return false;">homework</div>
-
-</div>
-<div class="delink listing-description"><a href="../../classes/pic-16b/posts/homework-1/index.html" class="no-external">
-<strong>Hello!</strong> In this assignment, we’ll be wrangling some climate data gathered by stations in the National Oceanic and Atmospheric Association (NOAA) to produce some scatter plots…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../../classes/pic-16b/posts/homework-1/index.html" class="no-external">
-<div class="listing-date">
-Feb 2, 2025
-</div>
-<div class="listing-author">
-Kenny Guo
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="aG9tZXdvcms=" data-listing-date-sort="1737522000000" data-listing-file-modified-sort="1784256340440" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="529">
-<div class="thumbnail"><a href="../../classes/pic-16b/posts/homework-0/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../../classes/pic-16b/posts/homework-0/index.html" class="no-external">Palmer Penguins: Plotly Visualization Tutorial</a>
-</h3>
-<div class="listing-subtitle">
-<a href="../../classes/pic-16b/posts/homework-0/index.html" class="no-external">PIC16B: Homework 0</a>
-</div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('aG9tZXdvcms='); return false;">homework</div>
-
-</div>
-<div class="delink listing-description"><a href="../../classes/pic-16b/posts/homework-0/index.html" class="no-external">
-Who doesn’t love penguins? In this plotly visualization tutorial, we’ll be examining the “palmer_penguins” data set, graciously collected and published by Dr.&nbsp;Kristen Gorman…
-</a></div>
-</div>
-<div class="metadata">
-<a href="../../classes/pic-16b/posts/homework-0/index.html" class="no-external">
-<div class="listing-date">
-Jan 22, 2025
-</div>
-<div class="listing-author">
-Kenny Guo
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
