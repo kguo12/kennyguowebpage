@@ -298,10 +298,6 @@ window.Quarto = {
     <a class="nav-link" href="./personal.html"> 
 <span class="menu-text">Personal</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./tutoring.html"> 
-<span class="menu-text">Book a lesson</span></a>
-  </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/kenny-guo-140966274/"> <i class="bi bi-linkedin" role="img">
 </i> 
@@ -547,13 +543,6 @@ section.footnotes {
   }
 }
 </style>
-<p>I am interested in topics in <strong>econometrics</strong>, <strong>EconCS</strong>, and <strong>learning theory</strong>, particularly:</p>
-<ul>
-<li>Causal inference and policy learning</li>
-<li>Algorithmic game theory and mechanism design</li>
-<li>Reinforcement learning and bandits</li>
-<li>Labor and applied microeconomics</li>
-</ul>
 <hr>
 <section id="work-in-progress" class="level2">
 <h2 data-anchor-id="work-in-progress">Work in Progress</h2>
@@ -582,7 +571,7 @@ with Aarush Kulkarni, Muyi Lin, William Chang, Yan Dai, and Youhyun Lee
 <h2 data-anchor-id="working-papersworking-paper-rights">Working Papers<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
 <div class="paper-entry">
 <div class="paper-heading">
-<span class="paper-number">[6]</span><span>SPADE: Stochastic Payoff-Based Algorithm for Decentralized Equilibria in Games with Decision-Dependent Distributions and Coupled Constraints</span>
+<span class="paper-number">[5]</span><span>SPADE: Stochastic Payoff-Based Algorithm for Decentralized Equilibria in Games with Decision-Dependent Distributions and Coupled Constraints</span>
 </div>
 <div class="paper-meta">
 <span class="paper-year">2026</span><span class="paper-year"><a href="papers/performative games/spade_Sep2026.pdf" target="_blank">Sep 2026 Version</a></span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
@@ -595,23 +584,6 @@ with Aarush Kulkarni, Muyi Lin, William Chang, Yan Dai, and Youhyun Lee
 <span class="paper-abstract-label">Abstract</span>
 </summary>
 <p>In learning problems within politics, finance, or operations, agents’ decisions and predictions can influence the underlying data-generating process—a phenomenon known as the <em>performative effect</em>. We study this effect in decentralized noncooperative games with coupled constraints, where data distributions depend endogenously on players’ actions. In many practical settings, agents may not know the functional form of their objectives and can only observe realized payoffs from played actions. Our main contribution is SPADE (<strong>S</strong>tochastic <strong>P</strong>ayoff-based <strong>A</strong>lgorithm for <strong>D</strong>ecentralized <strong>E</strong>quilibria), a low-communication cost distributed algorithm in which each player perturbs its action with Gaussian noise and updates using payoff observations alone. We show that when data are sampled from players’ unperturbed actions, SPADE converges to the performatively-stable equilibrium (PSE). We also present SPADE-NE, in which both data and payoffs are induced by the deployed actions, and prove convergence to the harder Nash equilibrium (NE) under an additional smoothness assumption. Finally, we propose SPADE-MP, a multipoint-feedback approach that retains near full-information guarantees and improves empirical convergence to NE. We support our results through numerical experiments on networked Cournot competition and show significant improvements in reducing communication overhead.</p>
-</details>
-</div>
-<div class="paper-entry">
-<div class="paper-heading">
-<span class="paper-number">[5]</span><span>Youdunit: Single-Call Counterfactual Necessity in Multi-Agent LLM Systems</span>
-</div>
-<div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-area">econcs</span><span class="paper-area">ai safety</span>
-</div>
-<div class="paper-authors">
-Marissa Zhao Li, Stephanie Gao, <strong>Kenny Guo</strong>, Xingjian Li, William Chang, Goran Radanovic
-</div>
-<details class="paper-abstract">
-<summary>
-<span class="paper-abstract-label">Abstract</span>
-</summary>
-<p>Agentic systems built on large language models (LLMs) are increasingly deployed in high-stakes settings, but the causal mechanisms by which adversarial agents induce harmful outcomes remain poorly understood. We address this with a single-call counterfactual necessity test for multi-agent LLM systems that asks: <em>which specific agent communication was causally responsible for the harmful outcome?</em> In contrast with actual-causality frameworks that reason over set-valued causes, we use one attribution rule throughout: single-call necessity for a selected proximate call. The key technical contribution is the <em>Gumbel-Max tape</em>, which lifts the per-token Gumbel-Max counterfactual generator from a single LLM to a multi-agent conversation. Per-token GPU random number generator (RNG) states are recorded during a factual run on a tape shared across all agents, then replayed during counterfactual (CF) runs everywhere except at the intervened call. Applied to the BAD-ACTS benchmark across 148 adversarial scenarios spanning four multi-agent environments and two prompting conditions (<em>non-safe</em> and <em>safe</em>), the test shows that single-call necessity tracks communication structure: decentralized and hierarchical environments (Travel Planning, Financial Article Writing) exhibit meaningful aggregate causal effect (ACE), while sequential debate (Multi-Agent Debate) shows near-zero ACE despite comparable attack success rate. A replay sanity check confirms that all CF effects under identity intervention are exactly zero, validating the tape mechanism. The results identify where targeted defenses are likely to be effective in deployed agentic systems.</p>
 </details>
 </div>
 <div class="paper-entry">
@@ -688,10 +660,30 @@ Khang Nguyen, <strong>Kenny Guo</strong>, William Chang
 <h2 data-anchor-id="publications-accepted-papers">Publications &amp; Accepted Papers</h2>
 <div class="paper-entry">
 <div class="paper-heading">
+<span class="paper-number">[2]</span><span>Youdunit: Single-Call Counterfactual Necessity in Multi-Agent LLM Systems</span>
+</div>
+<div class="paper-meta">
+<span class="paper-year">2026</span><span class="paper-year"><em>(proceedings coming soon)</em></span><span class="paper-area">econcs</span><span class="paper-area">causality</span><span class="paper-area">ai safety</span>
+</div>
+<div class="paper-authors">
+Marissa Zhao Li, Stephanie Gao, <strong>Kenny Guo</strong>, Xingjian Li, William Chang, Goran Radanovic
+</div>
+<div class="paper-status accepted">
+40th Conference on Neural Information Processing Systems (NeurIPS 2026)
+</div>
+<details class="paper-abstract">
+<summary>
+<span class="paper-abstract-label">Abstract</span>
+</summary>
+<p>Agentic systems built on large language models (LLMs) are increasingly deployed in high-stakes settings, but the causal mechanisms by which adversarial agents induce harmful outcomes remain poorly understood. We address this with a single-call counterfactual necessity test for multi-agent LLM systems that asks: <em>which specific agent communication was causally responsible for the harmful outcome?</em> In contrast with actual-causality frameworks that reason over set-valued causes, we use one attribution rule throughout: single-call necessity for a selected proximate call. The key technical contribution is the <em>Gumbel-Max tape</em>, which lifts the per-token Gumbel-Max counterfactual generator from a single LLM to a multi-agent conversation. Per-token GPU random number generator (RNG) states are recorded during a factual run on a tape shared across all agents, then replayed during counterfactual (CF) runs everywhere except at the intervened call. Applied to the BAD-ACTS benchmark across 148 adversarial scenarios spanning four multi-agent environments and two prompting conditions (<em>non-safe</em> and <em>safe</em>), the test shows that single-call necessity tracks communication structure: decentralized and hierarchical environments (Travel Planning, Financial Article Writing) exhibit meaningful aggregate causal effect (ACE), while sequential debate (Multi-Agent Debate) shows near-zero ACE despite comparable attack success rate. A replay sanity check confirms that all CF effects under identity intervention are exactly zero, validating the tape mechanism. The results identify where targeted defenses are likely to be effective in deployed agentic systems.</p>
+</details>
+</div>
+<div class="paper-entry">
+<div class="paper-heading">
 <span class="paper-number">[1]</span><span class="paper-title"><a href="https://proceedings.mlr.press/v337/guo26b.html" target="_blank">Provably Efficient Reinforcement Learning in Continuous-Time Episodic MDPs with Poisson Decision Epochs</a></span>
 </div>
 <div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-area">learning theory</span>
+<span class="paper-year">2026</span><span class="paper-year"><a href="https://arxiv.org/abs/2609.23127" target="_blank">arXiv</a></span><span class="paper-area">learning theory</span>
 </div>
 <div class="paper-authors">
 <strong>Kenny Guo</strong>, Valentio Iverson, Sahan Wijetunga, William Chang
@@ -796,6 +788,17 @@ SoCal AI and Responsibility Summit (SAIRS)
 Best Overall Contribution — 2025 Research Competition
 </div>
 </div>
+<hr>
+</section>
+</section>
+<section id="professional-services" class="level3">
+<h3 data-anchor-id="professional-services">Professional Services</h3>
+<section id="conference-reviewer" class="level4">
+<h4 data-anchor-id="conference-reviewer">Conference Reviewer</h4>
+<ul>
+<li>ICLR 2027</li>
+</ul>
+<hr>
 <p>Erdös Number: 4</p>
 
 
