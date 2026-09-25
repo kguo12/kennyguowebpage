@@ -571,19 +571,19 @@ with Aarush Kulkarni, Muyi Lin, William Chang, Yan Dai, and Youhyun Lee
 <h2 data-anchor-id="working-papersworking-paper-rights">Working Papers<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
 <div class="paper-entry">
 <div class="paper-heading">
-<span class="paper-number">[5]</span><span>SPADE: Stochastic Payoff-Based Algorithm for Decentralized Equilibria in Games with Decision-Dependent Distributions and Coupled Constraints</span>
+<span class="paper-number">[5]</span><span>Decentralized Online Learning of Stackelberg Equilibrium in General-Sum Leader-Controller Markov Games</span>
 </div>
 <div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-year"><a href="papers/performative games/spade_Sep2026.pdf" target="_blank">Sep 2026 Version</a></span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
+<span class="paper-year">2025</span><span class="paper-year"><a href="papers/stackelberg mdp/stackelberg_Aug2026.pdf" target="_blank">Aug 2026 Version</a></span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
 </div>
 <div class="paper-authors">
-<strong>Kenny Guo</strong>, William Chang, Xuanyu Cao
+<strong>Kenny Guo</strong>, Ricardo Parada, Helen Yuan, Larissa Xu, William Chang
 </div>
 <details class="paper-abstract">
 <summary>
 <span class="paper-abstract-label">Abstract</span>
 </summary>
-<p>In learning problems within politics, finance, or operations, agents’ decisions and predictions can influence the underlying data-generating process—a phenomenon known as the <em>performative effect</em>. We study this effect in decentralized noncooperative games with coupled constraints, where data distributions depend endogenously on players’ actions. In many practical settings, agents may not know the functional form of their objectives and can only observe realized payoffs from played actions. Our main contribution is SPADE (<strong>S</strong>tochastic <strong>P</strong>ayoff-based <strong>A</strong>lgorithm for <strong>D</strong>ecentralized <strong>E</strong>quilibria), a low-communication cost distributed algorithm in which each player perturbs its action with Gaussian noise and updates using payoff observations alone. We show that when data are sampled from players’ unperturbed actions, SPADE converges to the performatively-stable equilibrium (PSE). We also present SPADE-NE, in which both data and payoffs are induced by the deployed actions, and prove convergence to the harder Nash equilibrium (NE) under an additional smoothness assumption. Finally, we propose SPADE-MP, a multipoint-feedback approach that retains near full-information guarantees and improves empirical convergence to NE. We support our results through numerical experiments on networked Cournot competition and show significant improvements in reducing communication overhead.</p>
+<p>We study a general-sum two-player Stackelberg Markov game under a leader–controller assumption, where both the leader and the follower aim to learn a Stackelberg equilibrium (SE) from noisy bandit feedback with unknown transition dynamics, without a central coordinator or access to best-response oracles. We introduce a notion of Stackelberg regret tailored to this setting and propose the first decentralized learning algorithm for SE in Markov games. Our algorithm combines a UCB-based learning scheme for the follower with a policy optimization method for the leader augmented with additional exploration. Notably, we establish theoretical guarantees showing that the proposed algorithm achieves sublinear Stackelberg regret under a dense transition assumption, enabling both players to converge to an approximate <span class="math inline">\(\varepsilon\)</span>-SE. We further demonstrate the robustness of our theoretical results with numerical experiments. To the best of our knowledge, this is the first decentralized approach to Stackelberg equilibrium learning that also preserves the computational efficiency of policy optimization methods.</p>
 </details>
 </div>
 <div class="paper-entry">
@@ -605,19 +605,19 @@ Aarush Kulkarni, Khang Nguyen, Ricardo Parada, <strong>Kenny Guo</strong>, Willi
 </div>
 <div class="paper-entry">
 <div class="paper-heading">
-<span class="paper-number">[3]</span><span>Decentralized Online Learning of Stackelberg Equilibrium in General-Sum Leader-Controller Markov Games</span>
+<span class="paper-number">[3]</span><span>SPADE: Stochastic Payoff-Based Algorithm for Decentralized Equilibria in Games with Decision-Dependent Distributions and Coupled Constraints</span>
 </div>
 <div class="paper-meta">
-<span class="paper-year">2025</span><span class="paper-year"><a href="papers/stackelberg mdp/stackelberg_Aug2026.pdf" target="_blank">Aug 2026 Version</a></span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
+<span class="paper-year">2026</span><span class="paper-year"><a href="papers/performative games/spade_Sep2026.pdf" target="_blank">Sep 2026 Version</a></span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
 </div>
 <div class="paper-authors">
-<strong>Kenny Guo</strong>, Ricardo Parada, Helen Yuan, Larissa Xu, William Chang
+<strong>Kenny Guo</strong>, William Chang, Xuanyu Cao
 </div>
 <details class="paper-abstract">
 <summary>
 <span class="paper-abstract-label">Abstract</span>
 </summary>
-<p>We study a general-sum two-player Stackelberg Markov game under a leader–controller assumption, where both the leader and the follower aim to learn a Stackelberg equilibrium (SE) from noisy bandit feedback with unknown transition dynamics, without a central coordinator or access to best-response oracles. We introduce a notion of Stackelberg regret tailored to this setting and propose the first decentralized learning algorithm for SE in Markov games. Our algorithm combines a UCB-based learning scheme for the follower with a policy optimization method for the leader augmented with additional exploration. Notably, we establish theoretical guarantees showing that the proposed algorithm achieves sublinear Stackelberg regret under a dense transition assumption, enabling both players to converge to an approximate <span class="math inline">\(\varepsilon\)</span>-SE. We further demonstrate the robustness of our theoretical results with numerical experiments. To the best of our knowledge, this is the first decentralized approach to Stackelberg equilibrium learning that also preserves the computational efficiency of policy optimization methods.</p>
+<p>In learning problems within politics, finance, or operations, agents’ decisions and predictions can influence the underlying data-generating process—a phenomenon known as the <em>performative effect</em>. We study this effect in decentralized noncooperative games with coupled constraints, where data distributions depend endogenously on players’ actions. In many practical settings, agents may not know the functional form of their objectives and can only observe realized payoffs from played actions. Our main contribution is SPADE (<strong>S</strong>tochastic <strong>P</strong>ayoff-based <strong>A</strong>lgorithm for <strong>D</strong>ecentralized <strong>E</strong>quilibria), a low-communication cost distributed algorithm in which each player perturbs its action with Gaussian noise and updates using payoff observations alone. We show that when data are sampled from players’ unperturbed actions, SPADE converges to the performatively-stable equilibrium (PSE). We also present SPADE-NE, in which both data and payoffs are induced by the deployed actions, and prove convergence to the harder Nash equilibrium (NE) under an additional smoothness assumption. Finally, we propose SPADE-MP, a multipoint-feedback approach that retains near full-information guarantees and improves empirical convergence to NE. We support our results through numerical experiments on networked Cournot competition and show significant improvements in reducing communication overhead.</p>
 </details>
 </div>
 <div class="paper-entry">
