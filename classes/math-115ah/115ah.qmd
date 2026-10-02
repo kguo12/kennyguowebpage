@@ -1,0 +1,9 @@
+# MATH 115AH: Linear Algebra (Honors)
+## Fall 2024, W. Conley
+
+We follow UCLA's 115AH curriculum; a schedule of topics is linked [here](https://ww3.math.ucla.edu/courses/){target='_blank'}. Please let me know at [kennyguo@ucla.edu](mailto:kennyguo@ucla.edu) if you spot any errors. Thanks!
+
+#### Homework Solutions: (in progress)
+
+
+

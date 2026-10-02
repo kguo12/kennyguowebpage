@@ -1,0 +1,80 @@
+---
+title: "Applying for Economics PhD Programs"
+about:
+  template: solana
+---
+
+So, you want to go for an Economics PhD. Same! But we both know how uncertain and tough the path can be (just take one look at [Urch](https://www.urch.com/forums/topic/156475-profiles-and-results-2025/){target="_blank"} or [GradCafe](https://www.thegradcafe.com/){target="_blank"}—or don’t, if you value your mental health). Applicants like us must juggle maintaining a near-4.0 GPA, a heavy load of math courses (from real analysis to probability theory), maybe some graduate classes, gaining meaningful research experience, writing papers, securing recommendations, internships, career opportunities, and more.
+
+This past year, I went through the process of applying to economics graduate school. I’ll walk through the timeline I experienced, some tips and tidbits I learned, and share some of my raw thoughts on this whole process.
+
+### Timeline
+
+#### June/August - School List and Application Materials
+
+This is honestly the easiest part. Econ (and most fields) are hierarchical, so rankings and your institution's name matter a lot. I applied to eighteen programs: four business and fourteen economics, mostly in the top 10-15. At this stage, adding schools based on rough field preferences can help (especially if some lack certain fields, e.g., Caltech macro or Brown IO), but don't get too fixated on "research fit" or specific professors. Both faculty and interests are transitory, and it's easier to find a good research agenda or adviser match at a top school (more on this later).
+
+Also, now is a great time to take the GRE if you haven’t done so. In my opinion, it’s one of the dumbest parts of the application, but it’s such a simple signal to committees, so you shouldn’t screw it up. Here are some of the resources I used:
+
+* Quantitative: Check out [GREPrepClub](https://gre.myprepclub.com/forum/gre-quantitative-section-3/){target="_blank"} for question banks.
+* Verbal: A lot is just vocabulary, so grind out Quizlet sets. [Here](https://quizlet.com/in/14480693/manhattan-prep-1000-gre-words-definitions-flash-cards/?i=5eugyf&x=1jqY){target="_blank"} is one I used.
+* Essay: Genuinely, this is testing how well you can BS a coherent argument. I wrote about corn farmers on my exam. There’s an [official prompt list](https://www.ets.org/pdfs/gre/issue-pool.pdf){target="_blank"} provided by ETS, and I often used LLMs to grade my practice essays. I followed this structure: Claim, Reason 1 (analytical), Counterclaim, Reason 2 (rebuttal), Reason 3 (philosophical/ethical), and Conclusion/Implications. Try to write as much as you can: length is correlated with score.
+
+#### September/October - Solicit Letters of Recommendation, Statement of Purpose, NSF, and Other Materials
+
+Letters of recommendation are a crucial part, and it’s important to know *who* you will ask and *what* you will give them. 
+
+For who: academic references are optimal. I asked two professors whom I was working for as an RA, and one professor for whom I did well in his course. Having a balance of research-related and academic-related references can help, as you want each letter to contain non-redundant information. In this respect, even a letter from an industry professional you worked for can provide a helpful signal of your work ethic. Letters also hold more weight coming from professors at prestigious institutions. Not only did these professors likely attend some of the schools to which you are applying, but they can also reach out to committee members and vouch for you there. Always relinquish your right to view the letter. Don’t worry too much about the letter being "bad". If a faculty member is *willing* to write you a letter (emphasis on willing), they’ll make it good.
+
+For what: it’s important you provide them with crucial materials, namely, 1) your CV/resume, 2) your transcript, and 3) your statement of purpose (SOP).
+
+1. Clean up your resume. It should be 1-2 pages. The most important sections to have are Education, Citizenship, Work/Research Experience, Papers/Publications, Presentations, Awards/Honors, and References. I would lead with the most distinguishing features that give you a comparative advantage; for example, I led with my internship and research experience, as well as my working papers in machine learning.
+2. Your transcript: most institutions will request a copy of your official transcript. At UCLA, this could be easily ordered online for free and downloaded within an hour. In terms of coursework, great signals are advanced or honors math coursework, particularly analysis, linear algebra, optimization, stochastic processes, probability, and statistics. Acing intermediate economics classes is an expectation. Some better signaling would be graduate math or econ courses. In the fall term I was applying, I was taking a graduate micro class (which is a good signal if you are worried about the grade you might get).
+3. Finally, the most underrated part of your application is the SOP. [Here](../../resources/personal/Yale_SOP.pdf) is the SOP I submitted to Yale. It was pretty much the same essay everywhere, minus the faculty and research interests in the last paragraph, which, as I mentioned before, is generally not the most important part and doesn’t need to be more than simply mentioning certain faculty or projects you are interested in at each school (just make sure the faculty are actually still there). However, it was important for me to get a preliminary idea of the research ecosystem at each of my schools.
+
+The SOP has a lot of degrees of freedom. For me, coming straight from undergrad, I felt I didn’t have a clean "narrative" to write about, so my SOP was a hodge-podge of all my research experiences, interests, and questions thrown together (which is honestly not a bad strategy). The overall goal is to convince committees that you have the necessary skills and experience to succeed in their program, so I would cut any flowery storytelling language or cheesy quotes. Some mentions of project proposals or papers you read are also helpful and signal your interest in the field.
+
+One thing I was surprised by during the process was how helpful my recommenders were during the application process. I wouldn’t be afraid to reach out and ask for advice on SOP drafts or school lists. Economics professors, of all people, are the ones who are most excited to see you go to graduate school, and I received a lot of help in refining my materials. They’ll give you a lot more perspective on the process, much more than some Redditor on r/academiceconomics can give.
+
+Another key piece to your application is your writing sample. A majority of the schools I applied to required or had an option to submit a writing sample. Now, do I know the chances of whether committees will actually read them? Not exactly, but they are pretty slim. Yet, it’s still good to submit something that signals either technical ability, field interest, or research writing. How well do you synthesize literature? Have you done mathematically heavy work? How does your writing sample tie into your application? I was fairly fortunate to have some working paper drafts from some machine learning/algorithmic game theory work I had done, which I believe was a strong signal and differentiating factor in my application.
+
+Finally, there is one "optional" application that is an extremely important signal: the **NSF Graduate Research Fellowship**. Seriously, everyone should apply for this, because it 1) forces you to get your application materials ready and recommenders to write letters by the beginning of November (before PhD applications), 2) forces you to think about a research proposal, which can be used as a writing sample at some places, 3) signals that you are willing to apply for scholarships, which literally improves your probability of admission to programs, 4) if you do win, you get $53,000 for three years (higher than the stipend at most programs), and 5) it’s free.
+
+Obviously, whatever you write in your proposal is not set in stone. However, you should write your proposal with very clear intentions. Survey the literature properly, write down potential data sources you will use, your model, different directions you can take, etc. Economics grad school committees know your research interests will likely change during the program, but NSF proposal judges like to see clear write-ups, even if students end up dropping the idea entirely.
+
+There are other graduate funding opportunities that you can look out for, but most U.S. applicants should be eligible for the GRFP. It’s a free point.
+
+#### November/December - Submit applications!
+
+Ok, after months of scrolling through forums and profiles at 1 AM, reading over my SOP for the millionth time, and worrying if I should’ve just done a pre-doc instead (see below), we’ve made it to the finish line. I finally submitted all my applications just before the start of December, wrapped up my finals for the quarter at UCLA, and enjoyed my winter break.
+
+### Decisions
+
+Now begins the roughly three-month wait for decisions. I’d recommend deleting Reddit and blocking GradCafe during these three months. Go out, touch grass, or bathe in the sun (oops, sorry non-UCLA folks :) ).
+
+In all seriousness, it is a pretty stressful time. Interviews are rare (typically for business schools), but usually a good sign. I had one interview for Columbia, which was a fairly informal chat about my research interests, application, and where Columbia stood among my choices. With the current climate of PhD admissions, committees are growing ever more cautious, so they want to make sure they extend offers to candidates who are likely to accept their offers. Interviews, waitlists, and attendance at visit days are one way of discerning this.
+
+Having finally received all my decisions, I was fortunate to have been accepted by five programs, waitlisted at four, and rejected by the rest.
+
+### Thoughts
+
+####  "Research fit"
+
+One thing that might shock applicants to other PhD programs is the overall generality of the application process. While in fields like engineering, applicants often reach out to faculty members or specific projects, who then decide whether to admit the applicant based on fit, in economics, applicants apply very generally and are even discouraged from reaching out to faculty during the admissions process.
+
+Another distinction about economics is that students’ interests are allowed to evolve once they enroll. After all, as undergraduates and applicants, we spend all this effort gaining research experience, doing coursework, taking hard classes, and more, yet less on actually exploring new topics or building interests. Personally, I feel almost a sense of impostor syndrome as an early applicant, wondering how much I actually know and am certain about among the fields of economics. Yet, this doesn’t deny the fact that an admit to a top econ program is still well-equipped with the necessary tools and knowledge to succeed in any field.
+
+There are pros and cons to this style, but overall, I find it conducive. Early researchers can "tie themselves" to some particular line of research early on to gain depth, but still have the freedom to pursue interdisciplinary projects.
+
+#### Pre-docs
+
+Pre-doctoral research assistantships are increasingly common for PhD applicants, but I chose not to do one because 1) I already had a full-time offer that I’d go to if I didn’t get into a program I liked, and 2) I didn’t believe they offered enough benefit for the cost. [This study](https://www.aeaweb.org/conference/2025/program/paper/GT4RGfAe) found no statistical evidence that predoc positions improve the rank of an applicant’s admits, and [this page](https://economics.northwestern.edu/graduate/prospective/predoc.html){target="_blank"} by Northwestern clearly states that pre-docs need not improve your odds of being admitted.
+
+Ultimately, I will never do one, so I have no idea what they’re like. They can differ from place to place and be a good opportunity to explore new research topics, meet new professors, and gain practical skills. For example, positions at top institutions like Harvard or MIT, positions in industry like Microsoft Research, or research roles at Federal Reserve branches or consulting firms can offer some perspective. Yet, if you come from a strong undergraduate institution, have strong letters of recommendation, and can signal your skills and interests in a way that doesn’t involve data cleaning tasks for low pay, I think applying straight from undergrad is a strong alternative.
+
+Applying for economics PhD programs is by no means the best process. Yet, it’s the next step towards pursuing a hopefully fulfilling career in economic research! Talk to your professors, prepare your materials, and hone your interests. Here are some other resources that helped me during my process:
+
+* [Susan Athey’s Advice for Applying to Grad School in Economics](https://gsb-faculty.stanford.edu/susan-athey/professional-advice/){target="_blank"}
+* [Econ Grad Advice by Chris Roth and David Schindler](https://sites.google.com/view/econgradadvice/){target="_blank"}
+
+I hope my experience helped you and always feel free to contact me at kennyguo@ucla.edu. You got this!

@@ -1,0 +1,820 @@
+# MATH 131BH: Analysis (Honors)
+## Spring 2025, I. Kim
+
+We follow UCLA's 131BH curriculum; the syllabus is linked [here](https://www.math.ucla.edu/~ikim/131bh.html){target='_blank'}. We follow Rudin's *Principles of Mathematical Analysis (3e)*. Please let me know at [kennyguo@ucla.edu](mailto:kennyguo@ucla.edu) if you spot any errors. Thanks!
+
+#### Homework Solutions: (in progress)
+
+* [Homework 1 (compactness)](#hw1)
+* [Homework 2 (continuity, connectedness)](#hw2)
+* [Homework 3 (differentiability)](#hw3)
+* [Homework 4 (integrability)](#hw4)
+* [Homework 5 (integrability)](#hw5)
+* [Midterm :)](#midterm)
+* [Homework 6 (sequences of functions, uniform convergence)](#hw6)
+* [Homework 7 (Arzela-Ascoli, Stone-Weierstrass)](#hw7)
+* [Homework 8 (multivariable differentiability)](#hw8)
+* [Homework 9 (inverse, implicit function theorem)](#hw9)
+
+**Homework 1**<a name="hw1"></a>
+
+> 1. Show that in the metric space $(l^2, d_2)$, the set $E:=\{x=(x(n))_{n \geq 1} : \sum_{n\geq1} n |x(n)|^2 \leq 1\}$ is compact. 
+
+<details>
+
+  <summary>*Proof.*</summary>
+
+ Let $(x_k)_{k \geq 1} \subseteq E$. We have for all $k \geq 1$, $\sum_{n\geq 1} n|x_k(n)|^2 \leq 1$, so namely for all $n \geq 1$, we have $|x_k(n)| \leq 1/\sqrt{n}$. 
+
+In particular, for a fixed $n \geq 1$, we have that $(x_k(n))_{k \geq 1}$ is bounded, and by Bolzano-Weierstrass, there exists a convergent subsequence. Continuing along for all $n$, by the diagonal argument, we construct a subsequence, call it $(x_{k_j}(n))_{j \geq 1}$, such that for all $n \geq 1$, $\lim_{j \rightarrow \infty} x_{k_j}(n)$ exists, call it $x_\infty(n)$, and let $x_\infty = (x_\infty(n))_{n\geq 1}$. Thus, we show a) $x_\infty \in E$ and b) $x_{k_j} \rightarrow_{j \rightarrow \infty} x_\infty$. 
+
+a) Note that: 
+$$
+	\sum_{n\geq 1} n |x_\infty(n)|^2 = \sum_{n\geq 1} n \lim_{j\rightarrow \infty} |x_{k_j}(n)|^2 
+	= \lim_{N\rightarrow \infty} \sum_{n=1}^N n \lim_{j\rightarrow \infty} |x_{k_j}(n)|^2 
+	= \lim_{N\rightarrow \infty} \lim_{j\rightarrow \infty} \underbrace{\sum_{n=1}^N n |x_{k_j}(n)|^2}_{\leq 1 \text{ since } x_{k_j} \in E \text{ for all } j} 
+	\leq 1
+$$
+and thus, $x_\infty \in E$. 
+
+b) Let $\varepsilon > 0$. For any $N \geq 1$, note we have the inequality:
+$$
+\sum_{n=N}^\infty |x_{k_j}(n) - x_\infty(n)|^2 \leq 2 \sum_{n=N}^\infty |x_{k_j}(n)|^2 + 2 \sum_{n=N}^\infty |x_{\infty}(n)|^2
+$$
+Furthermore, for all $x \in E$, we have:
+$$
+N \sum_{n=N}^\infty |x(n)|^2 \leq \sum_{n=N}^\infty n|x(n)|^2 \leq 1 
+\implies \sum_{n=N}^\infty |x(n)|^2 \leq 1/N
+$$
+and so for all $N\geq 1$, $\sum_{n=N}^\infty |x_{k_j}(n) - x_\infty(n)|^2 \leq 2(2/N) = 4/N$. 
+
+With this, fix an $N_\varepsilon$ s.t. $4/N_\varepsilon < \varepsilon^2/2$, so that $\sum_{n=N_\varepsilon}^\infty |x_{k_j}(n) - x_\infty(n)|^2 \leq \varepsilon^2/2$.
+
+Now, since for $n = 1, \ldots, N_\varepsilon - 1$, we have that $x_{k_j}(n) \rightarrow_{j\rightarrow \infty} x_\infty(n)$, we can choose a $j_\varepsilon$ such that $\sum_{n=1}^{N_\varepsilon - 1} |x_{k_j}(n) - x_\infty(n)|^2 \leq \varepsilon^2/2$. Thus, let $j \geq j_\varepsilon$, and we see
+$$
+	\sum_{n=1}^\infty |x_{k_j}(n) - x_\infty(n)|^2  = \sum_{n=1}^{N_\varepsilon -1} |x_{k_j}(n) - x_\infty(n)|^2 + \sum_{n=N_\varepsilon}^\infty |x_{k_j}(n) - x_\infty(n)|^2
+	< \varepsilon^2/2 + \varepsilon^2/2 = \varepsilon^2
+$$
+and so $d_2(x_{k_j}, x_\infty) < \varepsilon$. Thus, $x_{k_j} \rightarrow_{j \rightarrow \infty} x_\infty$, and so $E$ is sequentially compact, and thus, compact. $\square$
+
+*Remark. This is a proof that doesn't rely explicitly on Heine-Borel, as we didn't have this theorem at our disposal.*
+
+</details>
+
+
+> 2.
+> a) Show that if $(K, d)$ is sequentially compact, then $(K,d)$ has a countable base.
+> b) Using (a), show that every open cover of $K$ has a countable subcover.
+
+<details>
+
+  <summary>*Proof.*</summary>
+a) One can show $K$ is *totally-bounded*, that is for all $r>0$, there exists a finite number of balls such that they form a cover of $K$, i.e., there exists $n \in \mathbb{N}$, $x_1, \ldots, x_n \in K$ such that $K \subseteq \bigcup_{i=1}^n B_r(x_i)$. To construct our countable base, for all $k \in \mathbb{N}$, consider the finite cover of $K$, $\{B_{1/k}(x_i)\}_{i=1}^{n_k}$, and we claim then $\bigcup_{k=1}^\infty \{B_{1/k}(x_i)\}_{i=1}^{n_k}$ is a countable (as countable union is countable) base for $K$. 
+
+Let $x_0 \in K$ and $x_0 \in G$ open. Thus, there exists some $N \in \mathbb{N}$ such that $B_{1/N}(x_0) \subseteq G$. But by total boundedness, we also know we chose $x_1, \ldots, x_{n_{2N}}$ such that $x_0 \in \bigcup_{i=1}^{n_{2N}} B_{1/(2N)}(x_i)$. If $x_0 \in \{x_1, \ldots, x_{n_{2N}}\}$, we are done, since $B_{1/(2N)}(x_0)$ is a set in our base. If else, then there is a $x_i$ such that $x_0 \in B_{1/(2N)}(x_i)$. Let $y \in B_{1/(2N)}(x_i)$. By triangle inequality, we have:
+$$
+d(y, x_0) \leq d(y, x_i) + d(x_i, x_0) < 1/(2N) + 1/(2N) = 1/N
+$$
+and so $y \in B_{1/(N)}(x_0)$, and we have that $x_0 \in B_{1/(2N)}(x_i) \subseteq B_{1/(N)}(x_0) \subseteq G$, so our set $\bigcup_{k=1}^\infty \{B_{1/k}(x_i)\}_{i=1}^{n_k}$ is in fact a (countable) base.
+
+b) Let $\{G_\alpha\}$ be an open cover for $K$. Let $x \in K$, so $x \in G_\alpha$ open for some $\alpha$. Using the countable base of balls in part (a), we have that there exists some $n_x \in \mathbb{N}, x_i$ such that $x \in B_{1/n_x}(x_i) \subseteq G_\alpha$. Since there are only countably many balls in this base, we can select at most countably many $G_\alpha$ from $\{G_\alpha\}$, so that for all $x \in K$, $x$ is still contained in one of them, and so we extract our desired countable subcover. $\square$
+
+</details>
+
+> 3. Show that $K$ is sequentially compact if and only if every infinite subset of $K$ has a limit/accumulation point in $K$. 
+
+<details>
+
+  <summary>*Proof.*</summary>
+$(\implies)$ Assume $K$ is sequentially compact, and let $A \subseteq K$ be infinite (if can't find, vacuously true). Thus, we can extract a sequence $\{a_n\}_{n\geq 1} \subseteq A$ of non-repeating terms. By sequential compactness, there exists a convergent subsequence, call it $\{a_{k_n}\}_{n\geq 1} \rightarrow_{n\rightarrow \infty} a \in K$. Finally, note that $a \in A'$. Indeed, let $r > 0$, and by limit definition, there is an $n_r \in \mathbb{N}$ such that for all $n \geq n_r$, $d(a_n, a) < r$, and so $a_n \in B_r(a) \cap A \backslash \{a\}$ (since the $a_n$ are distinct), and so namely it is nonempty, and $a$ is an accumulation point of $A$ in $K$.
+
+$(\impliedby)$ Assume for all infinite $A \subseteq K$, $A' \cap K \neq \emptyset$. Let $\{a_n\}_{n\geq 1} \subseteq K$. If $\{a_n\}_{n\geq 1}$ infinitely repeats a term, then this will be a (constant) convergent subsequence. Thus, assume doesn't infinitely repeat terms, and so the set $\{a_n : n \geq 1\}$ is infinite. By assumption, there exists an $a \in A' \cap K$.
+
+From this, we construct our convergent subsequence. We have $B_1(a) \cap A \backslash \{a\} \neq \emptyset$, so extract $a_{k_1}$. Then for $n \geq 2$, extract $a_{k_n}$ from $B_r(a) \cap A \backslash \{a\} \neq \emptyset$, where $r = \min\{1/n, d(a, a_{k_{n-1}})\}$. It follows that $\{a_{k_n}\}_{n\geq 1}$ is a convergent subsequence, and thus, $K$ is sequentially compact. $\square$. 
+
+</details>
+
+> 4. Let $K, E \subseteq X$, where $K$ is compact and $E$ is closed in $(X,d)$. 
+> a) If $K \cap E = \emptyset$, then show that there is a constant $c > 0$ such that $$ d(x, E) := \inf\{d(x,y) : y \in E\} \geq c \text{ for all } x \in K.$$
+> b) Is (a) true if $K$ is only closed? Give a counterexample.
+
+<details>
+
+  <summary>*Proof.*</summary>
+a) Suppose for contradiction that for all $c > 0$, there exists $x \in K$ such that $\inf\{d(x,y) : y \in E\} < c$. For all $n \geq 1$, let $c = 1/n$. Thus, there is a $x_n \in K$ such that $d(x_n, E) < 1/n$. In particular, $1/n$ is not a lower bound, so there exists a $y_n \in E$ such that $d(x_n, y_n) < 1/n$. With this, we construct arbitrarily close $\{x_n\}_{n\geq 1} \subseteq K, \{y_n\}_{n\geq 1} \subseteq E$. 
+
+Since $K$ is sequentially compact, there exists a convergent subsequence $\{x_{k_n}\}_{n\geq 1} \rightarrow x_0 \in K$. Since $\{y_n\}_{n\geq 1}$ is arbitrarily close, we have that $\{y_{k_n}\}_{n\geq 1} \rightarrow x_0 \in \bar{E}$ as well. Since $E$ is closed, $x_0 \in E$. This contradicts $K \cap E$ being empty. $\square$ 
+
+b) No. Compactness is necessary, and our counterexample relies on finding arbitrarily close sequences in $K$ and $E$, but a convergent subsequence is not necessarily guaranteed (say, approaches infinity) by compactness. 
+
+Take $(X,d) = (\mathbb{R}, |\cdot|)$ and consider $K = \{n+1/n : n\geq 2\}$ and $E = \{n : n \geq 2\}$. These sets are indeed closed, but neither is compact (consider the open cover of $\varepsilon = 1/2$ balls around each point, which cannot be reduced to a finite subcover). Finally, note $K \cap E = \emptyset$. 
+
+Considering $\{x_n\}_{n \geq 2} \subseteq K, x_n = n + 1/n$ and $\{y_n\}_{n \geq 2} \subseteq E, x_n = n$ (note these are arbitrarily close with no convergent subsequence). Thus, we see for all $c > 0$, there exists an $n$ such that $|x_n - y_n| < c$, which gives the desired negation.
+
+</details>
+
+> 5. Let $A$ be a subset of a complete metric space. Assume that for all $\varepsilon > 0$, there exists a compact subset $A_\varepsilon$ so that for any $x \in A, d(x, A_\varepsilon) < \varepsilon)$. Show that $\bar{A}$ is compact. 
+
+<details>
+
+  <summary>*Proof.*</summary>
+We show sequential compactness. Let $(x_n) \subseteq \bar{A}$. 
+
+We first extract a sequence from $A$ that is arbitrary close to $(x_n)$, so any subsequence will converge to the same limit. Note that for all $n \geq 1$, $x_n \in \bar{A}$, which means there exists $(a_{k_n}) \subseteq A$ such that $a_{k_n} \rightarrow x_n$. In particular, there is an $a_n \in A$ such that $d(x_n, a_n) < 1/n$, and so we get $(a_n) \subseteq A$, and it suffices to find a convergent subsequence of this.
+
+Consider $A_1$, so for all $a \in A$, $d(a, A_1) < 1$. Thus, for all $n \geq 1$, $\inf\{d(a_n, y) : y \in A_1\} < 1$, so $1$ is not a lower bound, so there exists $y \in A_1$ such that $d(a_n, y) < 1$. Consider the open cover of $A_1$ given by $\{B_1(y)\}_{y \in A_1}$, which admits a finite subcover, say $\{B_1(y_i)\}_{i=1}^n$. Increase the radius and now consider $\{B_{2}(y_i)\}_{i=1}^n$. We can now see for all $n \geq 1$, $a_n \in \bigcap_{i=1}^n B_{2}(y_i)$. This follows from triangle inequality, as there is a $y \in A_1$ such that $d(a_n, y) < 1$, and this $y$ is within some $B_1(y_i)$ for some $i$, so $a_n \in B_2(y_i)$. 
+
+In particular, since there are finitely many $2$-radius balls, by the pigeonhole principle, there exists a subsequence $(a_{k_n})$ such that $(a_{k_n}) \subseteq B_2(y_i)$ for some $i$. By triangle inequality, we have for all $m, n \geq 1$, $d(a_m, a_n) < 4$. 
+
+We continue this process iteratively for all $N \geq 1$, considering $A_{1/N}$, extracting a subsequence from the previous subsequence, and by the diagonal argument, we find a subsequence, rename it $(a_{k_n})$, such that for all $m, n \geq N$, $d(a_{k_m}, a_{k_n}) < 4/N$. In particular, this sequence is Cauchy, so by completeness, it converges. Since the sequence is also in $A$, we get its limit is in $\bar{A}$. Coming back to our original sequence, we can take $(x_{k_n})$, which must converge to the same limit, and thus, we get that $\bar{A}$ is (sequentially) compact. $\square$
+
+*Remark. One can again use Heine-Borel. Here is an alternative proof:*
+
+Since $\bar{A}$ is closed and a subset of a complete metric space, we have that $\bar{A}$ is itself complete. To show total-boundedness, let $\varepsilon >0$. By assumption, there exists $A_{\varepsilon/3} \subset A$ such that for all $x \in A$, $d(x, A_{\varepsilon/3}) < \varepsilon/3$. Consider the open cover of $A_{\varepsilon/3}$, $\{B_{\varepsilon/3}(a)\}_{a \in A_{\varepsilon/3}}$. By compactness, we reduce to finite subcover $\{B_{\varepsilon/3}(a_i)\}_i^n$.
+
+Now we claim $\{B_{\varepsilon}(a_i)\}_i^n$ is a finite cover of $\varepsilon$-balls for $\bar{A}$. Let $x \in \bar{A}$, so there exists $(a_n)_{n \geq 1} \subseteq A$ such that $a_n \rightarrow x$. In particular, there is some $a' \in A$ such that $d(a', x) < \varepsilon/3$. We also have that $\inf \{d(a', a) : a \in A_{\varepsilon/3}\} < \varepsilon/3$, so there is some $a \in A_{\varepsilon/3}$ such that $d(a, a') < \varepsilon/3$. Finally, $a \in \bigcup_{i=1}^n B_{\varepsilon/3}(a_i)$, so there is some $i$ such that $d(a, a_i) < \varepsilon/3$. By triangle inequality, we see:
+$$ d(x, a_i) \leq d(x, a') + d(a', a) + d(a, a_i) < \varepsilon $$
+and so $x \in B_{\varepsilon}(a_i)$ and $\bar{A} \subseteq \bigcup_{i=1}^n B_{\varepsilon}(a_i)$. Since $\varepsilon$ was arbitrary, $\bar{A}$ is thus totally bounded, and we conclude using Heine-Borel. $\square$
+
+</details>
+
+> 6. (Walter Rudin, pg. 44, #13) Construct a compact set $A$ of $\mathbb{R}$ such that $A'$ is countable. 
+
+<details>
+	<summary>*Proof.*</summary>
+
+	One such set is $A = \{0\} \cup \{1/n + 1/k : n\geq 1, k \geq n\}$. One can find the confirmation of this construction [here](https://minds.wisconsin.edu/bitstream/handle/1793/67009/rudin%20ch%202.pdf?sequence=10&isAllowed=y){target="_blank"}.
+
+</details>
+
+> 7. (Walter Rudin, pg. 44, #16) Consider the metric space $(\mathbb{Q}, |\cdot|)$. Let $E = \{x \in \mathbb{Q} : 2 < x^2 < 3 \}$. Show $E$ is closed and bounded, but not compact. Determine if $E$ is open in $\mathbb{Q}$. 
+
+<details>
+	<summary>*Proof.*</summary>
+
+	(Bounded) Yes. Take $M=3$.
+
+	(Closed) Yes. Let $x \in \bar{E}$, so for all $n \geq 1$, $B^{\mathbb{Q}}_{1/n}(x) \cap E \neq \emptyset$. Thus, there is a $y \in B^{\mathbb{Q}}_{1/n}(x) \cap E$. If $y=x$, then $x \in E$. Assume $x>y$ (a similar argument applies for $<$). Then we have $x^2 > y^2 > 2$ and $x-1/n < y \implies (x-1/n)^2 < y^2 < 3 \rightarrow_{n \rightarrow \infty} x^2 \leq 3$. But since $x \in \mathbb{Q}$, we must have $x^2 < 3$, and so $x \in E$. We see $\overline{E} = E$, and $E$ is closed.
+
+	(Compact) No. $E$ is not sequentially compact as one can take a sequence of rationals in $E$ that converges (in the reals) to $\sqrt{2} \notin E$. Thus, any subsequence cannot converge within $E$.
+
+	(Open) Yes. This follows by density of the rationals in the reals.
+
+</details>
+
+**Homework 2**<a name="hw2"></a>
+
+> 1. (Walter Rudin, pg. 100, #18) Every rational $x$ can be written in the form of $x = m/n$ where $n>0$, and $m,n$ are relatively prime. When $x=0$, we let $n=1$. Consider the function $f$ defined on $\mathbb{R}$ by: 
+> $$ f(x) = \begin{cases} 0 & \text{if } x \text{ irrational} \\ 1/n & \text{if } x = m/n \end{cases} $$
+> Prove that $f$ is continuous at every irrational point, and that $f$ has a simple discontinuity at every rational point.
+
+<details>
+	<summary>*Proof.*</summary>
+	Let $x \in \mathbb{R} \backslash \mathbb{Q}$ so $f(x) = 0$. Let $\varepsilon > 0$. By Archimedean, there is some natural $N$ such that $1/(N+1) < \varepsilon < 1/N$. If we choose $\delta$ so that for all $t \in (x-\delta, x+\delta)$, $t = m/n$ reduced-rational where $n \geq N+1$, we will have $f(t) \leq 1/(N+1)$ < \varepsilon$, showing continuity.
+
+	For $n = 1, \ldots, N$, consider $nx$, and by Archimedean, there exists some $m_n \in \mathbb{Z}$ such that $m_n/n \leq x < (m_n + 1)/n$. We set 
+	$$ \delta_n = \begin{cases}
+		\min \{|m_n/n-x|, |(m_n+1)/n-x|\} &: x>m_n/n \\
+		1/n &: x = m_n/n
+		\end{cases}
+	$$
+	and choose $\delta = \min\{\delta_i\}_{i=1, \ldots, N}$. Now, let $t$ be such that $0<|t-x|<\delta$. If $t$ irrational, $f(t) = 0 < \varepsilon$. If $t$ rational, then by construction, its reduced fraction form must have a denominator greater than or equal to $N+1$, as desired, so $f(t) < \varepsilon$. Thus, $f$ is continuous at all irrational $x$.
+
+	For rational $x$, we write as reduced form $m/n$, and so $f(x) = 1/n$. Note in the last part, we showed for any $x \in \mathbb{R}$, $f(t) \rightarrow_{t \rightarrow x} 0 \neq 1/n$, so namely $f$ is not continuous for $x$ rational. $\square$
+
+</details>
+
+> 2. (Walter Rudin, pg. 100, #23) Recall that $f:(a,b)\rightarrow \mathbb{R}$ is said to be *convex* if
+> $$ f(\lambda x + (1-\lambda) y) \leq \lambda f(x) + (1-\lambda)f(y)$$
+> for $x, y \in (a,b), \lambda \in (0,1)$. Prove:
+> a. Every convex function $f$ is continuous.
+> b. Every increasing convex function of a convex function $f$ is also convex.
+> c. If $f$ is convex in $(a,b)$ and $a<s<t<u<b$, then
+> $$ \frac{f(t)-f(s)}{t-s} \leq \frac{f(u)-f(s)}{u-s} \leq \frac{f(u)-f(t)}{u-t}. $$
+
+<details>
+	<summary>*Proof.*</summary>
+	a. Let $x \in (a,b)$. Since $(a,b)$ open, we find $s, u$ such that $a<s<x<u<b$. For continuity, we will take the one-sided limits to $x$ (from $s$ and $u$) and show they must converge to $f(x)$. 
+
+	Let $(t_n) \subset (x,u)$ such that $t_n \rightarrow x$. Note that for all $t_n$, we can thus write them as $t_n = \lambda_n x+ (1-\lambda_n)u$, which gives $\lambda_n = \frac{t_n - u}{x-u}$. By convexity, we have $f(t_n) \leq \lambda_n f(x)+ (1-\lambda_n)f(u)$, and so taking limsup (as $\lambda_n \rightarrow 1$), we get that $\text{limsup}_{n \rightarrow \infty} f(t_n)= f(x)$. Futhermore, we can also write $x$ as an interpolation between $t_n$ and $s$, i.e. $x = \lambda_n s + (1-\lambda_n)t_n$, and thus by convexity, $f(x) \leq \lambda_n f(s) + (1-\lambda_n)f(t_n)$. Again, taking $n\rightarrow \infty$, we have $\lambda_n \rightarrow 0$, and not assuming $f(t_n)$ converges yet, taking the liminf, we see: $f(x) \leq \text{liminf}_{n \rightarrow \infty} f(t_n)$. Together, the (right-sided) limit must exist and equals $f(x)$. A similar argument for the left-sided limit can be applied for taking any sequence from $(s, x)$ that converges to $x$. Thus, $f(t) \rightarrow f(x)$, showing continuity. $\square$
+
+	b. Let $g: f((a,b)) \rightarrow \mathbb{R}$ be increasing and convex. Let $x,y \in (a,b), \lambda \in (0,1)$. Then:
+	$$
+	f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y)
+	$$
+	and by monotonicity and convexity of $g$,
+	$$
+	g(f(\lambda x + (1-\lambda)y)) \leq g(\lambda f(x) + (1-\lambda)f(y)) \leq \lambda g(f(x)) + (1-\lambda)g(f(y))
+	$$
+	and so $g\circ f$ is convex. $\square$
+
+	c. Set $\lambda \in (0,1)$ such that $t = \lambda s + (1-\lambda) u$. We see $\lambda = \frac{t-u}{s-u} = \frac{u-t}{u-s}$. By convexity, we have:
+	$$
+	f(t) \leq \frac{u-t}{u-s} f(s) + (1-\frac{u-t}{u-s}) f(u) \quad (\star)
+	$$
+	For the first inequality, we get from $\star$:
+	$$ f(t) \leq \frac{u-t}{u-s} f(s) + \frac{t-s}{u-s} f(u) $$
+	$$ \implies f(t) - f(s) \leq \frac{-(t-s)}{u-s} f(s) + \frac{t-s}{u-s} f(u) $$
+	$$ \implies \frac{f(t)-f(s)}{t-s} \leq \frac{f(u) - f(s)}{u-s}. $$
+
+	For the second inequality, we get from $\star$:
+	$$-f(t) \geq \frac{t-u}{u-s} f(s) + (\frac{u-t}{u-s}-1) f(u) $$
+	$$ \implies f(u) -f(t) \geq \frac{t-u}{u-s} f(s) + \frac{u-t}{u-s} f(u) $$
+	$$ \implies \frac{f(u)-f(s)}{u-s} \leq \frac{f(u)-f(t)}{u-t}.$$
+	$\square$
+
+</details>
+
+> 3. (Walter Rudin, pg. 100, #24) Assume $f$ is a continuous real-valued function defined in $(a,b)$ such that
+> $$ f\left(\frac{x+y}{2}\right) \leq \frac{f(x) + f(y)}{2} $$
+> for all $x, y \in (a,b)$. Prove that $f$ is convex.
+
+<details>
+	<summary>*Proof.*</summary>
+	Let $x<y \in (a,b), \lambda \in (0,1)$. Consider $k_1 = \frac{x+y}{2}$. Call $z=\lambda x+ (1-\lambda)y$. We have two cases: 1) $\lambda = 1/2$, i.e. $k_1 = z$, and the convexity holds by assumption. 2) WLOG assume $k_1 < z$. Then iterate with $k_2 = \frac{k_1 + y}{2}$. Again, we have 2 cases: 1) $\lambda = 1/4$, i.e. $k_2 = z$. Then 
+	$$ f(z) \leq \frac{f(k_1)+f(y)}{2} \leq \frac{\frac{f(x)+f(y)}{2}+f(y)}{2} \leq \frac{1}{4}f(x) + \frac{3}{4}f(y)$$
+	and so convexity holds. 2) $k_2 \neq z$, and we iterate again.
+
+	From here, we can show via induction that if $\lambda = m/2^n$ for any $n,m \in \mathbb{N}, \lambda \in (0,1)$, this process will terminate and convexity will hold. We just showed the base cases, so assume for all $m \in \mathbb{N}$, for some $n \in \mathbb{N}$, $\lambda = m/2^n$ satisfies convexity. Consider $n+1$, and let $m \in \mathbb{N}$. If $m$ is even, then $\lambda = \frac{m/2}{2^n}$ which is satisfied by the inductive hypothesis. If $m$ is odd, consider $\lambda_1 = \frac{(m-1)/2}{2^n}, \lambda_2 = \frac{(m+1)/2}{2^n}$, which are satisfied by the inductive hypothesis. Also note $\lambda = \lambda_1/2 + \lambda_2/2$, so we can decompose 
+	$$ z= \lambda x+ (1-\lambda)y = \underbrace{(\lambda_1 x + (1-\lambda_1)y)}_{h(\lambda_1)} + \underbrace{(\lambda_2 x + (1-\lambda_2)y)}_{h(\lambda_2)} $$
+	and by assumption, we have:
+	$$ f(z) \leq \frac{f(h(\lambda_1)) + f(h(\lambda_2))}{2} $$
+	and by the inductive hypothesis, we have:
+	$$ \leq \frac{\lambda_1 f(x) + (1-\lambda_1)f(y) + \lambda_2 f(x) + (1-\lambda_2)f(y)}{2} $$
+	$$ \leq \frac{\lambda_1 + \lambda_2}{2} f(x) + \left(1-\frac{\lambda_1 + \lambda_2}{2}\right)f(y) $$
+	$$ \leq \lambda f(x) + (1-\lambda) f(y) $$
+	which thus closes the induction. 
+
+	Finally, we consider the case where the iteration infinitely repeats, or $\lambda$ is not of the form $m/2^n$. We define $E:= \{\lambda ' \in (0,1) : \lambda' \text{ satisfies convexity with } x,y\}$. Using the $k_n$'s from before, we get a sequence that approaches $\lambda x + (1-\lambda)y$ as $n \rightarrow \infty$, and since all of these $k_n$ were constructed using lambdas in $E$, we also get a sequence $(\lambda '_n) \subseteq E$ such that $\lambda '_n \rightarrow \lambda$, so $\lambda \in \overline{E}$. It suffices to show $E$ is closed. Note the function $g(\lambda) = \lambda f(x) + (1-\lambda)f(y) - f(\lambda x + (1-\lambda)y)$ is continuous, and $E = g^{-1}([0, \infty))$, i.e. the preimage of a closed set under continuous $g$. $\square$
+
+</details>
+
+> 4. (Walter Rudin, pg. 100, #26) Suppose $X, Y, Z$ are metric spaces, and $Y$ is compact. Let $f$ map $X$ into $Y$, let $g$ is a continuous, one-to-one mapping of $Y$ into $Z$, and put $h(x)=g(f(x))$ for $x \in X.$
+> a. Prove that $f$ is uniformly continuous if $h$ is uniformly continuous.
+> b. Prove also that $f$ is continuous if $h$ is continuous. 
+> c. Show (by example) that the compactness of $Y$ cannot be omitted from the hypotheses, even when $X$ and $Z$ are compact.
+
+<details>
+	<summary>*Proof.*</summary>
+	a) Since $g$ is continuous and $Y$ is compact, $g(Y)$ is compact, and since $g$ is injective, $g^{-1}:g(Y) \rightarrow Y$ is well-defined, and furthermore, continuous on a compact domain, so it is uniformly continuous. Taking the composition of uniformly continuous functions $h, g^{-1}$ gives a uniformly continuous function. $\square$
+	b) By part (a), we still have $g^{-1}$ is continuous. Composing continuous functions is continuous. $\square$
+	c) Consider $X = [-1, 1]$ (compact), $$f(x) = \begin{cases} 1/x^2 &: x \neq 0 \\ 0 &: x=0 \end{cases}$$, $Y = \{0\} \cup [1, \infty)$ (not compact), $$g = \begin{cases} 1/\sqrt{y} &: y \in [1, \infty) \\ 0 &: y=0 \end{cases}$$ (injective and continuous), and $Z=[0,1]$ (compact). Indeed, $h = g\circ f$ is uniformly continuous as $h(x) = x$, but clearly $f$ is not continuous, let alone uniformly. $\square$
+
+</details>
+
+> 5. Suppose $f: E \rightarrow Y$ is uniformly continuous, where $E \subseteq \mathbb{R}^k$ and $Y$ is a metric space. 
+> a) If $E$ is bounded in $\mathbb{R}^k$, prove that $f(E)$ is bounded in $Y$.
+> b) Is the statement true if $\mathbb{R}^k$ is replaced by an arbitrary metric space $(X,d)$?
+
+
+<details>
+	<summary>*Proof.*</summary>
+
+	a) First observe that $E$ bounded $\implies$ $\bar{E}$ closed and bounded in $\mathbb{R}^k$, so $\bar{E}$ is compact. Thus, it is totally bounded, and it holds that $E$ itself is totally bounded (in $\mathbb{R}^k$) as well. Now we fix $\varepsilon = 1$. By uniform continuity of $f$, we get a $\delta > 0$ such that for all $p,q \in E$, if $d_E(p,q) < \delta$, then $d_Y(f(p), f(q)) < 1$ (1). By total boundedness, we can cover $E$ with $\{B_\delta(x_i)\}_{i=1}^n$, where $n \in \mathbb{N}, x_i \in E$. We claim $\{B_1(f(x_i)\}_{i=1}^n$ is a finite cover for $f(E)$, thus showing it is bounded. Indeed, let $y \in f(E)$, so $f^{-1}(y) \subseteq E$. Thus, for all $x \in f^{-1}(y), x \in B_\delta(x_i)$ for some $i$, so $d_E(x, x_i) < \delta$. By (1), we get $d_Y(f(x), f(x_i)) < 1$, and since $f(x) = y$, we have $y \in B_1(x_i) \subseteq \{B_1(f(x_i)\}_{i=1}^n$. $\square$
+
+	b) **No**, and we exploit that fact that boundedness may not imply total-boundedness in metric spaces other than $\mathbb{R}^k$. Consider $f:(\mathbb{R}, d_0) \rightarrow (\mathbb{R}, |\cdot|)$, where $d_0$ is the discrete metric, and $f(x) = x$. Set $E = \mathbb{R}$. We have that $E$ is bounded in $(\mathbb{R}, d_0)$ (take $M = 1$) and $f$ is uniformly continuous (indeed, for any $\varepsilon$, one can simply choose $\delta = 1/2$). But clearly, $f(E) = \mathbb{R}$ is not bounded in $(\mathbb{R}, |\cdot|)$. 
+
+</details>
+
+> 6. Show that if $E$ is open and connected in $\mathbb{R}^k$, then $E$ is pathwise connected in $\mathbb{R}^k$. 
+
+<details>
+	<summary>*Proof.*</summary>
+
+Let $x \in E$. Define $A = \{a \in E : \text{there exists a path from $x$ to $a$}\}$. We show $A$ is "clopen" (closed and open) and nonempty, and by connectedness, $A = E$, showing path connectedness. 
+
+(Nonempty) $A$ is nonempty as $x \in A$. 
+
+(Open) Let $a \in A$, so there is a path from $x$ to $a$. Since $E$ open, there is also an $r > 0$ such that $B_r(a) \subseteq E$ (we show it also $\subseteq A$). Let $z \in B_r(a)$. We can define a path from $a$ to $z$ by considering $g:[0,1] \rightarrow E$ given by $g(t) = \vec{a} + t(\vec{z} - \vec{a})$ (i.e. the linear interpolation, which is continuous). Then, stitching this together with our path from $x$ to $a$ gives us a path from $x$ to $z$, and thus, $z \in A$. So $B_r(a) \subseteq A$, and $A$ is open. 
+
+(Closed) Consider the complement $A^C = B = \{b \in E : \text{there does not exist a path from $x$ to $b$}\}$. Let $b \in B \subseteq E$ open, so there is an $r > 0$ such that $B_r(b) \subseteq E$. Let $z \in B_r(b)$. Then by before, we know there is a path from $b$ to $z$, but if there were to exist a path from $x$ to $z$, then we would also have a path from $x$ to $b$, contradicting $b \in B$. Thus, $z$ is also in $B$, and so $B = A^C$ is open, so $A$ is also closed. 
+
+We conclude $A = E$, and $E$ is path-connected. $\square$
+
+</details>
+
+> 7. Let $f: [a,b] \rightarrow \mathbb{R}$ be continuous. Suppose that $f$ has a local maximum at $x_1$ and $x_2$, with $x_1 < x_2$. Show that there must be a third point between $x_1$ and $x_2$ where $f$ has a local minimum. 
+
+<details>
+	<summary>*Proof.*</summary>
+
+	First restrict $f$ to the compact interval $[x_1, x_2]$. Thus, $f$ attains a minimum $x_3 \in [x_1, x_2]$ such that $f(x_3) = \min\{ f(x) : x \in [x_1, x_2]\}$. Now, we just remove the endpoints. Since $x_1$ is a local max, we have that there exists an $\varepsilon >0$ such that if $| y - x_1| < \varepsilon$, then $f(y) \leq f(x_1)$. Furthermore, restrict this $\varepsilon$ so that $x_1+\varepsilon < x_2$. We have two cases:
+
+	Case 1: for all such $y > x_1$, $f(y) = f(x_1)$ (i.e. $f$ is constant on this small interval). Then $f$ is constant on $[x_1, x_1 + \varepsilon)$, and namely, take $x^\star = x_1 + \varepsilon/2 (< x_2)$, and thus, for all $y$ such that $|y - x^\star| < \varepsilon/2$, $f(y) \geq f(x^\star)$, and thus, it is a local min in $(x_1, x_2)$. 
+
+	Case 2: there exists $y > x_1$ such that $f(y) < f(x_1)$. Namely, $x_1$ cannot be a min on $[x_1, x_3]$, so $x_1 \neq x_3$. 
+
+	By a symmetric argument, assuming case 2 for both $x_1$ and $x_2$, we get that $x_3$ cannot equal $x_1, x_2$, and $x_3 \in (x_1, x_2)$. Then taking $\varepsilon = \min\{|x_1 - x_3|, |x_2 - x_3|\}$ confirms $x_3$ is a local min. $\square$. 
+</details>
+
+**Homework 3**<a name="hw3"></a>
+
+> 1. Let $f : (0,1) \rightarrow \mathbb{R}$ be differentiable and let $c \in (0,1)$. Suppose that $\lim_{x \rightarrow c} f'(x)$ exists and is finite. Show that this limit must be equal to $f'(c)$. 
+
+<details>
+	<summary>*Proof.*</summary>
+	Suppose for contradiction that $\lim_{x \rightarrow c} f'(x) = L \neq f'(c)$. Assume first that $L < f'(c)$ (a similar argument can be done for $>$). Select $\varepsilon = \frac{f'(c) - L}{2} > 0$. By limit definition, there exists a $\delta >0$ such that for all $x \in (0,1)$, if $|x-c| < \delta$, then $|f'(x) - L| < \frac{f'(c) - L}{2} \implies f'(x) < \frac{f'(c) + L}{2}$. Let $x_0 < c$ such that $|x_0 - c| < \delta$. Thus, we have for all $x \in [x_0, c)$, $f'(x) < \frac{f'(c) + L}{2} < f'(c)$ (1). Then consider the open interval $(f'(x_0), f'(c))$ which $\frac{f'(c) + L}{2}$ is in. Let $y (\frac{f'(c) + L}{2}, f'(c))$. By Intermediate Value Theorem, there exists an $x \in (x_0, c)$ such that $f'(x) = y$, but this contradicts (1). $\square$
+</details>
+
+> 2. Show that the function
+> $$ f(x) = \sum_{n=0}^\infty \frac{1}{2^n} \sin (3^nx)$$
+> is a) continuous in $\mathbb{R}$, and b) not differentiable anywhere in $\mathbb{R}$. 
+
+<details>
+	<summary>*Proof.*</summary>
+
+	a) Let $c \in \mathbb{R}$. Let $(x_k) \subseteq \mathbb{R}$ such that $x_k \rightarrow c$. Define the partial sums $f_N(x) = \sum_{n=0}^N \frac{1}{2^n} \sin (3^nx)$. Since $\sin$ is continuous, and linear combinations of continuous functions are continuous, we have $f_N$ continuous for all $N$. *(Remark: If one has the tools of functional analysis, one can prove $f_N$ is Cauchy in $(C(\mathbb{R}), d_\infty)$, and thus uniformly converges to $f$, so $f$ is continuous.)* 
+
+	For now, let $\varepsilon > 0$. First note:
+	$$ |f(x) - f_N(x)| = |\sum_{n=N+1}^\infty \frac{1}{2^n} \underbrace{\sin (3^nx)}_{\leq 1}| \leq \sum_{n=N+1}^\infty \frac{1}{2^n} < \infty $$
+	and by Cauchy, there exists an $N \geq 1$ such that $\sum_{n=N+1}^\infty \frac{1}{2^n} < \varepsilon/3$. Also, since $f_N$ is continuous, we have that $f_N(x_k) \rightarrow_{k \rightarrow \infty} f_N(c)$, and so there exists some $k_\varepsilon \in \mathbb{N}$ such that for all $k \geq k_\varepsilon$, $|f_N(x_k) - f_N(c)| < \varepsilon/3$. By triangle inequality, we see for all $k \geq k_\varepsilon$,
+	$$
+	|f(x_k) - f(c)| \leq \underbrace{|f(x_k) - f_N(x_k)|}_{\text{Cauchy convergence}} + \underbrace{|f_N(x_k) - f_N(c)|}_{\text{continuity}} + \underbrace{|f_N(c) - f_(c)|}_{\text{Cauchy convergence}} < \varepsilon
+	$$
+	and so $f(x_k) \rightarrow_{k \rightarrow \infty} f(c)$, showing continuity of $f$ at any $c \in \mathbb{R}$. $\square$
+
+	b) *This one makes me sad. I'll see if I have the motivation to write up a proper solution to this one sometime.* $\square$
+
+</details>
+
+> 3. Suppose $f: [0,1] \rightarrow \mathbb{R}$ is continuous with $f(0) = f(1) = 0$, and $f$ is differentiable on $(0,1)$. Show that for any $\lambda > 0$, there is an $x \in (0,1)$ such that $f'(x) = \lambda f(x)$. 
+
+<details>
+	<summary>*Proof.*</summary>
+	Let $\lambda > 0$. We define $g(t) = e^{-\lambda t}f(t)$, and so we also have $g(0) = g(1) = 0$. By Mean Value Theorem, there is an $x \in (0,1)$ such that $g'(x)\cdot (1-0) = g(1) - g(0)$, and so $g'(x) = 0$. By product rule, we thus have:
+	$$g'(x) = e^{-\lambda t}f'(x) - \lambda e^{-\lambda t}f(x) =  \underbrace{e^{-\lambda x}}_{>0}(f'(x) - \lambda f(x)) = 0$$
+	$$ \implies f'(x) - \lambda f(x) = 0$$
+	and so $f'(x) = \lambda f(x)$. $\square$
+</details>
+
+> 4. ("Reverse MVT") Suppose $f: [0,1] \rightarrow \mathbb{R}$ is continuous, and $f$ is differentiable on $(0,1)$. 
+> a) Show that for any $0 < c < 1$ such that $f'(c)$ is not a max or min of $f'$ in $(0,1)$, there are $x_1, x_2 \in (0,1)$ such that
+> $$ f'(c) = \frac{f(x_2) - f(x_1)}{x_2 - x_1}.$$
+> b) Is (a) false if $f'(c)$ is the maximum of $f'$ in $(0,1)$? Give an example.
+
+<details>
+	<summary>*Proof.*</summary>
+	a) Let $c \in (0,1)$ such that $f'(c)$ is not a max or min of $f'$ in $(0,1)$. We define $g(x) := f(x) - f'(c)\cdot x$, and thus, it suffices to find $x_1 \neq x_2 \in (0,1)$ such that $g(x_1) = g(x_2)$. Suppose for contradiction that for all $x_1 \neq x_2$, we have $g(x_1) \neq g(x_2)$, so namely, $g$ is injective. Note also that $g$ is continuous, as $f$ is continuous. Thus, we have that $g$ is monotone, and so we only have one of the following hold for all $x \in (0,1)$: $g'(x) \geq 0$ xor $g'(x) \leq 0$. Furthermore, because $c$ was chosen so that is was not an extremum of $f'$, we have the there exist $a,b \in (0,1)$ such that $f'(a) < f'(c) < f'(b)$. But then note:
+	$$ g'(a) = f'(a) - f'(c) < 0 \text{ and } g'(b) = f'(b) - f'(a) > 0 $$
+	which contradicts monotonicty. $\square$
+
+	b) **Yes**, and the proof in (a) breaks down when we try to find $a,b$ as before. For an example, consider $f(x) = -(x-0.5)^3$, $f:[0,1] \rightarrow \mathbb{R}$. We have $f$ continuous and differentiable ($f' = -3(x-0.5)^2$). But then consider $x = 0.5$, which indeed, maximizes $f'$ on $(0,1)$. However, we are unable to find $x_1 \neq x_2$ such that $f'(0.5) = 0 = \frac{f(x_2) - f(x_1)}{x_2 - x_1}$, or equivalently, $f(x_1) = f(x_2)$, due to the fact that $f$ is injective.
+</details>
+
+> 5. Let $F: \mathbb{R} \rightarrow \mathbb{R}$ be Lipschitz with constant $L > 0$. Let $f, g : [0, \infty) \rightarrow \mathbb{R}$ be continuous on $[0, \infty)$ and differentiable in $(0, \infty)$, and satisfy:
+> $$f'(t) = F(f(t)), \quad g'(t) \leq F(g(t)) \quad \text{ for } t \in (0, \infty).$$
+> Show that if $g(0) \leq f(0)$, then $g(t) \leq f(t)$ for all $t >0$. 
+
+<details>
+	<summary>*Proof.*</summary>
+	Define $h(t) := g(t) - f(t)$. Suppose for contradiction there is a $t_1 \in (0, \infty)$ such that $g(t_1) > f(t_1)$, so $h(t_1)> 0$. If $f(0) = g(0)$, we have $h(0) = 0$, and if we have $f(0) > g(0)$, we have $h(0) > 0$. Note also that $h$ continuous, so by IVT, there is a $t \in (0, t_1)$ such that $h(t) = 0$. Since there exists some $t < t_1$ such that $h(t) = 0$, choose $t_0$ to be the largest of these values. In particular, we have for all $t in (t_0, t_1)$, $h(t) > 0$ (1). By Lipschitz, we have for all $t \in [t_0, t_1)$, 
+	$$ |h'(t)| = |g'(t) - f'(t)| \leq |F(g(t)) - F(f(t))| \leq L(\underbrace{g(t) - f(t)}_{h(t)\geq 0}) = L\cdot h(t)$$
+	so in particular, we have $h'(t) \leq L\cdot h(t)$. Thus we "solve" the differential inequality:
+	$$ h'(t) - L\cdot h(t) \leq 0$$
+	$$\implies e^{-Lt}h'(t) - Le^{-Lt}h(t) \leq 0$$
+	$$\implies (e^{-Lt}h(t))' \leq 0 \quad \forall t \in [t_0, t_1).$$
+	Let $H(t) = e^{-Lt}h(t)$, so namely, $H(t)$ is decreasing on this interval, so we must have $H(t_0) \geq H(t)$, and so $h(t_0) \geq h(t)$ and thus, $f(t) \geq g(t)$ for all $t \in [t_0, t_1)$, which contradicts (1). $\square$
+
+</details>
+
+> 6. Let $f, g$ with $n$-th differentiable in $(0,1)$, and suppose that for some $c \in (0,1)$, we have $f(c) = f'(c) = \ldots = f^{(n-1)}(c) = 0$ and $g(c) = g'(c) = \ldots = g^{(n-1)}(c) = 0$, but that $g^{(n)}(x)$ is never $0$ in $(0,1)$. 
+> a) Show that $g^{(k)}(x)$ is not zero for $x$ sufficiently close to $c$ for $0 \leq k \leq n-1$. 
+> b) Show that
+> $$ \lim_{x\rightarrow c} \frac{f(x)}{g(x)} = \frac{f^{(n)}(c)}{g^{(n)}(c)},$$
+> if $g(x) \neq 0$ for $x \neq c$. Indicate where (a) is used.
+
+<details>
+	<summary>*Proof.*</summary>
+	a) By Taylor, we have for all $x \in (0,1)\backslash\{c\}$, there exists $x_1 \in (x, c)$ such that
+	$$
+	g^{(k)}(x) = \underbrace{\sum_{m=k}^{n-1} \frac{g^{(m)}(c)}{m!}(x-c)^m}_{=0} + \underbrace{\frac{g^{(n)}(x_1)}{n!}(x-c)^n}_{\neq 0}
+	$$
+	$$
+	\implies g^{(k)}(x) \neq 0
+	$$
+	for all $0 \leq k \leq n-1$. 
+
+	b) We can spam L'hopital's Rule. We first check the assumptions. For all $0 \leq k \leq n-1$, 
+	* (by part a) $g^{(k)}(x) \neq 0$
+	* $\lim_{x \rightarrow c} f^{(k)}(x) = f^{(k)}(c) = 0$
+	* $\lim_{x \rightarrow c} g^{(k)}(x) = g^{(k)}(c) = 0$ (continuity of differentiable functions)
+
+	and so (most of) the assumptions for L'hopital are satisfied, and we can conclude:
+
+	$$
+	\lim_{x\rightarrow c} \frac{f(x)}{g(x)} = \ldots = \lim_{x\rightarrow c} \frac{f^{(k)}(x)}{g^{(k)}(x)} = \ldots = \lim_{x\rightarrow c} \frac{f^{(n-1)}(x)}{g^{(n-1)}(x)}
+	$$
+
+	if the last limit exists. We claim it does, and we see:
+
+	$$
+	\lim_{x\rightarrow c} \frac{f^{(n-1)}(x)}{g^{(n-1)}(x)} = \lim_{x\rightarrow c} \frac{\frac{f^{(n-1)}(x)-f^{(n-1)}(c)}{x-c}}{\frac{g^{(n-1)}(x)-g^{(n-1)}(c)}{x-c}}
+	$$
+
+	as $g^{(n-1)}(x) \neq 0$ (by part a) and $f^{(n-1)}(c), g^{(n-1)}(c) = 0$. Since $f,g$ are $n$-th differentiable, this evaluates to $f^{(n)}(c)/g^{(n)}(c)$, and thus, so does $\lim_{x\rightarrow c} \frac{f(x)}{g(x)}$. $\square$
+
+</details>
+
+> 7. (Walter Rudin, pg. 114, #6) Suppose $f$ is continuous for $x \geq 0$, $f'(x)$ exists for $x>0$, $f(0) = 0$, and $f'$ is monotonically increasing. Put
+> $$ g(x) = f(x)/x \quad (x>0)$$
+> and prove that $g$ is monotonically increasing.
+
+<details>
+	<summary>Proof.</summary>
+	It suffices to show 
+	$$ g'(x) = \frac{x f'(x) - f(x)}{x^2} \geq 0 \quad \forall x >0$$
+	or equivalently,
+	$$ x f'(x) - f(x) \geq 0 \quad \forall x >0. $$
+	By MVT, there is a $c \in (0,x)$ such that
+	$$ f(x) - \cancel{f(0)} = f'(c) (x - 0)$$
+	$$\implies f'(c) = f(x)/x$$
+	$$\implies f'(x) \geq f(x)/x \quad \text{(by monotonicity)} $$
+	which gives the desired result. $\square$
+
+</details>
+
+> 8. (Walter Rudin, pg. 114, #15) Suppose $a \in \mathbb{R}$, $f$ is twice-differentiable on $(a, \infty)$, and $M_0, M_1, M_2$ are the least upper bounds on $|f(x)|, |f'(x)|, |f"(x)|$ respectively on $(a, \infty)$. Prove that $$ M_1^2 \leq 4M_0M_2. $$
+
+<details>
+	<summary>Proof.</summary>
+	Assume WLOG $M_0, M_2$ are finite. By Taylor, we have for all $x \in (a, \infty)$, if $h>0$, there is some $x_1 \in (x, x+2h)$ such that
+	$$ f'(x) = \frac{1}{2h}(f(x+2h)-f(x)) - hf"(x_1) $$
+	which means
+	$$ |f'(x)| \leq |\frac{1}{2h}(f(x+2h)-f(x))| - |hf"(x_1)| \leq M_0/h + hM_2 $$
+	and by sup definition,
+	$$ M_1 \leq M_0/h + hM_2 \quad \forall h>0.$$
+	Then, choosing $h = \sqrt{M_0M_2} > 0$, we see:
+	$$ h = \frac{2\sqrt{M_0M_2} \pm \sqrt{4M_0M_2 - 4M_0M_2}}{2M_2} $$
+	$$ \implies M_0 + M_2h^2 - 2\sqrt{M_0M_2}h = 0 $$
+	$$ \implies M_0/h + hM_2 = 2\sqrt{M_0M_2} $$
+	and so we get $M_1 \leq 2\sqrt{M_0M_2}$. Squaring gives the result. $\square$
+	
+</details>
+
+**Homework 4**<a name="hw4"></a>
+
+> 1. Let $f: [a,b] \rightarrow \mathbb{R}$ be a function such that $L(x) := \lim_{y\rightarrow x} f(y)$ is well defined and finite for each $x \in [a,b]$. 
+> a) Show that $L$ is continuous on $[a,b]$.
+> b) Show that the set $\{x \in [a,b] : f(x) \neq L(x)\}$ is at most countable.
+
+<details>
+	<summary>Proof.</summary>
+	a) Let $x \in [a,b], \varepsilon > 0$. Because $L(x) = \lim_{y \rightarrow x} f(y)$ exists, we can say there exists $\delta > 0$ such that if $0 < |x-y| < \delta$, then $|f(y) - L(x)| < \varepsilon/2$. Choose this $\delta$. Note for all $x_1 \in B_\delta(x)$, $L(x_1)$ exists as well, and so there exists $\delta_2(x_1) > 0$ such that $0 < |x_1 - y| < \delta_2(x_1)$ implies $|f(y) - L(x_1)| < \varepsilon/2$. 
+
+	Let $x_1 \in B_\delta(x)$. Note that $(B_\delta(x) \cap B_{\delta_2(x_1)}(x_1))\backslash \{x,x_1\} \neq \emptyset$. *If $x_1 = x$, the claim follows. If $x_1 \neq x$, because $B_\delta(x)$ is open, there is an $r>0$ such that $B_r(x_1) \subseteq B_\delta(x)$, and thus, there exists a $y \neq x, x_1$ in $B_\delta(x) \cap B_{\delta_2}(x_1)$.* Thus, we can pull a $y$ such that $0 < |x-y| < \delta$ and $0< |x_1 - y| < \delta_2(x_1)$. Thus, we see:
+	$$
+	|L(x) - L(x_1)| \leq |L(x) - f(y)| + |f(y) - L(x_1)| < \varepsilon/2 + \varepsilon/2 = \varepsilon
+	$$
+	and so $L$ is continuous. 
+
+	b) Call $E = \{x \in [a,b] : f(x) \neq L(x)\}$. For all $x \in E$, define the "gap" $G(x) = |f(x) - L(x)| > 0$. Let $\varepsilon > 0$ and let $D_\varepsilon = \{x \in E : G(x) > \varepsilon\}$ be the set of all discontinuities with a gap greater than $\varepsilon$. Thus, if we consider the countable union $\bigcup_{n\geq1} D_{1/n}$, there will exist some $n$ such that $G(x) > 1/n$ for all $x \in E$, and so $\bigcup_{n\geq1} D_{1/n} = E$. It suffices to show $D_\varepsilon$ is countable.
+
+	Let $x \in D_\varepsilon \subseteq E$, so $L(x)$ exists. Thus, there is a $\delta_x > 0$ such that for all $t \in P_\delta(x) = (x-\delta_x, x) \cup (x, x+\delta_x)$, $|f(t)-L(x)| < \varepsilon/2$. By triangle inequality, we have for all $t_1, t_2 \in P_\delta(x)$, $|f(t_1) - f(t_2)| < \varepsilon$. Consider $t \in P_\delta(x)$. We claim $G(t) \leq \varepsilon$, so $t \notin D_\varepsilon$. Indeed, since $P_\delta(x)$ is open, consider $B_r(t) \subseteq P_\delta(x)$ for some $r>0$, and we have for all $t' \in B_r(t), |f(t')-f(t)|<\varepsilon$, and sending $t' \rightarrow t$, we have that $|L(t)-f(t)| = G(t) \leq \varepsilon$ and so $t \neq D_\varepsilon$. 
+
+	Thus, each $x \in D_\varepsilon$ has some $P_{\delta_x}(x)$ such that no points in it are also in $D_\varepsilon$. In particular, by density of $\mathbb{Q}$, we can pick $q_x \in (x-\delta_x, x) \cap \mathbb{Q}$, and it holds that for $x \neq y \in D_\varepsilon$, $q_x \neq q_y$, and thus we have an injective map from $D_\varepsilon \rightarrow \mathbb{Q}$, so $D_\varepsilon$ is at most countable, and we achieve our desired conclusion. $\square$
+
+</details>
+
+> 2. (Walter Rudin, pg. 138, #2) Suppose $f \geq 0$, $f$ continuous on $[a,b]$, and $\int_a^b f(x) dx = 0$. Prove that $f(x) = 0$ for all $x \in [a,b]$. 
+
+<details>
+	<summary>Proof.</summary>
+	Suppose for contradiction there exists some $x_0 \in [a,b]$ such that $f(x_0) > 0$. By continuity of $f$, there exists some $\delta > 0$ such that for all $x \in B_\delta(x_0)$, $f(x) > 0$ as well. In particular, consider the interval $[\underbrace{x_0 - \delta/2}_{c}, \underbrace{x_0 + \delta/2}_{d}]$. This interval is compact and thus achieves its minimum on continuous $f$, say at $x^*$, with $f(x^*)> 0$. Note that $f$ is also integrable on the restriction $[c,d]$. 
+
+	Thus, for any partition $P = \{c=x_0, \ldots, x_n = d\}$, we have:
+	$$
+	L(f,P) = \sum_{i=1}^n \inf_{[x_{i-1}, x_i]} f(x) \cdot \Delta x_i \geq \sum_{i=1}^n f(x^*) \cdot \Delta x_i = f(x^*)(d-c) > 0
+	$$
+	and so $\int_c^d f(x) dx = \sup_P L(f,P) > 0$. Finally note $\int_a^c f(x) dx, \int_d^b f(x) dx \geq 0$, and so we have that $\int_a^b f(x) dx > 0$, contradicting $=0$. $\square$
+	
+</details>
+
+> 3. (Walter Rudin, pg. 138, #5) Suppose $f$ is a bounded real function on $[a,b]$, and $f^2 \in \mathcal{R}$ on $[a,b]$. Does it follow that $f \in \mathcal{R}$? Does the answer change if we assume $f^3 \in \mathcal{R}$?
+
+<details>
+	<summary>Proof.</summary>
+	No, consider $f:[a,b]\rightarrow \mathbb{R}$ defined by 
+	$$ f(x) = \begin{cases} 1 &: x \in \mathbb{Q} \\ -1 &: x \in \mathbb{R} \backslash \mathbb{Q} \end{cases} $$
+	which is not integrable, but $f^2 \equiv 1$ is integrable. But if $f^3 \in \mathcal{R}$, we have that $f$ is integrable, which follows from Theorem 6.11 of Rudin, using the uniformly continuous function $\phi(y) = y^{1/3}$. $\square$
+</details>
+
+> 4. (Walter Rudin, pg. 138, #8) Suppose $f \in \mathcal{R}$ on $[a,b]$ for every $b > a$ where $a$ is fixed. Define
+> $$ \int_a^\infty f(x) dx = \lim_{b \rightarrow \infty} \int_a^b f(x) dx $$
+> if this limit exists (and is finite). We say the integral converges, and if replaced by $|f|$, we say the integral converges absolutely. 
+> Assume that $f(x) \geq 0$ and $f$ decreases monotonically on $[1, \infty)$. Prove that $\int_1^\infty f(x) dx$ converges if and only if $\sum_a^\infty f(n)$ converges (i.e. the integral test). 
+
+<details>
+	<summary>Proof.</summary>
+  ($\impliedby$) Assume $\sum_a^\infty f(n)$ converges. Fix some $N \in \mathbb{N}$ and consider $\int_1^{N+1} f(x) dx$. Consider the partition $P_0 = \{1, 2, \ldots, N+1\}$. Because $f$ is monotone-decreasing, we get that $U(f, P_0) = \sum_{n=1}^N f(n)$, which means
+  $$ \int_1^{N+1} f(x) dx = \inf_P U(f, P) \leq \sum_{n=1}^N f(n).$$
+  Sending $N \rightarrow \infty$, we get that
+  $$ \int_1^\infty f(x) dx \leq \sum_{n=1}^\infty f(n) < \infty.$$
+
+  ($\implies$) Assume $\int_1^\infty f(x) dx < \infty$. Fix some $N \in \mathbb{N}$ and consider $\int_1^N f(x) dx$. Consider the partition $P = \{1, 2, \ldots, N\}$ and thus $L(f,P) = \sum_{n=1}^{N-1} f(n+1) = \sum_{n=2}^{N} f(n)$, and so
+  $$ \sum_{n=2}^{N} f(n) = L(f, P) \leq \int_1^N f(x) dx. $$
+  Sending $N \rightarrow \infty$, we get that
+  $$ \sum_{n=1}^\infty f(n) \leq \int_1^\infty f(x) dx  < \infty$$
+  and since $f(1)$ is finite, we get that the series converges. $\square$
+	
+</details>
+
+> 5. Let $f,g : [a,b] \rightarrow \mathbb{R}, f,g \in \mathcal{R}$. Show that if the set $A := \{x \in [a,b] : f(x) = g(x)\} is dense in $[a,b]$ (i.e. $\bar{A} = [a,b]$), then
+> $$ I_1 = \int_a^b f(x) dx = \int_a^b g(x) dx = I_2.$$
+
+<details>
+	<summary>Proof.</summary>
+	It suffices to show that for all $\varepsilon > 0$, we have 
+	$$
+	| I_1 - I_2 | < \varepsilon.
+	$$
+	Let $\varepsilon > 0$. Since $f,g$ Riemann integrable, there exists $\delta > 0$ such that for all partitions $P = \{a=x_0, \ldots, x_n = b\}$ with mesh$(P) < \delta$, and for all $t_i \in [x_{i-1}, x_i]$,
+	$$
+	| I_1 - \sum_{i=1}^n f(t_i) \Delta x_i | < \varepsilon/2
+	| \sum_{i=1}^n g(t_i) \Delta x_i - I_2| < \varepsilon/2.
+	$$
+	Fix some partition $P = \{a=x_0, \ldots, x_n = b\}$ with mesh$(P) < \delta$. By density of $A in [a,b]$, we can pick $t'_i \in [x_{i-1}, x_i] \cap A \neq \emptyset$ such that $f(t'_i) = g(t_i)$ for all $i = 1, \ldots, n$. Then by triangle, we see:
+	$$
+	| I_1 - I_2 | \leq | I_1 - \sum_{i=1}^n f(t'_i) \Delta x_i | + \underbrace{|\sum_{i=1}^n f(t'_i) \Delta x_i - \sum_{i=1}^n g(t_i) \Delta x_i|}_{=0} + | \sum_{i=1}^n g(t_i) \Delta x_i - I_2| < \varepsilon
+	$$
+	and since $\varepsilon >0$ arbitrary, we conclude. $\square$
+	
+</details>
+
+> 6. Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be strictly monotone increasing, continuous, with $f(0) = 0$ and $f(\mathbb{R}) = \mathbb{R}$. Show that
+> a) $f^{-1}$ is continuous
+> b) $$ \int_0^a f(x) dx + \int_0^b f^{-1}(x) dx \geq ab \quad \text{for any $a,b \geq 0$} $$
+> c) Using $b$, let $p,q > 0$ such that $1/p + 1/q = 1$. Show if $u, v \geq 0$, then:
+> $$ uv \leq u^p/p + v^q/q$$
+> with equality if and only if $u^p = v^q$. 
+
+<details>
+	<summary>Proof.</summary>
+	a) Suppose for contradiction there is a $y_0 \in \mathbb{R}$ such that $f^{-1}$ is discontinuous at $y_0$, i.e. there is a $(y_n)$ such that $y_n \rightarrow y_0$, but $f^{-1}(y_n) \cancel{\rightarrow} f^{-1}(y_0)$. Call $x_n = f^{-1}(y_n), x_0 = f^{-1}(y_0)$. Because $f$ is strictly monotone increasing, we have that $f^{-1}$ is as well (Assume $y_1 < y_2$, suppose $f^{-1}(y_1) \geq f^{-1}(y_2)$, which means $f(f^{-1}(y_1)) = y_1 \geq f(f^{-1}(y_2)) = y_2)$. Reduce $(y_n)$ to an increasing subsequence that still converges to $y_0$, and thus $(x_n)$ is also increasing. Since $y_n \leq y_0$ for all $n$, $x_n \leq x_0$ for all $n$, and thus by monotone convergence, $x_n \rightarrow x \leq x_0$. Finally, since $y_n = f(x_n) \leq f(x)$, sending $n \rightarrow \infty$ gives $y_0 \leq f(x) \leq f(x_0)$ which means $x_n \rightarrow x_0$, a contradiction, so $f^{-1}$ is continuous. $\square$
+
+	b) Let $a,b \geq 0$. 
+
+	(Case 1: $f(a) = b$) We show we get equality in this case. Let $P_1 = \{0=x_0, \ldots, x_n = a\}$ be a partition of $[0,a]$, and by monotonicity, $P_2 = \{0=y_0 = f(x_0), \ldots, y_n = f(a) = b\}$ is a partition of $[0,b]$. Thus, by monotonicity, we see:
+	$$
+	\begin{align}
+	U(P_1,f) + L(P_2,f^{-1}) &= \sum_{i=1}^n \sup_{i} f(x) \Delta x_i + \inf_i f^{-1}(y) \Delta y_i \\
+	&= \sum_{i=1}^n f(x_i) (x_i - x_{i-1}) + x_{i-1} \Delta f(x_i) \\
+	&= \sum_{i=1}^n f(x_i) x_i - f(x_{i-1}) x_{i-1} \\
+	&= f(a)\cdot a - f(0) \cdot 0 \quad \text{(telescopic sum)} \\
+	&= ab.
+	\end{align}
+	$$
+	By sup, we have $U(P_1,f) + \sup_P L(P,f^{-1}) \geq ab$, and since $P_1$ was picked arbitrarily, we also have $\inf_P U(P,f) + \sup_P L(P,f^{-1}) \geq ab$. Note that we also could've started with an arbitrary partition of $[0,b]$ and gotten the same result, so it also follows that $\inf_P U(P,f) + \sup_P L(P,f^{-1}) \leq ab$. Since $f, f^{-1}$ are both integrable, we thus get that $\int_0^a f dx + \int_0^b f^{-1} dx = ab$. 
+
+	(Case 2: $f(a) < b$. Similar arguments can show $>$, by switching around $a,b$ and $f, f^{-1}$.) We consider the partition of $[0,a]$, $P_1 = \{x_0 = 0, \ldots, x_n = a\}$, and the partition of $[0,b]$, $P_2 = \{0=y_0=f(x_0), \ldots, y_n=f(x_n)=f(a), y_{n+1}, \ldots, y_m = b\}$. We evaluate:
+	$$
+	\begin{align}
+	U(f, P_1) + L(f^{-1}, P_2) &= \sum_{i=1}^n \sup_{i} f(x) \Delta x_i + \inf_i f^{-1}(y) \Delta y_i + \sum_{i=n+1}^m \inf_i f^{-1}(y) \Delta y_i \\
+	&= \sum_{i=1}^n f(x_i) (x_i - x_{i-1}) + x_{i-1} \Delta f(x_i) + \sum_{i=n+1}^m \inf_i f^{-1}(y) \Delta y_i \\
+	&= f(a)\cdot a + \sum_{i=n+1}^m \underbrace{\inf_i f^{-1}(y)}_{\geq f^{-1}(y_n) = a \text{ by monotonicity}} \Delta y_i \quad \text{(telescopic sum as in case 1)} \\
+	&\geq f(a)\cdot a + a \sum_{i=n+1}^m \Delta y_i \\
+	&\geq f(a)\cdot a + a(b-f(a)) = ab.
+	\end{align}
+	$$
+	By sup/inf manipulation again, we see:
+	$$ U(P_1, f) + \sup_P L(P, f^{-1}) \geq ab $$
+	and since $P_1$ was arbitrarily picked, we also have:
+	$$ \inf_P U(P, f) + \sup_P L(P, f^{-1}) \geq ab $$
+	and so $\int_0^a f + \int_0^b f^{-1} \geq ab$. $\square$
+	
+	c) From previous parts, we can choose the function $f(x) = x^{p-1}$, which is strictly increasing, continuous, and $f(0) = 0$. Also note that $f^{-1}(x) = x^{q-1}$, as $f(f^{-1}(x)) = x^{pq-p-q+1} = x$ by the definition of dual. Applying part b with $u,v \geq 0$, we have:
+	$$ \int_0^u x^{p-1} dx + \int_0^v x^{q-1} dx \geq uv $$
+	and by power rule/FTC,
+	$$ \frac{u^p}{p} + \frac{v^q}{q} \geq uv. $$
+	For the equality, note that:
+	$$
+	\begin{align}
+	q + p = pq &\implies q+p = pq\underbrace{\frac{u^{\frac{p+q}{q}}}{u^p}}_{=1} \\
+	&\implies qu^p + pu^p = pqu^{\frac{p+q}{q}} \\
+	&\implies u^p/p + u^p/q = u^{\frac{p+q}{q}}.
+	\end{align}
+	$$
+	Thus, $u^p = v^q \iff v = u^{p/q} \iff u^p/p +v^q/q = uv.$ $\square$
+</details>
+
+> 7. Let $f, \alpha : [a,b] \rightarrow \mathbb{R}$ be monotone increasing functions, $f \in \mathcal{R}(\alpha)$ on $[a,b]$. Show that $\alpha \in \mathcal{R}(f)$ on $[a,b]$ and
+> $$ \int_a^b f d\alpha + \int_a^b \alpha df = f(b)\alpha(b) - f(a)\alpha(a). $$
+
+<details>
+	<summary>Proof.</summary>
+	Assume $f \in \mathcal{R}(\alpha)$. Let $\varepsilon >0$. Thus, there is a partition $P = \{a=x_0, \ldots, x_n =b\}$ such that:
+	$$ \sum_{i=1}^n [\sup_i f(x) - \inf_i f(x)][\alpha(x_i)-\alpha(x_{i-1})] < \varepsilon $$
+	and by monotonicity of $f, \alpha$, we also get:
+	$$ \sum_{i=1}^n [f(x_i) - f(x_{i-1})][\sup_i \alpha(x)- \inf_i \alpha(x)] < \varepsilon $$
+	and so $U(\alpha, P, f)-L(\alpha, P, f) < \varepsilon$ and $\alpha \in \mathcal{R}(f)$.
+
+	To show the "integration-by-parts" formula, pick your favorite partition $P_0 = \{a=x_0, \ldots, x_n =b\}$, and it follows by monotonicity and telescoping sums,
+	$$
+	\begin{align}
+	U(f, P_0, \alpha) + L(\alpha, P_0, f) &= \sum_i [f(x_i) \Delta \alpha_i + \alpha(x_{i-1}) \Delta f_i] \\
+	&= \sum_i [f(x_i) \alpha(x_i) - f(x_{i-1})\alpha(x_{i-1})] \\
+	&= f(b)\alpha(b) = f(a)\alpha(a)
+	\end{align}
+	$$
+	and so namely, this holds for any partition of $[a,b]$. Thus we see,
+	$$
+	\begin{align}
+	&\inf_P U(f, P, \alpha) + L(\alpha, P_0, f) \leq f(b)\alpha(b) - f(a)\alpha(a) \\
+	&\implies L(\alpha, P_0, f) \leq f(b)\alpha(b) - f(a)\alpha(a) - \int_a^b f d\alpha \\
+	&\implies \sup_P L(\alpha, P, f) \leq f(b)\alpha(b) - f(a)\alpha(a) - \int_a^b f d\alpha \\
+	&\implies \int_a^b f d\alpha + \int_a^b \alpha df \leq f(b)\alpha(b) - f(a)\alpha(a) \\
+	& U(f, P_0, \alpha) + \sup_P L(\alpha, P, f) \geq f(b)\alpha(b) - f(a)\alpha(a) \\
+	&\implies \inf_P U(f, P, \alpha) \geq f(b)\alpha(b) - f(a)\alpha(a) - \int_a^b \alpha df \\
+	&\implies \int_a^b f d\alpha + \int_a^b \alpha df \geq f(b)\alpha(b) - f(a)\alpha(a) \\
+	\end{align}
+	$$
+	and so we get equality. $\square$
+</details>
+
+**Homework 5**<a name="hw5"></a>
+
+> 1. Let $\alpha(x) = 0$ if $x < 0$ and $= 1$ if $x \geq 0$. Suppose $f : [-1, 1] \rightarrow \mathbb{R}$ is bounded and $f \in \mathcal{R}(\alpha)$ on $[-1,1]$. Show that $f$ is left continuous at $x = 0$. 
+
+<details>
+	<summary>Proof.</summary>
+	
+	Suppose for contradiction $f$ is not left continuous at $x=0$, i.e. there exists some $\varepsilon >0$ such that for all $\delta >0$, there exists $x \in (-\delta, 0)$ such that $|f(x) - f(0)| \geq \varepsilon$. Let $P = \{-1=x_0,\ldots,x_n=1\}$ be a partition of $[-1,1]$. Thus, we have for some $i = 1, \ldots, n$ that $0 \in (x_{i-1}, x_i]$, and so take $\delta = -x_{i-1}$ and by the supposition, we have some $x' \in (x_{i-1}, 0)$ such that $|f(x')-f(0)| \geq \varepsilon$. Finally, note that only $\Delta \alpha_i = 1$ is nonzero. Thus, 
+	$$ U(f, P, \alpha) - L(f, P, \alpha) = \sup_i f(x) - \inf_i f(x) \geq \varepsilon $$
+	and since our partition choice was arbitrary, we have that $f \notin \mathcal{R}(\alpha)$, a contradiction. $\square$
+
+</details>
+
+> 2. Let $\mathcal{C}$ be the Cantor set. Define $f:[0,1]\rightarrow \mathbb{R}$ by $f(x) = 1$ on $\mathcal{C}$ and $f(x) = 0$ if $x \notin \mathcal{C}$. Show that $f \in \mathcal{R}$ on $[0,1]$ (this is an example of a function with uncountable discontinuities, yet is still integrable). 
+
+<details>
+	<summary>Proof.</summary>
+	(This one probably makes more sense if you draw a picture of the layers :) ) Let $\varepsilon >0$. Define $\mathcal{C}_k$ to be the $k$-th "Cantor layer", with initial $\mathcal{C}_0 = [0,1]$ and for all $k \geq 1$, $\mathcal{C}_k = \{x/3 : x \in C_{k-1}\} \cup \{(2+x)/3 : x \in C_{k-1}\}$, and so $\mathcal{C} = \bigcap_k \mathcal{C}_k$. 
+
+	Consider the sequence $a_k = \frac{2^k(5)-2}{3^{k+1}}$ which goes to $0$ as $k \rightarrow \infty$. Choose $k$ such that $a_k < \varepsilon$, and consider $\mathcal{C}_k$. Consider the partition of $[0,1]$, $P = \{x_i = i/3^{k+1}: i = 0, 1, \ldots, 3^{k+1}\}$, and so we compute:
+	$$ U(f, P) - L(f, P) = \sum_i [\sup_i f(x) - \inf_i f(x)]/3^{k+1} \quad (1)$$
+	We split the indices $i$ as such: if $[x_{i-1}, x_i] \cap \mathcal{C}_k \neq \emptyset$, then $i \in A$, and if $= \emptyset$, then $i \in B$. For $i \in B$, we have that all $x \in [x_{i-1}, x_i]$ are not in $\mathcal{C}_k$, and so are not in $\mathcal{C}$, so $f(x) = 0$ and $\sup_i - \inf_i = 0$ for all $i \in B$. For $i \in A$, we have that for $x \in [x_{i-1}, x_i]$, $f(x)$ could be $0$ or $1$, so we bound $\sup_i f - \inf_i f \leq 1$. Thus, $(1)$ becomes $\leq \sum_{i\in A} 1/3^{k+1} = |A|/3^{k+1}$. Finally, note that $|A| = 2^k(5)-2$ (as in $\mathcal{C}_k$, there are $2^k$ intervals, and each one overlaps with five partition segments with endpoints, minus the two intervals on the end of $[0,1]$. I recommend drawing a picture to see this, and one can prove this rigorously, but tediously, with induction.) Thus, $(1) \leq \frac{2^k(5)-2}{3^{k+1}} < \varepsilon$, and so $f \in \mathcal{R}$. $\square$
+	
+</details>
+
+> 3. (Walter Rudin, #10) Let $p,q > 0$ be duals. Prove the following statements.
+> b) If $f,g \in \mathcal{R}(\alpha)$, $f, g \geq 0$, and $\int_a^b f^p d\alpha = \int_a^b g^q d\alpha = 1$, then $\int_a^b fg d\alpha \leq 1$. 
+> c) (H\"older's Inequality) If $f,g$ are real in $\mathcal{R}(\alpha)$, then 
+> $$ \left| \int_a^b fg d\alpha \right| \leq \left(\int_a^b |f|^p \right)^{1/p}\left(\int_a^b |g|^q \right)^{1/q}. $$
+
+<details>
+	<summary>Proof.</summary>
+	b) By (6c) from HW 4, we write:
+	$$ 
+	\begin{align} 
+	\int_a^b fg d\alpha &\leq \int_a^b \left(\frac{f^p}{p} + \frac{g^q}{q} \right) d\alpha \\
+	&= 1/p + 1/q = 1.
+	\end{align}
+	$$
+
+	c) First, assume $\int |f|^p d\alpha = 0$, so the RHS is $0$. Then we also have for all $M>0$, $\int M|f|^p d\alpha = 0$, and since $g$ is bounded, we have
+	$$ \int |g||f|d\alpha = 0 \implies |\int_a^b fg d\alpha| = 0. $$
+	The same argument holds when $\int |g|^q d\alpha = 0$, so now assume $\int |f|^p d\alpha = r_f, \int |g|^q d\alpha = r_g >0$. Note that we have
+	$$ \int \left( \frac{|f|}{\left(\int |f|^p d\alpha\right)^{1/p}}\right)^p d\alpha, \int \left( \frac{|g|}{\left(\int |g|^p d\alpha\right)^{1/q}}\right)^q d\alpha = 1. $$
+	Thus, by part b, we have
+	$$ \int \frac{|f||g|}{r_f^{1/p}r_g^{1/q}} d\alpha \leq 1 \implies \int |fg| d\alpha \leq r_f^{1/p}r_g^{1/q}. $$
+	Noting that $|\int fg d\alpha| \leq \int |fg| d\alpha$ finishes the proof. $\square$
+	
+</details>
+
+> 4. (Walter Rudin, #15) Suppose $f$ is real, continuously differentiable, defined on $[a,b]$, with $f(a) = f(b) = 0$, and
+> $$ \int_a^b (f(x))^2 dx = 1.$$
+> Prove that
+> $$ \int_a^b xf(x)f'(x) dx = -1/2$$
+> and that
+> $$ \int_a^b (f'(x))^2 dx \cdot \int_a^b x^2 (f(x))^2 dx \geq 1/4.$$
+
+<details>
+	<summary>Proof.</summary>
+	By integration by parts, we see
+	$$ \int_a^b x f(x)f'(x) dx = \underbrace{b\cdot \frac{1}{2}(f(b))^2 - a\cdot \frac{1}{2}(f(a))^2}_{=0} - \int_a^b 1/2 (f(x))^2 dx $$
+	which equals $-1/2$ by assumption. Then applying H\"older's inequality (see previous question) to $xf(x)$ and $f'(x)$, we get:
+	$$ \left| \int_a^b xf(x)f'(x) d\alpha \right| \leq \left(\int_a^b |xf(x)|^2 \right)^{1/2}\left(\int_a^b |f'(x)|^2 \right)^{1/2} $$
+	and so squaring and subbing in the first equality into the LHS, we get our result.
+	
+</details>
+
+**Midterm**<a name="midterm"></a>
+
+> 1. (5pt) Let $(X,d)$ be a complete metric space. Suppose that $A_n$ is a sequence of compact subsets in $X$ such that $d(x,A_n) \leq 1/n$ for any $x \in X$. Show that $X$ is compact.
+
+<details>
+	<summary>Proof.</summary>
+	*Remark: This is similar to Homework 1, Q5.* We show sequential compactness, so let $(x_n) \subseteq X$. Since we have a sequence of compact $A_n$, for each $n \in \mathbb{N}$, the open cover $\{B_{1/n}(a)\}_{a \in A_n}$ has a finite subcover, $\{B_{1/n}(a_i)\}_{i \in [m(n)]}$. Also, since $d(x, A_n) \leq 1/n$ for any $x \in X$, we can double the radius so that $\{B_{2/n}(a_i)\}_{i \in [m(n)]}$ is an open cover for $X$ for each $n$. 
+	
+	Then we construct the convergent subsequence as follows: for $n=1$, choose the ball $i'$ in $\{B_{1}(a_i)\}_{i \in [m(1)]}$ such that $B_{2}(a_{i'})\}$ contains a subsequence of $(x_n)$, which exists by the pigeonhole principle (it is a finite set). Then, we look at the next finite open cover for $n=2$, extract another subsequence, and so on. This final subsequence, call it $(x_{k_n})$, must be Cauchy, because for $n, m \geq N$ for some $N \in \mathbb{N}$, both $x_{k_n}$ and $x_{k_m}$ would be in $B_{2/N}(a_{i'})$. Since the metric space is complete, this subsequence converges in $X$ and we conclude. $\square$
+	
+</details>
+
+> 2. (5pt) Let $(X,d)$ be a metric space, and consider $f: X \rightarrow Y$. Show that $f$ is continuous in $X$ if and only if for any open subset $O \subseteq Y$, the set $f^{-1}(O)$ is open. 
+
+<details>
+	<summary>Proof.</summary>
+
+	($\implies$) Assume $f$ is continuous, and let $O \subseteq Y$ be open. Let $x_0 \in f^{-1}(O)$, so $y_0 = f(x_0) \in O$. Since $O$ is open, there is some $\varepsilon >0$ such that $B_\varepsilon(y_0) \subseteq O$. By continuous $f$, there is also some $\delta >0$ such that for any $x \in B_\delta(x_0)$, $f(x) \in B_\varepsilon(y_0)$. In particular, this means that $B_\delta(x_0) \in f^{-1}(O)$, and thus, $f^{-1}(O)$ is open.
+
+	($\impliedby$) Assume that for any open subset $O \subseteq Y$, the set $f^{-1}(O)$ is open. Let $\varepsilon > 0, x_0 \in X$. Consider the open subset $B_\varepsilon(f(x_0))$. The preimage of this set, which contains $x_0$, must also be open then. In particular, there is some $\delta >0$ such that $B_\delta(x_0) \subseteq f^{-1}(B_\varepsilon(f(x_0)))$, which also means that $f(B_\delta(x_0)) \subseteq B_\varepsilon(f(x_0))$, showing continuity at $x_0$. $\square$.
+	
+</details>
+
+> 3. (10pt) (True or False) If false, provide a counterexample. $X$ denotes a metric space $(X,d)$. 
+> a) If $A$ is bounded in $X$, then $\bar{A}$ is compact in $X$. 
+*False, consider the (open or closed) unit ball in $(\ell^2, d_2)$*. 
+> b) If $f: X\rightarrow Y$ is continuous, then $f(X)$ is closed in $Y$. 
+*False, consider f(x) = arctan(x).*
+> c) If $A \subseteq B \subseteq X$ and if $A$ is compact in $B$, then $A$ is compact in $X$. 
+*True.*
+> d) If $f: \mathbb{R} \rightarrow \mathbb{R}$ is a monotone increasing function, then $f$ has at most countable discontinuities.
+*True.*
+> e) If $f:[0,1] \rightarrow \mathbb{R}$ is differentiable in $(0,1)$ and Lipschitz continuous in $[0,1]$, then $\lim_{x \rightarrow 0^+} f'(x)$ exists.
+*False, consider f(x) = x^2 sin(1/x), with f(0) = 0.*
+> f) If $f:[0,1] \rightarrow \mathbb{R}$ is nonnegative and satisfies $f^2 \in \mathcal{R}(x)$ on $[0,1]$, then $f \in \mathcal{R}(x)$ on $[0,1]$ as well.
+*True.*
+
+> 4. (10pt) Let $\alpha : [0,1] \rightarrow \mathbb{R}$ be monotone increasing and let $f : [0,1] \rightarrow \mathbb{R}$ be bounded.
+> a) (5pt) Show that, if $f \in \mathcal{R}(\alpha)$, then $|f| \in \mathcal{R}(\alpha)$ and 
+> $$ | \int_0^1 f d\alpha | \leq \int_0^1 |f| d\alpha.$$
+> b) (5pt) Suppose also $\alpha$ is differentiable at $x_0 \in (0,1)$. Show that if $f \in \mathcal{R}(\alpha)$ and if we let $F(x) := \int_0^x f(x) d\alpha$ and if $f$ is continuous at $x_0$, then $F$ is differentiable at $x_0$ and
+> $$ F'(x_0) = f(x_0)\alpha'(x_0). $$
+
+<details>
+	<summary>Proof.</summary>
+
+	a) First note that $U(P, |f|, \alpha) - L(P, |f|, \alpha) \leq U(P, f, \alpha) - L(P, f, \alpha)$, since on each interval in the partition $I_i = [x_{i-1}, x_i]$, we have that $\sup_i |f| - \inf_i |f| \leq \sup_i f - \inf_i f$, and thus this difference also goes to 0 as the partitions get finer. Then, observe that $-f, f \leq |f|$, and so
+	$$ U(P, -f, \alpha), U(P, f, \alpha) \leq U(P, |f|, \alpha),$$
+	and when taking the infimum over the partitions and using linearity of integral, we get that $| \int_0^1 f d\alpha | \leq \int_0^1 |f| d\alpha.$
+
+	b) By FTC, for any $a<b$, we have $F(b) - F(a) = \int_a^b f(x) d\alpha$, which we can write as:
+	$$ F(b) - F(a) = \int_a^b (f(x) - f(x_0)) d\alpha + \int_a^b f(x_0) d\alpha = \int_a^b (f(x) - f(x_0)) d\alpha + f(x_0)(alpha(b)-\alpha(a)).$$
+	By continuity, for any $\varepsilon >0$, choose $\delta >0$ such that $f(B_\delta(x_0)) \subseteq B_\varepsilon(f(x_0))$. Then, we see:
+	$$ |F(b) - F(a) - f(x_0)(alpha(b)-\alpha(a))| \leq |\int_a^b (f(x) - f(x_0)) d\alpha| \leq \varepsilon(alpha(b)-\alpha(a)).$$
+	Finally, divide both sides by $b-a$. Set $a = x_0$ and $b= x_0 + h$. Sending $h \rightarrow 0$ to get $\alpha', F'$ and then sending $\varepsilon \rightarrow 0$ yields the equality. $\square$
+	
+</details>
+
+
+**Homework 6**<a name="hw6"></a>
+
+> 1. Construct $(f_n), (g_n)$ which converge uniformly on some set $E$, but $(f_n \cdot g_n)$ does not converge uniformly on $E$. 
+
+<details>
+	<summary>Proof.</summary>
+	Let $E = \mathbb{R}$ and we define for all $n \geq 1$, $f_n(x) = x, g_n(x) = 1/n$. We have that $f_n \rightarrow f$ uniformly, where $f(x) = x$ and $g_n \rightarrow 0$ uniformly. Note that $f_n g_n = x/n \rightarrow 0$ pointwise on $\mathbb{R}$ (fix some $x$ and send $n \rightarrow \infty$), but not uniformly. Indeed, set $\varepsilon = 1$ and let $N \geq 1$. By taking $x_0 = N$ means $|f_n(x_0)g_n(x_0) - 0| = 1 \cancel{<} 1$, which negates uniform convergence. $\square$
+</details>
+
+> 2. 
+
+> 3. 
+
+> 4. Let $f: [0,1] \rightarrow [0,1]$ be continuous with $f(0) = 0$ and $f(1) = 1$. Consider the sequence of functions $f_n :[0,1] \rightarrow [0,1]$ defined by:
+> $$ f_1 = f \text { and } f_{n+1} = f \circ f_n. $$
+> Prove that if $(f_n)$ converges uniformly, then $f(x) = x$ for all $x \in [0,1]$. 
+
+<details>
+	<summary>Proof.</summary>
+	Assume that $f_n \rightarrow g: [0,1] \rightarrow [0,1]$ uniformly. We claim first that $f_{n+1} = f \circ f_n \rightarrow f \circ g$ uniformly. Indeed, let $\varepsilon > 0$. First, we have $f$ continuous on compact, so uniformly continuous, and there is a $\delta > 0$ such that for all $t_1, t_2$ such that $|t_1 - t_2| < \delta, |f(t_1) - f(t_2)| < \varepsilon$. Second, by uniform convergence, we have there is an $N_\delta \in \mathbb{N}$ such that for all $n \geq N_\delta$, for all $x \in [0,1]$, we have $|f_n(x) - g(x)| < \delta$. Thus, $|f(f_n(x)) - f(g(x))| < \varepsilon$, and so $f_{n+1} \rightarrow f \circ g$ uniformly. 
+
+	Now since we have both $f_{n+1} \rightarrow g$ and $\rightarrow f \circ g$ with respect to $d_\infty$, by uniqueness of limit, we have $f \circ g = g$. Finally, note that $g$ is surjective. This is because $(f_n) \subseteq C([0,1])$ as compositions of continuous functions are continuous, and since $f_n \rightarrow g$ uniformly, $g$ is continuous as well. Since for all $n$, $f_n(0) = 0, f_n(1) = 1$, we have $g(0) = 0, g(1) = 1$, and thus surjectivity is given by IVT. 
+
+	With this, let $y \in [0,1]$, so there is an $x \in [0,1]$ such that $g(x) = y$, which also equals $f(g(x)) = f(y)$. $\square$
+
+</details>
+
+> 5. 
+
+> 6. (Convolution Approximation) For each $n \geq 1$, let $f_n : [-1,1] \rightarrow \mathbb{R}$ be continuous, nonnegative, and assume that 
+> a) \int_-1^1 f_n(y) dy = 1
+> b) For each $c>0$, $(f_n)$ converges uniformly to $0$ on $[-1, -c] \cup [c, 1]$. 
+> Show that for every $g \in C([-1, 1])$, we have:
+> $$ \lim_{n \rightarrow \infty} \int_-1^1 f_n(y)g(y) dy = g(0). $$
+> (or $(f_n \star g)(0) \rightarrow g(0)$)
+
+<details>
+	<summary>Proof.</summary>
+	Let $g \in C([-1, 1])$. Let $\varepsilon > 0$. Note:
+	1) Since $g$ is continuous on compact domain, it is uniformly continuous and bounded (let $|g| \leq M$). In particular, we also have a $\delta > 0$ such that for all $t \in B_\delta(0)$, $g(t) \in B_{\varepsilon/6}(g(0))$.
+	2) Thus, we also have $f_n \rightarrow 0$ uniformly on $[-1, -\delta] \cup [\delta, 1]$, we have there is an $n_\varepsilon \in \mathbb{N}$ such that for all $n \geq n_\varepsilon$, for all $x \in [-1, -\delta] \cup [\delta, 1]$, $|f_n(x)| < \varepsilon/(6M)$. 
+	Thus, let $n \geq n_\varepsilon$. We compare:
+	$$
+	| \int_-1^1 f_n(y)g(y) dy - g(0) | \geq \\
+	\underbrace{| \int_-1^-\delta f_n(y)g(y) dy|}_{A} + \underbrace{| \int_-\delta^\delta f_n(y)g(y) dy - g(0) |}_{B} + \underbrace{| \int_\delta^1 f_n(y)g(y) dy |}_{C} \\
+	$$
+
+	For (A), we have:
+	$$
+	
+	$$
+
+
+</details>
+
+**Homework 7**<a name="hw7"></a>
+
+**Homework 8**<a name="hw8"></a>
+
+**Homework 9**<a name="hw9"></a>
+
+*Last Updated: 6/27/2025, more updates coming (maybe) :)*

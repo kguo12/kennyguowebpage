@@ -1,0 +1,723 @@
+# ECON 201A - Microeconomic Theory: Theory of Firm and Consumer
+## Fall 2025, Jay Lu
+
+This is the first course in the PhD microeconomics sequence at UCLA. The topics covered are choice theory, consumer theory, producer theory, equilibrium, risk, and time. We follow loosely Mas-Colell, Whinston, and Green. Please let me know at [kennyguo@ucla.edu](mailto:kennyguo@ucla.edu) if you spot any errors. Thanks!
+
+#### Problem Set Solutions:
+
+## Problem Set 1: Choice and Consumer Theory
+
+> 1. Prove the other direction of Theorem 1 (Lecture 1) (*utility is identifiable up to a monotone transformation*) by the following steps (recall $X$ is finite).
+> a) Show that if $u$ and $v$ both represent $c$, then $v = f \circ u$ for some strictly increasing function $f : U \to \mathbb{R}$, where $U$ is the range of $u(\cdot)$, i.e. $$U := \{ a \in \mathbb{R} : a = u(x) \text{ for some } x \in X \}.$$
+> b) Show that you can extend the domain of $f$ from $U$ to $\mathbb{R}$ while keeping $f$ strictly increasing.
+
+<details>
+  <summary>*Proof.*</summary>
+
+a) Assume $v,u$ represent $c$. By definition, for all $A \in \mathcal{A}$, 
+\begin{align*}
+c(A) &= \{x\in A : u(x) \geq u(y) \quad\forall  y \in A\} \\
+&= \{x\in A : v(x) \geq v(y) \quad \forall y \in A\}.
+\end{align*}
+So, $u(x) = u(x') \iff v(x) = v(x')$. Thus, the following definition for $f$ is well-defined; define $f: U\rightarrow \mathbb{R}$ such that for all $a\in U$, $f(a) = v(x)$ where $x \in X$ such that $u(x) = a$. Clearly, $f \circ u = v$ on $U$. For monotonicity, let $a_1 = u(x_1) < u(x_2) = a_2$. Then since $v$ also represents $c$, we have that $f(a_1) = v(x_1) < v(x_2) = f(a_2)$, so $f$ is strictly monotone increasing. 
+
+b) This is a monotone extension theorem. Namely, since $X$ is finite, $U$ is also finite, so enumerate the elements of $U$ and let $U = \{a_1 < a_2< \ldots< a_n\}$ and thus $f(U) = \{f(a_1)< f(a_2)< \ldots< f(a_n)\}$. Extend $f$ to $\mathbb{R}$ by defining for $a \in \mathbb{R}$:
+\begin{equation}
+    f(a) := \begin{cases}
+        f(a) &: a\in U \\
+        f(a_i) + \frac{a-a_i}{a_{i+1}-a_i}\left(f(a_{i+1})-f(a_i)\right) &: a \in (a_i, a_{i+1}), i = 1, 2, \ldots, n-1 \\
+        f(a_n) + (a-a_n) &: a> a_n \\
+        f(a_1) + (a-a_1) &: a< a_1
+    \end{cases}.
+\end{equation}
+$f$ is continuous by definition (using the linear interpolations between the points $(a_i, f(a_i))$), clearly strictly monotone increasing on $(-\infty, a_1) \cup (a_n, \infty)$, and monotone increasing between the points $(a_i, f(a_i))$ because $f(a_{i+1}) > f(a_i)$. Thus, $f: \mathbb{R} \rightarrow \mathbb{R}$ is strictly monotone, and maintains its values on $U$ as before.
+
+</details>
+
+
+> 2. Consider Proposition 1 (Lecture 2). You may use any result from Lecture 1.
+> a) Prove $2 \Rightarrow 1$, i.e., if $\succeq$ is induced by a choice function $c$ that satisfies WARP, 
+    then $\succeq$ is a preference relation.
+> b) Prove $1 \Rightarrow 2$, i.e., if $\succeq$ is a preference relation, then there exists a choice 
+    function $c$ that induces $\succeq$ and satisfies WARP. You may refer to the standard results on 
+    WARP and rationalizability.
+
+<details>
+  <summary>*Proof.*</summary>
+
+a) Assume $\succeq$ is induced by $c$ satisfying WARP. By definition of a choice function $c$, we have completeness, since $\forall x, y$, 
+$c(\{x, y\})$ is nonempty, so $x \succeq y$ or $y \succeq x$. Now assume $x \preceq y$ and $y \preceq z$. By definition, $y \in c(\{x, y\})$ and $z \in c(\{y, z\})$. 
+Consider $A = \{x, y, z\}$. 
+\begin{enumerate}
+    \item If $x \in c(A)$, then $y \in c(A)$ by WARP with $\{x, y\}$. 
+    \item If $y \in c(A)$, then $z \in c(A)$ by WARP with $\{y, z\}$. 
+\end{enumerate}
+Thus, since $c(A)$ must be nonempty, $z \in c(A)$. By WARP, $z \in c(\{x, z\})$ (which is also nonempty, so either $x$ or $z$ is chosen), so then $x \preceq z$ and $\succeq$ is transitive and thus a preference relation.
+
+b) Assume $\succeq$ is complete and transitive. For $A \in \mathcal{A}$, define $c_{\succeq}: \mathcal{A} \to \mathcal{A} \cup \{\emptyset\}$,
+\[
+c_{\succeq}(A) = \{x \in A \mid x \succeq y \ \forall y \in A\}.
+\]
+Let $A \in \mathcal{A}$. Suppose for contradiction $c_{\succeq}(A) = \emptyset$. Let $x \in A$. Since $x \notin c_\succeq(A)$, there exists a $ y \in A$ such that $y \succ x$. Since $y \notin c_{\succeq}(A)$, $\exists z \in A$ such that $z \succ y$. Note $z \neq x$ by transitivity. Iterating, we get that $A$ must be infinite, a contradiction. Thus, $c_{\succeq}(A) \neq \emptyset$, and $c_{\succeq}(A)$ is a valid choice function.
+
+Clearly, $c_{\succeq}$ induces $\succeq$ since by definition
+\[
+x \in c_{\succeq}(\{x,y\}) \iff x \succeq y \quad \forall x,y \in X.
+\]
+For WARP, let $A,B \in \mathcal{A}$, $x,y \in A \cap B$, $x \in c_{\succeq}(A)$, $y \in c_{\succeq}(B)$.
+Since $x \in c_{\succeq}(A)$, $y \in A$, we have $x \succeq y$.
+Since $y \in c_{\succeq}(B)$, we have $y \succeq z$ for all $z \in B$.
+By transitivity, $x \succeq z$ for all $z \in B$, so $x \in c_{\succeq}(B)$.
+
+Thus, $c_{\succeq}$ satisfies WARP. 
+
+</details>
+
+> 3. There are two goods, i.e. $X = \mathbb{R}^2_{+}$. Sam chooses $x = (1,5)$ when $p = (5,2)$, $x = (4,2)$ when $p = (3,3)$, and $x = (2,3)$ when $p = (2,4)$. Does Sam satisfy WARP?
+
+<details>
+  <summary>*Answer.*</summary>
+No. 
+
+Note first that when $p=(3,3)$, the basket $(4,2)$ costs $18$ and the basket $(2,3)$ costs $15$, so both options are within the same budget set/menu, and Sam chooses $(4,2)$.
+
+Then note that when $p=(2,4)$, the basket $(2,3)$ costs $16$ and the basket $(4,2)$ costs $16$, so these two are within the same budget set/menu as well. Yet here, Sam chooses $(2,3)$. 
+
+If WARP holds, $(2,3)$ should also be chosen when $p=(3,3)$ (the first menu) and $(4,2)$ should also be chosen when $p=(2,4)$ (the second menu), but Sam doesn't make these choices, so WARP does not hold.
+
+</details>
+
+> 4. Consider consumption bundles $X = \mathbb{R}^n_+$ and recall $\mathcal{A}$ is the set of all menus in $X$. We will consider two special classes of menus:
+> * $\mathcal{P} \subset \mathcal{A}$ is the set of all consumption pairs (binary menus), i.e. $\{x,y\} \in \mathcal{A}$.
+> * $\mathcal{B} \subset\mathcal{A}$ is the set of all budget sets, i.e. $B(p,m) \in \mathcal{A}$.
+> Consider a choice function over pairs and budget sets, i.e. $c:\mathcal{P} \cup \mathcal{B} \rightarrow \mathcal{A}$ such that $c(A) \subseteq A$ for all $A \in \mathcal{P} \cup \mathcal{B}$. Show the following two statements are equivalent:
+> a) \item $c$ satisfies WARP (on $\mathcal{P} \cup \mathcal{B}$) and $c$ on $\mathcal{P}$ induces a continuous preference relation.
+> b) $c$ is represented by a continuous utility.
+> \emph{Note: You may use any result from lecture, but pay attention to the precise statement of Debreu's representation theorem. It does not state a (continuous) utility representation of a choice function.}
+
+<details>
+  <summary>*Proof.*</summary>
+
+$(a \implies b)$ Assume $c$ satisfies WARP and $c$ on $\mathcal{P}$ induces a continuous preference relation, call it $\succeq$. By Debreu, we have that $\succeq$ is represented by a continuous utility function, call it $u$, such that $x \succeq y \iff u(x) \geq u(y)$. We show $u$ represents $c$ as well. Let $A \in \mathcal{P} \cup \mathcal{B}$. We have two cases:
+
+1) $A \in \mathcal{P}$. Note that the set
+$$
+\underbrace{\{x \in A : u(x) \geq u(y) \quad \forall y \in A\}}_{(\star)} = \{x \in A : x \succeq y \quad \forall y \in A\}
+$$
+by $u$ representing $\succeq$. By definition of $c$ inducing $\succeq$, we have the RHS equal to $c(A)$. Thus, $u$ represents $c$ (on $\mathcal{P}$).
+
+2) $A \in \mathcal{B}$. Let $x \in c(A)$. Note that $(\star)$ is nonempty (since a continuous function on a compact budget set achieves a maximum), so let $y \in (\star)$. We thus have that $u(y) \geq u(x)$. Consider the binary menu $\{x,y\}$. Since $y \in A, x \in c(A)$, we must have by WARP that $x \in c(\{x,y\}) \implies x \succeq y \implies u(x) \geq u(y)$. Thus $u(x) = u(y)$, and so $x \in (\star)$ as well. Now, let $x \in (\star)$. Similarly, we know $c(A)$ must be nonempty, so pick some $y \in c(A)$. We know $u(x) \geq u(y) \implies x \succeq y \implies x \in c(\{x,y\})$. Thus, since $y \in c(A), x \in A$, we must have by WARP that $x \in c(A)$. Thus $c(A) = (\star)$, showing that $u$ represents $c$ on $\mathcal{B}$ as well.
+
+$(a \impliedby b)$ Assume $c$ is represented by a continuous utility, call it $u$, so that for all $A \in \mathcal{P} \cup \mathcal{B}$, 
+$$
+c(A) = \{x \in A : u(x) \geq u(y) \quad \forall y \in A\}.
+$$
+Since $c$ is represented by a utility, by characterization theorem, $c$ satisfies WARP (on the whole menu space). Now let $\succeq$ be the relation induced by $c$. $\succeq$ is complete by the definition of a choice function. For transitivity, note that $x \succeq y$ and $y \succeq z$ imply that $x \in c(\{x,y\})$ and $y \in c(\{y, z\})$. By utility representation, we have that $u(x) \geq u(y) \geq u(z)$, and tracing back, we thus have $x \in c(\{x,z\}) \implies x \succeq z$.
+
+Finally, for continuity, let $x, (y_k), y \in X$, and assume that $y_k \rightarrow y$ and $y_k \succeq x$ for all $k$ (similar reasoning for when $y_k \preceq x$). By before, we thus have that $u(y_k) \geq u(x)$ for all $y$. By continuity of $u$, we also have that $u(y_k) \rightarrow u(y)$. Thus, sending $k$ to infinity, we have $u(y) \geq u(x)$ as well, which implies that $y \succeq x$, and $\succeq$ is a continuous preference relation.
+
+</details>
+
+> 5. Recall $u$ is CES if for $\rho < 1, \alpha_i > 0, \sum_i \alpha_i = 1$,
+> $$u(x) = \left(\sum_i \alpha_i x_i^\rho \right)^{1/p}.$$
+> a) Show that preferences are strictly convex and satisfy local non-satiation. Is CES utility strictly concave?
+> b) Solve for its Hicksian demand directly.
+> c) Use its Marshallian demand from lecture to show that Slutsky's equation holds.
+> d) Provide conditions on $\rho$ such that two goods $i,j$ are net substitutes but not gross substitutes (i.e. $\frac{\partial h_i}{\partial p_j} \geq 0$ but $\frac{\partial x_i}{\partial p_j} \leq 0)$.
+> e) Derive the functional form of $u$ when $\rho \rightarrow -\infty$.
+> f) Consider an economy with $n$ consumers. Suppose that you (a market designer) have \$$m$ in total, which can be distributed to the consumers, and the consumers have no other income. If you care only about the aggregate demand of the economy, how should you distribute \$$m$?
+
+<details>
+  <summary>*Proof.*</summary>
+
+a) It suffices to show that $u$ is strictly quasiconcave and admits no local optima within $\mathbb{R}^n_+$. 
+
+(Strict Quasiconcavity) Note that a monotone transformation of a strictly quasiconcave function is still strictly quasiconcave. 
+
+First, assume $\rho \in (0,1)$. Using the monotone transformation $f(x) = x^{1/p}$, it suffices to show $\sum_i \alpha_i x_i^\rho$ is strictly quasiconcave, which is true since $\alpha_i x_i^\rho$ is strictly concave and thus the sum is too. Strictly concave functions are strictly quasiconcave. 
+
+Now assume $\rho \in (-\infty, 0)$. Using the monotone transformation $f(x) = x^{-1/p}$, it suffices to show that $\left(\sum_i \alpha_i x_i^\rho\right)^{-1}$ is strictly quasiconcave. Take $\vec{x}\neq\vec{y}$ and assume $\left(\sum_i \alpha_i x_i^\rho\right)^{-1} \geq \left(\sum_i \alpha_i y_i^\rho\right)^{-1}$. This implies $\sum_i \alpha_i x_i^\rho \leq \sum_i \alpha_i y_i^\rho$. Since $f(x) = x^\rho$ is strictly convex when $\rho < 0$,  the sum $\sum_i \alpha_i x_i^\rho$ is also strictly convex. In particular, we have for the convex combination (for some $\lambda \in (0,1)$):
+$$\sum_i \alpha_i (\lambda x_i + (1-\lambda) y_i)^\rho < \lambda \sum_i \alpha_i x_i^\rho + (1-\lambda) \sum_i \alpha_i y_i^\rho \leq \sum_i \alpha_i y_i^\rho.$$ 
+Taking the inverse yields:
+$$
+\left(\sum_i \alpha_i (\lambda x_i + (1-\lambda) y_i)^\rho\right)^{-1} > \left(\sum_i \alpha_i y_i^\rho\right)^{-1} = \min\left\{\left(\sum_i \alpha_i x_i^\rho\right)^{-1}, \left(\sum_i \alpha_i y_i^\rho\right)^{-1}\right\}
+$$
+showing that $\left(\sum_i \alpha_i x_i^\rho\right)^{-1}$ is strictly quasiconcave, as desired.
+
+Finally, note that in the limit as $\rho \rightarrow 0$, CES converges to Cobb-Douglas utility $u(x) = \Pi_i x_i^{\alpha_i}$. Using the monotone transformation $\log(x)$, it suffices to show $\sum_i \alpha_i \log(x_i)$ is strictly quasiconcave, which it is as $\log(x)$ is a strictly concave function.
+
+Therefore, CES preferences are strictly convex.
+
+(No local optima) Let $\vec{x} \in \mathbb{R}^n_+, \varepsilon >0$. Note that taking the partial derivative with respect to any component of $\vec{x}$, we get:
+$$
+\frac{\partial u}{\partial x_i} = \alpha_i x_i^{\rho-1} \left(\sum_j \alpha_j x_j^\rho \right)^{1/p-1} > 0.
+$$
+Thus, there exists some $\vec{y} \in N_\varepsilon(\vec{x}) \backslash \{\vec{x}\}$ (by moving a little bit, less than $\varepsilon$, in the $x_i$ direction) such that $u(y) > u(x)$. Thus, CES preferences are locally non-satiated.
+
+Finally, CES preferences are not strictly concave. Indeed, consider $\vec{x} = (1,1, \ldots, 1), \vec{y} = (0,0,\ldots, 0)$. Then for any $\lambda \in (0,1)$, note that:
+$$
+u(\lambda \vec{x} + (1-\lambda) \vec{y}) = u((\lambda, \lambda, \ldots, \lambda)) = \lambda = \lambda u(\vec{x}) + (1-\lambda) u(\vec{y}).
+$$
+So CES utility is not strictly concave.
+
+b) We have that preferences are strictly convex and continuous, so they are neoclassical and Hicksian demand is a continuous function. Thus, we solve (for some $z \in \mathbb{R}^n_+$) $\underset{x \in G(\succeq, z)}{\text{argmin }} p\cdot x$. 
+
+This is equivalent to maxxing $-p\cdot x$ with the constraint $u(x) - u(z) \geq 0$ and the non-negativity constraints $x_i \geq 0$. Since $u$ is locally non-satiated, we get Walras's law, so $u(x) - u(z) = 0$. We write the Lagrangian:
+$$
+\mathcal{L} = -p \cdot x + \lambda\left(\left(\sum_i \alpha_i x_i^\rho \right)^{1/p} - u(z)\right) + \sum_i \mu_i x_i
+$$
+and so the FOC are:
+$$
+-p_i + \lambda \alpha_i x_i^{\rho-1} \left(\sum_j \alpha_j x_j^\rho \right)^{1/p-1} + \mu_i = 0 \quad \forall i
+$$
+with complementary slackness conditions
+$$
+\mu_i x_i = 0 \quad \forall i.
+$$
+For now, suppose $x_i > 0$ for all $i$, so we can ignore the $\mu_i = 0$ terms. We will eventually show the FOC solution will satisfy these constraints, and since Hicksian demand is unique by neoclassical preferences, we will know it is the final solution. So: 
+$$
+\lambda \alpha_i x_i^{\rho-1} \left(\sum_j \alpha_j x_j^\rho \right)^{1/p-1} = p_i \quad \forall i 
+$$
+and pivoting around $\lambda  \left(\sum_j \alpha_j x_j^\rho \right)^{1/p-1}$, we see that for some two goods $i, j$,
+$$
+\frac{p_i}{p_j} = \frac{\alpha_i x_i^{\rho-1}}{\alpha_j x_j^{\rho-1}} \implies x_j = \left(\frac{\alpha_j p_i}{\alpha_i p_j}\right)^{\frac{1}{1-\rho}}x_i.
+$$
+We substitute the $x_j$, $j\neq i$ terms into our utility constraint $u(z) = u(x) = \left(\sum_i \alpha_i x_i^\rho \right)^{1/p}$ to get for good $i$,
+\begin{align*}
+    u(z) &= \left(\sum_j \alpha_j x_j^\rho \right)^{1/p} \\
+    u(z)^\rho &= \sum_j \alpha_j x_j^\rho \\
+    &= \left(\sum_j \alpha_j \left(\frac{\alpha_j p_i}{\alpha_i p_j}\right)^{\frac{\rho}{1-\rho}}\right)x_i^\rho \\
+    &= \left(p_i^{\frac{\rho}{1-\rho}} \alpha_i^{-\frac{\rho}{1-\rho}}\sum_j \alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{\rho}{1-\rho}}\right) x_i^\rho \\
+\end{align*}
+which gives the final Hicksian demand
+$$
+h_i(p, z) = \left(p_i^{-\frac{1}{1-\rho}} \alpha_i^{\frac{1}{1-\rho}} \left(\sum_j \alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{\rho}{1-\rho}}\right)^{-\frac{1}{\rho}}\right)u(z)
+$$
+which note satisfies the non-negativity constraints ($u(z) \geq 0$). 
+
+c) We have the Marshallian demand for good $i$ is given by:
+$$
+x_i(p, m) = \frac{m\left(\frac{\alpha_i}{p_i}\right)^{\frac{1}{1-\rho}}}{\sum_j p_j \left(\frac{\alpha_j}{p_j}\right)^{\frac{1}{1-\rho}}}.
+$$
+We need to show for some $p_j$ that Slutsky's holds, i.e:
+$$
+\frac{\partial x_i(p,m)}{\partial p_j} = \frac{\partial h_i(p, x_i(p,m))}{\partial p_j} - \frac{\partial x_i(p,m)}{\partial m}x_j.
+$$
+
+First consider $j \neq i$. Differentiating marshallian demand, we get:
+$$
+\frac{\partial x_i(p,m)}{\partial p_j} = \frac{\left(\frac{\rho}{1-\rho}\right)m\left(\frac{\alpha_i}{p_i}\right)^{\frac{1}{1-\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}}{\left(\sum_j \alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{\rho}{1-\rho}}\right)^2}.
+$$
+
+Then note for the Hicksian demand, we calculate the utility $u(x(p,m)) = v(p,m)$ as:
+$$
+v(p,m) = \left(\sum_i \alpha_i \left(\frac{m\left(\frac{\alpha_i}{p_i}\right)^{\frac{1}{1-\rho}}}{\sum_j p_j \left(\frac{\alpha_j}{p_j}\right)^{\frac{1}{1-\rho}}}\right)^\rho \right)^{\frac{1}{\rho}} = m\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^{\frac{1-\rho}{\rho}}.
+$$ 
+
+Thus, the substitution effect is calculated as such:
+\begin{align*}
+    \frac{\partial h_i(p, x_i(p,m))}{\partial p_j} &= \left(\frac{1}{1-\rho}\right)\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^{\frac{-1-\rho}{\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}v(p,m) \\
+    &= \frac{m\left(\frac{1}{1-\rho}\right)\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}}{\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^2},
+\end{align*}
+and the income effect is calculated as such:
+$$
+- \frac{\partial x_i(p,m)}{\partial m}x_j = -\frac{m\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}}{\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^2}, 
+$$
+and so we get the Marshallian demand when adding the two effects together, showing Slutsky's. Now consider when $i=j$. Similarly, the total effect is calculated as:
+\begin{align*}
+\frac{\partial x_i(p,m)}{\partial p_i}
+&= \frac{
+m \left(-\frac{1}{1-\rho} \right) 
+\alpha_i^{\frac{1}{1-\rho}} p_i^{\frac{\rho-2}{1-\rho}}\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)- m\left( \frac{-\rho}{1-\rho} \right) \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}} }{\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)^2} \\
+&=\frac{m \left(\frac{1}{1-\rho} \right)
+\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{2}{1-\rho}}}{\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)^2}\left(\rho \alpha_i^{\frac{1}{1-\rho}} - p_i^{\frac{\rho}{1-\rho}}\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)\right).
+\end{align*}
+
+The substitution effect is calculated as:
+\begin{align*}
+\frac{\partial h_i(p,x_i(p,m))}{\partial p_i}
+&= 
+\alpha_i^{\frac{1}{1-\rho}}
+\Biggr(
+\left( -\frac{1}{1-\rho} \right)
+p_i^{\frac{\rho-2}{1-\rho}}
+\left(
+\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}
+\right)^{-\frac{1}{\rho}} \\
+&+ 
+p_i^{-\frac{1}{1-\rho}}
+\left( -\frac{1}{\rho} \right)
+\left(
+\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}
+\right)^{\frac{-1-\rho}{\rho}}
+\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}
+\left( -\frac{\rho}{1-\rho} \right)
+\Biggr) v(p,m) \\
+&=
+\frac{
+m \left(\frac{1}{1-\rho} \right)
+\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{2}{1-\rho}}
+}{
+\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)^2
+}
+\left(
+\alpha_i^{\frac{1}{1-\rho}}
+- p_i^{\frac{\rho}{1-\rho}}
+\left(
+\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}
+\right)
+\right).
+\end{align*}
+
+Finally, the income effect is calculated as:
+\begin{align*}
+    -\frac{\partial x_i(p,m)}{\partial m}x_i = -\frac{m \left(\frac{1}{1-\rho} \right)
+\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{2}{1-\rho}}}{\left( \sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}} \right)^2}\left(\alpha_i^{\frac{1}{1-\rho}} -\rho \alpha_i^{\frac{1}{1-\rho}}  \right).
+\end{align*}
+Thus, adding the income and substitution effects yields the total effect, and Slutsky's equation holds.
+
+d) Goods $i,j$ being net substitutes implies:
+$$
+\frac{\partial h_i(p, z)}{\partial p_j} = \left(\frac{1}{1-\rho}\right)\alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{1}{1-\rho}}\left(\sum_i \alpha_i^{\frac{1}{1-\rho}} p_i^{-\frac{\rho}{1-\rho}}\right)^{\frac{-1-\rho}{\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}u(z) \geq 0.
+$$
+Since $\alpha_i, p_i \geq 0$ and $\rho < 1$ (so $\frac{1}{1-\rho} \geq 0$), we have that this condition is met already by CES, so any two goods $i \neq j$ are net substitutes.
+
+Goods $i \neq j$ \emph{not} being gross substitutes implies:
+$$
+\frac{\partial x_i(p,m)}{\partial p_j} = \frac{\left(\frac{\rho}{1-\rho}\right)m\left(\frac{\alpha_i}{p_i}\right)^{\frac{1}{1-\rho}}\alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{1}{1-\rho}}}{\left(\sum_j \alpha_j^{\frac{1}{1-\rho}}p_j^{-\frac{\rho}{1-\rho}}\right)^2} \leq 0.
+$$
+Since $\alpha_i, p_i, m \geq 0$, the total effect is nonpositive iff $\frac{\rho}{1-\rho} \leq 0$, or equivalently, $\rho \leq 0$. Thus, two goods $i \neq j$ are always net substitutes under CES, but not gross substitutes if and only if $\rho \leq 0$.
+
+e) We claim that $u_{-\infty}(x) = \min_i x_i.$ We let $m = \min_i x_i$ and define for all $i$, $r_i = x_i/m$. Thus we rewrite:
+$$
+u(x) =m\left(\sum_i \alpha_i r_i^\rho\right)^{1/\rho}.
+$$
+Suppose $\mathcal{I} = \{i, \ldots\}$ are those indices that achieve the minimum and $\mathcal{I}' = \{i', \ldots\}$ are those indices that are such that $x_{i'} > m$. Thus, $r_i = 1, r_{i'} > 1$, and as $\rho \rightarrow --\infty$, $r_i^\rho = 1, r_{i'}^\rho = 0$. We thus have:
+$$
+\lim_{\rho \rightarrow -\infty}u(x) = m \left(\sum_{i\in \mathcal{I}} \alpha_i\right)^0 = m = \min_i \{x_i\}.
+$$
+
+f) From part 1, we have that preferences are neoclassical. Also note that
+$$
+u(\lambda x) = \left(\sum_i \alpha_i (\lambda x_i)^\rho \right)^{1/\rho} = \lambda\left(\sum_i \alpha_i x_i^\rho \right)^{1/\rho} = \lambda u(x)
+$$
+so utility is homogeneous of degree 1. This means that preferences (assuming they are identical across consumers) are also homothetic. By Antonelli, any distribution of the endowments among consumers will result in the same aggregate demand, as the aggregate demand will equal the sum of all their individual demands (i.e. as if we had one consumer with income \$$m$). 
+
+</details>
+
+
+> 6. Bob only enjoys donuts and coffee if they are in a 2 to 1 ratio, i.e. 2 donuts for every 1 cup of coffee. He does not care for any leftover coffee or donuts that are not of the right mix. Assume quantities of both goods are continuous. 
+> a) Write down a utility function that represents Bob's preferences.
+> b) Show that Bob's preferences are monotone, but not strictly monotone.
+> c) Show that Bob's preferences are convex but not strictly convex.
+> d) Show that Bob's preferences however are almost strictly convex: if $x \succeq y$ where $x \cancel{\geq} y$ and $y \cancel{\geq} x$, then $ax + (1-a)y \succ y$ for all $a \in (0,1)$.
+> e) Solve for Bob's Marshallian demand and show that it is still a singleton/a function (recall prices are strictly positive).
+
+<details>
+  <summary>*Proof.*</summary>
+
+Let donuts be $d$ and coffee be $c$.
+
+a) We can write
+$$
+u(d,c) = \min\{d, 2c\}.
+$$
+b) Let $(d_1, c_1) < (d_2, c_2)$ and so
+$$
+u(d_1, c_1) = \min\{d_1, 2c_1\} \leq \min\{d_2, 2c_2\} = u(d_2, c_2),
+$$
+and $u$ is increasing, so $\succeq$ is monotone. However, consider $(2,1) < (2,2)$, but $u(2,1) = u(2,2) = 2$, so $u$ is not strictly increasing, and thus $\succeq$ is not strictly monotone.
+
+c) Let $(d_1, c_1) \preceq (d_2, c_2)$, where $(d_1, c_1) \neq (d_2, c_2)$. This also means that $u(d_1, c_1) \leq u(d_2, c_2)$. Let $a \in (0,1)$. Note that:
+\begin{align*}
+    u(ad_1 + (1-a)d_2, ac_1 + (1-a)c_2) &= \min\{ad_1 + (1-a)d_2, 2ac_1 + 2(1-a)c_2\} \\
+    &\geq a \min\{d_1, 2c_1\} + (1-a)\min\{d_2, 2c_2\}\\
+    &\geq \min\{d_1, 2ac_1\} \\
+    &= u(d_1, c_1)
+\end{align*}
+and so $a(d_1, c_1) + (1-a)(d_2, c_2) \succeq (d_1, c_1)$, and preferences are convex. However, consider the bundles $(2,1), (2,3)$ which both give utility $2$, but so does any convex combination of them. Thus, the convex combination is not strictly preferred, so preferences are not strictly convex.
+
+d) Let $a \in (0,1)$, $(d_1, c_1) \succeq (d_2, c_2)$, where $(d_1, c_1) \cancel{\geq} (d_2, c_2)$ and $(d_2, c_2) \cancel{\geq} (d_1, c_1)$. Thus, either:
+
+Case 1: $c_2 > c_1$ and $d_1 > d_2$. We see that:
+\begin{align*}
+    u(ad_1 + (1-a)d_2, ac_1 + (1-a)c_2) &= \min\{ad_1 + (1-a)d_2, 2ac_1 + 2(1-a)c_2\} \\
+    &> \min\{d_2, 2c_1\} \\
+    &\geq \min\{d_2, 2c_2\} \quad \text{(by $(d_1, c_1) \succeq (d_2, c_2)$)} \\
+    &= u(d_2, c_2),
+\end{align*}
+and so the convex combination is strictly preferred to $(d_2, c_2)$.
+
+Case 2: $c_1 > c_2$ and $d_2 > d_1$. We see that:
+\begin{align*}
+    u(ad_1 + (1-a)d_2, ac_1 + (1-a)c_2) &= \min\{ad_1 + (1-a)d_2, 2ac_1 + 2(1-a)c_2\} \\
+    &> \min\{d_1, 2c_2\} \\
+    &\geq \min\{d_2, 2c_2\} \quad \text{(by $(d_1, c_1) \succeq (d_2, c_2)$)} \\
+    &= u(d_2, c_2),
+\end{align*}
+and so the convex combination is again strictly preferred to $(d_2, c_2)$. Thus, $\succeq$ is almost strictly convex.
+
+e) Intuitively, since prices are strictly positive, we will not have our budget set border "horizontal" or "vertical" lining up with the indifference curves (they will always meet at a kink point). To see this, let $p_d$, $p_c$ be the prices of donuts and coffee respectively. The consumer solves:
+$$
+\text{maximize } \min\{d, 2c\} \text{  subject to } p_d\cdot d + p_c \cdot c \leq m.
+$$
+We note that the optimal utility maximizing bundle will always have the ratio $d^\star=2c^\star$, and so we can rewrite the problem as:
+$$
+\text{maximize } d \text{  subject to } p_d\cdot d + p_c \cdot d/2 \leq m.
+$$
+Both $d$ and $p_d\cdot d + p_c \cdot d/2$ are increasing in $d$, so we know the budget constraint will bind, and solving for $d^\star$ yields the Marshallian demands
+$$
+d^\star = \frac{m}{p_d+p_c/2},\quad  c^\star = \frac{m/2}{p_d+p_c/2},
+$$
+which are clearly functions of $p_d, p_c>0, m\geq 0$, so they are singletons.
+
+</details>
+
+> 7. Let $X = \mathbb{R}^2_+$. Find a neoclassical preference relation $\succeq$ under which Walras's law does not hold and prove it is so.
+
+<details>
+  <summary>*Proof.*</summary>
+
+Consider the utility function on X:
+$$
+u(x, y) = -(x-2)^2 - (y-2)^2
+$$
+which is a negative paraboloid. Clearly $u$ is continuous, so by Debreu, the preference relation $\succeq$ given by $x \succeq y \iff u(x) \geq u(y)$ is continuous. Also note that $D^2u(x,y)$ is symmetric negative definite, implying that $u$ is strictly concave, and thus, the $\succeq$ is strictly convex and a neoclassical preference relation.
+
+But note that $u$ admits a local (and global) optimum at $(2,2)$, where it takes on the value of $0$. Thus, $\succeq$ is not locally non-satiated, and Walras's law is not guaranteed. Indeed, consider $p=(1, 1), m = 5$. The marshallian demand is thus given by $x(p,m) = (2,2)$, but $x(p,m) \cdot p = 4 < m$, so the budget constraint is not binding.
+
+</details>
+
+> 8. Suppose Hicksian demand $h(p,z)$ is differentiable with respect to prices. 
+> a) Show that $h(\cdot, z)$ is homogeneous of degree zero, i.e. $h(\lambda p, z) = h(p,z)$ for $\lambda >0$.
+) b) Use the above to show that the Slutsky matrix satisfies $S(p,m) \cdot p = \vec{0}$.
+
+<details>
+  <summary>*Proof.*</summary>
+
+a) Let $\lambda >0$. We then see by linearity:
+$$
+h(\lambda p, z) = \underset{x\in G(\succeq, z)}{\text{argmin } \lambda p \cdot x} = \underset{x\in G(\succeq, z)}{\text{argmin } \lambda (p \cdot x)} = \underset{x\in G(\succeq, z)}{\text{argmin } p \cdot x} = h(p,z).
+$$
+
+b) We have for any $\lambda >0$ that $h_i(p,z) = h_i(p,z)$. Differentiating w.r.t. $\lambda$ and then setting $\lambda = 1$, we get:
+$$
+\sum_j \frac{\partial h_i(p, z)}{\partial p_j}p_j = 0 \quad \forall i \in [n].
+$$
+In particular, this means $S(p,m)^T \cdot p = \vec{0}$. Since Hicksian demand is differentiable w.r.t. to price, the Slutsky matrix is symmetric (by Shephard's lemma and Clairaut's Theorem), and so in fact $S(p,m) \cdot p = 0$.
+
+</details>
+
+#### Problem Set 2: Producer Theory, Equilibrium, Welfare, Risk, and Time
+
+> 1. Consider the production function where $\alpha > 0$ and 
+> $$ f(x_1, x_2) = (\min\{x_1, x_2\})^{\alpha}. $$
+> a) Solve for the factor demand and cost function. When is the latter convex (in $q$)?
+> b) Suppose $x_2 = c$ is fixed in the short run. Solve for the factor demand and cost function (for attainable $q$).
+
+<details>
+    <summary>*Answer.*</summary>
+
+a) First, note that all $q \geq 0$ are attainable. We write:
+$$
+x(f,q) = \underset{x \in M(f, q)}{\text{argmin }} p_1 x_1 + p_2 x_2,
+$$
+where $M(f,q) = \{\vec{x} | (\min\{x_1, x_2\})^\alpha \geq q\}$. 
+
+Suppose $(\min\{x_1, x_2\})^\alpha > q$. Since $(\min\{x_1, x_2\})^\alpha$ is continuous and increasing, we can reduce the quantity of $x_1$ and $x_2$ by a nonzero to still produce an amount greater than or equal to $q$, and since prices are strictly positive, we have strictly decreased cost. Thus, the constraint must be binding, i.e., $f(x) = q$. 
+
+Next, suppose $x_1 \neq x_2$, so without loss of generality, assume $x_1 > x_2$, or $x_1 = x_2 + \varepsilon$, where $\varepsilon > 0$. Thus, $(\min\{x_1, x_2\})^\alpha = (\min\{x_2, x_2\})^\alpha$, but the first one incurs an additional $p_1\varepsilon > 0 $ cost, so it cannot be the minimum. Thus, $x_1 = x_2$. 
+
+We rewrite our optimization problem as:
+$$x(f,q) = \underset{x_1^\alpha = q}{\text{argmin }} (p_1 + p_2) x_1.
+$$
+which has the factor demand solution $x_1 = x_2 = q^{1/\alpha}$. The cost function is thus $c(q) = (p_1 + p_2)q^{1/\alpha}$. This is convex in $q$ when $1/\alpha \geq 1$, or when $\alpha \leq 1$.
+
+b) Now, only $q \in [0, c^\alpha]$ are attainable. The firm would also not want to demand more than $c$ units of $x_1$, as additional $x_1$ would not lead to any more production. Thus, $f(x) = x_1^\alpha$. We have the problem:
+$$
+x(f, q) = \underset{x_1^\alpha \geq q}{\text{argmin }} p_1 x_1 + p_2 c = \underset{x_1^\alpha \geq q}{\text{argmin }} p_1 x_1.
+$$
+The constraint is binding for the same reason as before, so $x_1^\alpha = q$, and we get the factor demand $x_1 = q^{1/\alpha}, x_2 = c$ with cost function $c(q) = p_1q^{1/\alpha} + p_2c$.
+
+</details>
+
+> 2. Consider an economy with 2 goods where total endowment is $(2,1)$. Consumers all have the same endowment. Each consumer $i \in I = \{1, \ldots, |I|\}$ has Cobb--Douglas utility
+> $$ u_i(x_1, x_2) = x_1^{\alpha_i} x_2^{1-\alpha_i} $$
+> where $\alpha_i \in (0,1)$. All consumers own equal shares of a single firm with production function
+> $$ f(x_1) = \sqrt{x_1}. $$
+> a) Show that when all consumers have the same endowment, aggregate demand in this case can be written as the demand of a representative consumer with Cobb--Douglas utility. What is the representative consumer's utility?
+> b) Solve for an equilibrium.
+
+<details>
+    <summary>*Proof.*</summary>
+
+a) Each consumer demands according to the problem
+$$
+x^i(p, m^i) = \text{argmax } x_1^{\alpha_i}x_2^{1-\alpha_i} \text{ subject to } \vec{x} \geq 0, \vec{p} \cdot \vec{x} \leq m^i.
+$$
+Since Cobb-Douglas preferences are neoclassical and locally nonsatiated, we have Walras's law, and also note the demand for a positive income will always be positive, since a zero amount in any good will result in the minimum utility of zero. Thus, the nonnegativity constraints can be ignored. Solving the Langrangian yields the demands for consumer $i$:
+$$
+x_1^i(p, m^i) = \frac{\alpha^im^i}{p_1}, \quad x_2^i(p, m^i) = \frac{(1-\alpha^i)m^i}{p_2}.
+$$
+Since each consumer gets equal endowments and equal share in the profits of the firm, $m^i$ is equal for all $i$. In particular, we can write $m/|I| = m^i$, where $m = \sum_i m^i$. Now, summing demands across all $i$, we get aggregate demand:
+$$
+x_1(p, (m^i)_i) = \sum_i x_1^i(p, m^i) = \left(\frac{1}{|I|}\sum_i \alpha^i\right) \frac{m}{p_1},
+$$
+$$
+x_2(p, (m^i)_i) = \sum_i x_2^i(p, m^i) = \left(1- \frac{1}{|I|}\sum_i \alpha^i\right) \frac{m}{p_2}.
+$$
+Denote $\alpha = \left(\frac{1}{|I|}\sum_i \alpha^i\right)$. From the Cobb-Douglas demand solution, we can see the aggregate demands can instead be written as the demand of a representative consumer with income $m$ (all endowment and full equity in the firm) and utility $x_1^\alpha x_2^{1-\alpha}$.
+
+b) From the production side, we solve for the supply. The factor demand is $x_1(x_2) = x_2^2$, and so the cost function is $c(x_2) = p_1x_2^2$. The firm's profit maximization problem thus becomes:
+$$
+\max_{x_2 \geq 0} p_2 x_2 - p_1 x_2^2.
+$$
+Solving the FOC, $q = x_2 = p_2/(2p_1)$, so $x_1 = p_2^2/(4p_1^2)$. The supply is thus given by $s_1(p) = -p_2^2/(4p_1^2), s_2(p) = p_2/(2p_1)$. 
+
+Now, using the representative consumer, we solve for their income, given by:
+$$
+m = p \cdot e + p \cdot s(p) = 2p_1 + p_2 + p_2^2/4p_1.
+$$
+
+We plug into the market clearing condition:
+\begin{align}
+    \frac{\alpha (2p_1 + p_2 + p_2^2/4p_1)}{p_1} = 2 - p_2^2/(4p_1^2), \\
+    \frac{(1-\alpha)(2p_1 + p_2 + p_2^2/4p_1)}{p_2} = 1 + p_2/(2p_1).
+\end{align}
+Let $r = p_2/p_1$, and we rewrite the first equation as:
+$$
+\alpha(2 + r + r^2/4) = 2 - r^2/4.
+$$
+Solving for $r > 0$ yields the equilibrium price ratio $$r= p_2/p_1 = \frac{2(-\alpha + \sqrt{2-\alpha^2})}{1+\alpha}.$$
+Finally, plugging this into our supply yields equilibrium supplies:
+$$s_1 = \frac{-(-\alpha + \sqrt{2-\alpha^2})^2}{(1+\alpha)^2}, \quad s_2 = \frac{(-\alpha + \sqrt{2-\alpha^2})}{1+\alpha}
+$$
+and into our individual consumers' demands yields equilibrium demand for consumer $i$ (recall: $m^i = (2p_1 + p_2 + p_2^2/4p_1)/|I|$):
+
+\begin{align}
+    x_1^i = \frac{\alpha^im^i}{p_1} = \frac{\alpha_i}{|I|}(2 + r + r^2/4) = \frac{2\alpha_i(2+\alpha+\sqrt{2-\alpha^2})}{|I|(1+\alpha)^2}, \\
+    x_2^i = \frac{(1-\alpha^i)m^i}{p_2} = \frac{(1-\alpha_i)}{|I|}(2/r + 1 + r/4) = \frac{(1-\alpha_i)(1+\sqrt{2-\alpha^2})}{|I|(1-\alpha)(1+\alpha)}.
+\end{align}
+$\square$
+
+</details>
+
+> 3. Consider a pure-exchange economy (i.e.\ no firms) with 2 goods where total endowment is $(1,1)$. There are two consumers: consumer 1 has utility 
+> $$ u_1(x_1, x_2) = x_1^2 + x_2^2 $$
+> while consumer 2 has utility 
+> $$ u_2(x_1, x_2) = \min\{x_1, x_2\}. $$
+> a) Show that an allocation $(x^1, x^2) = \left( \left(\tfrac{1}{2}, \tfrac{1}{2}\right), \left(\tfrac{1}{2}, \tfrac{1}{2}\right) \right)$ is efficient.
+> b) Using (1), show that the Second Welfare Theorem fails.
+
+<details>
+    <summary>*Proof.*</summary>
+
+a) First note $(x^1, x^2)$ is feasible since $x^1 + x^2 \leq \bar{e}$. Now, suppose $(y^1, y^2)$ Pareto dominates $(x^1, x^2)$. Thus, either 1) $u_1(y^1) > u_1(x^1)$ or 2) $u_2(y^2) > u_2(x^2)$. For 1), this means either $y^1_1 > x^1_1$ or $y^1_2 > x^1_2$, which also means in this pure-exchange economy that either $y^2_1 < x^2_1$ or $y^2_2 < x^2_2$. Either case, $u_2(y^2) < u_2(x^2)$, contradicting Pareto domination. For 2), this means both $y^2_1 > x^2_1$ and $y^2_2 > x^2_2$, which, in this pure-exchange economy, means $y^1_1 < x^1_1$ and $y^1_2 < x^1_2$. Thus, $u_1(y^1) < u_1(x^1)$, contradicting Pareto domination. Thus, $(x^1, x^2)$ is efficient.
+
+b) Note that the Second Welfare Theorem fails since $\succeq_2$ is not strictly convex, and thus, not neoclassical. Suppose for contradiction there exists some prices $p_1, p_2$ and endowment redistribution $(c^1, c^2)$ such that $(x^1, x^2)$ is a Walrasian equilibrium. Each consumer is then maximizing their utility at prices $p$ subject to their budget constraint / initial endowment $p \cdot c^i$ under the allocation $(x^1, x^2)$. Since preferences are locally non-satiated, this budget constraint is also binding, implying that
+\begin{align}
+    p_1\cdot 1/2 + p_2 \cdot 1/2 = p_1 c^1_1 + p_2 c^1_2, \\
+    p_1\cdot 1/2 + p_2 \cdot 1/2 = p_1 c^2_1 + p_2 c^2_2.
+\end{align}
+Consider consumer 2. Subject to their budget constraint and given their perfect complement utility, they will demand $(1/2, 1/2)$. For markets to clear, this must mean consumer 1 also demands $(1/2, 1/2)$. However, solving the utility maximization problem for consumer 1:
+$$
+\max x_1^2 + x_2^2 \text{ subject to } p_1 x_1 + p_2 x_2 = p_1c_1^1 + p_2c_2^1 = 1/2(p_1 + p_2), x_1 \geq 0, x_2 \geq 0
+$$
+yields corner solutions (since $u_1$ is strictly convex) $x^1$ equal to $((p_1 + p_2)/(2p_1), 0)$ or $(0, (p_1 + p_2)/(2p_2))$, none of which can equal $(1/2, 1/2)$ for any prices $p$. Thus, Second Welfare Theorem fails. $\square$
+
+</details>
+
+> 4. Show that if $\succeq$ is a preference relation that satisfies independence and Archimedean continuity, then it also satisfies independence$^*$.
+
+<details>
+    <summary>*Proof.*</summary>
+
+Let $p, q, r \in \Delta X$ and $a \in (0,1)$, and assume $par \succ qar$. Suppose for contradiction that $p \preceq q$. If $p \prec q$, then by independence, $par \prec qar$, which is contradictory. Thus, $p \sim q$. We have three cases.
+
+1) $p \sim q \sim r$. Then, since $\succeq$ satisfies betweenness, we have that
+$$
+p \sim par \sim r \sim r(1-a)q \sim q
+$$
+which implies that $par \sim qar$, a contradiction.
+
+2) $p \sim q \prec r$. By betweenness, we have that $q \prec rbq$ for all $b \in (0,1)$. By transitivity, we also have that $p \prec rbq$. By independence, we have that
+$$
+par \prec (rbq)ar
+$$
+and by transitivity with our assumption, we have that:
+\begin{equation}\label{q4.1}
+    qar \prec par \prec (rbq)ar \quad ($\star$)
+\end{equation}
+for all $b \in (0,1)$. Fix a $b$ and apply Archimedean continuity to find $c_b \in (0,1)$ such that
+$$
+((rbq)ar)c_b(qar) \prec par
+$$
+which simplifying the RHS yields
+\begin{align*}
+((rbq)ar)c_b(qar) &= c_b(a(br+(1-b)q)+(1-a)r)+(1-c_b)(aq+(1-a)r) \\
+&= a(1-bc_b)q +(abc+1-a)r \\
+&= a((bc_b)r+(1-bc_b)q)+(1-a)r \\
+&= (r(bc_b)q)ar \prec par.
+\end{align*}
+But since $bc_b \in (0,1)$, this contradicts ($\star$).
+
+3) $r \prec p \sim q$. By betweenness, we have that $rbp \prec p$ for all $b \in (0,1)$. By transitivity, we also have that $rbp \prec q$. By independence, we have that
+$$
+(rbp)ar \prec qar
+$$
+and by transitivity with our assumption, we have that:
+\begin{equation}\label{q4.2}
+    (rbp)ar \prec qar \prec par \quad ($\star$)
+\end{equation}
+for all $b \in (0,1)$. Fix a $b$ and apply Archimedean continuity to find $c_b \in (0,1)$ such that
+$$
+((rbp)ar)c_b(par) \prec qar
+$$
+which simplifying the RHS yields
+\begin{align*}
+((rbp)ar)c_b(par) &= (r(bc_b)p)ar \prec qar.
+\end{align*}
+But since $bc_b \in (0,1)$, this contradicts ($\star$).
+
+Thus, $p \succ q$, showing independence*. $\square$
+
+</details>
+
+> 5. Suppose $\succeq_1$ and $\succeq_2$ are monotonic and have well-defined Arrow--Pratt coefficients $A^{u_1}$ and $A^{u_2}$, where $u_i$ is the vNM utility representing $\succeq_i$ for $i \in \{1,2\}$. Show that if $\succeq_1$ is more risk-averse than $\succeq_2$, then $A^{u_1}(x) \ge A^{u_2}(x)$ for all $x$.
+
+<details>
+    <summary>*Proof.*</summary>
+
+We have that $x \succeq_2 p \implies x \succeq_1 p$. By theorem, we have that $u_1 = \phi \circ u_2$ for an increasing, concave $\phi : \mathbb{R} \rightarrow \mathbb{R}$. By chain and product rule, we see that
+\begin{align*}
+u_1'(x) &= \phi ' (u_2(x)) \cdot u_2'(x) \\
+u_1''(x) &= \phi '' (u_2(x))\cdot (u_2'(x))^2 + \phi ' (u_2(x))\cdot u_2''(x).
+\end{align*}
+Thus,
+\begin{align*}
+A^{u_1}(x) = - \frac{u_1''(x)}{u_1'(x)} &= - \frac{\phi '' (u_2(x))\cdot (u_2'(x))^2 + \phi ' (u_2(x))\cdot u_2''(x)}{\phi ' (u_2(x)) \cdot u_2'(x)} \\
+&= - \frac{\phi '' (u_2(x))\cdot (u_2'(x))^2}{\phi ' (u_2(x)) \cdot u_2'(x)} - \frac{u_2''(x)}{u_2'(x)} \\
+&= \underbrace{- \frac{\phi '' (u_2(x))\cdot (u_2'(x))^2}{\phi ' (u_2(x)) \cdot u_2'(x)}}_{(\star)} + A^{u_2}(x).
+\end{align*}
+We know that $\phi$ is concave, so $\phi'' \leq 0$, $\phi$ is increasing, so $\phi' \geq 0$, and $\succeq_2$ is monotone, so $u_2$ is increasing and $u_2' \geq 0$. By the well-definedness of the Arrow-Pratt coefficients, we can assume the denominators are always non-zero. Thus, $(\star) \geq 0$, meaning $A^{u_1}(x) \geq A^{u_2}(x)$ (for all $x$). $\square$
+
+</details>
+
+>6. Consider two distributions $p, q \in \Delta([w,b])$. Let $F_p$ and $F_q$ denote the cumulative distribution functions of $p$ and $q$, respectively. Show that $p$ first-order stochastically dominates $q$ if and only if $F_p(x) \le F_q(x)$ for all $x \in [w,b]$.
+
+<details>
+    <summary>*Proof.*</summary>
+
+$(\implies)$ Assume $p \geq_{FOSD} q$. Suppose for contradiction there exists some $x' \in [w,b]$ such that $F_p(x') > F_q(x')$, or $F_q(x') - F_p(x') < 0$. Consider the increasing function
+$$
+u(x) = \begin{cases}
+    0 &: \quad x \leq x' \\
+    1 &: \quad x > x'
+\end{cases}.
+$$
+Since $u$ is integrable with respect to $F_q$ on $[w,b]$ by FOSD well-definedness, we can write by integral properties:
+$$
+\int_w^b u \, dF_q = \underbrace{\int_w^{x'} u \, dF_q}_{=0} + \int_{x'}^b u \, dF_q = F_q(b) - F_q(x')
+$$
+(where the last equality follows from a telescoping sum argument on the Darboux sums). Similarly,
+$$
+\int_w^b u \, F_p = F_p(b) - F_p(x').
+$$
+Subtracting the two, we see:
+$$
+\int_w^b u \, dF_p - \int_w^b u \, dF_q = F_q(x') - F_p(x') < 0
+$$
+but this contradicts the fact that this difference must be $\geq 0$ by first-order stochastic domination and $u$ is increasing.
+
+$(\impliedby)$ Assume $F_p \leq F_q$. 
+
+For this proof, we use the following lemma from analysis ("integration by parts").
+**Lemma 1:** Let $u, F : [w,b] \rightarrow \mathbb{R}$ be monotone increasing functions, $u \in \mathcal{R}(F)$ on $[w,b]$ (integrable with respect to $F$). Then, $F \in \mathcal{R}(u)$ on $[w,b]$ and
+$$ \int_w^b u \, dF + \int_w^b F \, du = u(b)F(b) - u(w)F(w). $$
+
+*Proof of Lemma.* Assume $u \in \mathcal{R}(F)$. Let $\varepsilon >0$. Thus, there is a partition $P = \{a=x_0, \ldots, x_n =b\}$ such that:
+    $$ \sum_{i=1}^n [\sup_i u(x) - \inf_i u(x)][F(x_i)-F(x_{i-1})] < \varepsilon $$
+    and by monotonicity of $u, F$, we also get:
+    $$ \sum_{i=1}^n [u(x_i) - u(x_{i-1})][\sup_i F(x)- \inf_i F(x)] < \varepsilon $$
+    and so the difference between the Darboux sums $U(F, P, u)-L(F, P, u) < \varepsilon$ and $F \in \mathcal{R}(u)$.
+
+To show the formula, pick your favorite partition $P_0 = \{a=x_0, \ldots, x_n =b\}$. It follows by monotonicity and telescoping sums that,
+    \begin{align}
+    U(u, P_0, F) + L(F, P_0, u) &= \sum_i [u(x_i) \Delta F_i + F(x_{i-1}) \Delta u_i] \\
+    &= \sum_i [u(x_i) F(x_i) - u(x_{i-1})F(x_{i-1})] \\
+    &= u(b)F(b) - u(w)F(w)
+    \end{align}
+    and so namely, this holds for any partition of $[a,b]$. Thus we see,
+    \begin{align*}
+    \inf_P U(u, P, F) + L(F, P_0, u) &\leq u(b)F(b) - u(w)F(w) \quad \text{(lower bound)}\\
+    L(F, P_0, u) &\leq u(b)F(b) - u(w)F(w) - \int_w^b u dF \quad \text{(integrable)}\\
+      \sup_P L(F, P, u) &\leq u(b)F(b) - u(w)F(w) - \int_w^b u dF \quad \text{(upper bound for any $P_0$)}\\ 
+     \int_w^b u dF + \int_w^b F du &\leq u(b)F(b) - u(w)F(w)\quad \text{(integrable)}
+    \end{align*}
+    and similarly,
+    \begin{align*}
+    U(u, P_0, F) + \sup_P L(F, P, u) &\geq u(b)F(b) - u(w)F(w) \\
+    \inf_P U(u, P, F) &\geq u(b)F(b) - u(w)F(w) - \int_w^b F du \\
+    \int_w^b u dF + \int_w^b F du &\geq u(b)F(b) - u(w)F(w) \\
+    \end{align*}
+    and so we get equality.
+Using Lemma 1, let $u$ be monotone increasing, and we see:
+\begin{align*}
+    \int_w^b u \, dF_q = u(b)F_q(b) - u(w)F_q(w) - \int_w^b F_q \, du = 1- \int_w^b F_q \, du, \\
+    \int_w^b u \, dF_p = u(b)F_p(b) - u(w)F_p(w) - \int_w^b F_p \, du = 1- \int_w^b F_p \, du.
+\end{align*}
+Subtracting the two and then using linearity of the Stieltges integral gives:
+$$
+\int_w^b u \, dF_p - \int_w^b u \, dF_q = \int_w^b F_q \, du - \int_w^b F_p \, du = \int_w^b \left(F_q - F_p\right) \, du
+$$
+and since $F_p \leq F_q$, we have that
+$$
+\int_w^b u \, dF_p - \int_w^b u \, dF_q \geq 0,
+$$
+so $p \geq_{FOSD} q$. $\square$
+
+</details>
+
+> 7. Consider two random variables $X$ and $Y$ where
+> $$ Y = X + \varepsilon $$
+> and $\varepsilon$ is an independent error distribution with mean zero (i.e.\ $\mathbb{E}[\varepsilon] = 0$). Note that $Y$ is a mean-preserving spread of $X$. We can associate $X$ and $Y$ with their distributions on $\mathbb{R}$, which we denote by $p$ and $q$ respectively. Suppose $\succeq$ has an expected utility representation and is risk averse and monotonic. Show that $p \succeq q$. (Hint: use Jensen's inequality.)
+
+<details>
+    <summary>*Proof.*</summary>
+
+Let $u$ be the vNM utility, and since preferences are monotonic and risk-averse, we know $u$ is concave. By the definition of $X, Y$ and the fact that $\mathbb{E}[\varepsilon | X = x] = 0$, we see
+$$
+\mathbb{E}[u(X)] = \int_\mathbb{R} u(x) dp = \int_\mathbb{R} u(\underbrace{\mathbb{E}[ X + \varepsilon | X = x]}_{=x}) dp = \int_\mathbb{R} u(\mathbb{E}[ Y | X = x]) dp ,
+$$
+and by Jensen's inequality, since $u$ is concave, we see:
+$$
+\int_\mathbb{R} u(\mathbb{E}[ Y | X = x]) dp \geq \int_\mathbb{R} \mathbb{E}[u(Y) | X = x] dp.
+$$
+By the law of total expectation, the RHS is equal to $\mathbb{E}[u(Y)]$, showing that the expected utility of $p$ is greater than that of $q$, i.e. $p \succeq q$. $\square$
+
+</details>
+
+>8. Show that an agent with standard preferences (i.e.\ uses expected utility, exponential discounting, and likes money) prefers a lottery that gives \$10 either now or in 2 weeks (each with 50\% probability) to getting \$10 in one week for sure. (Hint: Jensen's inequality again.)
+
+<details>
+    <summary>*Proof.*</summary>
+
+Let $u$ be the vNM utility, which we know is monotonic and linear, and let $\delta$ be the discount factor. The discounted expected utility of the first lottery is
+\begin{align*}
+\sum_{t=0}^\infty  \delta^t u(c_t) &= \delta^0 u(\frac{1}{2}0 + \frac{1}{2}10) + \delta^2u(\frac{1}{2}0 + \frac{1}{2}10) + \frac{u(0)}{1-\delta} - (1+\delta^2)u(0) \\
+&= \frac{1}{2}u(0)  + \frac{1}{2}u(10) + \delta^2(\frac{1}{2}u(0)  + \frac{1}{2}u(10)) + \frac{u(0)}{1-\delta} - (1+\delta^2)u(0)
+\end{align*}
+The discounted expected utility of the second lottery is
+\begin{align*}
+\sum_{t=0}^\infty  \delta^t u(c_t) &= \delta u(10)  + \frac{u(0)}{1-\delta} - \delta u(0)
+\end{align*}
+Subtracting the second from the first yields:
+$$
+-\frac{1}{2}u(0)+\frac{1}{2}u(10) - \frac{1}{2}\delta^2 u(0) + \frac{1}{2}\delta^2 u(10) - \delta u(10) + \delta u(0) = (u(10)-u(0))(\frac{1}{2}\delta^2+\frac{1}{2}- \delta).
+$$
+
+By Jensen's inequality (since $\delta^t$ is strictly convex in $t$), we have that $\frac{1}{2}\delta^2+ \frac{1}{2}\delta^0  > \delta$. Also, since $u$ is increasing, $u(10) \geq u(0)$. Thus, the difference is greater than $0$ and the discounted expected utility of the first lottery is greater than that of the second, meaning the individual prefers the first. $\square$
+
+</details>
+
+

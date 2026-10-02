@@ -1,0 +1,13 @@
+# ECON 262A - Topics in Labor Economics: Education, Discrimination, and Criminal Justice
+## Spring 2026, Felipe Goncalves
+
+This class covers program evaluation, instrumental variables, marginal treatment effects, and difference-in-differences design, as well as applications to papers in human capital and returns to education, neighborhood effects and peer effects, and the economics of crime. Please let me know at [kennyguo@ucla.edu](mailto:kennyguo@ucla.edu) if you spot any errors. Thanks!
+
+#### Problem Set Solutions:
+
+* [Problem Set 1: Instrumental Variables and Design](../../resources/classes/econ-262a/ECON_262A_PS_1 (1).pdf)
+* [Problem Set 2: Difference-in-differences Design](../../resources/classes/econ-262a/ECON_262A_PS_2 (1).pdf)
+* [Problem Set 2: Marginal Treatment Effects and Counterfactual Specific Treatment Effects](../../resources/classes/econ-262a/ECON_262A_PS_3 (1).pdf)
+
+
+

@@ -1,0 +1,97 @@
+---
+title: "Home"
+about:
+  template: solana
+  image: photos/profile.jpg
+  image-width: 260px
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/kenny-guo-140966274/
+      target: _blank
+    - icon: book
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=9a7V4ZwAAAAJ&hl=en
+      target: _blank
+    - icon: envelope
+      text: Email
+      href: mailto:kenny.guo@yale.edu
+    - icon: file-earmark-person
+      text: CV
+      href: https://kguo12.github.io/kennyguowebpage/resources/cv/KennyGuoCV_Aug2026.pdf
+
+---
+
+<style>
+.intro {
+  font-size: 1.05em;
+  line-height: 1.65;
+}
+
+.section-label {
+  color: #668bb3;
+  font-weight: 700;
+}
+
+.degree {
+  font-weight: 700;
+}
+
+.year {
+  color: #737b87;
+  font-weight: 400;
+}
+
+.institution a {
+  color: #527fa8;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.institution a:hover {
+  text-decoration: underline;
+}
+
+.location {
+  color: #737b87;
+  font-style: italic;
+}
+
+.edu-entry {
+  margin-bottom: 1.1em;
+}
+
+.news-entry {
+  margin-bottom: 1.1em;
+}
+</style>
+
+## About
+
+<div class="intro">
+
+I am a Ph.D. student in **Economics at Yale University**. 
+
+I am interested in **econometric theory and applied econometrics**, particularly causal inference and learning in settings where agents interact or respond strategically.
+
+My interests also often intersect with learning theory and algorithmic game theory/mechanism design ([EconCS](https://www.bowaggoner.com/whatiseconcs.html){target="_blank"}). 
+
+</div>
+
+### Education
+
+<div class="edu-entry">
+
+<span class="degree">Ph.D. in Economics</span> <span class="year">| 2026–present</span><br>
+<span class="institution">[Yale University](https://economics.yale.edu/people/kenny-guo)</span> <span class="location">| New Haven, CT</span>
+
+</div>
+
+<div class="edu-entry">
+
+<span class="degree">B.S. in Mathematics/Economics</span> <span class="year">| 2023–2026</span><br>
+<span class="institution">[University of California, Los Angeles (UCLA)](https://www.instagram.com/ucla/?hl=en)</span> <span class="location">| Los Angeles, CA</span>
+
+</div>
+
+

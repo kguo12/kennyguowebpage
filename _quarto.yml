@@ -1,0 +1,31 @@
+project:
+  type: website
+  resources:
+    - LICENSE
+    - resources/**
+    - papers/**
+
+website:
+  title: "Kenny Guo"
+  page-footer:
+    center: "© 2026 Kenny Guo"
+  navbar:
+    right:
+      - index.qmd
+      - research.qmd
+      - personal.qmd
+      - icon: linkedin
+        href: https://www.linkedin.com/in/kenny-guo-140966274/
+      - icon: book
+        href: https://scholar.google.com/citations?user=9a7V4ZwAAAAJ&hl=en
+      - icon: envelope
+        href: mailto:kenny.guo@yale.edu
+      - icon: file-earmark-person
+        href: https://kguo12.github.io/kennyguowebpage/resources/cv/KennyGuoCV_Aug2026.pdf
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css

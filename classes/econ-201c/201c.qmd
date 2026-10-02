@@ -1,0 +1,9 @@
+# ECON 201C - Microeconomic Theory: Game Theory with Asymmetric Information and Applications
+## Spring 2026, Simon Board
+
+This is the third course in the PhD microeconomics sequence at UCLA. The topics covered are moral hazard, dynamic contracts, asymmetric information, and market design. We follow loosely Mas-Colell, Whinston, and Green. Please let me know at [kennyguo@ucla.edu](mailto:kennyguo@ucla.edu) if you spot any errors. Thanks!
+
+#### Problem Set Solutions:
+* [Problem Set 1 (moral hazard, contracts)](../../resources/classes/econ-201c/ECON_201C_Problem_Set_1 (1).pdf)
+* [Problem Set 2 (dynamic contracts, asymmetric information)](../../resources/classes/econ-201c/ECON_201C_Problem_Set_2 (1).pdf)
+* [Problem Set 3 (asymmetric information with auctions, public goods, and adverse selection)](../../resources/classes/econ-201c/ECON_201C_Problem_Set_3 (1).pdf)
