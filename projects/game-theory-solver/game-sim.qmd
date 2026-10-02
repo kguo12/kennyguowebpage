@@ -1,8 +1,0 @@
-# Game Theory Simulator and Solver
-
-This is a web app I built to visualize the process of solving normal form games in various ways. It currently supports:
-
-* Iterated Deletion of Strictly Dominated Strategies (Dominance-Solvability) (*in progress*)
-* Best-Responses and Nash Equilibria (*in progress*)
-
-<iframe src="https://kguo12.github.io/game-theory-simulator/" width="100%" height="600px" style="border:1px solid #ccc;"></iframe>

@@ -1,7 +1,0 @@
-# MATH 131AH: Analysis (Honors)
-## Winter 2025, G. Menz
-
-We follow UCLA's 131AH curriculum; a schedule of topics is linked [here](https://ww3.math.ucla.edu/courses/){target='_blank'}. We follow Rudin's *Principles of Mathematical Analysis (3e)*, along with [these lecture notes](https://tducvu.github.io/assets/lecturenotes/analysis1.pdf){target="_blank"} by [Prof. Monica Visan](https://www.math.ucla.edu/~visan/){target="_blank"} (typed up by [Duc Vu](https://tducvu.github.io/){target="_blank"}). Please let me know at [kennyguo@ucla.edu](mailto:kennyguo@ucla.edu) if you spot any errors. Thanks!
-
-#### Homework Solutions: (in progress)
-
