@@ -618,36 +618,8 @@ section.footnotes {
 }
 </style>
 <hr>
-<section id="work-in-progress" class="level2">
-<h2 data-anchor-id="work-in-progress">Work in Progress</h2>
-<div class="paper-entry paper-entry-unnumbered">
-<div class="paper-heading">
-<span>Adaptive Policy Learning under Approximate Network Interference</span>
-</div>
-<div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-area">econometrics</span><span class="paper-area">learning theory</span>
-</div>
-</div>
-<div class="paper-entry paper-entry-unnumbered">
-<div class="paper-heading">
-<span>Online Steering of No-Regret Learners to Welfare-Optimal CCE in Markov Games</span>
-</div>
-<div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-area">learning theory</span><span class="paper-area">econcs</span>
-</div>
-</div>
-<div class="paper-entry paper-entry-unnumbered">
-<div class="paper-heading">
-<span>Bilevel Performative Games</span>
-</div>
-<div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-area">optimization</span><span class="paper-area">econcs</span>
-</div>
-</div>
-<hr>
-</section>
-<section id="working-papersworking-paper-rights" class="level2">
-<h2 data-anchor-id="working-papersworking-paper-rights">Working Papers<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<section id="working-papersworking-paper-rights" class="level3">
+<h3 data-anchor-id="working-papersworking-paper-rights">Working Papers<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h3>
 <div class="paper-entry">
 <div class="paper-heading">
 <span class="paper-number">[4]</span><span>Online Learning-to-Commit in Decentralized Leader-Controller Stackelberg Markov Games</span>
@@ -667,7 +639,24 @@ section.footnotes {
 </div>
 <div class="paper-entry">
 <div class="paper-heading">
-<span class="paper-number">[3]</span><span>Learning Adversarial Continuous MDPs with Bandit Feedback and Unknown Transitions</span>
+<span class="paper-number">[3]</span><span>SPADE: Stochastic Payoff-Based Algorithm for Decentralized Equilibria in Games with Decision-Dependent Distributions and Coupled Constraints</span>
+</div>
+<div class="paper-authors">
+<strong>Kenny Guo</strong>, William Chang, Xuanyu Cao
+</div>
+<div class="paper-meta">
+<span class="paper-year">2026</span><span class="paper-area">optimization</span><span class="paper-area">econcs</span>
+</div>
+<details class="paper-abstract">
+<summary>
+<span class="paper-abstract-label">Abstract</span>
+</summary>
+<p>In learning problems within politics, finance, or operations, agents’ decisions and predictions can influence the underlying data-generating process—a phenomenon known as the <em>performative effect</em> (Perdomo et al.&nbsp;2020). We study this effect in decentralized noncooperative games with coupled constraints, where data distributions shift endogenously from players’ actions. Furthermore, in practical settings, agents may not know the functional form of their objectives and can only observe realized payoffs from played actions. Our main contribution is SPADE (<strong>S</strong>tochastic <strong>P</strong>ayoff-based <strong>A</strong>lgorithm for <strong>D</strong>ecentralized <strong>E</strong>quilibria), a low-communication cost distributed algorithm in which each player randomly perturbs its action and updates with the resulting payoff observations. We show that when data are sampled from players’ unperturbed actions, SPADE converges to the performatively-stable equilibrium (PSE), and when both data and payoffs are induced by the deployed actions, SPADE-NE converges to the Nash equilibrium (NE) under additional smoothness. Finally, we propose SPADE-MP, a multipoint-feedback approach that retains near full-information guarantees and improves empirical convergence to NE. We support our results through numerical experiments on networked Cournot competition and show significant improvements in reducing communication overhead.</p>
+</details>
+</div>
+<div class="paper-entry">
+<div class="paper-heading">
+<span class="paper-number">[2]</span><span>Learning Adversarial Continuous MDPs with Bandit Feedback and Unknown Transitions</span>
 </div>
 <div class="paper-authors">
 Aarush Kulkarni, Khang Nguyen, Ricardo Parada, <strong>Kenny Guo</strong>, William Chang, Yan Dai
@@ -684,23 +673,6 @@ Aarush Kulkarni, Khang Nguyen, Ricardo Parada, <strong>Kenny Guo</strong>, Willi
 </div>
 <div class="paper-entry">
 <div class="paper-heading">
-<span class="paper-number">[2]</span><span>SPADE: Stochastic Payoff-Based Algorithm for Decentralized Equilibria in Games with Decision-Dependent Distributions and Coupled Constraints</span>
-</div>
-<div class="paper-authors">
-<strong>Kenny Guo</strong>, William Chang, Xuanyu Cao
-</div>
-<div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-area">optimization</span><span class="paper-area">econcs</span>
-</div>
-<details class="paper-abstract">
-<summary>
-<span class="paper-abstract-label">Abstract</span>
-</summary>
-<p>In learning problems within politics, finance, or operations, agents’ decisions and predictions can influence the underlying data-generating process—a phenomenon known as the <em>performative effect</em>. We study this effect in decentralized noncooperative games with coupled constraints, where data distributions depend endogenously on players’ actions. In many practical settings, agents may not know the functional form of their objectives and can only observe realized payoffs from played actions. Our main contribution is SPADE (<strong>S</strong>tochastic <strong>P</strong>ayoff-based <strong>A</strong>lgorithm for <strong>D</strong>ecentralized <strong>E</strong>quilibria), a low-communication cost distributed algorithm in which each player perturbs its action with Gaussian noise and updates using payoff observations alone. We show that when data are sampled from players’ unperturbed actions, SPADE converges to the performatively-stable equilibrium (PSE). We also present SPADE-NE, in which both data and payoffs are induced by the deployed actions, and prove convergence to the harder Nash equilibrium (NE) under an additional smoothness assumption. Finally, we propose SPADE-MP, a multipoint-feedback approach that retains near full-information guarantees and improves empirical convergence to NE. We support our results through numerical experiments on networked Cournot competition and show significant improvements in reducing communication overhead.</p>
-</details>
-</div>
-<div class="paper-entry">
-<div class="paper-heading">
 <span class="paper-number">[1]</span><span>Policy Optimization for Corrupted Markov Decision Processes</span>
 </div>
 <div class="paper-authors">
@@ -713,26 +685,25 @@ Khang Nguyen, <strong>Kenny Guo</strong>, William Chang
 <summary>
 <span class="paper-abstract-label">Abstract</span>
 </summary>
-<p>Policy optimization methods are a widely used and empirically effective class of reinforcement learning algorithms. In this paper, we use policy optimization to solve the challenging problem of efficient learning in <em>corrupted</em> Markov Decision Processes (MDPs) with both adversarial losses and transitions. In particular, we develop a corruption-robust policy optimization algorithm, CR-UOB-PO, that achieves <span class="math inline">\(\mathcal{O}(\sqrt{T} + C^{\mathsf P})\)</span> regret in the finite tabular MDP setting under known <span class="math inline">\(C^{\mathsf P}\)</span>, which quantifies the total transition corruption across all episodes. We further demonstrate how CR-UOB-PO can be reduced using a principled black-box approach to maintain the same regret bound <em>without</em> knowledge of <span class="math inline">\(C^{\mathsf P}\)</span>. To our knowledge, this is the first algorithm for corrupted MDPs that relies almost entirely on policy optimization methods, allowing it to handle extreme environments with low computational complexity.</p>
+<p>Policy optimization methods are a widely used and empirically effective class of reinforcement learning algorithms. In this paper, we use policy optimization to solve the challenging problem of learning in <em>corrupted</em> Markov Decision Processes (MDPs) with both adversarial losses and transitions. In particular, we develop a computationally-efficient, corruption-robust, policy optimization algorithm, CRPO, which utilizes local log-barrier updates, state-dependent learning rates, and novel amortized corruption bonuses. Notably, we prove CRPO attains optimal <span class="math inline">\(\widetilde{\mathcal{O}}(\sqrt{T} + C^{\mathsf P})\)</span> regret in finite tabular MDPs under known <span class="math inline">\(C^{\mathsf P}\)</span>, which quantifies the total transition corruption across all episodes. We further demonstrate how CRPO can be reduced using a principled black-box approach to maintain the same regret bound knowledge of <span class="math inline">\(C^{\mathsf P}\)</span>. Numerical experiments illustrate our results. To our knowledge, this is the first algorithm for corrupted MDPs that relies on policy optimization methods, allowing it to handle extreme environments with low computational complexity.</p>
 </details>
 </div>
 <hr>
 </section>
-<section id="publications-accepted-papers" class="level2">
-<h2 data-anchor-id="publications-accepted-papers">Publications &amp; Accepted Papers</h2>
-<p>— <em>CS Conference Publications</em> —</p>
+<section id="publications-accepted-papers" class="level3">
+<h3 data-anchor-id="publications-accepted-papers">Publications &amp; Accepted Papers</h3>
 <div class="paper-entry">
 <div class="paper-heading">
 <span class="paper-number">[2]</span><span>Youdunit: Single-Call Counterfactual Necessity in Multi-Agent LLM Systems</span>
 </div>
 <div class="paper-meta">
-<span class="paper-year">2026</span><span class="paper-year"><em>(proceedings coming soon)</em></span><span class="paper-area">econcs</span><span class="paper-area">causality</span><span class="paper-area">ai safety</span>
+<span class="paper-year">2026</span><span class="paper-area">econcs</span><span class="paper-area">causality</span><span class="paper-area">ai safety</span>
 </div>
 <div class="paper-authors">
 Marissa Zhao Li, Stephanie Gao, <strong>Kenny Guo</strong>, Xingjian Li, William Chang, Goran Radanovic
 </div>
 <div class="paper-status accepted">
-40th Conference on Neural Information Processing Systems (NeurIPS 2026)
+Neural Information Processing Systems
 </div>
 <details class="paper-abstract">
 <summary>
@@ -752,7 +723,7 @@ Marissa Zhao Li, Stephanie Gao, <strong>Kenny Guo</strong>, Xingjian Li, William
 <strong>Kenny Guo</strong>, Valentio Iverson, Sahan Wijetunga, William Chang
 </div>
 <div class="paper-status accepted">
-42nd Conference on Uncertainty in Artificial Intelligence (UAI 2026)
+Uncertainty in Artificial Intelligence
 </div>
 <details class="paper-abstract">
 <summary>
@@ -763,17 +734,42 @@ Marissa Zhao Li, Stephanie Gao, <strong>Kenny Guo</strong>, Xingjian Li, William
 </div>
 <hr>
 </section>
-<section id="resting" class="level2">
-<h2 data-anchor-id="resting">Resting</h2>
+<section id="work-in-progress" class="level3">
+<h3 data-anchor-id="work-in-progress">Work in Progress</h3>
+<div class="paper-entry paper-entry-unnumbered">
+<div class="paper-heading">
+<span>Adaptive Policy Learning under Approximate Network Interference</span>
+</div>
+<div class="paper-meta">
+<span class="paper-year">2026</span><span class="paper-area">econometrics</span><span class="paper-area">learning theory</span>
+</div>
+</div>
+<div class="paper-entry paper-entry-unnumbered">
+<div class="paper-heading">
+<span>Bilevel Performative Games</span>
+</div>
+<div class="paper-meta">
+<span class="paper-year">2026</span><span class="paper-area">optimization</span><span class="paper-area">econcs</span>
+</div>
+</div>
+<div class="paper-entry paper-entry-unnumbered">
+<div class="paper-heading">
+<span>Network-Informed Conditional Factor Models</span>
+</div>
+<div class="paper-meta">
+<span class="paper-year">2026</span><span class="paper-area">econometrics</span><span class="paper-area">asset pricing</span>
+</div>
+</div>
+<hr>
+</section>
+<section id="other" class="level3">
+<h3 data-anchor-id="other">Other</h3>
 <div class="paper-entry">
 <div class="paper-heading">
 <span class="paper-number">[2]</span><span>Inflation on UI Program Benefits and Affordability for the Unemployed (Policy Brief)</span>
 </div>
 <div class="paper-authors">
 with Terrence Yu
-</div>
-<div class="paper-note">
-Previously titled <em>Impacts and Policy Implications of Inflation and Declining Real UI Benefit Levels</em>.
 </div>
 <div class="paper-meta">
 <span class="paper-year">2026</span><span class="paper-area">labor economics</span><span class="paper-area">public economics</span>
